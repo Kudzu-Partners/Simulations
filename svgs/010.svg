@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg010" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f2027"/>
+      <stop offset="100%" stop-color="#203a43"/>
+    </linearGradient>
+    <radialGradient id="coreGlow010" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00c9a7" stop-opacity="0.70"/>
+      <stop offset="100%" stop-color="#00c9a7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg010)"/>
+
+  <!-- 6 concentric LTV rings — each quarter a customer grows in value -->
+  <!-- Ring 6 (outermost, Q6 — highest LTV, brightest) -->
+  <circle cx="200" cy="195" r="148" fill="none" stroke="#f5c842" stroke-width="2" stroke-opacity="0.22"/>
+  <!-- Ring 5 -->
+  <circle cx="200" cy="195" r="122" fill="none" stroke="#00c9a7" stroke-width="2" stroke-opacity="0.30"/>
+  <!-- Ring 4 -->
+  <circle cx="200" cy="195" r="97" fill="none" stroke="#f5c842" stroke-width="2" stroke-opacity="0.40"/>
+  <!-- Ring 3 -->
+  <circle cx="200" cy="195" r="73" fill="none" stroke="#00c9a7" stroke-width="2.5" stroke-opacity="0.52"/>
+  <!-- Ring 2 -->
+  <circle cx="200" cy="195" r="50" fill="none" stroke="#f5c842" stroke-width="2.5" stroke-opacity="0.65"/>
+  <!-- Ring 1 (innermost, Q1 — new customer, acquisition) -->
+  <circle cx="200" cy="195" r="28" fill="none" stroke="#00c9a7" stroke-width="3" stroke-opacity="0.85"/>
+
+  <!-- Core customer node -->
+  <circle cx="200" cy="195" r="16" fill="url(#coreGlow010)"/>
+  <circle cx="200" cy="195" r="10" fill="#00c9a7" fill-opacity="0.90" stroke="#00c9a7" stroke-width="1.5"/>
+
+  <!-- Quarter markers on rings (small tick at top of each ring) -->
+  <g stroke="#f5c842" stroke-width="2" stroke-opacity="0.55" stroke-linecap="round">
+    <line x1="200" y1="164" x2="200" y2="158"/>  <!-- Q1 ring top -->
+    <line x1="200" y1="142" x2="200" y2="135"/>  <!-- Q2 ring top -->
+    <line x1="200" y1="119" x2="200" y2="111"/>  <!-- Q3 ring top -->
+    <line x1="200" y1="95" x2="200" y2="86"/>    <!-- Q4 ring top -->
+    <line x1="200" y1="70" x2="200" y2="60"/>    <!-- Q5 ring top -->
+  </g>
+
+  <!-- Quarter labels (Q1 through Q6, clockwise along rings) -->
+  <text x="234" y="170" font-family="Arial, sans-serif" font-size="9" fill="#00c9a7" opacity="0.70">Q1</text>
+  <text x="256" y="148" font-family="Arial, sans-serif" font-size="9" fill="#f5c842" opacity="0.65">Q2</text>
+  <text x="278" y="122" font-family="Arial, sans-serif" font-size="9" fill="#00c9a7" opacity="0.60">Q3</text>
+  <text x="298" y="97" font-family="Arial, sans-serif" font-size="9" fill="#f5c842" opacity="0.55">Q4</text>
+  <text x="318" y="72" font-family="Arial, sans-serif" font-size="9" fill="#00c9a7" opacity="0.50">Q5</text>
+  <text x="336" y="48" font-family="Arial, sans-serif" font-size="9" fill="#f5c842" opacity="0.45">Q6</text>
+
+  <!-- NRR arc indicator (top-right, partial ring showing net revenue retention > 100%) -->
+  <path d="M 330,130 A 60,60 0 0,1 348,195" fill="none" stroke="#f5c842" stroke-width="3" stroke-opacity="0.70" stroke-linecap="round"/>
+  <polygon points="349,190 352,200 343,196" fill="#f5c842" fill-opacity="0.70"/>
+  <text x="358" y="162" font-family="Arial Black, Arial, sans-serif" font-size="11" font-weight="900" fill="#f5c842" opacity="0.72">NRR</text>
+
+  <!-- LTV label -->
+  <text x="200" y="370" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#00c9a7" text-anchor="middle" opacity="0.88">LTV</text>
+
+</svg>

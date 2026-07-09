@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg80" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a3a5c"/>
+      <stop offset="100%" stop-color="#2c5f8a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg80)"/>
+  <!-- T-Account structure -->
+  <!-- Vertical divider -->
+  <line x1="200" y1="75" x2="200" y2="310" stroke="#74b9ff" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <!-- Horizontal top bar -->
+  <line x1="75" y1="115" x2="325" y2="115" stroke="#74b9ff" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <!-- Labels -->
+  <text x="137" y="100" font-family="sans-serif" font-size="16" font-weight="bold" fill="#74b9ff" text-anchor="middle" opacity="0.85">DEBE</text>
+  <text x="263" y="100" font-family="sans-serif" font-size="16" font-weight="bold" fill="#74b9ff" text-anchor="middle" opacity="0.85">HABER</text>
+  <!-- Debit entries (left) -->
+  <g fill="#dfe6e9" opacity="0.65" font-family="monospace" font-size="11">
+    <text x="85" y="140">Caja        +500</text>
+    <text x="85" y="160">Inventario  +200</text>
+    <text x="85" y="180">Equipo      +800</text>
+    <text x="85" y="200">CxC         +150</text>
+  </g>
+  <!-- Credit entries (right) -->
+  <g fill="#dfe6e9" opacity="0.65" font-family="monospace" font-size="11">
+    <text x="210" y="140">Capital     +900</text>
+    <text x="210" y="160">Ventas      +600</text>
+    <text x="210" y="180">Deuda       +150</text>
+  </g>
+  <!-- Total lines -->
+  <line x1="85" y1="210" x2="188" y2="210" stroke="#74b9ff" stroke-width="1.5" opacity="0.5"/>
+  <line x1="210" y1="210" x2="318" y2="210" stroke="#74b9ff" stroke-width="1.5" opacity="0.5"/>
+  <text x="137" y="228" font-family="monospace" font-size="12" fill="#74b9ff" text-anchor="middle" font-weight="bold" opacity="0.8">1,650</text>
+  <text x="263" y="228" font-family="monospace" font-size="12" fill="#74b9ff" text-anchor="middle" font-weight="bold" opacity="0.8">1,650</text>
+  <!-- Cycle arrows below T-account -->
+  <g opacity="0.55">
+    <!-- Journal → Ledger → Statements cycle -->
+    <rect x="75" y="325" width="65" height="24" rx="4" fill="#74b9ff" opacity="0.2" stroke="#74b9ff" stroke-width="1.5"/>
+    <text x="107" y="341" font-family="sans-serif" font-size="9" fill="#dfe6e9" text-anchor="middle">JOURNAL</text>
+    <polygon points="148,337 155,331 155,343" fill="#74b9ff" opacity="0.7"/>
+    <rect x="162" y="325" width="76" height="24" rx="4" fill="#74b9ff" opacity="0.2" stroke="#74b9ff" stroke-width="1.5"/>
+    <text x="200" y="341" font-family="sans-serif" font-size="9" fill="#dfe6e9" text-anchor="middle">LEDGER</text>
+    <polygon points="246,337 253,331 253,343" fill="#74b9ff" opacity="0.7"/>
+    <rect x="260" y="325" width="65" height="24" rx="4" fill="#74b9ff" opacity="0.2" stroke="#74b9ff" stroke-width="1.5"/>
+    <text x="292" y="341" font-family="sans-serif" font-size="9" fill="#dfe6e9" text-anchor="middle">STATES</text>
+  </g>
+</svg>

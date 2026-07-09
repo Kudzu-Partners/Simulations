@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg301" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg301)"/>
+
+  <!-- Territory map (irregular regions) -->
+  <!-- Region A -->
+  <path d="M 50 80 L 190 60 L 210 180 L 130 200 L 50 160 Z" fill="#74b9ff" opacity="0.18" stroke="#74b9ff" stroke-width="2"/>
+  <!-- Region B -->
+  <path d="M 190 60 L 350 80 L 360 200 L 210 180 Z" fill="#00ff88" opacity="0.15" stroke="#00ff88" stroke-width="2"/>
+  <!-- Region C -->
+  <path d="M 50 160 L 130 200 L 120 320 L 40 300 Z" fill="#e040fb" opacity="0.14" stroke="#e040fb" stroke-width="2"/>
+  <!-- Region D -->
+  <path d="M 130 200 L 210 180 L 230 320 L 120 320 Z" fill="#f5c842" opacity="0.16" stroke="#f5c842" stroke-width="2"/>
+  <!-- Region E -->
+  <path d="M 210 180 L 360 200 L 350 330 L 230 320 Z" fill="#a29bfe" opacity="0.14" stroke="#a29bfe" stroke-width="2"/>
+
+  <!-- Sales rep pins -->
+  <!-- Pin A (blue) -->
+  <g transform="translate(110, 120)">
+    <circle cx="0" cy="-20" r="12" fill="#74b9ff"/>
+    <path d="M 0 -8 L -8 -20 L 8 -20 Z" fill="#74b9ff"/>
+    <circle cx="0" cy="-20" r="5" fill="#0d1b2a"/>
+  </g>
+  <!-- Pin B (green) -->
+  <g transform="translate(280, 110)">
+    <circle cx="0" cy="-20" r="12" fill="#00ff88"/>
+    <path d="M 0 -8 L -8 -20 L 8 -20 Z" fill="#00ff88"/>
+    <circle cx="0" cy="-20" r="5" fill="#0d1b2a"/>
+  </g>
+  <!-- Pin C (magenta) -->
+  <g transform="translate(82, 252)">
+    <circle cx="0" cy="-20" r="12" fill="#e040fb"/>
+    <path d="M 0 -8 L -8 -20 L 8 -20 Z" fill="#e040fb"/>
+    <circle cx="0" cy="-20" r="5" fill="#0d1b2a"/>
+  </g>
+  <!-- Pin D (gold) -->
+  <g transform="translate(172, 270)">
+    <circle cx="0" cy="-20" r="12" fill="#f5c842"/>
+    <path d="M 0 -8 L -8 -20 L 8 -20 Z" fill="#f5c842"/>
+    <circle cx="0" cy="-20" r="5" fill="#0d1b2a"/>
+  </g>
+  <!-- Pin E (purple) -->
+  <g transform="translate(290, 258)">
+    <circle cx="0" cy="-20" r="12" fill="#a29bfe"/>
+    <path d="M 0 -8 L -8 -20 L 8 -20 Z" fill="#a29bfe"/>
+    <circle cx="0" cy="-20" r="5" fill="#0d1b2a"/>
+  </g>
+
+  <!-- Performance bars (bottom) -->
+  <g transform="translate(36, 348)">
+    <rect x="0" y="0" width="56" height="16" rx="4" fill="#1a2744"/>
+    <rect x="0" y="0" width="44" height="16" rx="4" fill="#74b9ff" opacity="0.8"/>
+    <rect x="64" y="0" width="56" height="16" rx="4" fill="#1a2744"/>
+    <rect x="64" y="0" width="50" height="16" rx="4" fill="#00ff88" opacity="0.8"/>
+    <rect x="128" y="0" width="56" height="16" rx="4" fill="#1a2744"/>
+    <rect x="128" y="0" width="28" height="16" rx="4" fill="#e040fb" opacity="0.7"/>
+    <rect x="192" y="0" width="56" height="16" rx="4" fill="#1a2744"/>
+    <rect x="192" y="0" width="48" height="16" rx="4" fill="#f5c842" opacity="0.8"/>
+    <rect x="256" y="0" width="108" height="16" rx="4" fill="#1a2744"/>
+    <rect x="256" y="0" width="70" height="16" rx="4" fill="#a29bfe" opacity="0.7"/>
+  </g>
+</svg>

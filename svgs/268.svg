@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg268" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg268)"/>
+
+  <!-- 8 math tiles in a 4×2 grid -->
+  <!-- Row 1 -->
+  <!-- Tile 1: Compound Interest -->
+  <rect x="42"  y="52" width="80" height="72" rx="7" fill="#0d1428" stroke="#00ff88" stroke-width="1.8"/>
+  <text x="82"  y="74"  font-family="monospace" font-size="9"   fill="#00ff88" text-anchor="middle" opacity="0.8">A = P(1+r)ⁿ</text>
+  <text x="82"  y="90"  font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Compound</text>
+  <text x="82"  y="102" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Interest</text>
+
+  <!-- Tile 2: Loan Amortization -->
+  <rect x="130" y="52" width="80" height="72" rx="7" fill="#0d1428" stroke="#00bfff" stroke-width="1.8"/>
+  <text x="170" y="74"  font-family="monospace" font-size="9"   fill="#00bfff" text-anchor="middle" opacity="0.8">PMT = PV·r</text>
+  <text x="170" y="86"  font-family="monospace" font-size="8"   fill="#00bfff" text-anchor="middle" opacity="0.7">──────</text>
+  <text x="170" y="97"  font-family="monospace" font-size="8"   fill="#00bfff" text-anchor="middle" opacity="0.7">1-(1+r)⁻ⁿ</text>
+  <text x="170" y="113" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Amortization</text>
+
+  <!-- Tile 3: Profit Maximization -->
+  <rect x="218" y="52" width="80" height="72" rx="7" fill="#0d1428" stroke="#f5c842" stroke-width="1.8"/>
+  <text x="258" y="74"  font-family="monospace" font-size="9"   fill="#f5c842" text-anchor="middle" opacity="0.8">MR = MC</text>
+  <text x="258" y="91"  font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Profit</text>
+  <text x="258" y="103" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Maximization</text>
+
+  <!-- Tile 4: Cost Minimization -->
+  <rect x="306" y="52" width="80" height="72" rx="7" fill="#0d1428" stroke="#52b788" stroke-width="1.8"/>
+  <text x="346" y="73"  font-family="monospace" font-size="8.5" fill="#52b788" text-anchor="middle" opacity="0.8">min TC</text>
+  <text x="346" y="87"  font-family="monospace" font-size="8"   fill="#52b788" text-anchor="middle" opacity="0.7">s.t. Q=Q₀</text>
+  <text x="346" y="104" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Cost Min.</text>
+
+  <!-- Row 2 -->
+  <!-- Tile 5: EOQ -->
+  <rect x="42"  y="138" width="80" height="72" rx="7" fill="#0d1428" stroke="#7b2fff" stroke-width="1.8"/>
+  <text x="82"  y="160" font-family="monospace" font-size="8.5" fill="#c0aaff" text-anchor="middle" opacity="0.8">EOQ=√(2DS/H)</text>
+  <text x="82"  y="176" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Economic</text>
+  <text x="82"  y="188" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Order Qty</text>
+
+  <!-- Tile 6: Break-Even -->
+  <rect x="130" y="138" width="80" height="72" rx="7" fill="#0d1428" stroke="#e67e22" stroke-width="1.8"/>
+  <text x="170" y="160" font-family="monospace" font-size="8.5" fill="#e67e22" text-anchor="middle" opacity="0.8">Q* = FC</text>
+  <text x="170" y="172" font-family="monospace" font-size="8"   fill="#e67e22" text-anchor="middle" opacity="0.7">──────</text>
+  <text x="170" y="183" font-family="monospace" font-size="8"   fill="#e67e22" text-anchor="middle" opacity="0.7">P - VC</text>
+  <text x="170" y="198" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Break-Even</text>
+
+  <!-- Tile 7: Expected Value -->
+  <rect x="218" y="138" width="80" height="72" rx="7" fill="#0d1428" stroke="#ff6b9d" stroke-width="1.8"/>
+  <text x="258" y="159" font-family="monospace" font-size="8.5" fill="#ff6b9d" text-anchor="middle" opacity="0.8">E[X]=Σ xᵢpᵢ</text>
+  <text x="258" y="175" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Expected</text>
+  <text x="258" y="187" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Value</text>
+
+  <!-- Tile 8: Consumer Surplus -->
+  <rect x="306" y="138" width="80" height="72" rx="7" fill="#0d1428" stroke="#00bfff" stroke-width="1.8"/>
+  <text x="346" y="158" font-family="monospace" font-size="8.5" fill="#00bfff" text-anchor="middle" opacity="0.8">CS = ½bh</text>
+  <text x="346" y="174" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Consumer</text>
+  <text x="346" y="186" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Surplus</text>
+
+  <!-- Visual workbench: compound interest chart (bottom) -->
+  <rect x="42" y="228" width="316" height="120" rx="8" fill="#0d1428" stroke="#00ff88" stroke-width="1.5" opacity="0.7"/>
+  <text x="200" y="246" font-family="monospace" font-size="8.5" fill="#00ff88" text-anchor="middle" opacity="0.7">Interactive Visual Workbench</text>
+
+  <!-- Mini compound interest curve inside workbench -->
+  <line x1="58"  y1="332" x2="342" y2="332" stroke="#a0aec0" stroke-width="1" opacity="0.3"/>
+  <line x1="58"  y1="260" x2="58"  y2="332" stroke="#a0aec0" stroke-width="1" opacity="0.3"/>
+  <path d="M 62,328 Q 110,318 150,302 Q 200,280 240,255 Q 280,232 335,238"
+        fill="none" stroke="#00ff88" stroke-width="2.2" opacity="0.85"/>
+  <path d="M 62,328 Q 110,318 150,302 Q 200,280 240,255 Q 280,232 335,238 L 335,332 L 62,332 Z"
+        fill="#00ff88" opacity="0.06"/>
+
+  <text x="200" y="380" font-family="monospace" font-size="9" fill="#a0aec0" text-anchor="middle" opacity="0.42">8 Business Math Problems · Visual Workbench</text>
+</svg>

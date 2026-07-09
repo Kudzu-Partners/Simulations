@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eureka Express — Open Simulation Player</title>
+<style>
+  :root{
+    --bg:#0f172a; --panel:#1e293b; --panel2:#273449; --line:#334155;
+    --ink:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --accent2:#0ea5e9;
+    --ok:#34d399; --warn:#fbbf24; --err:#f87171;
+    --main-bg:#f1f5f9;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+  #app{display:flex;height:100%;overflow:hidden}
+
+  /* ───── sidebar / catalog ───── */
+  #side{flex:0 0 340px;display:flex;flex-direction:column;background:var(--panel);border-right:1px solid var(--line);min-width:0}
+  #brand{padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+  #brand h1{margin:0;font-size:16px;letter-spacing:.3px}
+  #brand h1 span{color:var(--accent)}
+  #brand .sub{font-size:11px;color:var(--muted);margin-top:2px}
+  #tools{padding:10px 12px;border-bottom:1px solid var(--line)}
+  #search{width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font-size:13px;outline:none}
+  #search:focus{border-color:var(--accent)}
+  #chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+  .chip{font-size:11px;padding:4px 9px;border-radius:20px;border:1px solid var(--line);background:var(--panel2);color:var(--muted);cursor:pointer;user-select:none;text-transform:capitalize}
+  .chip.on{color:#04121f;font-weight:700;border-color:transparent}
+  #lvlrow{display:flex;gap:5px;margin-top:8px;align-items:center}
+  #lvlrow select{flex:1;padding:5px 8px;border-radius:7px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font-size:12px}
+  #btnRandom{padding:5px 10px;border-radius:7px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font-size:12px;cursor:pointer}
+  #btnRandom:hover{border-color:var(--accent)}
+  #count{font-size:11px;color:var(--muted);margin-top:8px}
+  #list{flex:1;overflow-y:auto;min-height:0}
+  .row{display:flex;gap:10px;padding:9px 12px;border-bottom:1px solid rgba(51,65,85,.5);cursor:pointer;align-items:center}
+  .row:hover{background:var(--panel2)}
+  .row.sel{background:#0c4a6e}
+  .thumb{flex:0 0 40px;width:40px;height:40px;border-radius:9px;background:#0b1220;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#fff;overflow:hidden}
+  .thumb img{width:100%;height:100%;object-fit:contain;background:#fff}
+  .row .tx{min-width:0}
+  .row .nm{font-size:12.5px;font-weight:600;line-height:1.25;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .row .mt{font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .row .mt b{color:var(--accent);font-weight:600}
+  #more{display:block;width:100%;padding:10px;background:none;border:none;color:var(--accent);font-size:12px;cursor:pointer}
+  #sideFoot{padding:8px 12px;border-top:1px solid var(--line);font-size:10.5px;color:var(--muted);line-height:1.5}
+  #sideFoot a{color:var(--accent);text-decoration:none}
+
+  /* ───── main area ───── */
+  #main{flex:1;display:flex;flex-direction:column;min-width:0;background:var(--main-bg)}
+  #bar{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  #simTitle{font-size:14px;font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+  #simMeta{font-size:11px;color:var(--muted);white-space:nowrap}
+  #progress{font-size:11.5px;color:var(--ink);background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:4px 10px;white-space:nowrap}
+  #langs{display:flex;gap:4px}
+  .lbtn{padding:4px 9px;border-radius:7px;border:1px solid var(--line);background:var(--panel2);color:var(--muted);font-size:11px;font-weight:700;cursor:pointer;text-transform:uppercase}
+  .lbtn.on{background:var(--accent);color:#04121f;border-color:transparent}
+  .abtn{padding:5px 11px;border-radius:7px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font-size:12px;cursor:pointer;white-space:nowrap}
+  .abtn:hover{border-color:var(--accent)}
+  #stage{flex:1;position:relative;min-height:0}
+  #frame{position:absolute;inset:0;width:100%;height:100%;border:none;background:#fff}
+
+  /* welcome / drop zone */
+  #welcome{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--main-bg);color:#0f172a}
+  #welcome .card{max-width:620px;margin:20px;background:#fff;border-radius:16px;padding:34px 38px;box-shadow:0 10px 40px rgba(2,6,23,.12)}
+  #welcome h2{margin:0 0 8px;font-size:22px}
+  #welcome p{font-size:14px;line-height:1.6;color:#334155;margin:.5em 0}
+  #welcome .hintbox{background:#f1f5f9;border:1px dashed #94a3b8;border-radius:10px;padding:14px 16px;font-size:13px;color:#475569;margin-top:14px}
+  #welcome code{background:#e2e8f0;border-radius:4px;padding:1px 6px;font-size:12px}
+  .bigbtn{display:inline-block;margin-top:14px;padding:10px 20px;border-radius:10px;border:none;background:var(--accent2);color:#fff;font-size:14px;font-weight:700;cursor:pointer}
+  #dropOverlay{position:fixed;inset:0;background:rgba(14,165,233,.18);border:4px dashed var(--accent2);z-index:50;display:none;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#0c4a6e;pointer-events:none}
+  body.dragging #dropOverlay{display:flex}
+
+  /* notices */
+  #notice{position:absolute;left:0;right:0;top:0;z-index:10;display:none;padding:9px 40px 9px 14px;font-size:12.5px;line-height:1.45}
+  #notice.err{display:block;background:#fee2e2;color:#7f1d1d;border-bottom:1px solid #fca5a5}
+  #notice.info{display:block;background:#e0f2fe;color:#0c4a6e;border-bottom:1px solid #7dd3fc}
+  #noticeX{position:absolute;right:10px;top:6px;border:none;background:none;font-size:15px;cursor:pointer;color:inherit}
+  #toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 18px;border-radius:9px;font-size:13px;z-index:99;display:none;max-width:70%;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+
+  @media (max-width:760px){
+    #side{position:fixed;z-index:40;height:100%;transform:translateX(-100%);transition:transform .2s}
+    body.menu #side{transform:none}
+    #btnMenu{display:inline-block}
+  }
+  #btnMenu{display:none}
+</style>
+</head>
+<body>
+
+<div id="dropOverlay">Drop a simulation JSON to play it</div>
+<div id="toast"></div>
+
+<div id="app">
+  <aside id="side">
+    <div id="brand">
+      <h1>EUREKA <span>EXPRESS</span> · Open Player</h1>
+      <div class="sub">Standalone runtime for Express simulation JSONs</div>
+    </div>
+    <div id="tools">
+      <input id="search" type="search" placeholder="Search simulations…  ( / )" autocomplete="off">
+      <div id="chips"></div>
+      <div id="lvlrow">
+        <select id="lvl"><option value="">All levels</option></select>
+        <button id="btnRandom" title="Load a random simulation">🎲 Random</button>
+      </div>
+      <div id="count"></div>
+    </div>
+    <div id="list"></div>
+    <div id="sideFoot">
+      Simulations © Eureka Simulations — shared under
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>.
+      Player code included, same license.
+    </div>
+  </aside>
+
+  <main id="main">
+    <div id="bar">
+      <button id="btnMenu" class="abtn">☰</button>
+      <div id="simTitle">No simulation loaded</div>
+      <span id="simMeta"></span>
+      <span id="progress" style="display:none"></span>
+      <div id="langs"></div>
+      <button id="btnHint"    class="abtn" style="display:none" title="Ask the built-in coach for a hint">💡 Hint</button>
+      <button id="btnRestart" class="abtn" style="display:none">↺ Restart</button>
+      <button id="btnExport"  class="abtn" style="display:none" title="Download decisions & results as JSON">⤓ Session</button>
+      <button id="btnFull"    class="abtn" style="display:none">⛶</button>
+      <label class="abtn" style="cursor:pointer">📂 Open JSON<input id="filePick" type="file" accept=".json,application/json" multiple style="display:none"></label>
+    </div>
+    <div id="stage">
+      <div id="notice"><span id="noticeTx"></span><button id="noticeX">✕</button></div>
+      <iframe id="frame" style="display:none" sandbox="allow-scripts allow-modals" allow="fullscreen"></iframe>
+      <div id="welcome">
+        <div class="card">
+          <h2>Play an Express simulation</h2>
+          <p>Every Express simulation is a single self-contained JSON file (<code>view</code> + <code>css</code> + <code>js</code>).
+             This player embeds an open-source implementation of the USF runtime, so the sims run entirely
+             in your browser — no backend, no account, no network calls.</p>
+          <p><b>Pick one from the catalog</b> on the left, <b>drag &amp; drop</b> a <code>.json</code> anywhere on
+             this page, or use <b>Open JSON</b>.</p>
+          <div class="hintbox" id="serveHint" style="display:none">
+            The catalog couldn't be loaded (<code>manifest.json</code>). If you opened this file directly
+            from disk, drag &amp; drop still works. To get the full catalog + charts, serve the folder over HTTP,
+            e.g. <code>python -m http.server</code> from the repo root, then open
+            <code>http://localhost:8000/player/</code>.
+          </div>
+          <button class="bigbtn" id="btnWelcomeRandom" style="display:none">🎲 Surprise me</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     Generic USF runtime shim — injected into the sandboxed iframe with each
+     simulation. Implements the framework contract that all Express sims code
+     against: USF.SimulationAdapter, USF.SimulationFramework (t/i18n, uiManager
+     bindings, period loop, undo, history table, Chart.js charts, hints,
+     performance summary) plus USF.Utils. Communicates with the host page via
+     postMessage only (the iframe is a sandboxed opaque origin).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script type="text/plain" id="usf-shim-src">
+(function () {
+  'use strict';
+
+  function post(msg) { try { parent.postMessage(Object.assign({ usfPlayer: true }, msg), '*'); } catch (e) {} }
+
+  window.addEventListener('error', function (e) {
+    post({ type: 'error', message: String((e && e.message) || 'Script error') });
+  });
+
+  function getPath(obj, path) {
+    if (obj == null || !path) return undefined;
+    return String(path).split('.').reduce(function (o, k) { return (o == null ? undefined : o[k]); }, obj);
+  }
+  function deep(o) { try { return JSON.parse(JSON.stringify(o)); } catch (e) { return o; } }
+
+  /* ── base adapter: every method has a safe default ── */
+  class SimulationAdapter {
+    initialize() {}
+    setupUI() {}
+    validateDecisions() { return true; }
+    calculateResults() { return {}; }
+    getTranslations() { return { en: {} }; }
+    getChartConfig() { return null; }
+    getChartData() { return null; }
+    getHistoryTableConfig() { return null; }
+    getPerformanceSummary() { return null; }
+    getHint() { return null; }
+    getPresets() { return null; }
+  }
+
+  var Utils = {
+    formatCurrency: function (v, cur) { return (cur || '$') + Math.round(+v || 0).toLocaleString(); },
+    formatPercent: function (v) { return ((+v || 0) * 100).toFixed(1) + '%'; },
+    formatNumber: function (v, d) { return (+v || 0).toLocaleString(undefined, { maximumFractionDigits: d == null ? 1 : d }); },
+    clamp: function (v, a, b) { return Math.min(b, Math.max(a, v)); },
+    debounce: function (fn, ms) { var t; return function () { var a = arguments, s = this; clearTimeout(t); t = setTimeout(function () { fn.apply(s, a); }, ms); }; }
+  };
+
+  class SimulationFramework {
+    initialize(adapter, opts) {
+      var self = this;
+      if (!window.mySimulation) window.mySimulation = this; // some sims keep the instance local but call window.mySimulation.t()
+      this.adapter = adapter;
+      this.opts = opts || {};
+      this.bindings = [];
+      this.history = [];
+      this.snapshots = [];
+      this.charts = {};
+      this._busy = false;
+      this._finished = false;
+
+      try { this.trans = adapter.getTranslations() || { en: {} }; } catch (e) { this.trans = { en: {} }; }
+      var langs = Object.keys(this.trans);
+      var docLang = (document.documentElement.lang || '').toLowerCase().slice(0, 2);
+      this.lang = langs.indexOf(docLang) >= 0 ? docLang : (langs.indexOf('en') >= 0 ? 'en' : (langs[0] || 'en'));
+      document.documentElement.lang = this.lang;
+
+      this.uiManager = {
+        bind: function (id, path, fmt) { self.bindings.push({ id: id, path: path, fmt: fmt }); },
+        bindDisplay: function (id, path, fmt) { self.bindings.push({ id: id, path: path, fmt: fmt }); },
+        registerStatusCard: function (id, path, fmt) { if (typeof path === 'string') self.bindings.push({ id: id, path: path, fmt: fmt }); },
+        showNotification: function (msg, type) { self.toast(msg, type); },
+        applyTranslations: function () { self.applyTranslations(); },
+        refreshTranslations: function () { self.applyTranslations(); },
+        translateUI: function () { self.applyTranslations(); }
+      };
+
+      this.state = {
+        currentPeriod: 1,
+        maxPeriods: this.opts.maxPeriods || window.__USF_MAX_PERIODS__ || 5,
+        decisions: {},
+        domainState: {},
+        results: null
+      };
+
+      try { adapter.initialize(this.state); } catch (e) { this._err('initialize', e); }
+      try { adapter.setupUI(this.uiManager); } catch (e) { this._err('setupUI', e); }
+      this.applyTranslations();
+      this.setupCharts();
+      this.refresh();
+      this.updateCharts();
+      this.renderHistory();
+
+      var next = document.getElementById('nextPeriodBtn');
+      if (next) next.addEventListener('click', function () { self.submitPeriod(); });
+      var undo = document.getElementById('undoBtn');
+      if (undo) undo.addEventListener('click', function () { self.undo(); });
+
+      post({ type: 'ready', langs: langs, lang: this.lang, maxPeriods: this.state.maxPeriods });
+      post({ type: 'progress', period: Math.min(this.state.currentPeriod, this.state.maxPeriods), maxPeriods: this.state.maxPeriods, finished: false });
+    }
+
+    /* ── i18n ── */
+    t(key, params) {
+      var tbl = this.trans[this.lang] || this.trans.en || {};
+      var s = (tbl[key] != null) ? tbl[key] : ((this.trans.en || {})[key] != null ? this.trans.en[key] : key);
+      if (params) for (var k in params) s = String(s).split('{' + k + '}').join(params[k]);
+      return s;
+    }
+    setLang(lang) {
+      if (!this.trans[lang]) return;
+      this.lang = lang;
+      document.documentElement.lang = lang;
+      this.applyTranslations();
+      this.refresh();
+      this.updateCharts();
+      this.renderHistory();
+      post({ type: 'lang', lang: lang });
+    }
+    applyTranslations() {
+      var self = this;
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        el.innerHTML = self.t(el.getAttribute('data-i18n'));
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+        el.setAttribute('placeholder', self.t(el.getAttribute('data-i18n-placeholder')));
+      });
+      document.querySelectorAll('[data-i18n-title]').forEach(function (el) {
+        el.setAttribute('title', self.t(el.getAttribute('data-i18n-title')));
+      });
+    }
+
+    /* ── data bindings ── */
+    refresh() {
+      var self = this;
+      this.bindings.forEach(function (b) {
+        var el = document.getElementById(b.id);
+        if (!el) return;
+        var val = getPath(self.state, b.path);
+        if (val === undefined) return;
+        if (b.id === 'currentDay') val = Math.min(val, self.state.maxPeriods);
+        try { el.textContent = b.fmt ? b.fmt(val) : val; } catch (e) { el.textContent = val; }
+      });
+      var cur = document.getElementById('currentDay');
+      if (cur && !this.bindings.some(function (b) { return b.id === 'currentDay'; })) {
+        cur.textContent = Math.min(this.state.currentPeriod, this.state.maxPeriods);
+      }
+      var mx = document.getElementById('maxPeriods');
+      if (mx && !this.bindings.some(function (b) { return b.id === 'maxPeriods'; })) {
+        mx.textContent = this.state.maxPeriods;
+      }
+      var next = document.getElementById('nextPeriodBtn');
+      if (next) {
+        var done = this._finished || this.state.currentPeriod > this.state.maxPeriods;
+        next.disabled = done;
+        next.style.opacity = done ? 0.55 : 1;
+      }
+      var undo = document.getElementById('undoBtn');
+      if (undo) { undo.disabled = !this.history.length; undo.style.opacity = this.history.length ? 1 : 0.55; }
+    }
+
+    /* ── charts (Chart.js optional) ── */
+    setupCharts() {
+      if (typeof Chart === 'undefined') return;
+      var cfg = null;
+      try { cfg = this.adapter.getChartConfig(); } catch (e) { this._err('getChartConfig', e); }
+      if (!cfg) return;
+      for (var id in cfg) {
+        var cv = document.getElementById(id);
+        if (!cv || !cv.getContext) continue;
+        try { this.charts[id] = new Chart(cv.getContext('2d'), cfg[id]); } catch (e) { this._err('chart:' + id, e); }
+      }
+    }
+    updateCharts() {
+      if (!Object.keys(this.charts).length) return;
+      var data = null;
+      try { data = this.adapter.getChartData(this.state); } catch (e) { this._err('getChartData', e); }
+      if (!data) return;
+      for (var id in data) {
+        var ch = this.charts[id];
+        if (!ch || !data[id]) continue;
+        if (data[id].labels) ch.data.labels = data[id].labels;
+        (data[id].datasets || []).forEach(function (ds, i) {
+          if (ch.data.datasets[i]) Object.assign(ch.data.datasets[i], ds);
+          else ch.data.datasets.push(ds);
+        });
+        try { ch.update(); } catch (e) {}
+      }
+    }
+
+    /* ── history table ── */
+    renderHistory() {
+      var table = document.getElementById('usfHistoryTable');
+      if (!table) return;
+      var cols = null;
+      try { cols = this.adapter.getHistoryTableConfig(); } catch (e) { this._err('getHistoryTableConfig', e); }
+      if (!cols || !cols.length) return;
+      var self = this;
+      var head = '<thead><tr>' + cols.map(function (c) {
+        return '<th>' + (c.i18nKey ? self.t(c.i18nKey) : (c.label || c.key || '')) + '</th>';
+      }).join('') + '</tr></thead>';
+      var body = '<tbody>' + this.history.map(function (entry) {
+        return '<tr>' + cols.map(function (c) {
+          var v = getPath(entry, c.key);
+          if (v === undefined) v = getPath(entry.results, c.key);
+          if (v === undefined) v = getPath(entry.decisions, c.key);
+          if (v === undefined) v = '';
+          try { return '<td>' + (c.formatter ? c.formatter(v, entry) : v) + '</td>'; }
+          catch (e) { return '<td>' + v + '</td>'; }
+        }).join('') + '</tr>';
+      }).join('') + '</tbody>';
+      table.innerHTML = head + body;
+    }
+
+    /* ── period loop ── */
+    submitPeriod() {
+      if (this._busy || this._finished || this.state.currentPeriod > this.state.maxPeriods) return;
+      this._busy = true;
+      try {
+        var ok = false;
+        try { ok = this.adapter.validateDecisions(this.state.decisions); }
+        catch (e) { this._err('validateDecisions', e); ok = false; }
+        if (!ok) { this._busy = false; return; }
+
+        this.snapshots.push(deep(this.state.domainState));
+        var res;
+        try { res = this.adapter.calculateResults(this.state); }
+        catch (e) { this._err('calculateResults', e); this.snapshots.pop(); this._busy = false; return; }
+        this.state.results = res;
+        this.history.push({
+          period: this.state.currentPeriod,
+          decisions: deep(this.state.decisions),
+          results: res,
+          domainState: deep(this.state.domainState)
+        });
+        this.state.currentPeriod++;
+
+        this.refresh();
+        this.updateCharts();
+        this.renderHistory();
+
+        var hint = null;
+        try { hint = this.adapter.getHint(this.state, res); } catch (e) {}
+        if (hint) post({ type: 'hint', text: String(hint) });
+
+        post({ type: 'progress', period: Math.min(this.state.currentPeriod, this.state.maxPeriods), maxPeriods: this.state.maxPeriods, finished: this.state.currentPeriod > this.state.maxPeriods });
+        if (this.state.currentPeriod > this.state.maxPeriods) this.finish();
+      } finally { this._busy = false; }
+    }
+
+    undo() {
+      if (!this.history.length || this._busy) return;
+      this.history.pop();
+      this.state.domainState = this.snapshots.pop();
+      this.state.currentPeriod = Math.max(1, this.state.currentPeriod - 1);
+      this.state.results = this.history.length ? this.history[this.history.length - 1].results : null;
+      this._finished = false;
+      var ov = document.getElementById('usfp-overlay'); if (ov) ov.remove();
+      this.refresh();
+      this.updateCharts();
+      this.renderHistory();
+      post({ type: 'progress', period: Math.min(this.state.currentPeriod, this.state.maxPeriods), maxPeriods: this.state.maxPeriods, finished: false });
+    }
+
+    /* ── completion ── */
+    finish() {
+      this._finished = true;
+      var summary = null;
+      try { summary = this.adapter.getPerformanceSummary(this.history); } catch (e) { this._err('getPerformanceSummary', e); }
+      post({ type: 'finished', summary: deep(summary), periods: this.history.length });
+      this.showSummary(summary);
+      this.refresh();
+    }
+
+    showSummary(summary) {
+      var old = document.getElementById('usfp-overlay'); if (old) old.remove();
+      var ov = document.createElement('div');
+      ov.id = 'usfp-overlay';
+      var inner = '<div class="usfp-card"><div class="usfp-h">🏁 ' + this._esc(this.t('completion_title') !== 'completion_title' ? this.t('completion_title') : 'Simulation complete') + '</div>';
+      inner += '<div class="usfp-sub">' + this.history.length + ' / ' + this.state.maxPeriods + '</div>';
+      inner += this._renderSummary(summary);
+      inner += '<div class="usfp-btns"><button id="usfp-close">✕</button><button id="usfp-again">↺</button></div></div>';
+      ov.innerHTML = inner;
+      document.body.appendChild(ov);
+      document.getElementById('usfp-close').onclick = function () { ov.remove(); };
+      document.getElementById('usfp-again').onclick = function () { post({ type: 'restart' }); };
+    }
+    _renderSummary(v, depth) {
+      depth = depth || 0;
+      if (v == null || depth > 3) return '';
+      var self = this;
+      if (Array.isArray(v)) {
+        return '<ul class="usfp-ul">' + v.map(function (x) {
+          return '<li>' + (typeof x === 'object' ? self._renderSummary(x, depth + 1) : self._esc(self._tt(x))) + '</li>';
+        }).join('') + '</ul>';
+      }
+      if (typeof v === 'object') {
+        var rows = '';
+        for (var k in v) {
+          var val = v[k];
+          if (val == null) continue;
+          var label = self._esc(self._tt(k).replace(/([a-z])([A-Z])/g, '$1 $2').replace(/_/g, ' ').replace(/^./, function (c) { return c.toUpperCase(); }));
+          if (typeof val === 'object') rows += '<div class="usfp-row"><b>' + label + '</b>' + self._renderSummary(val, depth + 1) + '</div>';
+          else rows += '<div class="usfp-row"><b>' + label + '</b><span>' + self._esc(self._tt(val)) + '</span></div>';
+        }
+        return rows;
+      }
+      return '<div class="usfp-row"><span>' + self._esc(self._tt(v)) + '</span></div>';
+    }
+    _tt(x) { // translate values that look like i18n keys
+      if (typeof x === 'string' && /^[a-z][a-z0-9_]+$/.test(x)) { var t = this.t(x); return t; }
+      return x;
+    }
+    _esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+    /* ── misc ── */
+    toast(msg, type) {
+      var t = document.createElement('div');
+      t.className = 'usfp-toast usfp-' + (type || 'info');
+      t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(function () { t.classList.add('usfp-show'); }, 15);
+      setTimeout(function () { t.classList.remove('usfp-show'); setTimeout(function () { t.remove(); }, 350); }, 3200);
+    }
+    _err(where, e) {
+      post({ type: 'error', message: where + ': ' + String((e && e.message) || e) });
+      if (window.console) console.error('[USF]', where, e);
+    }
+    getSession() {
+      return {
+        exportedAt: new Date().toISOString(),
+        lang: this.lang,
+        maxPeriods: this.state.maxPeriods,
+        periodsPlayed: this.history.length,
+        history: deep(this.history),
+        finalState: deep(this.state.domainState),
+        summary: (function (self) { try { return deep(self.adapter.getPerformanceSummary(self.history)); } catch (e) { return null; } })(this)
+      };
+    }
+  }
+
+  window.USF = { SimulationAdapter: SimulationAdapter, SimulationFramework: SimulationFramework, Utils: Utils };
+  window.SimulationAdapter = SimulationAdapter;     // legacy alias
+  window.SimulationFramework = SimulationFramework; // legacy alias
+
+  /* host ↔ iframe protocol */
+  window.addEventListener('message', function (ev) {
+    var d = ev.data || {};
+    if (!d.usfHost || !window.mySimulation) return;
+    if (d.type === 'setLang') window.mySimulation.setLang(d.lang);
+    if (d.type === 'requestSession') post({ type: 'session', session: window.mySimulation.getSession() });
+    if (d.type === 'requestHint') {
+      var h = null;
+      try { h = window.mySimulation.adapter.getHint(window.mySimulation.state, window.mySimulation.state.results); } catch (e) {}
+      post({ type: 'hint', text: h ? String(h) : '', empty: !h });
+    }
+  });
+
+  /* overlay + toast styling (self-contained, prefixed) */
+  var st = document.createElement('style');
+  st.textContent = '#usfp-overlay{position:fixed;inset:0;z-index:99990;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(2px)}' +
+    '.usfp-card{background:#fff;color:#0f172a;border-radius:16px;max-width:560px;width:92%;max-height:82vh;overflow-y:auto;padding:26px 30px;box-shadow:0 20px 60px rgba(0,0,0,.35);font-family:system-ui,sans-serif;position:relative}' +
+    '.usfp-h{font-size:20px;font-weight:800;margin-bottom:2px}' +
+    '.usfp-sub{font-size:12px;color:#64748b;margin-bottom:14px}' +
+    '.usfp-row{display:flex;gap:10px;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid #f1f5f9;font-size:14px}' +
+    '.usfp-row b{color:#334155;font-weight:600;flex:0 1 auto}.usfp-row span{text-align:right}' +
+    '.usfp-ul{margin:6px 0;padding-left:20px;font-size:13.5px;line-height:1.55;color:#334155}' +
+    '.usfp-btns{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}' +
+    '.usfp-btns button{border:none;border-radius:9px;padding:8px 16px;font-size:14px;cursor:pointer;background:#e2e8f0}' +
+    '#usfp-again{background:#0ea5e9;color:#fff;font-weight:700}' +
+    '.usfp-toast{position:fixed;bottom:16px;left:50%;transform:translate(-50%,20px);opacity:0;transition:all .3s;z-index:99999;background:#0f172a;color:#fff;padding:10px 18px;border-radius:9px;font-size:13px;font-family:system-ui,sans-serif;max-width:80%;box-shadow:0 6px 20px rgba(0,0,0,.3)}' +
+    '.usfp-show{transform:translate(-50%,0);opacity:1}' +
+    '.usfp-success{background:#065f46}.usfp-warning{background:#92400e}.usfp-error{background:#7f1d1d}';
+  document.head.appendChild(st);
+})();
+</script>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var manifest = null, filtered = [], shown = 0, PAGE = 200;
+  var activeCat = '', activeLvl = '', query = '';
+  var current = null;      // {meta, data}
+  var chartSrc = null;     // Chart.js source text (inlined into each iframe)
+  var shimSrc = $('usf-shim-src').textContent;
+  var CATCOLORS = { business: '#3b82f6', education: '#8b5cf6', finance: '#10b981', sustainability: '#14b8a6', hospitality: '#f59e0b', tourism: '#f43f5e' };
+
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+  function deent(s) { return String(s).replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#0?39;/g, "'"); } // some sim names ship pre-encoded entities
+  function escScript(s) { return String(s).replace(/<\/(script|style)/gi, function (m) { return '<\\/' + m.slice(2); }); }
+  function toast(msg) { var t = $('toast'); t.textContent = msg; t.style.display = 'block'; clearTimeout(t._h); t._h = setTimeout(function () { t.style.display = 'none'; }, 2800); }
+  function notice(msg, kind) { var n = $('notice'); $('noticeTx').textContent = msg; n.className = kind || 'info'; }
+  $('noticeX').onclick = function () { $('notice').className = ''; };
+
+  /* ───────── catalog ───────── */
+  function loadManifest() {
+    fetch('manifest.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (m) {
+      manifest = m;
+      buildFilters();
+      applyFilter();
+      $('btnWelcomeRandom').style.display = 'inline-block';
+      var p = new URLSearchParams(location.search);
+      if (p.get('sim')) { var hit = m.sims.find(function (s) { return s.id === p.get('sim') || s.file.indexOf(p.get('sim')) === 0; }); if (hit) loadFromManifest(hit); }
+      else if (p.get('src')) loadFromUrl(p.get('src'));
+    }).catch(function () {
+      $('serveHint').style.display = 'block';
+      $('count').textContent = 'Catalog unavailable — drag & drop a JSON to play.';
+    });
+  }
+
+  function buildFilters() {
+    var cats = {}, lvls = {};
+    manifest.sims.forEach(function (s) { cats[s.cat] = (cats[s.cat] || 0) + 1; if (s.level) lvls[s.level] = 1; });
+    var chips = $('chips');
+    chips.innerHTML = '';
+    var all = document.createElement('span');
+    all.className = 'chip on'; all.textContent = 'all (' + manifest.sims.length + ')';
+    all.onclick = function () { activeCat = ''; selChip(all); applyFilter(); };
+    chips.appendChild(all);
+    Object.keys(cats).sort().forEach(function (c) {
+      var el = document.createElement('span');
+      el.className = 'chip'; el.textContent = c + ' (' + cats[c] + ')';
+      el.style.setProperty('--c', CATCOLORS[c] || '#64748b');
+      el.onclick = function () { activeCat = c; selChip(el); applyFilter(); };
+      chips.appendChild(el);
+    });
+    Object.keys(lvls).sort().forEach(function (l) {
+      var o = document.createElement('option'); o.value = l; o.textContent = l; $('lvl').appendChild(o);
+    });
+  }
+  function selChip(el) {
+    document.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('on'); c.style.background = ''; c.style.color = ''; });
+    el.classList.add('on');
+    el.style.background = el.style.getPropertyValue('--c') || 'var(--accent)';
+  }
+
+  function applyFilter() {
+    if (!manifest) return;
+    var q = query.trim().toLowerCase();
+    filtered = manifest.sims.filter(function (s) {
+      if (activeCat && s.cat !== activeCat) return false;
+      if (activeLvl && s.level !== activeLvl) return false;
+      if (q && (s.name + ' ' + s.id + ' ' + (s.desc || '')).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    shown = 0;
+    $('list').innerHTML = '';
+    $('count').textContent = filtered.length + ' simulation' + (filtered.length === 1 ? '' : 's');
+    renderMore();
+  }
+
+  function renderMore() {
+    var frag = document.createDocumentFragment();
+    var end = Math.min(filtered.length, shown + PAGE);
+    for (var i = shown; i < end; i++) frag.appendChild(rowEl(filtered[i]));
+    shown = end;
+    var old = $('more'); if (old) old.remove();
+    $('list').appendChild(frag);
+    if (shown < filtered.length) {
+      var b = document.createElement('button');
+      b.id = 'more'; b.textContent = 'Show ' + Math.min(PAGE, filtered.length - shown) + ' more…';
+      b.onclick = renderMore;
+      $('list').appendChild(b);
+    }
+  }
+
+  function rowEl(s) {
+    var d = document.createElement('div');
+    d.className = 'row'; d.dataset.id = s.id;
+    var color = CATCOLORS[s.cat] || '#64748b';
+    var thumb = s.svg
+      ? '<div class="thumb"><img loading="lazy" src="' + esc(s.svg) + '" alt=""></div>'
+      : '<div class="thumb" style="background:' + color + '">' + esc((s.name || '?').charAt(0).toUpperCase()) + '</div>';
+    d.innerHTML = thumb + '<div class="tx"><div class="nm">' + esc(deent(s.name)) + '</div>' +
+      '<div class="mt"><b>#' + esc(s.id) + '</b> · ' + esc(s.cat) + (s.level ? ' · ' + esc(s.level) : '') +
+      (s.periods ? ' · ' + s.periods + ' rounds' : '') + '</div></div>';
+    d.onclick = function () { loadFromManifest(s); };
+    return d;
+  }
+
+  /* ───────── loading sims ───────── */
+  function loadFromManifest(s) {
+    document.querySelectorAll('.row.sel').forEach(function (r) { r.classList.remove('sel'); });
+    var r = document.querySelector('.row[data-id="' + CSS.escape(s.id) + '"]'); if (r) r.classList.add('sel');
+    fetch(s.path).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (data) {
+        try { history.replaceState(null, '', '?sim=' + encodeURIComponent(s.id)); } catch (e) {}
+        play(data, s.file);
+      })
+      .catch(function (e) { notice('Could not load ' + s.file + ' — ' + e.message, 'err'); });
+    document.body.classList.remove('menu');
+  }
+  function loadFromUrl(url) {
+    fetch(url).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (d) { play(d, url.split('/').pop()); })
+      .catch(function (e) { notice('Could not fetch ' + url + ' — ' + e.message + ' (CORS?)', 'err'); });
+  }
+  function loadFromFile(file) {
+    var rd = new FileReader();
+    rd.onload = function () {
+      try { play(JSON.parse(rd.result), file.name); }
+      catch (e) { notice(file.name + ' is not valid JSON: ' + e.message, 'err'); }
+    };
+    rd.readAsText(file);
+  }
+
+  /* ───────── runtime ───────── */
+  function play(data, srcName) {
+    if (!data || typeof data !== 'object' || !data.js || !data.view) {
+      notice((srcName || 'File') + ' does not look like an Express simulation (needs "view", "css", "js").', 'err');
+      return;
+    }
+    current = { data: data, srcName: srcName };
+    $('notice').className = '';
+    $('welcome').style.display = 'none';
+    $('frame').style.display = 'block';
+    $('simTitle').textContent = deent(data.name || srcName || 'Simulation');
+    $('simTitle').title = data.description || '';
+    $('simMeta').textContent = [data.externalid ? '#' + data.externalid : '', data.category, data.level].filter(Boolean).join(' · ');
+    ['btnHint', 'btnRestart', 'btnExport', 'btnFull'].forEach(function (b) { $(b).style.display = 'inline-block'; });
+    $('progress').style.display = 'inline-block';
+    $('progress').textContent = '…';
+    $('langs').innerHTML = '';
+    buildFrame();
+  }
+
+  function buildFrame() {
+    var d = current.data;
+    var doc = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
+      '<meta name="viewport" content="width=device-width, initial-scale=1">' +
+      '<style>html{-webkit-text-size-adjust:100%}body{margin:0}</style>' +
+      '<style>' + escScript(d.css || '') + '</style></head><body>' +
+      (d.view || '') +
+      (chartSrc ? '<script>' + escScript(chartSrc) + '<\/script>' : '') +
+      '<script>window.__USF_MAX_PERIODS__=' + (parseInt(d.max_periods, 10) || 5) + ';<\/script>' +
+      '<script>' + escScript(shimSrc) + '<\/script>' +
+      '<script>' + escScript(d.js || '') + '<\/script>' +
+      '</body></html>';
+    $('frame').srcdoc = doc;
+  }
+
+  /* messages from the sim iframe */
+  window.addEventListener('message', function (ev) {
+    var m = ev.data || {};
+    if (!m.usfPlayer) return;
+    if (m.type === 'ready') {
+      var L = $('langs'); L.innerHTML = '';
+      if ((m.langs || []).length > 1) {
+        m.langs.forEach(function (lg) {
+          var b = document.createElement('button');
+          b.className = 'lbtn' + (lg === m.lang ? ' on' : ''); b.textContent = lg;
+          b.onclick = function () { $('frame').contentWindow.postMessage({ usfHost: true, type: 'setLang', lang: lg }, '*'); };
+          L.appendChild(b);
+        });
+      }
+    }
+    if (m.type === 'lang') {
+      document.querySelectorAll('.lbtn').forEach(function (b) { b.classList.toggle('on', b.textContent === m.lang); });
+    }
+    if (m.type === 'progress') {
+      $('progress').textContent = m.finished ? '✔ ' + m.maxPeriods + '/' + m.maxPeriods : 'Round ' + m.period + '/' + m.maxPeriods;
+    }
+    if (m.type === 'hint' && m.text) toast('💡 ' + m.text);
+    if (m.type === 'hint' && m.empty) toast('No hint available right now — make a move first.');
+    if (m.type === 'finished') toast('🏁 Simulation complete');
+    if (m.type === 'restart') buildFrame();
+    if (m.type === 'error') notice('Simulation error — ' + m.message, 'err');
+    if (m.type === 'session') {
+      var d = current ? current.data : {};
+      var payload = Object.assign({ simulation: { externalid: d.externalid, name: d.name, category: d.category, level: d.level } }, m.session);
+      var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'express-session-' + (d.externalid || 'sim') + '-' + Date.now() + '.json';
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+    }
+  });
+
+  /* ───────── chrome buttons ───────── */
+  $('btnRestart').onclick = function () { if (current) buildFrame(); };
+  $('btnHint').onclick = function () { $('frame').contentWindow.postMessage({ usfHost: true, type: 'requestHint' }, '*'); };
+  $('btnExport').onclick = function () { $('frame').contentWindow.postMessage({ usfHost: true, type: 'requestSession' }, '*'); };
+  $('btnFull').onclick = function () { var f = $('frame'); (f.requestFullscreen || f.webkitRequestFullscreen || function () {}).call(f); };
+  $('btnMenu').onclick = function () { document.body.classList.toggle('menu'); };
+  function randomSim() { if (manifest && manifest.sims.length) loadFromManifest(manifest.sims[Math.floor(Math.random() * manifest.sims.length)]); }
+  $('btnRandom').onclick = randomSim;
+  $('btnWelcomeRandom').onclick = randomSim;
+
+  $('search').addEventListener('input', function () { query = this.value; applyFilter(); });
+  $('lvl').addEventListener('change', function () { activeLvl = this.value; applyFilter(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === '/' && document.activeElement !== $('search')) { e.preventDefault(); $('search').focus(); }
+  });
+
+  /* drag & drop + file picker */
+  ['dragenter', 'dragover'].forEach(function (ev) {
+    document.addEventListener(ev, function (e) { e.preventDefault(); document.body.classList.add('dragging'); });
+  });
+  ['dragleave', 'drop'].forEach(function (ev) {
+    document.addEventListener(ev, function (e) {
+      e.preventDefault();
+      if (ev === 'dragleave' && e.relatedTarget) return;
+      document.body.classList.remove('dragging');
+      if (ev === 'drop' && e.dataTransfer.files.length) loadFromFile(e.dataTransfer.files[0]);
+    });
+  });
+  $('filePick').addEventListener('change', function () { if (this.files.length) loadFromFile(this.files[0]); this.value = ''; });
+
+  /* Chart.js: vendor copy first, CDN fallback; sims degrade gracefully without it */
+  fetch('vendor/chart.umd.min.js').then(function (r) { if (!r.ok) throw 0; return r.text(); })
+    .catch(function () {
+      return fetch('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js')
+        .then(function (r) { if (!r.ok) throw 0; return r.text(); });
+    })
+    .then(function (t) { chartSrc = t; if (current) buildFrame(); })
+    .catch(function () { console.warn('Chart.js unavailable — sims will run without charts.'); });
+
+  loadManifest();
+})();
+</script>
+</body>
+</html>

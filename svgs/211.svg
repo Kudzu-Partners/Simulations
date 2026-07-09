@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg211" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a3a5c"/>
+      <stop offset="100%" stop-color="#2c5f8a"/>
+    </linearGradient>
+    <radialGradient id="glow211" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#74b9ff" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#74b9ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="paper211" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fdfbf4"/>
+      <stop offset="100%" stop-color="#e8e0c8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg211)"/>
+  <rect width="400" height="400" rx="32" fill="url(#glow211)"/>
+
+  <!-- ── Three statements stacked (3D angled) ── -->
+  <!-- Cash Flow Statement (back) -->
+  <g transform="translate(160, 76) rotate(-6)">
+    <rect width="160" height="200" rx="6" fill="url(#paper211)" stroke="#1a3a5c" stroke-width="1.5" opacity="0.85"/>
+    <rect width="160" height="22" rx="6" fill="#52b788" opacity="0.8"/>
+    <text x="80" y="16" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#fff">CASH FLOW</text>
+    <g stroke="#1a3a5c" stroke-width="0.6" opacity="0.4">
+      <line x1="14" y1="40" x2="146" y2="40"/>
+      <line x1="14" y1="55" x2="146" y2="55"/>
+      <line x1="14" y1="70" x2="100" y2="70"/>
+      <line x1="14" y1="85" x2="120" y2="85"/>
+      <line x1="14" y1="115" x2="146" y2="115"/>
+      <line x1="14" y1="130" x2="110" y2="130"/>
+    </g>
+    <text x="14" y="38" font-family="'Courier New',monospace" font-size="7" fill="#1a3a5c" font-weight="bold">Operating</text>
+    <text x="14" y="113" font-family="'Courier New',monospace" font-size="7" fill="#1a3a5c" font-weight="bold">Investing</text>
+    <text x="14" y="170" font-family="'Courier New',monospace" font-size="7" fill="#1a3a5c" font-weight="bold">Financing</text>
+  </g>
+
+  <!-- Balance Sheet (mid) -->
+  <g transform="translate(108, 88) rotate(-3)">
+    <rect width="160" height="200" rx="6" fill="url(#paper211)" stroke="#1a3a5c" stroke-width="1.5" opacity="0.92"/>
+    <rect width="160" height="22" rx="6" fill="#f5c842" opacity="0.85"/>
+    <text x="80" y="16" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#1a3a5c">BALANCE SHEET</text>
+    <g stroke="#1a3a5c" stroke-width="0.6" opacity="0.45">
+      <line x1="14" y1="40" x2="146" y2="40"/>
+      <line x1="14" y1="55" x2="100" y2="55"/>
+      <line x1="14" y1="70" x2="120" y2="70"/>
+      <line x1="14" y1="85" x2="80"  y2="85"/>
+      <line x1="14" y1="100" x2="146" y2="100"/>
+      <line x1="14" y1="120" x2="146" y2="120"/>
+      <line x1="14" y1="135" x2="110" y2="135"/>
+      <line x1="14" y1="150" x2="120" y2="150"/>
+    </g>
+    <text x="14" y="38" font-family="'Courier New',monospace" font-size="7" fill="#1a3a5c" font-weight="bold">Assets</text>
+    <text x="14" y="118" font-family="'Courier New',monospace" font-size="7" fill="#1a3a5c" font-weight="bold">Liab + Equity</text>
+    <!-- Equation balance line -->
+    <line x1="80" y1="180" x2="146" y2="180" stroke="#1a3a5c" stroke-width="2" opacity="0.7"/>
+  </g>
+
+  <!-- Income Statement (front) -->
+  <g transform="translate(56, 100)">
+    <rect width="160" height="200" rx="6" fill="url(#paper211)" stroke="#1a3a5c" stroke-width="2" opacity="1"/>
+    <rect width="160" height="22" rx="6" fill="#74b9ff"/>
+    <text x="80" y="16" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#1a3a5c">INCOME STATEMENT</text>
+    <g stroke="#1a3a5c" stroke-width="0.6" opacity="0.5">
+      <line x1="14" y1="40" x2="146" y2="40"/>
+      <line x1="14" y1="55" x2="120" y2="55"/>
+      <line x1="14" y1="70" x2="146" y2="70"/>
+      <line x1="14" y1="85" x2="100" y2="85"/>
+      <line x1="14" y1="100" x2="146" y2="100"/>
+      <line x1="14" y1="115" x2="80"  y2="115"/>
+      <line x1="14" y1="130" x2="146" y2="130"/>
+      <line x1="14" y1="155" x2="146" y2="155"/>
+    </g>
+    <text x="14" y="38" font-family="'Courier New',monospace" font-size="7" fill="#1a3a5c" font-weight="bold">Revenue</text>
+    <text x="14" y="68" font-family="'Courier New',monospace" font-size="7" fill="#1a3a5c">– COGS</text>
+    <text x="14" y="98" font-family="'Courier New',monospace" font-size="7" fill="#1a3a5c">– OPEX</text>
+    <text x="14" y="128" font-family="'Courier New',monospace" font-size="7" fill="#1a3a5c">– TAX</text>
+    <line x1="14" y1="143" x2="146" y2="143" stroke="#1a3a5c" stroke-width="1.5"/>
+    <text x="14" y="170" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#52b788">NET INCOME</text>
+    <!-- Profit indicator -->
+    <text x="146" y="170" text-anchor="end" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#52b788">$</text>
+  </g>
+
+  <!-- ── Accounting equation (top floating) ── -->
+  <g transform="translate(0,42)">
+    <rect x="60" y="0" width="280" height="22" rx="11" fill="#0a2342" stroke="#f5c842" stroke-width="1.2" stroke-opacity="0.55"/>
+    <text x="200" y="15" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#f5c842" opacity="0.95" letter-spacing="2">A = L + E</text>
+  </g>
+
+  <!-- Cycle arrows (bottom) -->
+  <g transform="translate(0,335)">
+    <text x="200" y="-8" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#74b9ff" opacity="0.55" letter-spacing="2">ACCOUNTING CYCLE</text>
+    <!-- Curved path -->
+    <path d="M 100 22 Q 200 -4 300 22" stroke="#74b9ff" stroke-width="2" stroke-dasharray="5,4" fill="none" opacity="0.6" stroke-linecap="round"/>
+    <polygon points="295,16 308,22 298,30" fill="#74b9ff" opacity="0.85"/>
+    <circle cx="100" cy="22" r="4" fill="#74b9ff" opacity="0.85"/>
+  </g>
+
+  <!-- Header -->
+  <text x="200" y="386" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#74b9ff" opacity="0.4" letter-spacing="2">MERCADO FRESCO S.A.</text>
+</svg>

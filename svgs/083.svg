@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg83" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+    <linearGradient id="trophy83" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#c89a10"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg83)"/>
+  <!-- Competitive arena — 4 company tokens on a board -->
+  <!-- Board grid -->
+  <rect x="75" y="130" width="250" height="190" rx="8" fill="#1a2744" stroke="#f5c842" stroke-width="1.5" opacity="0.6"/>
+  <line x1="75" y1="193" x2="325" y2="193" stroke="#f5c842" stroke-width="1" opacity="0.2"/>
+  <line x1="75" y1="257" x2="325" y2="257" stroke="#f5c842" stroke-width="1" opacity="0.2"/>
+  <line x1="200" y1="130" x2="200" y2="320" stroke="#f5c842" stroke-width="1" opacity="0.2"/>
+  <!-- Company tokens (4 competitors) -->
+  <circle cx="137" cy="161" r="22" fill="#f5c842" opacity="0.75"/>
+  <text x="137" y="166" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1a2744" text-anchor="middle">YOU</text>
+  <circle cx="263" cy="161" r="18" fill="#c0cfff" opacity="0.5"/>
+  <text x="263" y="166" font-family="sans-serif" font-size="10" fill="#1a2744" text-anchor="middle">AI1</text>
+  <circle cx="137" cy="288" r="16" fill="#c0cfff" opacity="0.45"/>
+  <text x="137" y="293" font-family="sans-serif" font-size="10" fill="#1a2744" text-anchor="middle">AI2</text>
+  <circle cx="263" cy="288" r="14" fill="#c0cfff" opacity="0.4"/>
+  <text x="263" y="293" font-family="sans-serif" font-size="9" fill="#1a2744" text-anchor="middle">AI3</text>
+  <!-- Trophy (center) -->
+  <path d="M200,195 Q185,205 185,225 Q185,245 200,252 Q215,245 215,225 Q215,205 200,195 Z" fill="url(#trophy83)" opacity="0.8"/>
+  <rect x="192" y="252" width="16" height="8" rx="2" fill="url(#trophy83)" opacity="0.7"/>
+  <rect x="185" y="260" width="30" height="6" rx="2" fill="url(#trophy83)" opacity="0.6"/>
+  <path d="M185,202 Q168,200 168,218 Q168,232 185,228" fill="none" stroke="#f5c842" stroke-width="2" opacity="0.5"/>
+  <path d="M215,202 Q232,200 232,218 Q232,232 215,228" fill="none" stroke="#f5c842" stroke-width="2" opacity="0.5"/>
+  <!-- LATAM map suggestion -->
+  <text x="200" y="355" font-family="sans-serif" font-size="11" fill="#c0cfff" text-anchor="middle" opacity="0.5">COMPETE · LATAM · AI RIVALS</text>
+</svg>

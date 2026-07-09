@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg025" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg025)"/>
+
+  <!-- BSC Diamond — 4 perspectives as triangular quadrants meeting at center -->
+  <!-- Top: Financial -->
+  <polygon points="200,58 280,200 200,200 120,200"
+           fill="#f5c842" fill-opacity="0.22" stroke="#f5c842" stroke-width="2" stroke-opacity="0.80"/>
+  <!-- Right: Customer -->
+  <polygon points="342,120 280,200 200,200 200,120"
+           fill="#c0cfff" fill-opacity="0.18" stroke="#c0cfff" stroke-width="2" stroke-opacity="0.70"/>
+  <!-- Bottom: Learning & Growth -->
+  <polygon points="200,342 120,200 200,200 280,200"
+           fill="#52b788" fill-opacity="0.18" stroke="#52b788" stroke-width="2" stroke-opacity="0.70"/>
+  <!-- Left: Internal Processes -->
+  <polygon points="58,280 120,200 200,200 200,280"
+           fill="#f5a623" fill-opacity="0.18" stroke="#f5a623" stroke-width="2" stroke-opacity="0.70"/>
+
+  <!-- Center strategy node -->
+  <circle cx="200" cy="200" r="18" fill="#1a2744" stroke="#f5c842" stroke-width="2.5"/>
+  <circle cx="200" cy="200" r="9"  fill="#f5c842" fill-opacity="0.85"/>
+
+  <!-- Causal chain arrows (from bottom to top, the BSC logic) -->
+  <!-- Learning → Internal -->
+  <path d="M 178,268 Q 148,250 158,228" fill="none" stroke="#52b788" stroke-width="2" stroke-opacity="0.65" stroke-dasharray="5,3"/>
+  <polygon points="155,222 163,230 169,222" fill="#52b788" fill-opacity="0.65"/>
+  <!-- Internal → Customer -->
+  <path d="M 200,182 Q 230,175 248,188" fill="none" stroke="#f5a623" stroke-width="2" stroke-opacity="0.65" stroke-dasharray="5,3"/>
+  <polygon points="250,194 254,184 244,184" fill="#f5a623" fill-opacity="0.65"/>
+  <!-- Customer → Financial -->
+  <path d="M 232,168 Q 228,148 218,138" fill="none" stroke="#c0cfff" stroke-width="2" stroke-opacity="0.65" stroke-dasharray="5,3"/>
+  <polygon points="213,132 220,140 226,132" fill="#c0cfff" fill-opacity="0.65"/>
+
+  <!-- Perspective labels -->
+  <text x="200" y="95"  font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f5c842" text-anchor="middle" opacity="0.85">Financial</text>
+  <text x="316" y="172" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#c0cfff" text-anchor="middle" opacity="0.80">Customer</text>
+  <text x="200" y="316" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#52b788" text-anchor="middle" opacity="0.80">Learning</text>
+  <text x="82"  y="240" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#f5a623" text-anchor="middle" opacity="0.80">Internal</text>
+
+  <!-- BSC label -->
+  <text x="200" y="372" font-family="Arial Black, Arial, sans-serif" font-size="22" font-weight="900" fill="#f5c842" text-anchor="middle" opacity="0.88">BSC</text>
+
+</svg>

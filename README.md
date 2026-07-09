@@ -1,2 +1,44 @@
-# Simulations
-Open source simulations
+# Eureka Express — Open Simulations
+
+Playable business simulations by [Eureka Simulations](https://www.eurekasimulations.com/) (Kudzu Partners S.L.), shared openly with a standalone player. Each simulation is a single self-contained JSON file — model, UI, styles, and translations included. The player runs them entirely in your browser: no backend, no account, no tracking.
+
+**License: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)** — free to use, share, and adapt for non-commercial purposes with attribution. For commercial licensing, [contact Eureka Simulations](https://www.eurekasimulations.com/).
+
+## Play
+
+```bash
+git clone https://github.com/Kudzu-Partners/Simulations.git
+cd Simulations
+python -m http.server 8000
+# open http://localhost:8000/player/
+```
+
+Or open `player/index.html` directly from disk and drag & drop any JSON from `jsons/` onto it.
+
+Deep links work too: `player/?sim=015` (by external id) or `player/?src=<url>` (any CORS-enabled JSON).
+
+## What's here
+
+```
+player/    the standalone player: catalog browser + open USF runtime + headless test
+jsons/     the simulations — one JSON per simulation
+svgs/      cover illustrations
+```
+
+This catalog is seeded progressively as simulations pass our quality-review lifecycle; the full Express library holds 1,600+ simulations across business, finance, education, sustainability, hospitality, and tourism. Watch or star the repo to follow new drops.
+
+## The format, in short
+
+A simulation JSON carries metadata (`externalid`, `name`, `description`, `category`, `level`, `max_periods`) plus three payloads: `view` (HTML), `css`, and `js` — a class extending `USF.SimulationAdapter` that implements the round loop: `initialize`, `setupUI`, `validateDecisions`, `calculateResults`, charts, history, hints, translations (`en`/`es`), and a final performance summary. The player embeds an open implementation of that runtime and sandboxes each sim in an iframe. Full details in [`player/README.md`](player/README.md).
+
+Round-trip smoke test for any sim:
+
+```bash
+cd player/test
+npm install jsdom
+node headless_replay.js 015
+```
+
+## Attribution
+
+© 2026 Kudzu Partners S.L. / Eureka Simulations · Simulations and player shared under CC BY-NC-SA 4.0 ([full terms](LICENSE.md)) · Chart.js (bundled in `player/vendor/`) is MIT-licensed by its contributors.

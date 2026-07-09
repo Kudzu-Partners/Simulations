@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg146" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg146)"/>
+
+  <!-- Negotiation table (bird's eye) -->
+  <rect x="100" y="140" width="200" height="120" rx="12" fill="#ffffff" opacity="0.06"/>
+  <rect x="100" y="140" width="200" height="120" rx="12" fill="none" stroke="#f5c842" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- Documents on table -->
+  <rect x="155" y="170" width="38" height="48" rx="4" fill="#f5c842" opacity="0.12"/>
+  <rect x="155" y="170" width="38" height="48" rx="4" fill="none" stroke="#f5c842" stroke-width="1" opacity="0.4"/>
+  <line x1="161" y1="180" x2="187" y2="180" stroke="#f5c842" stroke-width="1" opacity="0.4"/>
+  <line x1="161" y1="188" x2="187" y2="188" stroke="#f5c842" stroke-width="1" opacity="0.4"/>
+  <line x1="161" y1="196" x2="182" y2="196" stroke="#f5c842" stroke-width="1" opacity="0.4"/>
+  <line x1="161" y1="204" x2="184" y2="204" stroke="#f5c842" stroke-width="1" opacity="0.4"/>
+
+  <rect x="207" y="170" width="38" height="48" rx="4" fill="#c0cfff" opacity="0.08"/>
+  <rect x="207" y="170" width="38" height="48" rx="4" fill="none" stroke="#c0cfff" stroke-width="1" opacity="0.35"/>
+  <line x1="213" y1="180" x2="239" y2="180" stroke="#c0cfff" stroke-width="1" opacity="0.4"/>
+  <line x1="213" y1="188" x2="239" y2="188" stroke="#c0cfff" stroke-width="1" opacity="0.4"/>
+  <line x1="213" y1="196" x2="234" y2="196" stroke="#c0cfff" stroke-width="1" opacity="0.4"/>
+  <line x1="213" y1="204" x2="236" y2="204" stroke="#c0cfff" stroke-width="1" opacity="0.4"/>
+
+  <!-- Management side (top) — 3 figures -->
+  <circle cx="140" cy="118" r="12" fill="#f5c842" opacity="0.7"/>
+  <path d="M 128 138 Q 140 130 152 138" fill="#f5c842" opacity="0.4"/>
+  <circle cx="200" cy="112" r="12" fill="#f5c842" opacity="0.8"/>
+  <path d="M 188 132 Q 200 124 212 132" fill="#f5c842" opacity="0.4"/>
+  <circle cx="260" cy="118" r="12" fill="#f5c842" opacity="0.7"/>
+  <path d="M 248 138 Q 260 130 272 138" fill="#f5c842" opacity="0.4"/>
+
+  <!-- Union side (bottom) — 3 figures -->
+  <circle cx="140" cy="282" r="12" fill="#c0cfff" opacity="0.7"/>
+  <path d="M 128 262 Q 140 270 152 262" fill="#c0cfff" opacity="0.4"/>
+  <circle cx="200" cy="288" r="12" fill="#c0cfff" opacity="0.8"/>
+  <path d="M 188 268 Q 200 276 212 268" fill="#c0cfff" opacity="0.4"/>
+  <circle cx="260" cy="282" r="12" fill="#c0cfff" opacity="0.7"/>
+  <path d="M 248 262 Q 260 270 272 262" fill="#c0cfff" opacity="0.4"/>
+
+  <!-- Labels -->
+  <text x="200" y="96" font-family="Arial,sans-serif" font-size="10" fill="#f5c842" text-anchor="middle" opacity="0.7">Management</text>
+  <text x="200" y="315" font-family="Arial,sans-serif" font-size="10" fill="#c0cfff" text-anchor="middle" opacity="0.7">Union</text>
+
+  <!-- Handshake in center of table (two hands reaching) -->
+  <!-- Left hand -->
+  <path d="M 170 200 Q 178 196 186 200 L 192 200" fill="none" stroke="#f5c842" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <!-- Right hand -->
+  <path d="M 230 200 Q 222 196 214 200 L 208 200" fill="none" stroke="#c0cfff" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <!-- Grip point -->
+  <circle cx="200" cy="200" r="6" fill="#f5c842" opacity="0.4"/>
+  <circle cx="200" cy="200" r="6" fill="none" stroke="#f5c842" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- CBA label -->
+  <text x="200" y="355" font-family="Arial,sans-serif" font-size="10" fill="#c0cfff" text-anchor="middle" opacity="0.4" letter-spacing="2">COLLECTIVE BARGAINING</text>
+</svg>

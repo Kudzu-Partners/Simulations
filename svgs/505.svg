@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg505" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg505)"/>
+
+  <text x="200" y="58" text-anchor="middle" fill="#00bfff" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">PIVOT · PMF · SaaS</text>
+
+  <!-- Path A (original direction, faded) -->
+  <g opacity="0.55">
+    <line x1="80" y1="240" x2="200" y2="240" stroke="#ff6b6b" stroke-width="3" stroke-dasharray="4,3"/>
+    <polygon points="200,240 194,236 194,244" fill="#ff6b6b"/>
+    <text x="140" y="232" text-anchor="middle" fill="#ff6b6b" font-size="6" font-family="monospace">ENTERPRISE ✗</text>
+  </g>
+
+  <!-- BIG L-SHAPED PIVOT ARROW (hero) -->
+  <g transform="translate(200,240)">
+    <!-- horizontal start -->
+    <line x1="-120" y1="0" x2="0" y2="0" stroke="#52b788" stroke-width="8" stroke-linecap="round"/>
+    <!-- bend curve -->
+    <path d="M 0 0 Q 25 0 25 -25" fill="none" stroke="#52b788" stroke-width="8" stroke-linecap="round"/>
+    <!-- vertical down -->
+    <line x1="25" y1="-25" x2="25" y2="-100" stroke="#52b788" stroke-width="8" stroke-linecap="round"/>
+    <!-- arrowhead -->
+    <polygon points="25,-110 15,-95 35,-95" fill="#52b788"/>
+    <!-- start dot -->
+    <circle cx="-120" cy="0" r="9" fill="#c0cfff" stroke="#1a2744" stroke-width="1.5"/>
+    <!-- target SME marker -->
+    <g transform="translate(25,-118)">
+      <rect x="-32" y="-12" width="64" height="20" rx="4" fill="#52b788" stroke="#fff" stroke-width="1.5"/>
+      <text x="0" y="2" text-anchor="middle" fill="#fff" font-size="9" font-family="monospace" font-weight="bold">SME ✓</text>
+    </g>
+  </g>
+
+  <!-- PMF target (top-right) -->
+  <g transform="translate(330,95)">
+    <circle cx="0" cy="0" r="18" fill="none" stroke="#f5c842" stroke-width="2"/>
+    <circle cx="0" cy="0" r="11" fill="none" stroke="#f5c842" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="5" fill="#f5c842"/>
+    <text x="0" y="34" text-anchor="middle" fill="#f5c842" font-size="6" font-family="monospace" font-weight="bold">PMF</text>
+  </g>
+
+  <!-- SaaS chip (top-left) -->
+  <g transform="translate(55,90)">
+    <rect x="0" y="0" width="50" height="22" rx="3" fill="#00bfff" fill-opacity="0.18" stroke="#00bfff" stroke-width="1.3"/>
+    <text x="25" y="14" text-anchor="middle" fill="#00bfff" font-size="9" font-family="monospace" font-weight="bold">SaaS</text>
+  </g>
+
+  <!-- HONDURAS pin -->
+  <g transform="translate(345,340)">
+    <path d="M 0 0 C -7 0 -12 5 -12 12 C -12 22 0 36 0 36 C 0 36 12 22 12 12 C 12 5 7 0 0 0 Z"
+          fill="#1a4480" fill-opacity="0.3" stroke="#c0cfff" stroke-width="1.3"/>
+    <circle cx="-3" cy="13" r="1.5" fill="#1a4480"/>
+    <circle cx="0" cy="13" r="1.5" fill="#1a4480"/>
+    <circle cx="3" cy="13" r="1.5" fill="#1a4480"/>
+  </g>
+
+  <text x="200" y="378" text-anchor="middle" fill="#c0cfff" font-size="10" font-family="monospace" opacity="0.42" letter-spacing="1.2">Pivot · PMF · SaaS · HN</text>
+</svg>

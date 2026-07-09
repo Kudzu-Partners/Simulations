@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg046" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a1a"/>
+      <stop offset="100%" stop-color="#1a1a2d"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg046)"/>
+
+  <!-- Social network nodes and connections -->
+  <!-- Crisis source node (center-left, red, large) -->
+  <circle cx="155" cy="185" r="28" fill="#e74c3c" fill-opacity="0.30" stroke="#e74c3c" stroke-width="3"/>
+  <circle cx="155" cy="185" r="14" fill="#e74c3c" fill-opacity="0.80"/>
+  <!-- Contamination spread pulse rings -->
+  <circle cx="155" cy="185" r="40" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-opacity="0.35"/>
+  <circle cx="155" cy="185" r="55" fill="none" stroke="#e74c3c" stroke-width="1"   stroke-opacity="0.20"/>
+
+  <!-- Tier-1 infected nodes (directly connected, partially red) -->
+  <line x1="155" y1="157" x2="130" y2="100" stroke="#e74c3c" stroke-width="2" stroke-opacity="0.65"/>
+  <circle cx="130" cy="88"  r="18" fill="#e74c3c" fill-opacity="0.55" stroke="#e74c3c" stroke-width="2"/>
+
+  <line x1="155" y1="165" x2="80"  y2="158" stroke="#e74c3c" stroke-width="2" stroke-opacity="0.65"/>
+  <circle cx="64"  cy="158" r="16" fill="#e74c3c" fill-opacity="0.50" stroke="#e74c3c" stroke-width="2"/>
+
+  <line x1="155" y1="210" x2="105" y2="262" stroke="#e74c3c" stroke-width="2" stroke-opacity="0.60"/>
+  <circle cx="98"  cy="278" r="16" fill="#e74c3c" fill-opacity="0.45" stroke="#e74c3c" stroke-width="2"/>
+
+  <line x1="180" y1="192" x2="235" y2="155" stroke="#e74c3c" stroke-width="2" stroke-opacity="0.55"/>
+  <circle cx="248" cy="148" r="16" fill="#e74c3c" fill-opacity="0.40" stroke="#e74c3c" stroke-width="1.8"/>
+
+  <line x1="180" y1="205" x2="235" y2="248" stroke="#e74c3c" stroke-width="2" stroke-opacity="0.55"/>
+  <circle cx="248" cy="260" r="16" fill="#e74c3c" fill-opacity="0.40" stroke="#e74c3c" stroke-width="1.8"/>
+
+  <!-- Tier-2 nodes (further out, fading — normal blue social nodes) -->
+  <line x1="130" y1="70"  x2="175" y2="55"  stroke="#00bfff" stroke-width="1.2" stroke-opacity="0.35"/>
+  <circle cx="188" cy="50"  r="12" fill="#0a0a1a" stroke="#00bfff" stroke-width="1.5" stroke-opacity="0.55"/>
+
+  <line x1="64"  y1="142" x2="58"  y2="98"  stroke="#00bfff" stroke-width="1.2" stroke-opacity="0.35"/>
+  <circle cx="55"  cy="84"  r="11" fill="#0a0a1a" stroke="#00bfff" stroke-width="1.5" stroke-opacity="0.50"/>
+
+  <line x1="98"  y1="294" x2="68"  y2="328" stroke="#00bfff" stroke-width="1.2" stroke-opacity="0.30"/>
+  <circle cx="62"  cy="340" r="11" fill="#0a0a1a" stroke="#00bfff" stroke-width="1.5" stroke-opacity="0.45"/>
+
+  <line x1="264" y1="148" x2="318" y2="122" stroke="#00bfff" stroke-width="1.2" stroke-opacity="0.35"/>
+  <circle cx="330" cy="114" r="12" fill="#0a0a1a" stroke="#00bfff" stroke-width="1.5" stroke-opacity="0.50"/>
+
+  <line x1="264" y1="260" x2="318" y2="280" stroke="#00bfff" stroke-width="1.2" stroke-opacity="0.35"/>
+  <circle cx="330" cy="288" r="12" fill="#0a0a1a" stroke="#00bfff" stroke-width="1.5" stroke-opacity="0.50"/>
+
+  <line x1="248" y1="148" x2="300" y2="158" stroke="#00bfff" stroke-width="1.2" stroke-opacity="0.30"/>
+  <circle cx="314" cy="162" r="10" fill="#0a0a1a" stroke="#00bfff" stroke-width="1.2" stroke-opacity="0.40"/>
+
+  <!-- Brand/company response node (right, gold — crisis response) -->
+  <circle cx="340" cy="210" r="22" fill="#0a0a1a" stroke="#f5c842" stroke-width="2.5"/>
+  <circle cx="340" cy="210" r="10" fill="#f5c842" fill-opacity="0.80"/>
+  <!-- Response arrow from brand toward crisis -->
+  <line x1="319" y1="210" x2="276" y2="195" stroke="#f5c842" stroke-width="2" stroke-opacity="0.55" stroke-dasharray="5,3"/>
+  <polygon points="276,190 284,198 279,206" fill="#f5c842" fill-opacity="0.55"/>
+
+  <!-- Label: crisis source -->
+  <text x="155" y="228" font-family="Arial, sans-serif" font-size="8" fill="#e74c3c" text-anchor="middle" opacity="0.70">Crisis Source</text>
+</svg>

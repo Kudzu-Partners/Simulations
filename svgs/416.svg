@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg416" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#0e1a2e"/>
+    </linearGradient>
+    <linearGradient id="paper416" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#dfe6e9"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg416)"/>
+
+  <text x="200" y="58" text-anchor="middle" fill="#74b9ff" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">AFTER-ACTION REVIEW</text>
+
+  <!-- TWO COLUMNS: Pre-mortem vs Post-mortem (hero) -->
+  <g>
+    <!-- Pre-mortem (left) -->
+    <g transform="translate(115,225)">
+      <rect x="-55" y="-95" width="110" height="170" rx="3" fill="url(#paper416)" stroke="#1a2744" stroke-width="2"/>
+      <rect x="-45" y="-85" width="90" height="14" fill="#52b788"/>
+      <text x="0" y="-75" text-anchor="middle" fill="#fff" font-size="8" font-family="monospace" font-weight="bold">PRE-MORTEM</text>
+      <g font-family="monospace" font-size="6" fill="#1a2744">
+        <text x="-44" y="-58">¿Qué podría salir mal?</text>
+        <line x1="-44" y1="-50" x2="44" y2="-50" stroke="#1a2744" stroke-width="0.4" opacity="0.5"/>
+        <text x="-44" y="-40">• Cronograma</text>
+        <text x="-44" y="-30">• Equipo</text>
+        <text x="-44" y="-20">• Tecnología</text>
+        <text x="-44" y="-10">• Cliente</text>
+        <text x="-44" y="0">• Calidad</text>
+      </g>
+      <!-- question icon -->
+      <text x="0" y="40" text-anchor="middle" fill="#52b788" font-size="36" font-family="monospace" font-weight="bold" opacity="0.85">?</text>
+    </g>
+
+    <!-- Post-mortem (right) -->
+    <g transform="translate(285,225)">
+      <rect x="-55" y="-95" width="110" height="170" rx="3" fill="url(#paper416)" stroke="#1a2744" stroke-width="2"/>
+      <rect x="-45" y="-85" width="90" height="14" fill="#ff6b6b"/>
+      <text x="0" y="-75" text-anchor="middle" fill="#fff" font-size="8" font-family="monospace" font-weight="bold">AAR · POST</text>
+      <g font-family="monospace" font-size="6" fill="#1a2744">
+        <text x="-44" y="-58">¿Qué pasó?</text>
+        <line x1="-44" y1="-50" x2="44" y2="-50" stroke="#1a2744" stroke-width="0.4" opacity="0.5"/>
+        <g>
+          <rect x="-44" y="-46" width="8" height="8" fill="#fff" stroke="#52b788" stroke-width="1"/>
+          <path d="M -42 -42 L -40 -40 L -36 -44" fill="none" stroke="#52b788" stroke-width="1.5"/>
+          <text x="-32" y="-40">Aciertos</text>
+        </g>
+        <g>
+          <rect x="-44" y="-30" width="8" height="8" fill="#fff" stroke="#ff6b6b" stroke-width="1"/>
+          <line x1="-42" y1="-28" x2="-38" y2="-24" stroke="#ff6b6b" stroke-width="1.5"/>
+          <line x1="-38" y1="-28" x2="-42" y2="-24" stroke="#ff6b6b" stroke-width="1.5"/>
+          <text x="-32" y="-24">Errores</text>
+        </g>
+        <g>
+          <rect x="-44" y="-14" width="8" height="8" fill="#fff" stroke="#f5c842" stroke-width="1"/>
+          <text x="-40" y="-8" fill="#f5c842" font-weight="bold">!</text>
+          <text x="-32" y="-8">Lecciones</text>
+        </g>
+      </g>
+      <!-- magnifying icon -->
+      <g transform="translate(0,35)">
+        <circle cx="0" cy="0" r="14" fill="none" stroke="#ff6b6b" stroke-width="2.5" opacity="0.85"/>
+        <line x1="10" y1="10" x2="20" y2="20" stroke="#ff6b6b" stroke-width="3" stroke-linecap="round"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- arrow connecting them -->
+  <g transform="translate(200,220)">
+    <line x1="-30" y1="0" x2="30" y2="0" stroke="#c0cfff" stroke-width="2" opacity="0.7"/>
+    <polygon points="30,0 22,-5 22,5" fill="#c0cfff" opacity="0.7"/>
+    <text x="0" y="-8" text-anchor="middle" fill="#c0cfff" font-size="6" font-family="monospace" opacity="0.7">aprende</text>
+  </g>
+
+  <!-- ESPAÑA pin -->
+  <g transform="translate(345,90)">
+    <rect x="-12" y="-9" width="24" height="6" fill="#c0392b" opacity="0.9"/>
+    <rect x="-12" y="-3" width="24" height="12" fill="#f5c842" opacity="0.9"/>
+    <rect x="-12" y="5" width="24" height="4" fill="#c0392b" opacity="0.9"/>
+  </g>
+
+  <text x="200" y="378" text-anchor="middle" fill="#c0cfff" font-size="10" font-family="monospace" opacity="0.42" letter-spacing="1.2">AAR · Pre-mortem · Consultoría</text>
+</svg>

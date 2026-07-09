@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg84" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b5e20"/>
+      <stop offset="100%" stop-color="#2d6a4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg84)"/>
+  <!-- Globe split in two halves -->
+  <circle cx="200" cy="195" r="130" fill="none" stroke="#52b788" stroke-width="2" opacity="0.5"/>
+  <!-- Left half: Financial bars -->
+  <clipPath id="leftHalf84">
+    <rect x="70" y="65" width="130" height="260"/>
+  </clipPath>
+  <circle cx="200" cy="195" r="128" fill="#1b5e20" opacity="0.3" clip-path="url(#leftHalf84)"/>
+  <g clip-path="url(#leftHalf84)">
+    <!-- Financial bars inside left half -->
+    <rect x="88" y="235" width="22" height="55" rx="3" fill="#52b788" opacity="0.7"/>
+    <rect x="116" y="210" width="22" height="80" rx="3" fill="#52b788" opacity="0.8"/>
+    <rect x="144" y="185" width="22" height="105" rx="3" fill="#52b788" opacity="0.9"/>
+    <!-- Trend line -->
+    <polyline points="88,240 116,218 144,193 168,170" fill="none" stroke="#d8f3dc" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+    <text x="127" y="155" font-family="sans-serif" font-size="12" fill="#d8f3dc" text-anchor="middle" opacity="0.8">P&amp;L</text>
+  </g>
+  <!-- Dividing line -->
+  <line x1="200" y1="67" x2="200" y2="323" stroke="#d8f3dc" stroke-width="2" opacity="0.6"/>
+  <!-- Right half: ESG leaf + SDG circles -->
+  <clipPath id="rightHalf84">
+    <rect x="200" y="65" width="130" height="260"/>
+  </clipPath>
+  <circle cx="200" cy="195" r="128" fill="#2d6a4f" opacity="0.3" clip-path="url(#rightHalf84)"/>
+  <g clip-path="url(#rightHalf84)">
+    <!-- Leaf -->
+    <path d="M215,130 Q270,110 285,165 Q285,220 220,240 Q195,245 205,195 Q208,160 215,130 Z" fill="#52b788" opacity="0.6"/>
+    <line x1="215" y1="130" x2="232" y2="238" stroke="#1b5e20" stroke-width="1.5" opacity="0.5"/>
+    <!-- SDG colored circles -->
+    <circle cx="230" cy="268" r="10" fill="#52b788" opacity="0.7"/>
+    <circle cx="252" cy="268" r="10" fill="#d8f3dc" opacity="0.6"/>
+    <circle cx="274" cy="268" r="10" fill="#52b788" opacity="0.5"/>
+    <text x="252" y="295" font-family="sans-serif" font-size="11" fill="#d8f3dc" text-anchor="middle" opacity="0.8">SDG</text>
+  </g>
+  <!-- 8 global market dots around globe -->
+  <g fill="#d8f3dc" opacity="0.7">
+    <circle cx="200" cy="67" r="5"/>
+    <circle cx="278" cy="107" r="5"/>
+    <circle cx="318" cy="185" r="5"/>
+    <circle cx="278" cy="263" r="5"/>
+    <circle cx="200" cy="323" r="5"/>
+    <circle cx="122" cy="263" r="5"/>
+    <circle cx="82" cy="185" r="5"/>
+    <circle cx="122" cy="107" r="5"/>
+  </g>
+</svg>

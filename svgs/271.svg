@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg271" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg271)"/>
+
+  <!-- Matrix A (left) -->
+  <rect x="42" y="110" width="100" height="110" rx="6" fill="#0a1218" stroke="#00bfff" stroke-width="2"/>
+  <text x="92" y="130" font-family="monospace" font-size="9" fill="#00bfff" text-anchor="middle" font-weight="bold">A</text>
+  <!-- Matrix grid entries -->
+  <text x="62"  y="152" font-family="monospace" font-size="9" fill="#a0aec0" opacity="0.8">0.3  0.1</text>
+  <text x="62"  y="170" font-family="monospace" font-size="9" fill="#a0aec0" opacity="0.8">0.7  0.5</text>
+  <text x="62"  y="188" font-family="monospace" font-size="9" fill="#a0aec0" opacity="0.8">0.2  0.8</text>
+  <!-- Brackets -->
+  <path d="M 48,112 L 42,112 L 42,218 L 48,218" fill="none" stroke="#00bfff" stroke-width="2" opacity="0.7"/>
+  <path d="M 136,112 L 142,112 L 142,218 L 136,218" fill="none" stroke="#00bfff" stroke-width="2" opacity="0.7"/>
+
+  <!-- × operator -->
+  <text x="168" y="172" font-family="monospace" font-size="22" fill="#f5c842" text-anchor="middle" opacity="0.9">×</text>
+
+  <!-- Matrix B (middle) -->
+  <rect x="185" y="130" width="80" height="80" rx="6" fill="#0a1218" stroke="#52b788" stroke-width="2"/>
+  <text x="225" y="148" font-family="monospace" font-size="9" fill="#52b788" text-anchor="middle" font-weight="bold">B</text>
+  <text x="200" y="167" font-family="monospace" font-size="9" fill="#a0aec0" opacity="0.8">1.2  0.4</text>
+  <text x="200" y="183" font-family="monospace" font-size="9" fill="#a0aec0" opacity="0.8">0.6  2.1</text>
+  <path d="M 191,132 L 185,132 L 185,208 L 191,208" fill="none" stroke="#52b788" stroke-width="2" opacity="0.7"/>
+  <path d="M 259,132 L 265,132 L 265,208 L 259,208" fill="none" stroke="#52b788" stroke-width="2" opacity="0.7"/>
+
+  <!-- = operator -->
+  <text x="285" y="172" font-family="monospace" font-size="22" fill="#f5c842" text-anchor="middle" opacity="0.9">=</text>
+
+  <!-- Matrix C (result, right) -->
+  <rect x="302" y="110" width="78" height="110" rx="6" fill="#0a1218" stroke="#f5c842" stroke-width="2.5"/>
+  <text x="341" y="130" font-family="monospace" font-size="9" fill="#f5c842" text-anchor="middle" font-weight="bold">C</text>
+  <text x="312" y="152" font-family="monospace" font-size="9" fill="#f5c842" opacity="0.85">0.42</text>
+  <text x="312" y="168" font-family="monospace" font-size="9" fill="#f5c842" opacity="0.85">1.14</text>
+  <text x="312" y="184" font-family="monospace" font-size="9" fill="#f5c842" opacity="0.85">1.92</text>
+  <path d="M 308,112 L 302,112 L 302,218 L 308,218" fill="none" stroke="#f5c842" stroke-width="2" opacity="0.7"/>
+  <path d="M 374,112 L 380,112 L 380,218 L 374,218" fill="none" stroke="#f5c842" stroke-width="2" opacity="0.7"/>
+
+  <!-- Application tiles (bottom row) -->
+  <rect x="42"  y="258" width="68" height="44" rx="6" fill="#00bfff" opacity="0.12"/>
+  <rect x="42"  y="258" width="68" height="44" rx="6" fill="none" stroke="#00bfff" stroke-width="1.5"/>
+  <text x="76"  y="276" font-family="monospace" font-size="7.5" fill="#00bfff" text-anchor="middle">Portfolio</text>
+  <text x="76"  y="290" font-family="monospace" font-size="7.5" fill="#00bfff" text-anchor="middle">Optim.</text>
+
+  <rect x="118" y="258" width="68" height="44" rx="6" fill="#52b788" opacity="0.12"/>
+  <rect x="118" y="258" width="68" height="44" rx="6" fill="none" stroke="#52b788" stroke-width="1.5"/>
+  <text x="152" y="276" font-family="monospace" font-size="7.5" fill="#52b788" text-anchor="middle">PCA</text>
+  <text x="152" y="290" font-family="monospace" font-size="7.5" fill="#52b788" text-anchor="middle">Eigenvec.</text>
+
+  <rect x="194" y="258" width="68" height="44" rx="6" fill="#7b2fff" opacity="0.12"/>
+  <rect x="194" y="258" width="68" height="44" rx="6" fill="none" stroke="#c0aaff" stroke-width="1.5"/>
+  <text x="228" y="276" font-family="monospace" font-size="7.5" fill="#c0aaff" text-anchor="middle">Markov</text>
+  <text x="228" y="290" font-family="monospace" font-size="7.5" fill="#c0aaff" text-anchor="middle">Chains</text>
+
+  <rect x="270" y="258" width="68" height="44" rx="6" fill="#f5c842" opacity="0.12"/>
+  <rect x="270" y="258" width="68" height="44" rx="6" fill="none" stroke="#f5c842" stroke-width="1.5"/>
+  <text x="304" y="276" font-family="monospace" font-size="7.5" fill="#f5c842" text-anchor="middle">SVD</text>
+  <text x="304" y="290" font-family="monospace" font-size="7.5" fill="#f5c842" text-anchor="middle">Recomm.</text>
+
+  <!-- Leontief tile -->
+  <rect x="156" y="316" width="88" height="32" rx="6" fill="#e67e22" opacity="0.12"/>
+  <rect x="156" y="316" width="88" height="32" rx="6" fill="none" stroke="#e67e22" stroke-width="1.5"/>
+  <text x="200" y="337" font-family="monospace" font-size="8" fill="#e67e22" text-anchor="middle">Leontief I/O</text>
+
+  <text x="200" y="376" font-family="monospace" font-size="9" fill="#a0aec0" text-anchor="middle" opacity="0.42">Linear Algebra · Finance · PCA · SVD · Markov</text>
+</svg>

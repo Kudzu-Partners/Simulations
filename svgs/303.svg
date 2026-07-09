@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg303" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1f0a"/>
+      <stop offset="100%" stop-color="#1b3a20"/>
+    </linearGradient>
+    <linearGradient id="rocket303" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#e040fb"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg303)"/>
+
+  <!-- Rocket (startup) -->
+  <g transform="translate(200, 195) rotate(-30)">
+    <!-- Body -->
+    <path d="M 0 -90 Q 30 -60 30 0 L 30 60 L 0 50 L -30 60 L -30 0 Q -30 -60 0 -90Z"
+          fill="url(#rocket303)" opacity="0.9"/>
+    <!-- Nose cone -->
+    <path d="M 0 -90 Q 18 -110 0 -130 Q -18 -110 0 -90Z" fill="#e040fb" opacity="0.9"/>
+    <!-- Window -->
+    <circle cx="0" cy="-20" r="14" fill="#0a1f0a" stroke="#f5c842" stroke-width="2.5"/>
+    <!-- Fins -->
+    <path d="M -30 40 L -56 72 L -30 60 Z" fill="#f5c842" opacity="0.8"/>
+    <path d="M 30 40 L 56 72 L 30 60 Z" fill="#f5c842" opacity="0.8"/>
+    <!-- Flame -->
+    <path d="M -20 60 Q 0 110 20 60" fill="#f5c842" opacity="0.85"/>
+    <path d="M -12 60 Q 0 90 12 60" fill="#e74c3c" opacity="0.75"/>
+  </g>
+
+  <!-- Lean startup loop (canvas pieces orbiting) -->
+  <!-- BUILD -->
+  <rect x="36" y="52" width="76" height="40" rx="8" fill="#1a0a2e" stroke="#e040fb" stroke-width="2"/>
+  <text x="74" y="76" text-anchor="middle" font-family="sans-serif" font-size="22">🔨</text>
+
+  <!-- MEASURE -->
+  <rect x="292" y="52" width="76" height="40" rx="8" fill="#0a1f10" stroke="#52b788" stroke-width="2"/>
+  <text x="330" y="76" text-anchor="middle" font-family="sans-serif" font-size="22">📊</text>
+
+  <!-- LEARN -->
+  <rect x="168" y="340" width="76" height="40" rx="8" fill="#1a1200" stroke="#f5c842" stroke-width="2"/>
+  <text x="206" y="364" text-anchor="middle" font-family="sans-serif" font-size="22">💡</text>
+
+  <!-- Loop arrows connecting them -->
+  <path d="M 112 72 Q 200 20 292 72" stroke="#8899aa" stroke-width="2" fill="none" stroke-dasharray="6,4" opacity="0.6"/>
+  <polygon points="284,64 296,72 284,80" fill="#8899aa" opacity="0.6"/>
+
+  <path d="M 340 92 Q 370 200 244 340" stroke="#8899aa" stroke-width="2" fill="none" stroke-dasharray="6,4" opacity="0.6"/>
+  <polygon points="236,334 244,346 252,334" fill="#8899aa" opacity="0.6"/>
+
+  <path d="M 168 350 Q 60 300 60 92" stroke="#8899aa" stroke-width="2" fill="none" stroke-dasharray="6,4" opacity="0.6"/>
+  <polygon points="52,100 60,88 68,100" fill="#8899aa" opacity="0.6"/>
+
+  <!-- Leaf/plant-based hint -->
+  <g transform="translate(322, 310)">
+    <circle r="28" fill="#0a1f10" stroke="#52b788" stroke-width="2"/>
+    <path d="M 0 14 Q -16 0 -8 -14 Q 0 -20 12 -10 Q 18 0 0 14Z" fill="#52b788" opacity="0.9"/>
+    <line x1="0" y1="14" x2="0" y2="-8" stroke="#0a1f0a" stroke-width="2"/>
+  </g>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg248" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg248)"/>
+
+  <!-- Central ERP core -->
+  <circle cx="200" cy="200" r="38" fill="#0d1b2a" stroke="#00bfff" stroke-width="2.5" opacity="0.9"/>
+  <text x="200" y="196" font-family="monospace" font-size="9"  fill="#00bfff" text-anchor="middle" font-weight="bold">ERP</text>
+  <text x="200" y="210" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">CORE</text>
+
+  <!-- SD Module — top left -->
+  <rect x="48"  y="62"  width="88" height="52" rx="7" fill="#0d1b2a" stroke="#f5c842" stroke-width="2.2"/>
+  <text x="92" y="85"  font-family="monospace" font-size="10"  fill="#f5c842" text-anchor="middle" font-weight="bold">SD</text>
+  <text x="92" y="101" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.65">Sales &amp; Distrib.</text>
+
+  <!-- MM Module — top right -->
+  <rect x="264" y="62"  width="88" height="52" rx="7" fill="#0d1b2a" stroke="#52b788" stroke-width="2.2"/>
+  <text x="308" y="85"  font-family="monospace" font-size="10"  fill="#52b788" text-anchor="middle" font-weight="bold">MM</text>
+  <text x="308" y="101" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.65">Materials Mgmt</text>
+
+  <!-- PP Module — bottom left -->
+  <rect x="48"  y="286" width="88" height="52" rx="7" fill="#0d1b2a" stroke="#7b2fff" stroke-width="2.2"/>
+  <text x="92" y="309"  font-family="monospace" font-size="10"  fill="#c0aaff" text-anchor="middle" font-weight="bold">PP</text>
+  <text x="92" y="325"  font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.65">Production Plan.</text>
+
+  <!-- FICO Module — bottom right -->
+  <rect x="264" y="286" width="88" height="52" rx="7" fill="#0d1b2a" stroke="#00bfff" stroke-width="2.2"/>
+  <text x="308" y="309"  font-family="monospace" font-size="10"  fill="#00bfff" text-anchor="middle" font-weight="bold">FICO</text>
+  <text x="308" y="325"  font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.65">Finance &amp; Control</text>
+
+  <!-- Connector: SD → core (healthy) -->
+  <line x1="136" y1="100" x2="165" y2="174" stroke="#f5c842" stroke-width="2" opacity="0.65"/>
+  <polygon points="159,171 165,182 171,172" fill="#f5c842" opacity="0.65"/>
+
+  <!-- Connector: MM → core (healthy) -->
+  <line x1="264" y1="100" x2="234" y2="174" stroke="#52b788" stroke-width="2" opacity="0.65"/>
+  <polygon points="228,172 234,182 240,171" fill="#52b788" opacity="0.65"/>
+
+  <!-- Connector: PP → core (BROKEN — red dashed) -->
+  <line x1="136" y1="300" x2="165" y2="226" stroke="#ff4444" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.85"/>
+  <!-- Break symbol -->
+  <circle cx="150" cy="264" r="10" fill="#0d1b2a"/>
+  <text x="150" y="268" font-family="monospace" font-size="12" fill="#ff4444" text-anchor="middle" font-weight="bold">✗</text>
+
+  <!-- Connector: FICO → core (healthy) -->
+  <line x1="264" y1="300" x2="234" y2="226" stroke="#00bfff" stroke-width="2" opacity="0.65"/>
+  <polygon points="228,228 234,238 240,226" fill="#00bfff" opacity="0.65"/>
+
+  <!-- Integration failure alert -->
+  <rect x="115" y="228" width="110" height="30" rx="6" fill="#ff4444" opacity="0.15"/>
+  <rect x="115" y="228" width="110" height="30" rx="6" fill="none" stroke="#ff4444" stroke-width="1.5"/>
+  <text x="170" y="248" font-family="monospace" font-size="8.5" fill="#ff4444" text-anchor="middle">Integration Failure</text>
+
+  <!-- Label -->
+  <text x="200" y="370" font-family="monospace" font-size="9" fill="#a0aec0" text-anchor="middle" opacity="0.42">SD · MM · PP · FICO module data flows</text>
+</svg>

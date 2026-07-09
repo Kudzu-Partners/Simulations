@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg79" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a3a5c"/>
+      <stop offset="100%" stop-color="#2c5f8a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg79)"/>
+  <!-- Storefront -->
+  <rect x="100" y="175" width="200" height="145" rx="6" fill="#1a3a5c" stroke="#74b9ff" stroke-width="2.5" opacity="0.95"/>
+  <!-- Roof / awning -->
+  <rect x="85" y="158" width="230" height="20" rx="4" fill="#74b9ff" opacity="0.5"/>
+  <!-- Roof stripe decoration -->
+  <path d="M85,162 L315,162" stroke="#dfe6e9" stroke-width="2" opacity="0.3"/>
+  <!-- Store sign -->
+  <rect x="120" y="166" width="160" height="24" rx="4" fill="#1a3a5c" stroke="#74b9ff" stroke-width="1"/>
+  <text x="200" y="183" font-family="sans-serif" font-size="13" font-weight="bold" fill="#74b9ff" text-anchor="middle">MiEmpresa</text>
+  <!-- Door -->
+  <rect x="172" y="255" width="56" height="65" rx="4" fill="#1a3a5c" stroke="#74b9ff" stroke-width="1.5" opacity="0.9"/>
+  <circle cx="217" cy="289" r="4" fill="#74b9ff" opacity="0.6"/>
+  <!-- Display windows -->
+  <rect x="115" y="200" width="55" height="45" rx="4" fill="#74b9ff" opacity="0.12" stroke="#74b9ff" stroke-width="1.5"/>
+  <rect x="230" y="200" width="55" height="45" rx="4" fill="#74b9ff" opacity="0.12" stroke="#74b9ff" stroke-width="1.5"/>
+  <!-- Fashion accessories in windows -->
+  <ellipse cx="142" cy="218" rx="16" ry="10" fill="none" stroke="#dfe6e9" stroke-width="1.5" opacity="0.6"/>
+  <line x1="142" y1="228" x2="142" y2="240" stroke="#dfe6e9" stroke-width="1.5" opacity="0.5"/>
+  <path d="M245,215 Q255,208 265,215 Q265,228 255,232 Q245,228 245,215 Z" fill="none" stroke="#dfe6e9" stroke-width="1.5" opacity="0.6"/>
+  <!-- Seedling/first company symbol (small plant growing) -->
+  <line x1="200" y1="115" x2="200" y2="148" stroke="#74b9ff" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M200,130 Q215,118 225,125" fill="none" stroke="#74b9ff" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <path d="M200,140 Q185,128 175,134" fill="none" stroke="#74b9ff" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <!-- Ground/soil -->
+  <ellipse cx="200" cy="148" rx="18" ry="6" fill="#74b9ff" opacity="0.25"/>
+  <!-- Trade-off arrows (price vs volume) -->
+  <line x1="65" y1="320" x2="65" y2="355" stroke="#74b9ff" stroke-width="2" opacity="0.4"/>
+  <line x1="55" y1="355" x2="340" y2="355" stroke="#74b9ff" stroke-width="2" opacity="0.4"/>
+  <text x="80" y="352" font-family="sans-serif" font-size="9" fill="#dfe6e9" opacity="0.5">PRICE ↔ VOLUME · CASH ↔ PROFIT</text>
+</svg>

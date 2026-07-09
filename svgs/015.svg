@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg015" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a3a1a"/>
+      <stop offset="100%" stop-color="#2d5a2d"/>
+    </linearGradient>
+    <linearGradient id="valueArrow015" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#c8a84b"/>
+      <stop offset="100%" stop-color="#f5c842"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg015)"/>
+
+  <!-- Coffee bean shape (left side, commodity — muted) -->
+  <ellipse cx="130" cy="210" rx="58" ry="80" fill="#c8a84b" fill-opacity="0.18" stroke="#c8a84b" stroke-width="2.5" stroke-opacity="0.55"/>
+  <!-- Bean center crease -->
+  <path d="M 130,132 Q 118,165 118,210 Q 118,255 130,288" fill="none" stroke="#c8a84b" stroke-width="2" stroke-opacity="0.45"/>
+
+  <!-- Transformation arrow (center, going right and up) -->
+  <path d="M 188,210 Q 220,210 240,160" fill="none" stroke="url(#valueArrow015)" stroke-width="4" stroke-linecap="round"/>
+  <polygon points="234,148 248,162 254,146" fill="#f5c842" fill-opacity="0.90"/>
+
+  <!-- Premium coffee bean (right side, specialty — bright) -->
+  <ellipse cx="300" cy="165" rx="52" ry="72" fill="#c8a84b" fill-opacity="0.28" stroke="#f5c842" stroke-width="3" stroke-opacity="0.90"/>
+  <path d="M 300,95 Q 288,128 288,165 Q 288,202 300,235" fill="none" stroke="#f5c842" stroke-width="2.5" stroke-opacity="0.70"/>
+
+  <!-- Specialty badge on premium bean -->
+  <circle cx="300" cy="165" r="22" fill="#1a3a1a" stroke="#f5c842" stroke-width="2"/>
+  <polygon points="300,148 305,160 320,160 308,169 313,183 300,174 287,183 292,169 280,160 295,160" fill="#f5c842" fill-opacity="0.85"/>
+
+  <!-- Commodity price bar (low, left) -->
+  <rect x="90" y="308" width="22" height="35" rx="2" fill="#c8a84b" fill-opacity="0.45" stroke="#c8a84b" stroke-width="1.5" stroke-opacity="0.55"/>
+
+  <!-- Specialty price bar (high, right) -->
+  <rect x="272" y="268" width="22" height="75" rx="2" fill="#f5c842" fill-opacity="0.80" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.85"/>
+
+  <!-- Price axis baseline -->
+  <line x1="72" y1="342" x2="320" y2="342" stroke="#d8f3dc" stroke-width="1.5" stroke-opacity="0.35"/>
+
+  <!-- Small leaf detail (bottom center) -->
+  <path d="M 190,355 Q 200,335 210,355 Q 200,348 190,355" fill="#52b788" fill-opacity="0.65"/>
+
+  <!-- Certification rings (left of premium bean) -->
+  <circle cx="240" cy="140" r="10" fill="none" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.60"/>
+  <circle cx="258" cy="132" r="8" fill="none" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.45"/>
+
+</svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg267" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg267)"/>
+
+  <!-- BEFORE panel (left — messy) -->
+  <rect x="42" y="62" width="140" height="276" rx="8" fill="#1a0a0a" stroke="#ff6666" stroke-width="2"/>
+  <text x="112" y="82" font-family="monospace" font-size="9" fill="#ff6666" text-anchor="middle" opacity="0.8">BEFORE</text>
+  <!-- Chaotic text lines (varied lengths, crossing) -->
+  <line x1="56" y1="96"  x2="168" y2="96"  stroke="#ff6666" stroke-width="2.5" opacity="0.6"/>
+  <line x1="56" y1="108" x2="142" y2="108" stroke="#ff6666" stroke-width="2"   opacity="0.5"/>
+  <line x1="56" y1="120" x2="162" y2="120" stroke="#ff6666" stroke-width="3"   opacity="0.55"/>
+  <line x1="56" y1="132" x2="130" y2="132" stroke="#ff6666" stroke-width="1.5" opacity="0.45"/>
+  <line x1="56" y1="144" x2="170" y2="144" stroke="#ff6666" stroke-width="2.5" opacity="0.6"/>
+  <line x1="56" y1="156" x2="148" y2="156" stroke="#ff6666" stroke-width="2"   opacity="0.5"/>
+  <line x1="56" y1="168" x2="164" y2="168" stroke="#ff6666" stroke-width="1.8" opacity="0.45"/>
+  <line x1="56" y1="180" x2="138" y2="180" stroke="#ff6666" stroke-width="3"   opacity="0.55"/>
+  <line x1="56" y1="192" x2="165" y2="192" stroke="#ff6666" stroke-width="2"   opacity="0.5"/>
+  <line x1="56" y1="204" x2="150" y2="204" stroke="#ff6666" stroke-width="2.5" opacity="0.55"/>
+  <line x1="56" y1="216" x2="168" y2="216" stroke="#ff6666" stroke-width="1.5" opacity="0.4"/>
+  <line x1="56" y1="228" x2="145" y2="228" stroke="#ff6666" stroke-width="2"   opacity="0.45"/>
+  <line x1="56" y1="240" x2="162" y2="240" stroke="#ff6666" stroke-width="2.5" opacity="0.5"/>
+  <line x1="56" y1="252" x2="136" y2="252" stroke="#ff6666" stroke-width="1.8" opacity="0.45"/>
+  <!-- Jargon labels -->
+  <text x="112" y="272" font-family="monospace" font-size="7" fill="#ff6666" text-anchor="middle" opacity="0.6">passive voice ×12</text>
+  <text x="112" y="285" font-family="monospace" font-size="7" fill="#ff6666" text-anchor="middle" opacity="0.55">jargon ×8 · walls of text</text>
+  <!-- Word count -->
+  <rect x="56" y="298" width="112" height="24" rx="4" fill="#ff4444" opacity="0.15"/>
+  <text x="112" y="315" font-family="monospace" font-size="8.5" fill="#ff6666" text-anchor="middle">847 words</text>
+
+  <!-- Arrow transform -->
+  <line x1="192" y1="200" x2="218" y2="200" stroke="#00ff88" stroke-width="3.5" opacity="0.9"/>
+  <polygon points="213,193 224,200 213,207" fill="#00ff88" opacity="0.9"/>
+  <text x="205" y="188" font-family="monospace" font-size="8" fill="#00ff88" text-anchor="middle" opacity="0.8">rewrite</text>
+
+  <!-- AFTER panel (right — clean pyramid structure) -->
+  <rect x="218" y="62" width="140" height="276" rx="8" fill="#0a1a0a" stroke="#00ff88" stroke-width="2"/>
+  <text x="288" y="82" font-family="monospace" font-size="9" fill="#00ff88" text-anchor="middle" opacity="0.8">AFTER</text>
+
+  <!-- Pyramid Principle structure -->
+  <!-- Apex (main point) -->
+  <rect x="248" y="94"  width="80" height="22" rx="4" fill="#00ff88" opacity="0.35"/>
+  <text x="288" y="110" font-family="monospace" font-size="8" fill="#d8f3dc" text-anchor="middle" font-weight="bold">MAIN POINT</text>
+
+  <!-- Support level 1 -->
+  <rect x="236" y="124" width="48" height="18" rx="3" fill="#52b788" opacity="0.3"/>
+  <text x="260" y="137" font-family="monospace" font-size="7" fill="#52b788" text-anchor="middle">Reason 1</text>
+  <rect x="292" y="124" width="48" height="18" rx="3" fill="#52b788" opacity="0.3"/>
+  <text x="316" y="137" font-family="monospace" font-size="7" fill="#52b788" text-anchor="middle">Reason 2</text>
+
+  <!-- Support level 2 -->
+  <rect x="228" y="150" width="36" height="16" rx="3" fill="#52b788" opacity="0.2"/>
+  <rect x="268" y="150" width="36" height="16" rx="3" fill="#52b788" opacity="0.2"/>
+  <rect x="300" y="150" width="36" height="16" rx="3" fill="#52b788" opacity="0.2"/>
+
+  <!-- Clean lines (body text) -->
+  <line x1="232" y1="178" x2="344" y2="178" stroke="#00ff88" stroke-width="1.8" opacity="0.55"/>
+  <line x1="232" y1="190" x2="338" y2="190" stroke="#00ff88" stroke-width="1.8" opacity="0.5"/>
+  <line x1="232" y1="202" x2="340" y2="202" stroke="#00ff88" stroke-width="1.8" opacity="0.5"/>
+  <line x1="232" y1="214" x2="325" y2="214" stroke="#00ff88" stroke-width="1.8" opacity="0.45"/>
+  <line x1="232" y1="226" x2="342" y2="226" stroke="#00ff88" stroke-width="1.5" opacity="0.45"/>
+  <line x1="232" y1="238" x2="330" y2="238" stroke="#00ff88" stroke-width="1.5" opacity="0.4"/>
+  <line x1="232" y1="250" x2="335" y2="250" stroke="#00ff88" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Score badges -->
+  <text x="288" y="275" font-family="monospace" font-size="7" fill="#00ff88" text-anchor="middle" opacity="0.65">passive voice ×1</text>
+  <text x="288" y="287" font-family="monospace" font-size="7" fill="#00ff88" text-anchor="middle" opacity="0.6">Flesch 68 · clear ✓</text>
+  <rect x="232" y="298" width="112" height="24" rx="4" fill="#00ff88" opacity="0.18"/>
+  <text x="288" y="315" font-family="monospace" font-size="8.5" fill="#00ff88" text-anchor="middle">312 words ✓</text>
+</svg>

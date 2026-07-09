@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg044" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1a2a"/>
+      <stop offset="100%" stop-color="#1a2a40"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg044)"/>
+
+  <!-- Simplified LATAM continent silhouette (stylized) -->
+  <path d="M 178,58 L 195,58 L 210,72 L 218,88 L 222,105
+           L 230,118 L 235,135 L 228,150 L 238,168 L 242,188
+           L 248,205 L 252,225 L 248,248 L 240,268 L 228,285
+           L 215,300 L 205,318 L 198,338 L 192,355
+           L 184,338 L 175,318 L 162,300 L 148,282
+           L 138,262 L 132,242 L 130,222 L 135,202
+           L 128,182 L 125,162 L 130,145 L 138,128
+           L 142,112 L 148,96 L 155,80 L 165,66 Z"
+        fill="#00bfff" fill-opacity="0.12" stroke="#00bfff" stroke-width="2" stroke-opacity="0.45"/>
+
+  <!-- Market circles inside LATAM (key markets) -->
+  <!-- Mexico (top) -->
+  <circle cx="165" cy="105" r="18" fill="#f5c842" fill-opacity="0.30" stroke="#f5c842" stroke-width="2"/>
+  <text x="165" y="109" font-family="Arial Black, sans-serif" font-size="9" font-weight="900" fill="#f5c842" text-anchor="middle">MX</text>
+
+  <!-- Colombia (mid-top) -->
+  <circle cx="175" cy="178" r="14" fill="#00bfff" fill-opacity="0.30" stroke="#00bfff" stroke-width="1.8"/>
+  <text x="175" y="182" font-family="Arial Black, sans-serif" font-size="8" font-weight="900" fill="#00bfff" text-anchor="middle">CO</text>
+
+  <!-- Brazil (mid-right, largest market) -->
+  <circle cx="222" cy="228" r="24" fill="#f5c842" fill-opacity="0.35" stroke="#f5c842" stroke-width="2.5"/>
+  <text x="222" y="232" font-family="Arial Black, sans-serif" font-size="10" font-weight="900" fill="#f5c842" text-anchor="middle">BR</text>
+
+  <!-- Peru (mid-left) -->
+  <circle cx="152" cy="232" r="13" fill="#00bfff" fill-opacity="0.25" stroke="#00bfff" stroke-width="1.5"/>
+  <text x="152" y="236" font-family="Arial Black, sans-serif" font-size="7" font-weight="900" fill="#00bfff" text-anchor="middle">PE</text>
+
+  <!-- Chile (south) -->
+  <circle cx="175" cy="302" r="11" fill="#00bfff" fill-opacity="0.22" stroke="#00bfff" stroke-width="1.5"/>
+  <text x="175" y="306" font-family="Arial Black, sans-serif" font-size="7" font-weight="900" fill="#00bfff" text-anchor="middle">CL</text>
+
+  <!-- Entry arrows from outside (company expanding in) -->
+  <!-- From top-right -->
+  <line x1="310" y1="80" x2="230" y2="110" stroke="#f5c842" stroke-width="2.5" stroke-opacity="0.65"/>
+  <polygon points="228,104 236,114 243,106" fill="#f5c842" fill-opacity="0.65"/>
+
+  <!-- From right -->
+  <line x1="330" y1="200" x2="268" y2="200" stroke="#f5c842" stroke-width="2.5" stroke-opacity="0.65"/>
+  <polygon points="266,195 275,200 266,205" fill="#f5c842" fill-opacity="0.65"/>
+
+  <!-- From bottom-right -->
+  <line x1="310" y1="320" x2="245" y2="272" stroke="#f5c842" stroke-width="2" stroke-opacity="0.50"/>
+  <polygon points="242,268 250,278 257,268" fill="#f5c842" fill-opacity="0.50"/>
+
+  <!-- Company origin dot (top-right corner, outside LATAM) -->
+  <circle cx="318" cy="72" r="14" fill="#1a2a40" stroke="#f5c842" stroke-width="2.5"/>
+  <text x="318" y="76" font-family="Arial Black, sans-serif" font-size="9" font-weight="900" fill="#f5c842" text-anchor="middle">HQ</text>
+
+  <!-- CAGE framework label (bottom-right, clear zone) -->
+  <text x="348" y="352" font-family="Arial, sans-serif" font-size="9" fill="#c0cfff" text-anchor="end" opacity="0.50">CAGE</text>
+</svg>

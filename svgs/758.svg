@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" fill="none">
+  <defs>
+    <linearGradient id="g758" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F59A4D"/>
+      <stop offset="1" stop-color="#E87722"/>
+    </linearGradient>
+  </defs>
+  <!-- reborde blanco -->
+  <g fill="#FFFFFF" stroke="#FFFFFF" stroke-width="16" stroke-linejoin="round">
+    <rect x="86" y="100" width="104" height="180" rx="18"/>
+    <rect x="210" y="100" width="104" height="180" rx="18"/>
+    <rect x="66" y="266" width="268" height="52" rx="20"/>
+  </g>
+  <!-- la isla compartida: mismo cruce, mismos clientes -->
+  <rect x="72" y="272" width="256" height="40" rx="16" fill="#C25E12"/>
+  <!-- surtidor A -->
+  <rect x="92" y="106" width="92" height="170" rx="14" fill="url(#g758)"/>
+  <rect x="108" y="124" width="60" height="44" rx="8" fill="#FFFFFF"/>
+  <text x="138" y="156" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#C25E12" text-anchor="middle">$</text>
+  <!-- surtidor B: el rival -->
+  <rect x="216" y="106" width="92" height="170" rx="14" fill="#C25E12"/>
+  <rect x="232" y="124" width="60" height="44" rx="8" fill="#FFFFFF"/>
+  <text x="262" y="156" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#C25E12" text-anchor="middle">$</text>
+  <!-- mangueras enfrentadas -->
+  <path d="M184 214 q16 -12 32 0" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" fill="none"/>
+  <path d="M184 214 q16 -12 32 0" stroke="#C25E12" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <circle cx="138" cy="228" r="12" fill="#FFFFFF"/>
+  <circle cx="262" cy="228" r="12" fill="#FFFFFF"/>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg288" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="100%" stop-color="#2d1b4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg288)"/>
+
+  <!-- Segment bubbles (market map) -->
+  <!-- Large segment C (value, bottom-left) -->
+  <circle cx="148" cy="260" r="88" fill="#f5c842" opacity="0.13" stroke="#f5c842" stroke-width="2"/>
+
+  <!-- Medium segment B (families, center) -->
+  <circle cx="200" cy="190" r="70" fill="#74b9ff" opacity="0.14" stroke="#74b9ff" stroke-width="2.5"/>
+
+  <!-- Small segment A (premium urban, top-right) — TARGET -->
+  <circle cx="268" cy="130" r="54" fill="#e040fb" opacity="0.22" stroke="#e040fb" stroke-width="3"/>
+
+  <!-- Target crosshair on Seg A -->
+  <circle cx="268" cy="130" r="30" fill="none" stroke="#e040fb" stroke-width="2" opacity="0.7"/>
+  <circle cx="268" cy="130" r="10" fill="#e040fb" opacity="0.8"/>
+  <line x1="268" y1="96" x2="268" y2="108" stroke="#e040fb" stroke-width="2.5" opacity="0.8"/>
+  <line x1="268" y1="152" x2="268" y2="164" stroke="#e040fb" stroke-width="2.5" opacity="0.8"/>
+  <line x1="234" y1="130" x2="246" y2="130" stroke="#e040fb" stroke-width="2.5" opacity="0.8"/>
+  <line x1="290" y1="130" x2="302" y2="130" stroke="#e040fb" stroke-width="2.5" opacity="0.8"/>
+
+  <!-- Pricing ladder (bottom) -->
+  <g transform="translate(36, 340)">
+    <rect x="0" y="0" width="60" height="24" rx="5" fill="#1a1200" stroke="#f5c842" stroke-width="1.5"/>
+    <rect x="4" y="4" width="30" height="16" rx="3" fill="#f5c842" opacity="0.7"/>
+
+    <rect x="70" y="0" width="76" height="24" rx="5" fill="#1a2744" stroke="#74b9ff" stroke-width="1.5"/>
+    <rect x="74" y="4" width="50" height="16" rx="3" fill="#74b9ff" opacity="0.7"/>
+
+    <rect x="156" y="0" width="100" height="24" rx="5" fill="#2a0840" stroke="#e040fb" stroke-width="2"/>
+    <rect x="160" y="4" width="92" height="16" rx="3" fill="#e040fb" opacity="0.75"/>
+
+    <!-- Arrow up = premium target -->
+    <g transform="translate(295, 0)">
+      <line x1="0" y1="24" x2="0" y2="0" stroke="#e040fb" stroke-width="3" stroke-linecap="round"/>
+      <polygon points="-6,6 0,-8 6,6" fill="#e040fb"/>
+    </g>
+  </g>
+</svg>

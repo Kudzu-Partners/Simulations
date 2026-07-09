@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg437" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#0e1a2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg437)"/>
+
+  <text x="200" y="58" text-anchor="middle" fill="#f5c842" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">ORG STRUCTURE · SPAN</text>
+
+  <!-- ORG CHART (hero) -->
+  <g>
+    <!-- CEO node -->
+    <rect x="170" y="100" width="60" height="32" rx="4" fill="#f5c842" stroke="#1a2744" stroke-width="2"/>
+    <text x="200" y="120" text-anchor="middle" fill="#1a2744" font-size="11" font-family="monospace" font-weight="bold">CEO</text>
+
+    <!-- Level 2: 3 VPs -->
+    <line x1="200" y1="132" x2="200" y2="148" stroke="#c0cfff" stroke-width="1.5"/>
+    <line x1="100" y1="148" x2="300" y2="148" stroke="#c0cfff" stroke-width="1.5"/>
+    <line x1="100" y1="148" x2="100" y2="166" stroke="#c0cfff" stroke-width="1.5"/>
+    <line x1="200" y1="148" x2="200" y2="166" stroke="#c0cfff" stroke-width="1.5"/>
+    <line x1="300" y1="148" x2="300" y2="166" stroke="#c0cfff" stroke-width="1.5"/>
+
+    <rect x="68" y="166" width="64" height="28" rx="4" fill="#52b788" fill-opacity="0.45" stroke="#52b788" stroke-width="1.5"/>
+    <text x="100" y="184" text-anchor="middle" fill="#fff" font-size="9" font-family="monospace" font-weight="bold">OPS</text>
+    <rect x="168" y="166" width="64" height="28" rx="4" fill="#c0cfff" fill-opacity="0.35" stroke="#c0cfff" stroke-width="1.5"/>
+    <text x="200" y="184" text-anchor="middle" fill="#fff" font-size="9" font-family="monospace" font-weight="bold">FIN</text>
+    <rect x="268" y="166" width="64" height="28" rx="4" fill="#ff6b9d" fill-opacity="0.45" stroke="#ff6b9d" stroke-width="1.5"/>
+    <text x="300" y="184" text-anchor="middle" fill="#fff" font-size="9" font-family="monospace" font-weight="bold">COM</text>
+
+    <!-- Level 3: managers (small) -->
+    <g>
+      <line x1="100" y1="194" x2="100" y2="210" stroke="#c0cfff" stroke-width="1.2" opacity="0.7"/>
+      <line x1="70" y1="210" x2="130" y2="210" stroke="#c0cfff" stroke-width="1.2" opacity="0.7"/>
+      <line x1="70" y1="210" x2="70" y2="222" stroke="#c0cfff" stroke-width="1.2" opacity="0.7"/>
+      <line x1="100" y1="210" x2="100" y2="222" stroke="#c0cfff" stroke-width="1.2" opacity="0.7"/>
+      <line x1="130" y1="210" x2="130" y2="222" stroke="#c0cfff" stroke-width="1.2" opacity="0.7"/>
+      <rect x="60" y="222" width="20" height="14" rx="2" fill="#52b788" fill-opacity="0.35" stroke="#52b788" stroke-width="1"/>
+      <rect x="90" y="222" width="20" height="14" rx="2" fill="#52b788" fill-opacity="0.35" stroke="#52b788" stroke-width="1"/>
+      <rect x="120" y="222" width="20" height="14" rx="2" fill="#52b788" fill-opacity="0.35" stroke="#52b788" stroke-width="1"/>
+    </g>
+    <g>
+      <line x1="200" y1="194" x2="200" y2="210" stroke="#c0cfff" stroke-width="1.2" opacity="0.7"/>
+      <line x1="180" y1="210" x2="220" y2="210" stroke="#c0cfff" stroke-width="1.2" opacity="0.7"/>
+      <line x1="180" y1="210" x2="180" y2="222" stroke="#c0cfff" stroke-width="1.2" opacity="0.7"/>
+      <line x1="220" y1="210" x2="220" y2="222" stroke="#c0cfff" stroke-width="1.2" opacity="0.7"/>
+      <rect x="170" y="222" width="20" height="14" rx="2" fill="#c0cfff" fill-opacity="0.3" stroke="#c0cfff" stroke-width="1"/>
+      <rect x="210" y="222" width="20" height="14" rx="2" fill="#c0cfff" fill-opacity="0.3" stroke="#c0cfff" stroke-width="1"/>
+    </g>
+    <g>
+      <line x1="300" y1="194" x2="300" y2="210" stroke="#c0cfff" stroke-width="1.2" opacity="0.7"/>
+      <line x1="270" y1="210" x2="330" y2="210" stroke="#c0cfff" stroke-width="1.2" opacity="0.7"/>
+      <line x1="270" y1="210" x2="270" y2="222" stroke="#c0cfff" stroke-width="1.2" opacity="0.7"/>
+      <line x1="300" y1="210" x2="300" y2="222" stroke="#c0cfff" stroke-width="1.2" opacity="0.7"/>
+      <line x1="330" y1="210" x2="330" y2="222" stroke="#c0cfff" stroke-width="1.2" opacity="0.7"/>
+      <rect x="260" y="222" width="20" height="14" rx="2" fill="#ff6b9d" fill-opacity="0.35" stroke="#ff6b9d" stroke-width="1"/>
+      <rect x="290" y="222" width="20" height="14" rx="2" fill="#ff6b9d" fill-opacity="0.35" stroke="#ff6b9d" stroke-width="1"/>
+      <rect x="320" y="222" width="20" height="14" rx="2" fill="#ff6b9d" fill-opacity="0.35" stroke="#ff6b9d" stroke-width="1"/>
+    </g>
+  </g>
+
+  <!-- SPAN OF CONTROL badge (left) -->
+  <g transform="translate(60,290)">
+    <rect x="0" y="0" width="70" height="28" rx="4" fill="#c0cfff" fill-opacity="0.15" stroke="#c0cfff" stroke-width="1.3"/>
+    <text x="35" y="14" text-anchor="middle" fill="#c0cfff" font-size="9" font-family="monospace" font-weight="bold">SPAN 5:1</text>
+    <text x="35" y="23" text-anchor="middle" fill="#c0cfff" font-size="5" font-family="monospace" opacity="0.85">control</text>
+  </g>
+
+  <!-- CLIENT LOSS warning (right) -->
+  <g transform="translate(270,290)">
+    <rect x="0" y="0" width="70" height="28" rx="4" fill="#ff6b6b" fill-opacity="0.18" stroke="#ff6b6b" stroke-width="1.3"/>
+    <text x="35" y="14" text-anchor="middle" fill="#ff6b6b" font-size="9" font-family="monospace" font-weight="bold">CLIENT ↓</text>
+    <text x="35" y="23" text-anchor="middle" fill="#ff6b6b" font-size="5" font-family="monospace" opacity="0.85">lost</text>
+  </g>
+
+  <!-- HONDURAS pin -->
+  <g transform="translate(345,340)">
+    <path d="M 0 0 C -7 0 -12 5 -12 12 C -12 22 0 36 0 36 C 0 36 12 22 12 12 C 12 5 7 0 0 0 Z"
+          fill="#1a4480" fill-opacity="0.3" stroke="#c0cfff" stroke-width="1.3"/>
+    <circle cx="-3" cy="13" r="1.5" fill="#1a4480"/>
+    <circle cx="0" cy="13" r="1.5" fill="#1a4480"/>
+    <circle cx="3" cy="13" r="1.5" fill="#1a4480"/>
+  </g>
+
+  <text x="200" y="378" text-anchor="middle" fill="#c0cfff" font-size="10" font-family="monospace" opacity="0.42" letter-spacing="1.2">Organigrama · Distribución · HN</text>
+</svg>

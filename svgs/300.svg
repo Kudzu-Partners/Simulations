@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg300" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg300)"/>
+
+  <!-- Old/traditional side (left, crumbling) -->
+  <g transform="translate(52, 110)" opacity="0.6">
+    <!-- Factory building -->
+    <rect x="0" y="60" width="100" height="100" rx="4" fill="#3a3a3a" stroke="#555" stroke-width="2"/>
+    <rect x="14" y="30" width="18" height="50" rx="2" fill="#444" stroke="#555" stroke-width="1.5"/>
+    <rect x="48" y="14" width="18" height="66" rx="2" fill="#444" stroke="#555" stroke-width="1.5"/>
+    <!-- Smoke -->
+    <ellipse cx="23" cy="24" rx="10" ry="7" fill="#666" opacity="0.7"/>
+    <ellipse cx="57" cy="6" rx="11" ry="8" fill="#666" opacity="0.6"/>
+    <!-- Cracks -->
+    <path d="M 30 80 L 38 95 L 32 100 L 42 120" stroke="#e74c3c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M 70 70 L 78 85 L 72 88" stroke="#e74c3c" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Transform arrow -->
+  <g transform="translate(172, 188)">
+    <line x1="0" y1="0" x2="48" y2="0" stroke="#f5c842" stroke-width="5" stroke-linecap="round"/>
+    <polygon points="40,-9 58,0 40,9" fill="#f5c842"/>
+  </g>
+
+  <!-- Digital side (right, circuit/grid) -->
+  <g transform="translate(240, 100)">
+    <!-- Digital block -->
+    <rect x="0" y="0" width="110" height="120" rx="10" fill="#0a1f10" stroke="#00ff88" stroke-width="2.5"/>
+    <!-- Circuit lines -->
+    <line x1="16" y1="30" x2="94" y2="30" stroke="#00ff88" stroke-width="1.5" opacity="0.6"/>
+    <line x1="16" y1="60" x2="94" y2="60" stroke="#00ff88" stroke-width="1.5" opacity="0.6"/>
+    <line x1="16" y1="90" x2="94" y2="90" stroke="#00ff88" stroke-width="1.5" opacity="0.6"/>
+    <line x1="30" y1="16" x2="30" y2="104" stroke="#00ff88" stroke-width="1.5" opacity="0.6"/>
+    <line x1="55" y1="16" x2="55" y2="104" stroke="#00ff88" stroke-width="1.5" opacity="0.6"/>
+    <line x1="80" y1="16" x2="80" y2="104" stroke="#00ff88" stroke-width="1.5" opacity="0.6"/>
+    <!-- Node dots -->
+    <circle cx="30" cy="30" r="5" fill="#00ff88"/>
+    <circle cx="55" cy="60" r="5" fill="#00ff88"/>
+    <circle cx="80" cy="90" r="5" fill="#00ff88"/>
+    <circle cx="80" cy="30" r="5" fill="#f5c842"/>
+    <circle cx="30" cy="90" r="5" fill="#74b9ff"/>
+  </g>
+
+  <!-- S-curve disruption line -->
+  <path d="M 60 310 Q 140 290 200 260 Q 260 220 310 160"
+        stroke="#f5c842" stroke-width="3" fill="none" stroke-dasharray="7,4" opacity="0.6"/>
+
+  <!-- Kotter steps (simple dots) -->
+  <g transform="translate(36, 348)">
+    <circle cx="20" cy="12" r="10" fill="#74b9ff" opacity="0.7"/>
+    <circle cx="52" cy="12" r="10" fill="#74b9ff" opacity="0.6"/>
+    <circle cx="84" cy="12" r="10" fill="#f5c842" opacity="0.7"/>
+    <circle cx="116" cy="12" r="10" fill="#f5c842" opacity="0.6"/>
+    <circle cx="148" cy="12" r="10" fill="#00ff88" opacity="0.7"/>
+    <circle cx="180" cy="12" r="10" fill="#00ff88" opacity="0.6"/>
+    <circle cx="212" cy="12" r="10" fill="#00ff88" opacity="0.8"/>
+    <circle cx="244" cy="12" r="10" fill="#00ff88" opacity="0.9"/>
+    <line x1="30" y1="12" x2="42" y2="12" stroke="#8899aa" stroke-width="2" opacity="0.5"/>
+    <line x1="62" y1="12" x2="74" y2="12" stroke="#8899aa" stroke-width="2" opacity="0.5"/>
+    <line x1="94" y1="12" x2="106" y2="12" stroke="#8899aa" stroke-width="2" opacity="0.5"/>
+    <line x1="126" y1="12" x2="138" y2="12" stroke="#8899aa" stroke-width="2" opacity="0.5"/>
+    <line x1="158" y1="12" x2="170" y2="12" stroke="#8899aa" stroke-width="2" opacity="0.5"/>
+    <line x1="190" y1="12" x2="202" y2="12" stroke="#8899aa" stroke-width="2" opacity="0.5"/>
+    <line x1="222" y1="12" x2="234" y2="12" stroke="#8899aa" stroke-width="2" opacity="0.5"/>
+  </g>
+</svg>

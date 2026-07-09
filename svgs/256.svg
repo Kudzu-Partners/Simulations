@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg256" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+    <clipPath id="lensclip256">
+      <circle cx="235" cy="210" r="78"/>
+    </clipPath>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg256)"/>
+
+  <!-- Table A (top left) -->
+  <rect x="42" y="62" width="145" height="120" rx="6" fill="#0a1218" stroke="#00bfff" stroke-width="2"/>
+  <rect x="42" y="62" width="145" height="22"  rx="6" fill="#00bfff" opacity="0.25"/>
+  <text x="114" y="78" font-family="monospace" font-size="8.5" fill="#00bfff" text-anchor="middle" font-weight="bold">orders</text>
+  <line x1="42" y1="84" x2="187" y2="84" stroke="#00bfff" stroke-width="0.8" opacity="0.3"/>
+  <text x="52" y="99"  font-family="monospace" font-size="7.5" fill="#a0aec0" opacity="0.7">order_id  INT</text>
+  <text x="52" y="113" font-family="monospace" font-size="7.5" fill="#a0aec0" opacity="0.7">user_id   INT  ←</text>
+  <text x="52" y="127" font-family="monospace" font-size="7.5" fill="#a0aec0" opacity="0.7">amount    DEC</text>
+  <text x="52" y="141" font-family="monospace" font-size="7.5" fill="#a0aec0" opacity="0.7">status    TEXT</text>
+  <text x="52" y="155" font-family="monospace" font-size="7.5" fill="#a0aec0" opacity="0.7">created   DATE</text>
+  <text x="52" y="172" font-family="monospace" font-size="7.5" fill="#f5c842" opacity="0.7">🔑 order_id PK</text>
+
+  <!-- Table B (bottom left) -->
+  <rect x="42" y="212" width="145" height="120" rx="6" fill="#0a1218" stroke="#52b788" stroke-width="2"/>
+  <rect x="42" y="212" width="145" height="22"  rx="6" fill="#52b788" opacity="0.22"/>
+  <text x="114" y="228" font-family="monospace" font-size="8.5" fill="#52b788" text-anchor="middle" font-weight="bold">users</text>
+  <line x1="42" y1="234" x2="187" y2="234" stroke="#52b788" stroke-width="0.8" opacity="0.3"/>
+  <text x="52" y="249" font-family="monospace" font-size="7.5" fill="#a0aec0" opacity="0.7">user_id   INT  ←</text>
+  <text x="52" y="263" font-family="monospace" font-size="7.5" fill="#a0aec0" opacity="0.7">name      TEXT</text>
+  <text x="52" y="277" font-family="monospace" font-size="7.5" fill="#a0aec0" opacity="0.7">segment   TEXT</text>
+  <text x="52" y="291" font-family="monospace" font-size="7.5" fill="#a0aec0" opacity="0.7">country   TEXT</text>
+  <text x="52" y="305" font-family="monospace" font-size="7.5" fill="#a0aec0" opacity="0.7">joined    DATE</text>
+  <text x="52" y="322" font-family="monospace" font-size="7.5" fill="#f5c842" opacity="0.7">🔑 user_id  PK</text>
+
+  <!-- JOIN connector between tables -->
+  <path d="M 187,153 Q 210,153 210,272 L 187,272" fill="none" stroke="#f5c842" stroke-width="2" opacity="0.7"/>
+  <circle cx="197" cy="213" r="8" fill="#f5c842" opacity="0.2"/>
+  <circle cx="197" cy="213" r="8" fill="none" stroke="#f5c842" stroke-width="1.8"/>
+  <text x="197" y="218" font-family="monospace" font-size="7" fill="#f5c842" text-anchor="middle" font-weight="bold">⋈</text>
+  <text x="218" y="217" font-family="monospace" font-size="7.5" fill="#f5c842" opacity="0.7">JOIN</text>
+
+  <!-- Magnifying glass (overlapping right side) -->
+  <circle cx="235" cy="210" r="78" fill="#0d1826" opacity="0.88"/>
+  <circle cx="235" cy="210" r="78" fill="none" stroke="#f5c842" stroke-width="3.5" opacity="0.92"/>
+
+  <!-- Inside lens: SQL query text -->
+  <g clip-path="url(#lensclip256)">
+    <text x="165" y="165" font-family="monospace" font-size="9"   fill="#00ff88" opacity="0.9">SELECT</text>
+    <text x="175" y="181" font-family="monospace" font-size="9"   fill="#a0aec0" opacity="0.8">  u.segment,</text>
+    <text x="175" y="197" font-family="monospace" font-size="9"   fill="#a0aec0" opacity="0.8">  SUM(o.amount)</text>
+    <text x="175" y="213" font-family="monospace" font-size="9"   fill="#a0aec0" opacity="0.8">  AS revenue,</text>
+    <text x="165" y="229" font-family="monospace" font-size="9"   fill="#00ff88" opacity="0.9">FROM</text>
+    <text x="175" y="245" font-family="monospace" font-size="9"   fill="#f5c842" opacity="0.9">  orders o</text>
+    <text x="165" y="261" font-family="monospace" font-size="9"   fill="#00ff88" opacity="0.9">JOIN</text>
+    <text x="175" y="277" font-family="monospace" font-size="9"   fill="#f5c842" opacity="0.9">  users u</text>
+  </g>
+
+  <!-- Handle -->
+  <line x1="297" y1="272" x2="352" y2="332" stroke="#f5c842" stroke-width="11" stroke-linecap="round" opacity="0.88"/>
+  <line x1="297" y1="272" x2="352" y2="332" stroke="#cc8800" stroke-width="5"  stroke-linecap="round" opacity="0.45"/>
+
+  <!-- Label -->
+  <text x="200" y="370" font-family="monospace" font-size="9" fill="#a0aec0" text-anchor="middle" opacity="0.42">JOINs · CTEs · Window Functions · 6 Mysteries</text>
+</svg>

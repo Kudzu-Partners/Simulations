@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg152" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1b5e20"/>
+      <stop offset="100%" stop-color="#2d6a4f"/>
+    </linearGradient>
+    <radialGradient id="soilGlow152" cx="50%" cy="70%" r="40%">
+      <stop offset="0%" stop-color="#52b788" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#52b788" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg152)"/>
+  <circle cx="200" cy="280" r="120" fill="url(#soilGlow152)"/>
+
+  <!-- Three large regenerative cycle arrows -->
+  <!-- Arrow 1: top arc (left-to-right, top) -->
+  <path d="M 128 160 A 90 90 0 0 1 272 160" fill="none" stroke="#52b788" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
+  <polygon points="272,160 258,148 262,166" fill="#52b788" opacity="0.85"/>
+
+  <!-- Arrow 2: right arc (top-right to bottom-right) -->
+  <path d="M 285 175 A 90 90 0 0 1 230 295" fill="none" stroke="#d8f3dc" stroke-width="6" stroke-linecap="round" opacity="0.75"/>
+  <polygon points="230,295 244,282 226,278" fill="#d8f3dc" opacity="0.75"/>
+
+  <!-- Arrow 3: left arc (bottom-left to top-left) -->
+  <path d="M 170 295 A 90 90 0 0 1 115 175" fill="none" stroke="#52b788" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+  <polygon points="115,175 128,188 112,192" fill="#52b788" opacity="0.7"/>
+
+  <!-- Central plant growing from the cycle -->
+  <!-- Stem -->
+  <line x1="200" y1="270" x2="200" y2="185" stroke="#52b788" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+  <!-- Roots -->
+  <path d="M 200 270 Q 180 282 165 278" fill="none" stroke="#52b788" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+  <path d="M 200 270 Q 220 282 235 278" fill="none" stroke="#52b788" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+  <path d="M 190 275 Q 178 290 170 288" fill="none" stroke="#52b788" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+  <path d="M 210 275 Q 222 290 230 288" fill="none" stroke="#52b788" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Left leaf -->
+  <path d="M 200 238 Q 168 228 158 208 Q 172 212 200 230" fill="#52b788" opacity="0.8"/>
+  <path d="M 200 238 Q 168 228 158 208" fill="none" stroke="#d8f3dc" stroke-width="1" opacity="0.5"/>
+  <!-- Leaf vein -->
+  <line x1="200" y1="238" x2="172" y2="216" stroke="#d8f3dc" stroke-width="1" opacity="0.5"/>
+
+  <!-- Right leaf -->
+  <path d="M 200 218 Q 232 208 242 188 Q 228 192 200 210" fill="#52b788" opacity="0.8"/>
+  <path d="M 200 218 Q 232 208 242 188" fill="none" stroke="#d8f3dc" stroke-width="1" opacity="0.5"/>
+  <line x1="200" y1="218" x2="228" y2="196" stroke="#d8f3dc" stroke-width="1" opacity="0.5"/>
+
+  <!-- Coffee berry at top -->
+  <circle cx="200" cy="183" r="10" fill="#d8f3dc" opacity="0.85"/>
+  <circle cx="200" cy="183" r="6" fill="#52b788" opacity="0.9"/>
+
+  <!-- Farmer silhouette (small, left) -->
+  <circle cx="82" cy="310" r="8" fill="#d8f3dc" opacity="0.4"/>
+  <line x1="82" y1="318" x2="82" y2="338" stroke="#d8f3dc" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+  <line x1="82" y1="324" x2="72" y2="334" stroke="#d8f3dc" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <line x1="82" y1="324" x2="92" y2="334" stroke="#d8f3dc" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- 2400 label -->
+  <text x="200" y="362" font-family="Arial,sans-serif" font-size="9" fill="#d8f3dc" text-anchor="middle" opacity="0.5">2,400 smallholder farmers</text>
+</svg>

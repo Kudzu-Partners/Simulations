@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg032" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#2d2d4a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg032)"/>
+
+  <!-- Road from bottom going up to decision point -->
+  <polygon points="168,360 232,360 218,220 182,220" fill="#c0cfff" fill-opacity="0.12" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.35"/>
+  <!-- Center line on road -->
+  <line x1="200" y1="355" x2="200" y2="225" stroke="#c0cfff" stroke-width="1.5" stroke-dasharray="12,10" stroke-opacity="0.25"/>
+
+  <!-- Decision point circle -->
+  <circle cx="200" cy="208" r="22" fill="#1a1a2e" stroke="#f5c842" stroke-width="3"/>
+  <text x="200" y="214" font-family="Arial Black, sans-serif" font-size="16" font-weight="900" fill="#f5c842" text-anchor="middle">!</text>
+
+  <!-- Left fork: Ethical path (gold) -->
+  <polygon points="182,220 200,208 80,118 66,138" fill="#f5c842" fill-opacity="0.15" stroke="#f5c842" stroke-width="2" stroke-opacity="0.65"/>
+  <!-- Left fork center line -->
+  <line x1="196" y1="214" x2="76" y2="130" stroke="#f5c842" stroke-width="1.5" stroke-dasharray="10,8" stroke-opacity="0.40"/>
+  <!-- Left fork end: checkmark in circle -->
+  <circle cx="68" cy="102" r="26" fill="#1a1a2e" stroke="#f5c842" stroke-width="2.5"/>
+  <polyline points="56,102 65,112 82,92" fill="none" stroke="#f5c842" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.90"/>
+
+  <!-- Right fork: Corrupt path (red) -->
+  <polygon points="218,220 200,208 320,118 334,138" fill="#e74c3c" fill-opacity="0.12" stroke="#e74c3c" stroke-width="2" stroke-opacity="0.55"/>
+  <!-- Right fork center line -->
+  <line x1="204" y1="214" x2="324" y2="130" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="10,8" stroke-opacity="0.35"/>
+  <!-- Right fork end: X in circle -->
+  <circle cx="332" cy="102" r="26" fill="#1a1a2e" stroke="#e74c3c" stroke-width="2.5"/>
+  <line x1="320" y1="90" x2="344" y2="114" stroke="#e74c3c" stroke-width="3" stroke-linecap="round" stroke-opacity="0.90"/>
+  <line x1="344" y1="90" x2="320" y2="114" stroke="#e74c3c" stroke-width="3" stroke-linecap="round" stroke-opacity="0.90"/>
+
+  <!-- Path labels — placed in clear zones below each fork end -->
+  <text x="68"  y="148" font-family="Arial, sans-serif" font-size="10" fill="#f5c842" text-anchor="middle" opacity="0.70">Ethical</text>
+  <text x="332" y="148" font-family="Arial, sans-serif" font-size="10" fill="#e74c3c" text-anchor="middle" opacity="0.70">Corrupt</text>
+
+  <!-- 6 dilemma dots on the road (escalating) -->
+  <g fill="#c0cfff" fill-opacity="0.35">
+    <circle cx="200" cy="340" r="4"/>
+    <circle cx="200" cy="318" r="4"/>
+    <circle cx="200" cy="296" r="5"/>
+    <circle cx="200" cy="272" r="5"/>
+    <circle cx="200" cy="248" r="6"/>
+    <circle cx="200" cy="224" r="6"/>
+  </g>
+</svg>

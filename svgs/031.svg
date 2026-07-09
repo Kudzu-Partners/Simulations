@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg031" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2d1a4e"/>
+      <stop offset="100%" stop-color="#4a2a7a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg031)"/>
+
+  <!-- Development arc connecting all steps (drawn first, behind everything) -->
+  <path d="M 80,295 Q 175,200 320,115"
+        fill="none" stroke="#c0cfff" stroke-width="2" stroke-dasharray="6,5" stroke-opacity="0.40"/>
+
+  <!-- Step 1: Hire (bottom-left) -->
+  <rect x="55" y="280" width="70" height="12" rx="3" fill="#c0cfff" fill-opacity="0.25" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.55"/>
+  <circle cx="90" cy="258" r="18" fill="#2d1a4e" stroke="#c0cfff" stroke-width="2.2"/>
+  <circle cx="90" cy="252" r="7"  fill="#c0cfff" fill-opacity="0.70"/>
+  <rect   x="82" y="260" width="16" height="10" rx="3" fill="#c0cfff" fill-opacity="0.55"/>
+
+  <!-- Step 2: Develop -->
+  <rect x="125" y="238" width="70" height="12" rx="3" fill="#c0cfff" fill-opacity="0.30" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.60"/>
+  <circle cx="160" cy="215" r="18" fill="#2d1a4e" stroke="#c0cfff" stroke-width="2.2"/>
+  <circle cx="160" cy="209" r="7"  fill="#c0cfff" fill-opacity="0.75"/>
+  <rect   x="152" y="217" width="16" height="10" rx="3" fill="#c0cfff" fill-opacity="0.60"/>
+
+  <!-- Step 3: Retain (riser from step 2) -->
+  <rect x="195" y="196" width="70" height="12" rx="3" fill="#f5c842" fill-opacity="0.30" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.65"/>
+  <circle cx="230" cy="172" r="20" fill="#2d1a4e" stroke="#f5c842" stroke-width="2.5"/>
+  <circle cx="230" cy="165" r="8"  fill="#f5c842" fill-opacity="0.80"/>
+  <rect   x="222" y="174" width="16" height="11" rx="3" fill="#f5c842" fill-opacity="0.65"/>
+
+  <!-- Step 4: Lead (top-right, largest, brightest) -->
+  <rect x="265" y="154" width="80" height="14" rx="3" fill="#f5c842" fill-opacity="0.55" stroke="#f5c842" stroke-width="2" stroke-opacity="0.85"/>
+  <circle cx="305" cy="126" r="24" fill="#2d1a4e" stroke="#f5c842" stroke-width="3"/>
+  <circle cx="305" cy="118" r="10" fill="#f5c842" fill-opacity="0.90"/>
+  <rect   x="296" y="127" width="18" height="12" rx="3" fill="#f5c842" fill-opacity="0.75"/>
+  <!-- Leadership star accent -->
+  <polygon points="305,100 308,110 318,110 310,116 313,126 305,120 297,126 300,116 292,110 302,110"
+           fill="#f5c842" fill-opacity="0.55" stroke="#f5c842" stroke-width="0.5"/>
+
+  <!-- Step risers (vertical connectors between steps) -->
+  <line x1="125" y1="280" x2="125" y2="250" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.40"/>
+  <line x1="195" y1="238" x2="195" y2="208" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.40"/>
+  <line x1="265" y1="196" x2="265" y2="168" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.50"/>
+
+  <!-- Step labels (below each step platform, not overlapping) -->
+  <g font-family="Arial, sans-serif" font-size="9" text-anchor="middle" opacity="0.55">
+    <text x="90"  y="308" fill="#c0cfff">Hire</text>
+    <text x="160" y="266" fill="#c0cfff">Develop</text>
+    <text x="230" y="224" fill="#f5c842">Retain</text>
+    <text x="305" y="184" fill="#f5c842">Lead</text>
+  </g>
+</svg>

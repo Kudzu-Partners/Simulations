@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg048" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1a0a"/>
+      <stop offset="100%" stop-color="#1a2d1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg048)"/>
+
+  <!-- Dumbbell bar (horizontal center beam) -->
+  <rect x="118" y="194" width="164" height="12" rx="6"
+        fill="#c0cfff" fill-opacity="0.35" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.50"/>
+
+  <!-- LEFT weight: Social Outcomes (green, larger — slightly heavier) -->
+  <!-- Outer ring -->
+  <circle cx="95" cy="200" r="72" fill="#52b788" fill-opacity="0.10" stroke="#52b788" stroke-width="2" stroke-opacity="0.50"/>
+  <!-- Weight plate -->
+  <circle cx="95" cy="200" r="52" fill="#52b788" fill-opacity="0.20" stroke="#52b788" stroke-width="2.5"/>
+  <circle cx="95" cy="200" r="32" fill="#52b788" fill-opacity="0.40" stroke="#52b788" stroke-width="2"/>
+  <!-- Center hub -->
+  <circle cx="95" cy="200" r="12" fill="#52b788" fill-opacity="0.80"/>
+  <!-- Social icons inside outer ring (4 sectors) -->
+  <!-- Health: top -->
+  <line x1="95" y1="155" x2="95" y2="145" stroke="#52b788" stroke-width="2" stroke-opacity="0.55"/>
+  <line x1="88"  y1="150" x2="102" y2="150" stroke="#52b788" stroke-width="2" stroke-opacity="0.55"/>
+  <!-- Education: right -->
+  <rect x="128" y="196" width="8" height="8" rx="1" fill="#52b788" fill-opacity="0.55"/>
+  <!-- Agriculture: bottom -->
+  <path d="M 95,242 Q 88,234 95,228 Q 102,234 95,242" fill="#52b788" fill-opacity="0.55"/>
+  <!-- Energy: left -->
+  <polygon points="60,198 68,194 65,200 73,196 65,207" fill="#52b788" fill-opacity="0.55"/>
+
+  <!-- RIGHT weight: Financial Returns (gold, slightly smaller) -->
+  <circle cx="305" cy="200" r="62" fill="#f5c842" fill-opacity="0.10" stroke="#f5c842" stroke-width="2" stroke-opacity="0.45"/>
+  <circle cx="305" cy="200" r="44" fill="#f5c842" fill-opacity="0.18" stroke="#f5c842" stroke-width="2.5"/>
+  <circle cx="305" cy="200" r="26" fill="#f5c842" fill-opacity="0.38" stroke="#f5c842" stroke-width="2"/>
+  <circle cx="305" cy="200" r="10" fill="#f5c842" fill-opacity="0.80"/>
+  <!-- IRR/return indicator (bar chart inside outer ring) -->
+  <g fill="#f5c842" fill-opacity="0.55">
+    <rect x="282" y="172" width="7" height="22" rx="1"/>
+    <rect x="292" y="165" width="7" height="29" rx="1"/>
+    <rect x="302" y="158" width="7" height="36" rx="1"/>
+    <rect x="312" y="162" width="7" height="32" rx="1"/>
+  </g>
+
+  <!-- Labels (below each weight, clear zones) -->
+  <text x="95"  y="292" font-family="Arial, sans-serif" font-size="10" fill="#52b788" text-anchor="middle" opacity="0.75">Social Outcomes</text>
+  <text x="305" y="284" font-family="Arial, sans-serif" font-size="10" fill="#f5c842" text-anchor="middle" opacity="0.75">Financial Returns</text>
+
+  <!-- $50M fund label (top center) -->
+  <text x="200" y="88" font-family="Arial Black, sans-serif" font-size="14" font-weight="900" fill="#c0cfff" text-anchor="middle" opacity="0.55">$50M Impact Fund</text>
+
+  <!-- Sector dots below the bar -->
+  <g font-family="Arial, sans-serif" font-size="8" text-anchor="middle" opacity="0.45">
+    <circle cx="148" cy="345" r="5" fill="#52b788" fill-opacity="0.70"/>
+    <text x="148" y="358" fill="#52b788">Energy</text>
+    <circle cx="188" cy="345" r="5" fill="#52b788" fill-opacity="0.60"/>
+    <text x="188" y="358" fill="#52b788">Health</text>
+    <circle cx="228" cy="345" r="5" fill="#52b788" fill-opacity="0.60"/>
+    <text x="228" y="358" fill="#52b788">Educ.</text>
+    <circle cx="268" cy="345" r="5" fill="#52b788" fill-opacity="0.55"/>
+    <text x="268" y="358" fill="#52b788">Agri.</text>
+  </g>
+</svg>

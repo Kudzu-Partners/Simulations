@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg134" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a2342"/>
+      <stop offset="100%" stop-color="#1a3a5c"/>
+    </linearGradient>
+    <radialGradient id="humanGlow134" cx="50%" cy="50%" r="20%">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#e74c3c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="leftDiamond134" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#74b9ff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#74b9ff" stop-opacity="0.28"/>
+    </linearGradient>
+    <linearGradient id="rightDiamond134" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#e74c3c" stop-opacity="0.06"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg134)"/>
+  <rect width="400" height="400" rx="32" fill="url(#humanGlow134)"/>
+
+  <!-- Heartbeat line in background (healthcare context) -->
+  <polyline points="42,200 80,200 95,168 108,235 120,185 133,215 148,200 358,200"
+            stroke="#e74c3c" stroke-width="1.5" fill="none" opacity="0.18"/>
+
+  <!-- ── Double Diamond ── -->
+  <!-- Left diamond: Problem space (Empathize → Define) -->
+  <polygon points="55,200 145,110 200,200 145,290"
+           fill="url(#leftDiamond134)" stroke="#74b9ff" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Right diamond: Solution space (Ideate → Prototype → Test) -->
+  <polygon points="200,200 255,110 345,200 255,290"
+           fill="url(#rightDiamond134)" stroke="#74b9ff" stroke-width="2" stroke-linejoin="round" opacity="0.85"/>
+
+  <!-- Diamond stage dots on top path -->
+  <!-- Stage 1: Empathize (left tip) -->
+  <circle cx="55"  cy="200" r="7" fill="#0a2342" stroke="#74b9ff" stroke-width="2.5"/>
+  <circle cx="55"  cy="200" r="3" fill="#74b9ff"/>
+  <!-- Stage 2: Define (center-left peak) -->
+  <circle cx="145" cy="110" r="7" fill="#0a2342" stroke="#74b9ff" stroke-width="2.5"/>
+  <circle cx="145" cy="110" r="3" fill="#74b9ff"/>
+  <!-- Stage 3: Ideate (center = midpoint vertex) -->
+  <!-- center vertex already = human figure below -->
+  <!-- Stage 4: Prototype (right peak) -->
+  <circle cx="255" cy="110" r="7" fill="#0a2342" stroke="#74b9ff" stroke-width="2.5"/>
+  <circle cx="255" cy="110" r="3" fill="#74b9ff"/>
+  <!-- Stage 5: Test (right tip) -->
+  <circle cx="345" cy="200" r="7" fill="#0a2342" stroke="#74b9ff" stroke-width="2.5"/>
+  <circle cx="345" cy="200" r="3" fill="#74b9ff"/>
+
+  <!-- Stage labels -->
+  <text x="40"  y="225" text-anchor="middle" font-family="'Courier New',monospace" font-size="8.5" fill="#74b9ff" opacity="0.7">EMPATHIZE</text>
+  <text x="145" y="96"  text-anchor="middle" font-family="'Courier New',monospace" font-size="8.5" fill="#74b9ff" opacity="0.7">DEFINE</text>
+  <text x="200" y="225" text-anchor="middle" font-family="'Courier New',monospace" font-size="8.5" fill="#e74c3c" opacity="0.85">IDEATE</text>
+  <text x="255" y="96"  text-anchor="middle" font-family="'Courier New',monospace" font-size="8.5" fill="#74b9ff" opacity="0.7">PROTOTYPE</text>
+  <text x="358" y="225" text-anchor="middle" font-family="'Courier New',monospace" font-size="8.5" fill="#74b9ff" opacity="0.7">TEST</text>
+
+  <!-- ── Human figure at center vertex (the "human-centered" pivot) ── -->
+  <circle cx="200" cy="200" r="22" fill="url(#humanGlow134)"/>
+  <!-- Head -->
+  <circle cx="200" cy="185" r="9" fill="#0a2342" stroke="#e74c3c" stroke-width="2.5"/>
+  <!-- Body -->
+  <path d="M192 194 Q192 215 188 228" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M208 194 Q208 215 212 228" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M192 194 L200 208 L208 194" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Arms -->
+  <path d="M192 200 L178 210" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M208 200 L222 210" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+  <!-- Heart on chest -->
+  <path d="M197 200 Q196 197 200 200 Q204 197 203 200 Q202 204 200 206 Q198 204 197 200 Z"
+        fill="#e74c3c" opacity="0.85"/>
+
+  <!-- Bottom label -->
+  <text x="200" y="375" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#74b9ff" opacity="0.5" letter-spacing="2">HUMAN-CENTERED</text>
+</svg>

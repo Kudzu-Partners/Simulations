@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg269" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg269)"/>
+
+  <!-- Baseline -->
+  <line x1="52" y1="295" x2="348" y2="295" stroke="#a0aec0" stroke-width="1.5" opacity="0.35"/>
+  <line x1="52" y1="75"  x2="52"  y2="295" stroke="#a0aec0" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- Distribution 1: Normal (blue, tall bell) -->
+  <path d="M 52,293 C 80,292 110,285 135,255 C 155,230 168,195 178,170 C 183,155 188,135 193,125
+           C 198,115 202,115 207,125 C 212,135 217,155 222,170 C 232,195 245,230 265,255
+           C 290,285 320,292 348,293"
+        fill="#00bfff" opacity="0.12" stroke="#00bfff" stroke-width="2.2" opacity="0.85"/>
+  <text x="200" y="108" font-family="monospace" font-size="8.5" fill="#00bfff" text-anchor="middle" opacity="0.8">Normal</text>
+
+  <!-- Distribution 2: Poisson (green, discrete-looking spikes) -->
+  <rect x="68"  y="235" width="12" height="60"  rx="2" fill="#00ff88" opacity="0.6"/>
+  <rect x="88"  y="200" width="12" height="95"  rx="2" fill="#00ff88" opacity="0.65"/>
+  <rect x="108" y="215" width="12" height="80"  rx="2" fill="#00ff88" opacity="0.65"/>
+  <rect x="128" y="242" width="12" height="53"  rx="2" fill="#00ff88" opacity="0.6"/>
+  <rect x="148" y="262" width="12" height="33"  rx="2" fill="#00ff88" opacity="0.5"/>
+  <rect x="168" y="278" width="12" height="17"  rx="2" fill="#00ff88" opacity="0.4"/>
+  <rect x="188" y="287" width="12" height="8"   rx="2" fill="#00ff88" opacity="0.3"/>
+  <text x="110" y="188" font-family="monospace" font-size="8.5" fill="#00ff88" text-anchor="middle" opacity="0.75">Poisson</text>
+
+  <!-- Distribution 3: Exponential (orange, fast decay) -->
+  <path d="M 210,170 C 220,175 230,185 245,205 C 260,225 280,255 305,275 C 320,285 340,292 350,293"
+        fill="#e67e22" opacity="0.12" stroke="#e67e22" stroke-width="2" opacity="0.8"/>
+  <text x="290" y="168" font-family="monospace" font-size="8.5" fill="#e67e22" text-anchor="middle" opacity="0.75">Exponential</text>
+  <line x1="210" y1="170" x2="210" y2="295" stroke="#e67e22" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.4"/>
+
+  <!-- Distribution 4: Log-normal (purple, right-skewed) -->
+  <path d="M 52,293 C 70,292 90,285 115,268 C 135,252 148,235 162,222
+           C 172,212 178,205 182,208 C 188,213 195,225 210,250 C 230,272 265,288 348,293"
+        fill="#7b2fff" opacity="0.1" stroke="#c0aaff" stroke-width="1.8" stroke-dasharray="6,3" opacity="0.7"/>
+  <text x="135" y="215" font-family="monospace" font-size="8.5" fill="#c0aaff" text-anchor="middle" opacity="0.7">Log-normal</text>
+
+  <!-- Misspecification alert badge (top right) -->
+  <rect x="255" y="58" width="90" height="48" rx="7" fill="#ff4444" opacity="0.15"/>
+  <rect x="255" y="58" width="90" height="48" rx="7" fill="none" stroke="#ff4444" stroke-width="2"/>
+  <text x="300" y="77"  font-family="monospace" font-size="8"   fill="#ff4444" text-anchor="middle" font-weight="bold">MISSPEC!</text>
+  <text x="300" y="91"  font-family="monospace" font-size="7.5" fill="#ff9999" text-anchor="middle" opacity="0.8">Wrong dist.</text>
+  <text x="300" y="102" font-family="monospace" font-size="7"   fill="#ff9999" text-anchor="middle" opacity="0.7">= model risk</text>
+
+  <!-- Exposure label -->
+  <rect x="52" y="315" width="175" height="28" rx="6" fill="#ff4444" opacity="0.12"/>
+  <rect x="52" y="315" width="175" height="28" rx="6" fill="none" stroke="#ff4444" stroke-width="1.5"/>
+  <text x="139" y="334" font-family="monospace" font-size="8.5" fill="#ff4444" text-anchor="middle">COP 22,120M exposure</text>
+
+  <!-- SFC badge -->
+  <rect x="240" y="315" width="108" height="28" rx="6" fill="#f5c842" opacity="0.15"/>
+  <rect x="240" y="315" width="108" height="28" rx="6" fill="none" stroke="#f5c842" stroke-width="1.5"/>
+  <text x="294" y="334" font-family="monospace" font-size="8.5" fill="#f5c842" text-anchor="middle">SFC · 60-day deadline</text>
+
+  <text x="200" y="375" font-family="monospace" font-size="9" fill="#a0aec0" text-anchor="middle" opacity="0.42">Distribution Misspecification · 6 Red Flags</text>
+</svg>

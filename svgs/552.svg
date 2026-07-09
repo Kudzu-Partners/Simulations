@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg552" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a3a5c"/>
+      <stop offset="100%" stop-color="#2c5f8a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg552)"/>
+
+  <text x="200" y="56" text-anchor="middle" fill="#74b9ff" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">UNAD · REMOTE PRODUCTIVITY</text>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- Clock (protagonist) -->
+    <g transform="translate(200,208)">
+      <circle r="96" fill="#1a3a5c" stroke="#dfe6e9" stroke-width="3.5"/>
+      <!-- Hour marks -->
+      <line x1="0" y1="-96" x2="0" y2="-84" stroke="#dfe6e9" stroke-width="3"/>
+      <line x1="96" y1="0" x2="84" y2="0" stroke="#dfe6e9" stroke-width="3"/>
+      <line x1="0" y1="96" x2="0" y2="84" stroke="#dfe6e9" stroke-width="3"/>
+      <line x1="-96" y1="0" x2="-84" y2="0" stroke="#dfe6e9" stroke-width="3"/>
+
+      <!-- Minor marks -->
+      <line x1="48" y1="-83" x2="44" y2="-77" stroke="#dfe6e9" stroke-width="2" opacity="0.7"/>
+      <line x1="83" y1="-48" x2="77" y2="-44" stroke="#dfe6e9" stroke-width="2" opacity="0.7"/>
+      <line x1="83" y1="48"  x2="77" y2="44"  stroke="#dfe6e9" stroke-width="2" opacity="0.7"/>
+      <line x1="48" y1="83"  x2="44" y2="77"  stroke="#dfe6e9" stroke-width="2" opacity="0.7"/>
+      <line x1="-48" y1="83" x2="-44" y2="77" stroke="#dfe6e9" stroke-width="2" opacity="0.7"/>
+      <line x1="-83" y1="48" x2="-77" y2="44" stroke="#dfe6e9" stroke-width="2" opacity="0.7"/>
+      <line x1="-83" y1="-48" x2="-77" y2="-44" stroke="#dfe6e9" stroke-width="2" opacity="0.7"/>
+      <line x1="-48" y1="-83" x2="-44" y2="-77" stroke="#dfe6e9" stroke-width="2" opacity="0.7"/>
+
+      <!-- Core hours band (highlighted arc 9-12) -->
+      <path d="M 0 -96 A 96 96 0 0 1 96 0" fill="none" stroke="#f5c842" stroke-width="7" opacity="0.6"/>
+
+      <!-- Hour hand -->
+      <line x1="0" y1="8" x2="32" y2="-40" stroke="#dfe6e9" stroke-width="5"/>
+      <!-- Minute hand -->
+      <line x1="0" y1="0" x2="56" y2="-16" stroke="#74b9ff" stroke-width="3.5"/>
+      <!-- Center -->
+      <circle r="6" fill="#f5c842"/>
+    </g>
+
+    <!-- Remote person icon top-left (laptop) -->
+    <g transform="translate(56,108)">
+      <rect x="0" y="0" width="40" height="24" rx="3" fill="#1a3a5c" stroke="#dfe6e9" stroke-width="2.5"/>
+      <line x1="4" y1="6" x2="36" y2="6" stroke="#74b9ff" stroke-width="1.5"/>
+      <path d="M -4 24 L 44 24 L 44 28 L -4 28 Z" fill="#dfe6e9"/>
+    </g>
+
+    <!-- Output badge top-right -->
+    <g transform="translate(296,84)">
+      <rect width="56" height="26" rx="4" fill="#52b788" fill-opacity="0.18" stroke="#52b788" stroke-width="1.5"/>
+      <text x="28" y="18" text-anchor="middle" fill="#52b788" font-size="11" font-family="monospace" font-weight="bold">KPI</text>
+    </g>
+  </g>
+
+  <text x="200" y="372" text-anchor="middle" fill="#dfe6e9" font-size="9" font-family="monospace" opacity="0.5" letter-spacing="1.2">1,500 Tutors · Virtual · CO</text>
+</svg>

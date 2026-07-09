@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg313" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg313)"/>
+
+  <!-- Iceberg (cost visibility metaphor) -->
+  <!-- Above water (visible costs) -->
+  <path d="M 200 80 L 272 210 L 128 210 Z" fill="#74b9ff" opacity="0.85"/>
+  <!-- Water line -->
+  <rect x="36" y="208" width="328" height="8" rx="3" fill="#1a3a5c" opacity="0.8"/>
+  <path d="M 36 208 Q 100 200 200 208 Q 300 216 364 208" fill="none" stroke="#74b9ff" stroke-width="1.5" opacity="0.5"/>
+  <!-- Below water (hidden costs, ABC) -->
+  <path d="M 128 210 L 272 210 L 316 320 L 84 320 Z" fill="#74b9ff" opacity="0.2" stroke="#74b9ff" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <!-- Hidden cost blocks -->
+  <rect x="100" y="228" width="80" height="24" rx="4" fill="#e74c3c" opacity="0.5"/>
+  <rect x="220" y="228" width="80" height="24" rx="4" fill="#e74c3c" opacity="0.45"/>
+  <rect x="110" y="262" width="60" height="20" rx="4" fill="#e74c3c" opacity="0.4"/>
+  <rect x="188" y="262" width="100" height="20" rx="4" fill="#e74c3c" opacity="0.4"/>
+  <rect x="120" y="292" width="160" height="20" rx="4" fill="#e74c3c" opacity="0.35"/>
+
+  <!-- ABC label (activity arrows) -->
+  <g transform="translate(36, 88)">
+    <circle cx="16" cy="16" r="14" fill="#1a2744" stroke="#f5c842" stroke-width="2"/>
+    <text x="16" y="21" text-anchor="middle" font-family="'Courier New',monospace" font-size="12" font-weight="bold" fill="#f5c842">A</text>
+    <line x1="30" y1="16" x2="48" y2="16" stroke="#f5c842" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="64" cy="16" r="14" fill="#1a2744" stroke="#f5c842" stroke-width="2"/>
+    <text x="64" y="21" text-anchor="middle" font-family="'Courier New',monospace" font-size="12" font-weight="bold" fill="#f5c842">B</text>
+    <line x1="78" y1="16" x2="96" y2="16" stroke="#f5c842" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="112" cy="16" r="14" fill="#1a2744" stroke="#f5c842" stroke-width="2"/>
+    <text x="112" y="21" text-anchor="middle" font-family="'Courier New',monospace" font-size="12" font-weight="bold" fill="#f5c842">C</text>
+  </g>
+
+  <!-- Variance analysis (bottom row) -->
+  <g transform="translate(36, 346)">
+    <!-- Favorable -->
+    <rect x="0" y="0" width="90" height="28" rx="6" fill="#0a1f10" stroke="#00ff88" stroke-width="2"/>
+    <line x1="18" y1="22" x2="18" y2="6" stroke="#00ff88" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="13,12 18,4 23,12" fill="#00ff88"/>
+    <text x="54" y="18" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#00ff88">FAV ▲</text>
+    <!-- Unfavorable -->
+    <rect x="100" y="0" width="100" height="28" rx="6" fill="#2a0a0a" stroke="#e74c3c" stroke-width="2"/>
+    <line x1="118" y1="6" x2="118" y2="22" stroke="#e74c3c" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="113,16 118,24 123,16" fill="#e74c3c"/>
+    <text x="158" y="18" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#e74c3c">UNFAV ▼</text>
+    <!-- Make or buy -->
+    <rect x="210" y="0" width="154" height="28" rx="6" fill="#1a2744" stroke="#74b9ff" stroke-width="2"/>
+    <text x="240" y="18" font-family="sans-serif" font-size="16">🔨</text>
+    <text x="270" y="18" font-family="'Courier New',monospace" font-size="9" fill="#74b9ff">vs</text>
+    <text x="296" y="18" font-family="sans-serif" font-size="16">🛒</text>
+  </g>
+</svg>

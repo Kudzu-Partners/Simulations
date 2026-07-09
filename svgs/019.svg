@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg019" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1a2d"/>
+      <stop offset="100%" stop-color="#1a2d4f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg019)"/>
+
+  <!-- Dashboard outer frame -->
+  <rect x="48" y="55" width="304" height="258" rx="8" fill="none" stroke="#f5a623" stroke-width="2" stroke-opacity="0.40"/>
+
+  <!-- Panel 1 — top-left: Revenue trend (declining, red) -->
+  <rect x="58" y="65" width="132" height="98" rx="5" fill="#f5a623" fill-opacity="0.07" stroke="#f5a623" stroke-width="1.2" stroke-opacity="0.45"/>
+  <polyline points="68,140 88,130 108,120 128,135 148,148 168,155" fill="none" stroke="#e74c3c" stroke-width="2" stroke-opacity="0.85" stroke-linecap="round"/>
+  <circle cx="168" cy="155" r="4" fill="#e74c3c" fill-opacity="0.90"/>
+
+  <!-- Panel 2 — top-right: Cost breakdown (bars) -->
+  <rect x="202" y="65" width="142" height="98" rx="5" fill="#f5a623" fill-opacity="0.07" stroke="#f5a623" stroke-width="1.2" stroke-opacity="0.45"/>
+  <rect x="212" y="130" width="18" height="25" rx="2" fill="#f5a623" fill-opacity="0.65"/>
+  <rect x="236" y="118" width="18" height="37" rx="2" fill="#f5a623" fill-opacity="0.50"/>
+  <rect x="260" y="125" width="18" height="30" rx="2" fill="#f5a623" fill-opacity="0.65"/>
+  <rect x="284" y="108" width="18" height="47" rx="2" fill="#e74c3c" fill-opacity="0.70"/>
+  <rect x="308" y="120" width="18" height="35" rx="2" fill="#f5a623" fill-opacity="0.50"/>
+  <line x1="212" y1="155" x2="328" y2="155" stroke="#f5a623" stroke-width="1" stroke-opacity="0.35"/>
+
+  <!-- Panel 3 — middle-left: Mix/pie chart -->
+  <rect x="58" y="172" width="132" height="80" rx="5" fill="#f5a623" fill-opacity="0.07" stroke="#f5a623" stroke-width="1.2" stroke-opacity="0.45"/>
+  <circle cx="110" cy="212" r="28" fill="none" stroke="#f5a623" stroke-width="12" stroke-opacity="0.30"/>
+  <circle cx="110" cy="212" r="28" fill="none" stroke="#e74c3c" stroke-width="12" stroke-opacity="0.70" stroke-dasharray="44 132" stroke-dashoffset="0"/>
+
+  <!-- Panel 4 — middle-right: Scatter -->
+  <rect x="202" y="172" width="142" height="80" rx="5" fill="#f5a623" fill-opacity="0.07" stroke="#f5a623" stroke-width="1.2" stroke-opacity="0.45"/>
+  <g fill="#f5a623" fill-opacity="0.65">
+    <circle cx="225" cy="205" r="4"/><circle cx="245" cy="215" r="4"/>
+    <circle cx="262" cy="198" r="4"/><circle cx="280" cy="222" r="4"/>
+    <circle cx="300" cy="210" r="4"/><circle cx="318" cy="232" r="5"/>
+  </g>
+  <!-- Downward trendline in scatter -->
+  <line x1="220" y1="198" x2="325" y2="235" stroke="#e74c3c" stroke-width="1.5" stroke-opacity="0.60" stroke-dasharray="4,3"/>
+
+  <!-- Panel 5 — bottom full-width: KPI strip -->
+  <rect x="58" y="260" width="286" height="45" rx="5" fill="#f5a623" fill-opacity="0.07" stroke="#f5a623" stroke-width="1.2" stroke-opacity="0.45"/>
+  <g font-family="Arial, sans-serif" font-size="9" fill="#f5a623" opacity="0.60">
+    <text x="80"  y="278">EBITDA</text>
+    <text x="148" y="278">Margen</text>
+    <text x="218" y="278">Rotación</text>
+    <text x="286" y="278">Mix</text>
+  </g>
+  <!-- KPI value indicators -->
+  <rect x="75"  y="282" width="40" height="6" rx="2" fill="#e74c3c" fill-opacity="0.70"/>
+  <rect x="143" y="282" width="30" height="6" rx="2" fill="#e74c3c" fill-opacity="0.55"/>
+  <rect x="213" y="282" width="45" height="6" rx="2" fill="#f5a623" fill-opacity="0.50"/>
+  <rect x="281" y="282" width="35" height="6" rx="2" fill="#f5a623" fill-opacity="0.45"/>
+
+  <!-- Magnifying glass overlay (investigation) -->
+  <circle cx="310" cy="185" r="30" fill="none" stroke="#f5a623" stroke-width="3" stroke-opacity="0.85"/>
+  <circle cx="310" cy="185" r="30" fill="#f5a623" fill-opacity="0.06"/>
+  <line x1="333" y1="208" x2="352" y2="228" stroke="#f5a623" stroke-width="4" stroke-linecap="round" stroke-opacity="0.85"/>
+
+  <!-- Declining arrow inside magnifier -->
+  <polyline points="292,175 305,182 320,170" fill="none" stroke="#e74c3c" stroke-width="2" stroke-opacity="0.90" stroke-linecap="round"/>
+  <polygon points="318,163 326,170 319,176" fill="#e74c3c" fill-opacity="0.90"/>
+
+</svg>

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a0e8f"/>
+      <stop offset="100%" stop-color="#7b2d8b"/>
+    </linearGradient>
+    <linearGradient id="pipeL" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e67e22" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#e67e22" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="pipeR" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffd166" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#ffd166" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg)"/>
+
+  <!-- Top label: demanda -->
+  <text x="110" y="105" text-anchor="middle" fill="#e67e22" font-size="11" font-family="sans-serif" opacity="0.6" letter-spacing="1">DEMANDA</text>
+  <!-- Top label: output -->
+  <text x="295" y="105" text-anchor="middle" fill="#ffd166" font-size="11" font-family="sans-serif" opacity="0.6" letter-spacing="1">OUTPUT</text>
+
+  <!-- LEFT input channel -->
+  <path d="M58,155 L172,155 L185,178 L185,222 L172,245 L58,245 Z"
+        fill="url(#pipeL)" stroke="#e67e22" stroke-width="1.5" stroke-opacity="0.4"/>
+
+  <!-- BOTTLENECK (kitchen) center block -->
+  <rect x="185" y="168" width="30" height="64" rx="5"
+        fill="#e67e22" fill-opacity="0.18" stroke="#e67e22" stroke-width="2.5"/>
+
+  <!-- Flame inside bottleneck -->
+  <path d="M200,177 C197,183 193,188 193,195 C193,202 196.5,207 200,207 C203.5,207 207,202 207,195 C207,188 203,183 200,177 Z"
+        fill="#ffd166" opacity="0.9"/>
+  <path d="M200,185 C198,189 196,192 196,196 C196,200 198,203 200,203 C202,203 204,200 204,196 C204,192 202,189 200,185 Z"
+        fill="#e67e22" opacity="0.85"/>
+
+  <!-- VUT label below flame -->
+  <text x="200" y="225" text-anchor="middle" fill="#ffd166" font-size="10" font-family="monospace" font-weight="bold" opacity="0.8">VUT</text>
+
+  <!-- RIGHT output channel -->
+  <path d="M215,178 L215,178 L298,155 L342,155 L342,245 L298,245 L215,222 Z"
+        fill="url(#pipeR)" stroke="#ffd166" stroke-width="1.5" stroke-opacity="0.35"/>
+
+  <!-- Input: queued tables (squares) -->
+  <rect x="68" y="170" width="32" height="26" rx="5" fill="#e67e22" fill-opacity="0.3" stroke="#e67e22" stroke-width="1.5"/>
+  <!-- Chair hints -->
+  <line x1="76" y1="170" x2="76" y2="165" stroke="#e67e22" stroke-width="1.5" opacity="0.6"/>
+  <line x1="92" y1="170" x2="92" y2="165" stroke="#e67e22" stroke-width="1.5" opacity="0.6"/>
+
+  <rect x="108" y="170" width="28" height="26" rx="5" fill="#e67e22" fill-opacity="0.25" stroke="#e67e22" stroke-width="1.5"/>
+  <line x1="115" y1="170" x2="115" y2="165" stroke="#e67e22" stroke-width="1.5" opacity="0.5"/>
+  <line x1="129" y1="170" x2="129" y2="165" stroke="#e67e22" stroke-width="1.5" opacity="0.5"/>
+
+  <rect x="144" y="173" width="22" height="20" rx="4" fill="#e67e22" fill-opacity="0.18" stroke="#e67e22" stroke-width="1"/>
+  <line x1="150" y1="173" x2="150" y2="169" stroke="#e67e22" stroke-width="1.2" opacity="0.4"/>
+  <line x1="161" y1="173" x2="161" y2="169" stroke="#e67e22" stroke-width="1.2" opacity="0.4"/>
+
+  <!-- Left arrow to bottleneck -->
+  <polygon points="174,196 183,200 174,204" fill="#e67e22" opacity="0.85"/>
+
+  <!-- Output: served plates (circles) -->
+  <circle cx="248" cy="186" r="15" fill="none" stroke="#ffd166" stroke-width="2" stroke-opacity="0.75"/>
+  <circle cx="248" cy="186" r="8" fill="#ffd166" fill-opacity="0.2"/>
+  <line x1="248" y1="201" x2="248" y2="207" stroke="#ffd166" stroke-width="2" stroke-opacity="0.5"/>
+  <line x1="240" y1="207" x2="256" y2="207" stroke="#ffd166" stroke-width="2" stroke-opacity="0.5"/>
+
+  <circle cx="293" cy="183" r="15" fill="none" stroke="#ffd166" stroke-width="2" stroke-opacity="0.65"/>
+  <circle cx="293" cy="183" r="8" fill="#ffd166" fill-opacity="0.18"/>
+  <line x1="293" y1="198" x2="293" y2="204" stroke="#ffd166" stroke-width="1.5" stroke-opacity="0.45"/>
+  <line x1="285" y1="204" x2="301" y2="204" stroke="#ffd166" stroke-width="1.5" stroke-opacity="0.45"/>
+
+  <circle cx="330" cy="183" r="13" fill="none" stroke="#ffd166" stroke-width="1.5" stroke-opacity="0.5"/>
+  <circle cx="330" cy="183" r="7" fill="#ffd166" fill-opacity="0.14"/>
+
+  <!-- Right arrow from bottleneck -->
+  <polygon points="217,196 226,200 217,204" fill="#ffd166" opacity="0.75"/>
+
+  <!-- Little's Law at bottom -->
+  <text x="200" y="305" text-anchor="middle" fill="#ffd166" font-size="20" font-family="monospace" font-weight="bold" opacity="0.55" font-style="italic">N = λW</text>
+
+  <!-- Service-Profit Chain small hint -->
+  <text x="200" y="335" text-anchor="middle" fill="#e67e22" font-size="10" font-family="sans-serif" opacity="0.4" letter-spacing="1">SERVICE — PROFIT CHAIN</text>
+</svg>

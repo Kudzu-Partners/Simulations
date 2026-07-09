@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg260" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg260)"/>
+
+  <!-- Axes -->
+  <line x1="60" y1="330" x2="340" y2="330" stroke="#a0aec0" stroke-width="1.8" opacity="0.45"/>
+  <line x1="60" y1="60"  x2="60"  y2="330" stroke="#a0aec0" stroke-width="1.8" opacity="0.45"/>
+  <text x="340" y="344" font-family="monospace" font-size="9" fill="#a0aec0" opacity="0.5">x₁</text>
+  <text x="48"  y="58"  font-family="monospace" font-size="9" fill="#a0aec0" opacity="0.5">x₂</text>
+
+  <!-- Feasible region polygon (shaded green) -->
+  <!-- Vertices: (60,330) origin, (60,170) top-left, (150,100) top-mid, (280,130) top-right corner, (310,330) bottom-right -->
+  <polygon points="60,330 60,175 148,102 282,132 310,330"
+           fill="#52b788" opacity="0.14"/>
+  <polygon points="60,330 60,175 148,102 282,132 310,330"
+           fill="none" stroke="#52b788" stroke-width="2.2" opacity="0.75"/>
+
+  <!-- Constraint lines (extended beyond region) -->
+  <!-- Constraint 1: x₁ + 2x₂ ≤ 320 -->
+  <line x1="60" y1="175" x2="310" y2="58"  stroke="#00bfff" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.5"/>
+  <text x="315" y="54"  font-family="monospace" font-size="8" fill="#00bfff" opacity="0.65">C₁</text>
+
+  <!-- Constraint 2: 2x₁ + x₂ ≤ 400 -->
+  <line x1="60" y1="130" x2="320" y2="330" stroke="#00bfff" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.5"/>
+  <text x="322" y="330" font-family="monospace" font-size="8" fill="#00bfff" opacity="0.65">C₂</text>
+
+  <!-- Constraint 3: x₁ ≤ 280 (vertical) -->
+  <line x1="310" y1="60" x2="310" y2="330" stroke="#00bfff" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.4"/>
+  <text x="314" y="95" font-family="monospace" font-size="8" fill="#00bfff" opacity="0.5">C₃</text>
+
+  <!-- Iso-profit lines (objective function gradient) -->
+  <!-- Parallel lines sweeping toward optimal -->
+  <line x1="90"  y1="330" x2="60"  y2="270" stroke="#f5c842" stroke-width="1.2" opacity="0.3"/>
+  <line x1="148" y1="330" x2="60"  y2="210" stroke="#f5c842" stroke-width="1.4" opacity="0.38"/>
+  <line x1="210" y1="330" x2="60"  y2="150" stroke="#f5c842" stroke-width="1.6" opacity="0.46"/>
+  <line x1="265" y1="330" x2="90"  y2="108" stroke="#f5c842" stroke-width="1.8" opacity="0.54"/>
+  <!-- Optimal iso-profit line (through optimal vertex) -->
+  <line x1="310" y1="295" x2="148" y2="102" stroke="#f5c842" stroke-width="2.5" opacity="0.85"/>
+
+  <!-- Gradient arrow (direction of improvement) -->
+  <line x1="155" y1="240" x2="222" y2="175" stroke="#f5c842" stroke-width="2.5" opacity="0.75"/>
+  <polygon points="215,170 226,172 218,180" fill="#f5c842" opacity="0.75"/>
+  <text x="192" y="225" font-family="monospace" font-size="8" fill="#f5c842" opacity="0.7">max Z</text>
+
+  <!-- Optimal vertex (highlighted) -->
+  <circle cx="282" cy="132" r="14" fill="#f5c842" opacity="0.22"/>
+  <circle cx="282" cy="132" r="14" fill="none" stroke="#f5c842" stroke-width="3"/>
+  <circle cx="282" cy="132" r="5"  fill="#f5c842" opacity="0.9"/>
+  <text x="298" y="122" font-family="monospace" font-size="8.5" fill="#f5c842" opacity="0.9">OPTIMAL</text>
+  <text x="298" y="136" font-family="monospace" font-size="8"   fill="#f5c842" opacity="0.75">x*=(282,132)</text>
+
+  <!-- Shadow price annotation -->
+  <rect x="62" y="62" width="118" height="44" rx="6" fill="#1a2744"/>
+  <rect x="62" y="62" width="118" height="44" rx="6" fill="none" stroke="#a0aec0" stroke-width="1.2" opacity="0.4"/>
+  <text x="121" y="80"  font-family="monospace" font-size="8"   fill="#a0aec0" text-anchor="middle" opacity="0.65">Shadow Price</text>
+  <text x="121" y="97"  font-family="monospace" font-size="10"  fill="#00ff88" text-anchor="middle">λ₁ = 2.4</text>
+
+  <!-- Corner vertices of feasible region -->
+  <circle cx="60"  cy="175" r="4" fill="#52b788" opacity="0.7"/>
+  <circle cx="148" cy="102" r="4" fill="#52b788" opacity="0.7"/>
+  <circle cx="310" cy="330" r="4" fill="#52b788" opacity="0.7"/>
+
+  <text x="200" y="368" font-family="monospace" font-size="9" fill="#a0aec0" text-anchor="middle" opacity="0.42">Linear Programming · Shadow Prices · Sensitivity</text>
+</svg>
