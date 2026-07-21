@@ -6,6 +6,12 @@ A standalone, zero-backend player for **Eureka Express business simulations**. E
 
 ## Quick start
 
+**▶ Hosted player: [open.eurekasimulations.com/player](https://open.eurekasimulations.com/player/)** — this repository is published with GitHub Pages, so the player is live as-is. Nothing to install.
+
+Deep links: [`?sim=015`](https://open.eurekasimulations.com/player/?sim=015) loads a catalog sim by external id; `?src=https://…/sim.json` loads one from any CORS-enabled URL.
+
+To run it locally instead (development, offline use):
+
 ```bash
 # from the repository root (the folder containing player/ and jsons/)
 python -m http.server 8000
@@ -13,8 +19,6 @@ python -m http.server 8000
 ```
 
 Or simply open `player/index.html` from disk and **drag & drop** any simulation JSON onto the page (the catalog and charts need HTTP, but drag & drop works from `file://` too).
-
-Deep links: `player/?sim=015` loads a catalog sim by external id; `player/?src=https://…/sim.json` loads one from any CORS-enabled URL.
 
 ## What's in the box
 
@@ -80,9 +84,9 @@ Catalog search and category/level filters, cover thumbnails, random pick, langua
 2. Regenerate the catalog: `cd player && python build_manifest.py`.
 3. Smoke-test: `cd player/test && npm install jsdom && node headless_replay.js <id>` — it plays every round headlessly and reports runtime errors.
 
-## Publishing (GitHub Pages)
+## Hosting (GitHub Pages)
 
-Publish the repo with `player/`, `jsons/`, and `svgs/` intact and enable Pages; the player is static and works from any path. Everything is relative — no build step.
+The player is served with **GitHub Pages** straight from this repository, at the custom domain `open.eurekasimulations.com` (the repo-root `CNAME` file). Everything is static and relative — no build step. Forks deploy the same way: keep `player/`, `jsons/`, and `svgs/` intact, remove/replace the `CNAME` file, enable Pages on your fork, and the player works from any path.
 
 ## Attribution
 

@@ -6,6 +6,12 @@ Playable business simulations by [Eureka Simulations](https://www.eurekasimulati
 
 ## Play
 
+**▶ [Play in your browser — open.eurekasimulations.com/player](https://open.eurekasimulations.com/player/)** — hosted with GitHub Pages. No install, no account.
+
+Deep links work too: [`player/?sim=015`](https://open.eurekasimulations.com/player/?sim=015) (by external id) or `player/?src=<url>` (any CORS-enabled JSON).
+
+Prefer to run it locally (development, offline classrooms)?
+
 ```bash
 git clone https://github.com/Kudzu-Partners/Simulations.git
 cd Simulations
@@ -15,7 +21,11 @@ python -m http.server 8000
 
 Or open `player/index.html` directly from disk and drag & drop any JSON from `jsons/` onto it.
 
-Deep links work too: `player/?sim=015` (by external id) or `player/?src=<url>` (any CORS-enabled JSON).
+## Teach this with a real class
+
+The player above is single-learner, in your browser. To teach any of these simulations with a real cohort — LTI launch inside Moodle/Canvas, rosters, class mode with teams and competition, decision-level analytics, auto-debrief, and grade passback — Eureka runs it for you, class-ready:
+
+**🎓 [Teach this with a real class →](https://www.eurekasimulations.com/basics/?utm_source=github&utm_medium=readme&utm_campaign=open_simulations)**
 
 ## What's here
 
