@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg1877" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14301c"/>
+      <stop offset="100%" stop-color="#2a5a34"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg1877)"/>
+
+  <!-- Plate -->
+  <circle cx="200" cy="228" r="108" fill="#eaf4e6" fill-opacity="0.10" stroke="#eaf4e6" stroke-width="2.5" stroke-opacity="0.55"/>
+  <circle cx="200" cy="228" r="76" fill="none" stroke="#eaf4e6" stroke-width="1.5" stroke-opacity="0.4"/>
+  <!-- Sprout on the plate -->
+  <path d="M 200,268 Q 198,220 200,190" fill="none" stroke="#7fc96b" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 200,206 Q 168,196 160,164 Q 196,166 200,206" fill="#7fc96b" fill-opacity="0.9"/>
+  <path d="M 200,196 Q 232,186 240,154 Q 204,156 200,196" fill="#a8dd8f" fill-opacity="0.9"/>
+  <!-- Regeneration cycle arrows around plate -->
+  <path d="M 88,180 A 118,118 0 0 1 200,110" fill="none" stroke="#e9c46a" stroke-width="4" stroke-linecap="round" stroke-opacity="0.85"/>
+  <polygon points="192,100 212,110 192,122" fill="#e9c46a" fill-opacity="0.85"/>
+  <path d="M 312,276 A 118,118 0 0 1 200,346" fill="none" stroke="#e9c46a" stroke-width="4" stroke-linecap="round" stroke-opacity="0.85"/>
+  <polygon points="208,356 188,346 208,334" fill="#e9c46a" fill-opacity="0.85"/>
+  <!-- Fork & knife hints -->
+  <line x1="64" y1="196" x2="64" y2="262" stroke="#eaf4e6" stroke-width="4" stroke-opacity="0.5" stroke-linecap="round"/>
+  <line x1="338" y1="196" x2="338" y2="262" stroke="#eaf4e6" stroke-width="4" stroke-opacity="0.5" stroke-linecap="round"/>
+
+</svg>

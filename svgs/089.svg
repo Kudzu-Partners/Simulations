@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg89" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a3a5c"/>
+      <stop offset="100%" stop-color="#2c5f8a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg89)"/>
+  <!-- City grid (streets bird's eye) -->
+  <g stroke="#74b9ff" stroke-width="1.5" opacity="0.25">
+    <!-- Horizontal streets -->
+    <line x1="60" y1="130" x2="340" y2="130"/>
+    <line x1="60" y1="180" x2="340" y2="180"/>
+    <line x1="60" y1="230" x2="340" y2="230"/>
+    <line x1="60" y1="280" x2="340" y2="280"/>
+    <!-- Vertical streets -->
+    <line x1="100" y1="100" x2="100" y2="310"/>
+    <line x1="160" y1="100" x2="160" y2="310"/>
+    <line x1="220" y1="100" x2="220" y2="310"/>
+    <line x1="280" y1="100" x2="280" y2="310"/>
+    <line x1="340" y1="100" x2="340" y2="310"/>
+  </g>
+  <!-- City blocks with service icons -->
+  <!-- Health (red cross) -->
+  <rect x="108" y="138" width="44" height="34" rx="4" fill="#e74c3c" opacity="0.3"/>
+  <line x1="130" y1="144" x2="130" y2="166" stroke="#e74c3c" stroke-width="3" opacity="0.7" stroke-linecap="round"/>
+  <line x1="119" y1="155" x2="141" y2="155" stroke="#e74c3c" stroke-width="3" opacity="0.7" stroke-linecap="round"/>
+  <!-- Education (book) -->
+  <rect x="168" y="138" width="44" height="34" rx="4" fill="#74b9ff" opacity="0.3"/>
+  <rect x="176" y="145" width="28" height="20" rx="2" fill="none" stroke="#74b9ff" stroke-width="2" opacity="0.7"/>
+  <line x1="190" y1="145" x2="190" y2="165" stroke="#74b9ff" stroke-width="1.5" opacity="0.6"/>
+  <!-- Infrastructure (road) -->
+  <rect x="228" y="138" width="44" height="34" rx="4" fill="#dfe6e9" opacity="0.2"/>
+  <line x1="238" y1="155" x2="262" y2="155" stroke="#dfe6e9" stroke-width="3" opacity="0.5" stroke-linecap="round" stroke-dasharray="4,3"/>
+  <!-- Security (shield) -->
+  <rect x="108" y="188" width="44" height="34" rx="4" fill="#74b9ff" opacity="0.25"/>
+  <path d="M118,195 Q130,192 142,195 Q142,213 130,218 Q118,213 118,195 Z" fill="none" stroke="#74b9ff" stroke-width="2" opacity="0.65"/>
+  <!-- City hall (center, larger) -->
+  <rect x="168" y="188" width="104" height="84" rx="5" fill="#74b9ff" opacity="0.1" stroke="#74b9ff" stroke-width="2"/>
+  <path d="M168,188 L220,160 L272,188" fill="#74b9ff" opacity="0.1" stroke="#74b9ff" stroke-width="1.5"/>
+  <circle cx="220" cy="172" r="6" fill="#ffd166" opacity="0.7"/>
+  <text x="220" y="240" font-family="sans-serif" font-size="10" fill="#74b9ff" text-anchor="middle" opacity="0.7">SAN MARCOS</text>
+  <!-- Budget allocation pie (bottom right) -->
+  <circle cx="300" cy="310" r="38" fill="none" stroke="#74b9ff" stroke-width="2" opacity="0.4"/>
+  <path d="M300,310 L300,272 A38,38 0 0,1 333,348 Z" fill="#74b9ff" opacity="0.35"/>
+  <path d="M300,310 L333,348 A38,38 0 0,1 267,348 Z" fill="#dfe6e9" opacity="0.25"/>
+  <path d="M300,310 L267,348 A38,38 0 0,1 300,272 Z" fill="#74b9ff" opacity="0.2"/>
+</svg>

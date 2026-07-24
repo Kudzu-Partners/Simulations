@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg72" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <linearGradient id="floor72" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#00bfff" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg72)"/>
+  <!-- Full institution bank — multi-floor building -->
+  <!-- Base -->
+  <rect x="100" y="305" width="200" height="18" rx="3" fill="#00ff88" opacity="0.35"/>
+  <!-- Floor 1: Retail Banking -->
+  <rect x="105" y="265" width="190" height="40" rx="2" fill="url(#floor72)" opacity="0.18" stroke="#00ff88" stroke-width="1.5"/>
+  <text x="200" y="290" font-family="sans-serif" font-size="11" fill="#00ff88" text-anchor="middle" opacity="0.75">RETAIL</text>
+  <!-- Floor 2: Corporate Banking -->
+  <rect x="115" y="220" width="170" height="40" rx="2" fill="url(#floor72)" opacity="0.22" stroke="#00bfff" stroke-width="1.5"/>
+  <text x="200" y="245" font-family="sans-serif" font-size="11" fill="#00bfff" text-anchor="middle" opacity="0.75">CORPORATE</text>
+  <!-- Floor 3: Treasury -->
+  <rect x="128" y="175" width="144" height="40" rx="2" fill="url(#floor72)" opacity="0.26" stroke="#00ff88" stroke-width="1.5"/>
+  <text x="200" y="200" font-family="sans-serif" font-size="11" fill="#00ff88" text-anchor="middle" opacity="0.75">TREASURY</text>
+  <!-- Floor 4: Risk / Capital -->
+  <rect x="140" y="130" width="120" height="40" rx="2" fill="url(#floor72)" opacity="0.30" stroke="#00bfff" stroke-width="1.5"/>
+  <text x="200" y="155" font-family="sans-serif" font-size="11" fill="#00bfff" text-anchor="middle" opacity="0.75">RISK</text>
+  <!-- Penthouse: C-Suite -->
+  <rect x="158" y="88" width="84" height="38" rx="4" fill="#00ff88" opacity="0.35" stroke="#00ff88" stroke-width="2"/>
+  <text x="200" y="112" font-family="sans-serif" font-size="12" font-weight="bold" fill="#00ff88" text-anchor="middle" opacity="0.9">C-SUITE</text>
+  <!-- Macro shock lightning bolt -->
+  <path d="M310,120 L295,165 L308,165 L290,215 L308,210 L285,255" fill="none" stroke="#00bfff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+  <!-- Capital allocation arrow left -->
+  <path d="M85,200 Q72,240 85,280" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.35" stroke-dasharray="5,3"/>
+</svg>

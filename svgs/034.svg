@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg034" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2a1a0a"/>
+      <stop offset="100%" stop-color="#4a3020"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg034)"/>
+
+  <!-- Scale beam (slightly tipped left = social mission wins) -->
+  <!-- Pivot post -->
+  <line x1="200" y1="195" x2="200" y2="295" stroke="#fde8c8" stroke-width="5" stroke-linecap="round" stroke-opacity="0.70"/>
+  <polygon points="180,295 220,295 210,318 190,318" fill="#fde8c8" fill-opacity="0.45"/>
+
+  <!-- Scale beam — tipped: left pan is lower (social mission heavier) -->
+  <line x1="72" y1="220" x2="328" y2="170" stroke="#fde8c8" stroke-width="5" stroke-linecap="round" stroke-opacity="0.80"/>
+  <!-- Pivot dot -->
+  <circle cx="200" cy="195" r="9" fill="#fde8c8" fill-opacity="0.80"/>
+
+  <!-- Left pan strings -->
+  <line x1="72"  y1="220" x2="72"  y2="250" stroke="#fde8c8" stroke-width="2" stroke-opacity="0.60"/>
+  <line x1="72"  y1="220" x2="52"  y2="250" stroke="#fde8c8" stroke-width="2" stroke-opacity="0.60"/>
+  <line x1="72"  y1="220" x2="92"  y2="250" stroke="#fde8c8" stroke-width="2" stroke-opacity="0.60"/>
+  <!-- Left pan plate -->
+  <ellipse cx="72" cy="252" rx="42" ry="8" fill="#fde8c8" fill-opacity="0.25" stroke="#fde8c8" stroke-width="1.5" stroke-opacity="0.55"/>
+  <!-- Left pan content: social mission sphere (green, larger) -->
+  <circle cx="72" cy="218" r="38" fill="#52b788" fill-opacity="0.25" stroke="#52b788" stroke-width="2.5" stroke-opacity="0.80"/>
+  <circle cx="72" cy="218" r="22" fill="#52b788" fill-opacity="0.45"/>
+  <!-- Person icon inside -->
+  <circle cx="72" cy="210" r="9"  fill="#52b788" fill-opacity="0.85"/>
+  <rect   x="63" y="220" width="18" height="12" rx="4" fill="#52b788" fill-opacity="0.75"/>
+
+  <!-- Right pan strings -->
+  <line x1="328" y1="170" x2="328" y2="200" stroke="#fde8c8" stroke-width="2" stroke-opacity="0.60"/>
+  <line x1="328" y1="170" x2="308" y2="200" stroke="#fde8c8" stroke-width="2" stroke-opacity="0.60"/>
+  <line x1="328" y1="170" x2="348" y2="200" stroke="#fde8c8" stroke-width="2" stroke-opacity="0.60"/>
+  <!-- Right pan plate -->
+  <ellipse cx="328" cy="202" rx="42" ry="8" fill="#fde8c8" fill-opacity="0.25" stroke="#fde8c8" stroke-width="1.5" stroke-opacity="0.55"/>
+  <!-- Right pan content: financial coin stack (gold, smaller) -->
+  <circle cx="328" cy="165" r="32" fill="#f5c842" fill-opacity="0.20" stroke="#f5c842" stroke-width="2.5" stroke-opacity="0.75"/>
+  <!-- Coin stack -->
+  <ellipse cx="328" cy="168" rx="18" ry="6" fill="#f5c842" fill-opacity="0.70"/>
+  <ellipse cx="328" cy="160" rx="18" ry="6" fill="#f5c842" fill-opacity="0.70"/>
+  <ellipse cx="328" cy="152" rx="18" ry="6" fill="#f5c842" fill-opacity="0.70"/>
+  <line x1="310" y1="152" x2="310" y2="168" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.60"/>
+  <line x1="346" y1="152" x2="346" y2="168" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.60"/>
+
+  <!-- Labels — below each pan, in clear zones -->
+  <text x="72"  y="285" font-family="Arial, sans-serif" font-size="10" fill="#52b788" text-anchor="middle" opacity="0.75">Social Mission</text>
+  <text x="328" y="235" font-family="Arial, sans-serif" font-size="10" fill="#f5c842" text-anchor="middle" opacity="0.75">Financial</text>
+</svg>

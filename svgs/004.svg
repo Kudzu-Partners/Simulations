@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg004" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a1f3e"/>
+    </linearGradient>
+    <radialGradient id="outputGlow004" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7b2fff" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#7b2fff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nodeCore004" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff88"/>
+      <stop offset="100%" stop-color="#00cc6a"/>
+    </radialGradient>
+    <linearGradient id="connGrad004" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7b2fff" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0.5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" rx="32" fill="url(#bg004)"/>
+
+  <!-- Subtle scan-line texture -->
+  <rect x="0" y="0" width="400" height="400" rx="32" fill="none"
+        stroke="#7b2fff" stroke-width="0.5" stroke-opacity="0.06"/>
+
+  <!-- Output glow (right side) -->
+  <circle cx="318" cy="200" r="70" fill="url(#outputGlow004)"/>
+
+  <!-- ── LAYER 1: INPUT (3 nodes, left) ── -->
+  <!-- Node 1-A -->
+  <circle cx="82" cy="130" r="14" fill="#0a0f1e" stroke="#7b2fff" stroke-width="2" stroke-opacity="0.8"/>
+  <circle cx="82" cy="130" r="6" fill="#7b2fff" fill-opacity="0.7"/>
+  <!-- Node 1-B -->
+  <circle cx="82" cy="200" r="14" fill="#0a0f1e" stroke="#7b2fff" stroke-width="2" stroke-opacity="0.8"/>
+  <circle cx="82" cy="200" r="6" fill="#7b2fff" fill-opacity="0.7"/>
+  <!-- Node 1-C -->
+  <circle cx="82" cy="270" r="14" fill="#0a0f1e" stroke="#7b2fff" stroke-width="2" stroke-opacity="0.8"/>
+  <circle cx="82" cy="270" r="6" fill="#7b2fff" fill-opacity="0.7"/>
+
+  <!-- ── LAYER 2: HIDDEN (4 nodes, center) ── -->
+  <!-- Node 2-A -->
+  <circle cx="200" cy="108" r="17" fill="#0a0f1e" stroke="#7b2fff" stroke-width="2.5" stroke-opacity="0.9"/>
+  <circle cx="200" cy="108" r="8" fill="#7b2fff" fill-opacity="0.85"/>
+  <!-- Node 2-B -->
+  <circle cx="200" cy="162" r="17" fill="#0a0f1e" stroke="#7b2fff" stroke-width="2.5" stroke-opacity="0.9"/>
+  <circle cx="200" cy="162" r="8" fill="#7b2fff" fill-opacity="0.85"/>
+  <!-- Node 2-C -->
+  <circle cx="200" cy="238" r="17" fill="#0a0f1e" stroke="#7b2fff" stroke-width="2.5" stroke-opacity="0.9"/>
+  <circle cx="200" cy="238" r="8" fill="#7b2fff" fill-opacity="0.85"/>
+  <!-- Node 2-D -->
+  <circle cx="200" cy="292" r="17" fill="#0a0f1e" stroke="#7b2fff" stroke-width="2.5" stroke-opacity="0.9"/>
+  <circle cx="200" cy="292" r="8" fill="#7b2fff" fill-opacity="0.85"/>
+
+  <!-- ── CONNECTIONS: L1 → L2 ── -->
+  <line x1="96" y1="130" x2="183" y2="108" stroke="url(#connGrad004)" stroke-width="1" stroke-opacity="0.35"/>
+  <line x1="96" y1="130" x2="183" y2="162" stroke="url(#connGrad004)" stroke-width="1" stroke-opacity="0.35"/>
+  <line x1="96" y1="130" x2="183" y2="238" stroke="url(#connGrad004)" stroke-width="1" stroke-opacity="0.2"/>
+  <line x1="96" y1="200" x2="183" y2="108" stroke="url(#connGrad004)" stroke-width="1" stroke-opacity="0.3"/>
+  <line x1="96" y1="200" x2="183" y2="162" stroke="url(#connGrad004)" stroke-width="1" stroke-opacity="0.4"/>
+  <line x1="96" y1="200" x2="183" y2="238" stroke="url(#connGrad004)" stroke-width="1" stroke-opacity="0.4"/>
+  <line x1="96" y1="200" x2="183" y2="292" stroke="url(#connGrad004)" stroke-width="1" stroke-opacity="0.3"/>
+  <line x1="96" y1="270" x2="183" y2="162" stroke="url(#connGrad004)" stroke-width="1" stroke-opacity="0.2"/>
+  <line x1="96" y1="270" x2="183" y2="238" stroke="url(#connGrad004)" stroke-width="1" stroke-opacity="0.35"/>
+  <line x1="96" y1="270" x2="183" y2="292" stroke="url(#connGrad004)" stroke-width="1" stroke-opacity="0.35"/>
+
+  <!-- ── CONNECTIONS: L2 → OUTPUT ── -->
+  <line x1="217" y1="108" x2="295" y2="200" stroke="#00ff88" stroke-width="1.5" stroke-opacity="0.45"/>
+  <line x1="217" y1="162" x2="295" y2="200" stroke="#00ff88" stroke-width="1.5" stroke-opacity="0.55"/>
+  <line x1="217" y1="238" x2="295" y2="200" stroke="#00ff88" stroke-width="1.5" stroke-opacity="0.55"/>
+  <line x1="217" y1="292" x2="295" y2="200" stroke="#00ff88" stroke-width="1.5" stroke-opacity="0.45"/>
+
+  <!-- ── OUTPUT NODE: Intelligent Enterprise ── -->
+  <circle cx="318" cy="200" r="42" fill="#0a0f1e" stroke="#00ff88" stroke-width="2.5"/>
+  <circle cx="318" cy="200" r="30" fill="none" stroke="#00ff88" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="318" y="195" text-anchor="middle" font-family="Arial Black,Arial,sans-serif"
+        font-size="16" font-weight="900" fill="#00ff88">AI</text>
+  <text x="318" y="213" text-anchor="middle" font-family="Arial,sans-serif"
+        font-size="9" font-weight="700" fill="#00ff88" fill-opacity="0.75">NEXUS</text>
+
+  <!-- $150M badge -->
+  <rect x="128" y="342" width="104" height="28" rx="14" fill="#7b2fff" fill-opacity="0.25"
+        stroke="#7b2fff" stroke-width="1.5" stroke-opacity="0.65"/>
+  <text x="180" y="361" text-anchor="middle" font-family="Arial Black,Arial,sans-serif"
+        font-size="13" font-weight="900" fill="#7b2fff">$150M</text>
+
+  <!-- "C-SUITE AI" label top -->
+  <text x="200" y="62" text-anchor="middle" font-family="Arial,sans-serif"
+        font-size="11" font-weight="700" fill="#7b2fff" fill-opacity="0.65" letter-spacing="3">C&#x2011;SUITE AI</text>
+</svg>

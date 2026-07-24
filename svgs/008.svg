@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg008" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+    <linearGradient id="rocket008" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#c0cfff"/>
+    </linearGradient>
+    <radialGradient id="flame008" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#f5c842" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#f5c842" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg008)"/>
+
+  <!-- Star field (subtle dots) -->
+  <g fill="#c0cfff" opacity="0.35">
+    <circle cx="75" cy="68" r="1.5"/><circle cx="142" cy="45" r="1"/><circle cx="310" cy="72" r="1.5"/>
+    <circle cx="355" cy="110" r="1"/><circle cx="62" cy="155" r="1"/><circle cx="330" cy="148" r="1.5"/>
+    <circle cx="88" cy="240" r="1"/><circle cx="348" cy="260" r="1.5"/><circle cx="55" cy="310" r="1"/>
+    <circle cx="340" cy="330" r="1"/><circle cx="120" cy="355" r="1.5"/><circle cx="290" cy="348" r="1"/>
+  </g>
+
+  <!-- Funding stage rings (ellipses, horizontal, ascending) -->
+  <!-- Series B ring (highest, brightest) -->
+  <ellipse cx="200" cy="118" rx="95" ry="18" fill="none" stroke="#f5c842" stroke-width="2.5" stroke-opacity="0.85"/>
+  <text x="308" y="122" font-family="Arial Black, Arial, sans-serif" font-size="12" font-weight="900" fill="#f5c842" opacity="0.90">B</text>
+
+  <!-- Series A ring (middle) -->
+  <ellipse cx="200" cy="210" rx="75" ry="14" fill="none" stroke="#c0cfff" stroke-width="2" stroke-opacity="0.70"/>
+  <text x="285" y="214" font-family="Arial Black, Arial, sans-serif" font-size="12" font-weight="900" fill="#c0cfff" opacity="0.80">A</text>
+
+  <!-- Seed ring (lowest, dimmest) -->
+  <ellipse cx="200" cy="298" rx="55" ry="10" fill="none" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.45"/>
+  <text x="263" y="302" font-family="Arial Black, Arial, sans-serif" font-size="11" font-weight="900" fill="#c0cfff" opacity="0.55">S</text>
+
+  <!-- Rocket body -->
+  <!-- Flame plume (below body) -->
+  <ellipse cx="200" cy="325" rx="18" ry="28" fill="url(#flame008)" opacity="0.75"/>
+  <ellipse cx="200" cy="330" rx="10" ry="18" fill="#f5c842" fill-opacity="0.55"/>
+
+  <!-- Fins -->
+  <polygon points="178,298 165,325 183,310" fill="#c0cfff" fill-opacity="0.60"/>
+  <polygon points="222,298 235,325 217,310" fill="#c0cfff" fill-opacity="0.60"/>
+
+  <!-- Body -->
+  <rect x="185" y="148" width="30" height="155" rx="6" fill="url(#rocket008)" fill-opacity="0.88" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.60"/>
+
+  <!-- Nose cone -->
+  <polygon points="200,82 185,150 215,150" fill="#f5c842" fill-opacity="0.92" stroke="#f5c842" stroke-width="1"/>
+
+  <!-- Window -->
+  <circle cx="200" cy="188" r="10" fill="#1a2744" fill-opacity="0.70" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.80"/>
+  <circle cx="200" cy="188" r="5" fill="#f5c842" fill-opacity="0.50"/>
+
+</svg>

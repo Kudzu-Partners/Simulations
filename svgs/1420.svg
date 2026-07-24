@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg1420" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c2440"/>
+      <stop offset="100%" stop-color="#2f3d6b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg1420)"/>
+
+  <!-- Small fixed pie (zero-sum) faded -->
+  <circle cx="112" cy="140" r="44" fill="#c9d4f2" fill-opacity="0.14" stroke="#c9d4f2" stroke-width="2" stroke-opacity="0.5"/>
+  <path d="M 112,140 L 112,96 A 44,44 0 0 1 150,162 Z" fill="#c9d4f2" fill-opacity="0.30"/>
+  <!-- Expanding pie (mutual gains) -->
+  <circle cx="252" cy="232" r="84" fill="#f2c94c" fill-opacity="0.12" stroke="#f2c94c" stroke-width="3" stroke-opacity="0.8"/>
+  <path d="M 252,232 L 252,148 A 84,84 0 0 1 325,275 Z" fill="#f2c94c" fill-opacity="0.40"/>
+  <path d="M 252,232 L 325,275 A 84,84 0 0 1 179,275 Z" fill="#7fd88f" fill-opacity="0.40"/>
+  <!-- Growth arrow from small to large -->
+  <path d="M 148,168 Q 180,196 202,214" fill="none" stroke="#e8edf9" stroke-width="4" stroke-linecap="round" stroke-opacity="0.8"/>
+  <polygon points="196,202 212,222 188,222" fill="#e8edf9" fill-opacity="0.8"/>
+  <!-- Two parties' arrows rising together -->
+  <path d="M 76,330 Q 120,300 160,304" fill="none" stroke="#7fd88f" stroke-width="4.5" stroke-linecap="round"/>
+  <polygon points="152,294 168,306 148,314" fill="#7fd88f"/>
+  <path d="M 64,352 Q 116,330 168,336" fill="none" stroke="#f2c94c" stroke-width="4.5" stroke-linecap="round"/>
+  <polygon points="160,326 176,338 156,346" fill="#f2c94c"/>
+
+</svg>

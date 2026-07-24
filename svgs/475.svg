@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg475" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a0e8f"/>
+      <stop offset="100%" stop-color="#0a2342"/>
+    </linearGradient>
+    <radialGradient id="ocean475" cx="0.5" cy="0.7" r="0.6">
+      <stop offset="0%" stop-color="#00bfff" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0a2342" stop-opacity="0.85"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg475)"/>
+
+  <text x="200" y="58" text-anchor="middle" fill="#e67e22" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">REVPAR · DIVING RESORT</text>
+
+  <!-- ocean -->
+  <rect x="0" y="260" width="400" height="140" fill="url(#ocean475)"/>
+  <g stroke="#00bfff" stroke-width="0.8" opacity="0.35" fill="none">
+    <path d="M 0 275 Q 50 270 100 275 T 200 275 T 300 275 T 400 275"/>
+    <path d="M 0 295 Q 50 290 100 295 T 200 295 T 300 295 T 400 295"/>
+  </g>
+
+  <!-- Occupancy curve (background) -->
+  <g opacity="0.6">
+    <line x1="50" y1="220" x2="350" y2="220" stroke="#c0cfff" stroke-width="0.8" opacity="0.55"/>
+    <path d="M 50 140 Q 110 150 170 180 Q 230 210 290 195 Q 320 180 350 160" fill="none" stroke="#f5c842" stroke-width="2" stroke-dasharray="3,3"/>
+    <text x="50" y="135" fill="#f5c842" font-size="6" font-family="monospace" opacity="0.85">OCCUPANCY</text>
+  </g>
+
+  <!-- DIVING MASK (hero, central) -->
+  <g transform="translate(200,225)">
+    <!-- strap -->
+    <path d="M -65 -10 Q -85 -20 -100 -5 M 65 -10 Q 85 -20 100 -5"
+          fill="none" stroke="#1a2744" stroke-width="3" stroke-linecap="round"/>
+    <!-- mask body -->
+    <rect x="-65" y="-30" width="130" height="50" rx="20" fill="#5a6f9c" stroke="#0d1421" stroke-width="2.5"/>
+    <!-- left lens -->
+    <ellipse cx="-28" cy="-5" rx="22" ry="16" fill="#00bfff" stroke="#0d1421" stroke-width="2"/>
+    <ellipse cx="-35" cy="-12" rx="6" ry="4" fill="#ffffff" fill-opacity="0.65"/>
+    <!-- right lens -->
+    <ellipse cx="28" cy="-5" rx="22" ry="16" fill="#00bfff" stroke="#0d1421" stroke-width="2"/>
+    <ellipse cx="21" cy="-12" rx="6" ry="4" fill="#ffffff" fill-opacity="0.65"/>
+    <!-- nose pocket -->
+    <path d="M -6 5 Q 0 20 6 5" fill="#0d1421"/>
+    <!-- snorkel -->
+    <path d="M 50 -20 Q 70 -40 75 -15 L 75 25 L 67 25 L 67 -10 Q 65 -25 53 -16" fill="#c0cfff" stroke="#0d1421" stroke-width="1.5"/>
+  </g>
+
+  <!-- bubbles -->
+  <g fill="#00bfff" opacity="0.65">
+    <circle cx="80" cy="200" r="3"/>
+    <circle cx="85" cy="180" r="2"/>
+    <circle cx="92" cy="160" r="2.5"/>
+    <circle cx="320" cy="200" r="3"/>
+    <circle cx="315" cy="180" r="2"/>
+    <circle cx="320" cy="160" r="2.5"/>
+  </g>
+
+  <!-- Luxury 5★ (top-left) -->
+  <g transform="translate(70,90)" fill="#f5c842">
+    <polygon points="-26,0 -24,4 -19,4 -22,7 -21,11 -26,9 -31,11 -30,7 -33,4 -28,4"/>
+    <polygon points="-13,0 -11,4 -6,4 -9,7 -8,11 -13,9 -18,11 -17,7 -20,4 -15,4"/>
+    <polygon points="0,0 2,4 7,4 4,7 5,11 0,9 -5,11 -4,7 -7,4 -2,4"/>
+    <polygon points="13,0 15,4 20,4 17,7 18,11 13,9 8,11 9,7 6,4 11,4"/>
+    <polygon points="26,0 28,4 33,4 30,7 31,11 26,9 21,11 22,7 19,4 24,4"/>
+  </g>
+
+  <!-- HONDURAS pin (bottom-right) -->
+  <g transform="translate(345,340)">
+    <path d="M 0 0 C -7 0 -12 5 -12 12 C -12 22 0 36 0 36 C 0 36 12 22 12 12 C 12 5 7 0 0 0 Z"
+          fill="#1a4480" fill-opacity="0.3" stroke="#c0cfff" stroke-width="1.3"/>
+    <circle cx="-3" cy="13" r="1.5" fill="#1a4480"/>
+    <circle cx="0" cy="13" r="1.5" fill="#1a4480"/>
+    <circle cx="3" cy="13" r="1.5" fill="#1a4480"/>
+  </g>
+
+  <text x="200" y="378" text-anchor="middle" fill="#c0cfff" font-size="10" font-family="monospace" opacity="0.42" letter-spacing="1.2">Temporada Baja · Resort · HN</text>
+</svg>

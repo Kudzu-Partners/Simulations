@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg060" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1a2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg060)"/>
+
+  <!-- Connection lines from center to agent nodes (before drawing nodes, so nodes render on top) -->
+  <g stroke="#00bfff" stroke-width="1.8" stroke-opacity="0.35">
+    <!-- Center to top -->
+    <line x1="200" y1="168" x2="200" y2="108"/>
+    <!-- Center to top-right -->
+    <line x1="221" y1="178" x2="272" y2="138"/>
+    <!-- Center to bottom-right -->
+    <line x1="226" y1="205" x2="272" y2="258"/>
+    <!-- Center to bottom -->
+    <line x1="200" y1="218" x2="200" y2="288"/>
+    <!-- Center to bottom-left -->
+    <line x1="174" y1="205" x2="128" y2="258"/>
+    <!-- Center to top-left -->
+    <line x1="179" y1="178" x2="128" y2="138"/>
+  </g>
+
+  <!-- Inter-agent connections (outer ring) -->
+  <g stroke="#00bfff" stroke-width="1" stroke-opacity="0.18" stroke-dasharray="4,4">
+    <line x1="200" y1="90"  x2="280" y2="122"/>
+    <line x1="280" y1="122" x2="280" y2="272"/>
+    <line x1="280" y1="272" x2="200" y2="305"/>
+    <line x1="200" y1="305" x2="120" y2="272"/>
+    <line x1="120" y1="272" x2="120" y2="122"/>
+    <line x1="120" y1="122" x2="200" y2="90"/>
+  </g>
+
+  <!-- CENTRAL OVERSIGHT NODE (gold hexagon = COO / human control) -->
+  <polygon points="200,168 221,180 221,204 200,216 179,204 179,180"
+           fill="#1a2d4f" fill-opacity="0.95" stroke="#f5c842" stroke-width="3"/>
+  <!-- Person icon inside -->
+  <circle cx="200" cy="186" r="7" fill="#f5c842" fill-opacity="0.75"/>
+  <path d="M 187,205 Q 187,196 200,196 Q 213,196 213,205"
+        fill="#f5c842" fill-opacity="0.60" stroke="none"/>
+
+  <!-- AI AGENT NODES (cyan hexagons, 6 positions) -->
+  <!-- Top (12 o'clock) -->
+  <polygon points="200,72 214,80 214,96 200,104 186,96 186,80"
+           fill="#0d1b2a" fill-opacity="0.90" stroke="#00bfff" stroke-width="2"/>
+  <text x="200" y="92" font-family="Arial Black, sans-serif" font-size="7" font-weight="900" fill="#00bfff" text-anchor="middle" opacity="0.80">AI</text>
+
+  <!-- Top-right (2 o'clock) -->
+  <polygon points="280,105 294,113 294,129 280,137 266,129 266,113"
+           fill="#0d1b2a" fill-opacity="0.90" stroke="#00bfff" stroke-width="2"/>
+  <text x="280" y="125" font-family="Arial Black, sans-serif" font-size="7" font-weight="900" fill="#00bfff" text-anchor="middle" opacity="0.80">AI</text>
+
+  <!-- Bottom-right (4 o'clock) -->
+  <polygon points="280,255 294,263 294,279 280,287 266,279 266,263"
+           fill="#0d1b2a" fill-opacity="0.90" stroke="#00bfff" stroke-width="2"/>
+  <text x="280" y="275" font-family="Arial Black, sans-serif" font-size="7" font-weight="900" fill="#00bfff" text-anchor="middle" opacity="0.80">AI</text>
+
+  <!-- Bottom (6 o'clock) -->
+  <polygon points="200,288 214,296 214,312 200,320 186,312 186,296"
+           fill="#0d1b2a" fill-opacity="0.90" stroke="#00bfff" stroke-width="2"/>
+  <text x="200" y="308" font-family="Arial Black, sans-serif" font-size="7" font-weight="900" fill="#00bfff" text-anchor="middle" opacity="0.80">AI</text>
+
+  <!-- Bottom-left (8 o'clock) -->
+  <polygon points="120,255 134,263 134,279 120,287 106,279 106,263"
+           fill="#0d1b2a" fill-opacity="0.90" stroke="#00bfff" stroke-width="2"/>
+  <text x="120" y="275" font-family="Arial Black, sans-serif" font-size="7" font-weight="900" fill="#00bfff" text-anchor="middle" opacity="0.80">AI</text>
+
+  <!-- Top-left (10 o'clock) -->
+  <polygon points="120,105 134,113 134,129 120,137 106,129 106,113"
+           fill="#0d1b2a" fill-opacity="0.90" stroke="#00bfff" stroke-width="2"/>
+  <text x="120" y="125" font-family="Arial Black, sans-serif" font-size="7" font-weight="900" fill="#00bfff" text-anchor="middle" opacity="0.80">AI</text>
+
+  <!-- COO label (bottom) -->
+  <text x="200" y="350" font-family="Arial, sans-serif" font-size="8" fill="#f5c842" text-anchor="middle" opacity="0.55">COO Oversight</text>
+  <text x="200" y="363" font-family="Arial, sans-serif" font-size="7" fill="#c0cfff" text-anchor="middle" opacity="0.35">Agentic Enterprise</text>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg2027" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0e2a2e"/>
+      <stop offset="100%" stop-color="#174a50"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg2027)"/>
+
+  <!-- Capability grid -->
+  <line x1="60" y1="100" x2="340" y2="100" stroke="#bfe8e0" stroke-width="1" stroke-opacity="0.18"/>
+  <line x1="60" y1="160" x2="340" y2="160" stroke="#bfe8e0" stroke-width="1" stroke-opacity="0.18"/>
+  <line x1="60" y1="220" x2="340" y2="220" stroke="#bfe8e0" stroke-width="1" stroke-opacity="0.18"/>
+  <line x1="60" y1="280" x2="340" y2="280" stroke="#bfe8e0" stroke-width="1" stroke-opacity="0.18"/>
+  <!-- Inside-frontier zone fill -->
+  <path d="M 60,340 L 60,208 L 108,232 L 148,150 L 196,196 L 244,108 L 292,178 L 340,128 L 340,340 Z" fill="#3fd0b6" fill-opacity="0.16"/>
+  <!-- The jagged frontier line -->
+  <path d="M 60,208 L 108,232 L 148,150 L 196,196 L 244,108 L 292,178 L 340,128" fill="none" stroke="#3fd0b6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Task dots: inside (safe) vs outside (risky) -->
+  <circle cx="120" cy="290" r="8" fill="#3fd0b6" fill-opacity="0.9"/>
+  <circle cx="212" cy="262" r="8" fill="#3fd0b6" fill-opacity="0.9"/>
+  <circle cx="300" cy="236" r="8" fill="#3fd0b6" fill-opacity="0.9"/>
+  <circle cx="132" cy="112" r="8" fill="none" stroke="#f2b23e" stroke-width="3.5"/>
+  <circle cx="262" cy="76" r="8" fill="none" stroke="#f2b23e" stroke-width="3.5"/>
+  <!-- Compass needle (navigation) -->
+  <circle cx="330" cy="330" r="24" fill="none" stroke="#bfe8e0" stroke-width="2.5" stroke-opacity="0.6"/>
+  <path d="M 330,312 L 338,330 L 330,348 L 322,330 Z" fill="#f2b23e" fill-opacity="0.9"/>
+
+</svg>

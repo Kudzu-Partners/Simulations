@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use these simulations in teaching or research, please cite this catalog."
+title: "Eureka Express — Open Simulations"
+type: dataset
+authors:
+  - name: "Kudzu Partners S.L. (Eureka Simulations)"
+    city: "Barcelona"
+    country: "ES"
+    website: "https://www.eurekasimulations.com/"
+abstract: >-
+  An open catalog of playable business simulations in the Universal Simulation
+  Framework (USF) format. Each simulation is a self-contained JSON (model, UI,
+  styles, EN/ES translations) runnable in the browser with the bundled
+  standalone player. Topics span business, finance, hospitality, tourism,
+  sustainability, and education.
+keywords:
+  - business simulation
+  - experiential learning
+  - management education
+  - serious games
+  - open educational resources
+license: CC-BY-NC-SA-4.0
+repository-code: "https://github.com/Kudzu-Partners/Simulations"
+url: "https://open.eurekasimulations.com/player/"
+version: "2026.07"
+date-released: "2026-07-24"

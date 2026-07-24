@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg030" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <radialGradient id="cashGlow030" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.40"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg030)"/>
+
+  <!-- CCC outer ring (the cycle path) -->
+  <!-- Arc 1: Inventory → Receivables (top, clockwise) -->
+  <path d="M 200,68 A 132,132 0 0,1 332,200"
+        fill="none" stroke="#e67e22" stroke-width="7" stroke-linecap="round" stroke-opacity="0.80"/>
+  <polygon points="330,186 336,200 323,200" fill="#e67e22" fill-opacity="0.80"/>
+
+  <!-- Arc 2: Receivables → Cash (right to bottom) -->
+  <path d="M 332,200 A 132,132 0 0,1 200,332"
+        fill="none" stroke="#f5c842" stroke-width="7" stroke-linecap="round" stroke-opacity="0.80"/>
+  <polygon points="187,330 200,337 200,323" fill="#f5c842" fill-opacity="0.80"/>
+
+  <!-- Arc 3: Cash → Inventory (bottom-left back to top) -->
+  <path d="M 200,332 A 132,132 0 0,1 68,200 A 132,132 0 0,1 200,68"
+        fill="none" stroke="#00ff88" stroke-width="7" stroke-linecap="round" stroke-opacity="0.75"/>
+  <polygon points="188,74 200,64 200,80" fill="#00ff88" fill-opacity="0.75"/>
+
+  <!-- Stage nodes -->
+  <!-- Inventory (top) -->
+  <circle cx="200" cy="68" r="28" fill="#0a0f1e" stroke="#e67e22" stroke-width="2.5"/>
+  <!-- Box icon for inventory -->
+  <rect x="187" y="57" width="26" height="22" rx="3" fill="none" stroke="#e67e22" stroke-width="2" stroke-opacity="0.85"/>
+  <line x1="187" y1="64" x2="213" y2="64" stroke="#e67e22" stroke-width="1.5" stroke-opacity="0.70"/>
+
+  <!-- Receivables (right) -->
+  <circle cx="332" cy="200" r="28" fill="#0a0f1e" stroke="#f5c842" stroke-width="2.5"/>
+  <!-- Document icon -->
+  <rect x="320" y="188" width="24" height="24" rx="2" fill="none" stroke="#f5c842" stroke-width="2" stroke-opacity="0.85"/>
+  <line x1="324" y1="196" x2="340" y2="196" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.65"/>
+  <line x1="324" y1="202" x2="340" y2="202" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.65"/>
+  <line x1="324" y1="208" x2="334" y2="208" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.65"/>
+
+  <!-- Cash (bottom) -->
+  <circle cx="200" cy="332" r="28" fill="#0a0f1e" stroke="#00ff88" stroke-width="2.5"/>
+  <circle cx="200" cy="332" r="12" fill="url(#cashGlow030)"/>
+  <text x="200" y="337" font-family="Arial Black, sans-serif" font-size="15" font-weight="900" fill="#00ff88" text-anchor="middle" opacity="0.90">$</text>
+
+  <!-- Crunch pressure indicators (inward arrows pressing on the cycle) -->
+  <g stroke="#e74c3c" stroke-width="2.5" stroke-opacity="0.65" stroke-linecap="round">
+    <!-- Pressing from top-right -->
+    <line x1="290" y1="110" x2="268" y2="132"/>
+    <polygon points="265,128 272,138 278,130" fill="#e74c3c" fill-opacity="0.65"/>
+    <!-- Pressing from bottom-right -->
+    <line x1="290" y1="290" x2="268" y2="268"/>
+    <polygon points="263,272 270,262 277,270" fill="#e74c3c" fill-opacity="0.65"/>
+    <!-- Pressing from left -->
+    <line x1="110" y1="200" x2="135" y2="200"/>
+    <polygon points="136,195 146,200 136,205" fill="#e74c3c" fill-opacity="0.65"/>
+  </g>
+
+  <!-- Stage labels -->
+  <text x="200" y="32"  font-family="Arial, sans-serif" font-size="10" fill="#e67e22" text-anchor="middle" opacity="0.70">I</text>
+  <text x="368" y="205" font-family="Arial, sans-serif" font-size="10" fill="#f5c842" text-anchor="middle" opacity="0.70">R</text>
+  <text x="200" y="376" font-family="Arial, sans-serif" font-size="10" fill="#00ff88" text-anchor="middle" opacity="0.70">C</text>
+
+  <!-- CCC label in center -->
+  <text x="200" y="208" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#00ff88" text-anchor="middle" opacity="0.75">CCC</text>
+
+</svg>

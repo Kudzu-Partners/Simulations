@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg62" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+    <linearGradient id="pipe62" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#f5c842" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#f5c842" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg62)"/>
+  <!-- Pipeline funnel shape: narrow at bottom, wide at top -->
+  <path d="M160,330 L240,330 L290,110 L110,110 Z" fill="url(#pipe62)" opacity="0.18"/>
+  <path d="M160,330 L240,330 L290,110 L110,110 Z" fill="none" stroke="#f5c842" stroke-width="2" opacity="0.4"/>
+  <!-- Steps inside funnel -->
+  <rect x="155" y="290" width="90" height="22" rx="4" fill="#f5c842" opacity="0.15"/>
+  <rect x="143" y="238" width="114" height="22" rx="4" fill="#f5c842" opacity="0.2"/>
+  <rect x="130" y="185" width="140" height="22" rx="4" fill="#f5c842" opacity="0.3"/>
+  <rect x="118" y="133" width="164" height="22" rx="4" fill="#f5c842" opacity="0.5"/>
+  <!-- Figures at each level (simple silhouettes: circle head + triangle body) -->
+  <!-- Top level: many figures -->
+  <g fill="#f5c842" opacity="0.9">
+    <circle cx="145" cy="140" r="7"/>
+    <path d="M138,148 Q145,168 152,148 Z"/>
+    <circle cx="170" cy="140" r="7"/>
+    <path d="M163,148 Q170,168 177,148 Z"/>
+    <circle cx="195" cy="140" r="7"/>
+    <path d="M188,148 Q195,168 202,148 Z"/>
+    <circle cx="220" cy="140" r="7"/>
+    <path d="M213,148 Q220,168 227,148 Z"/>
+    <circle cx="245" cy="140" r="7"/>
+    <path d="M238,148 Q245,168 252,148 Z"/>
+  </g>
+  <!-- Mid levels: fewer -->
+  <g fill="#f5c842" opacity="0.75">
+    <circle cx="165" cy="192" r="7"/>
+    <path d="M158,200 Q165,220 172,200 Z"/>
+    <circle cx="200" cy="192" r="7"/>
+    <path d="M193,200 Q200,220 207,200 Z"/>
+    <circle cx="235" cy="192" r="7"/>
+    <path d="M228,200 Q235,220 242,200 Z"/>
+  </g>
+  <g fill="#f5c842" opacity="0.6">
+    <circle cx="180" cy="245" r="7"/>
+    <path d="M173,253 Q180,273 187,253 Z"/>
+    <circle cx="213" cy="245" r="7"/>
+    <path d="M206,253 Q213,273 220,253 Z"/>
+  </g>
+  <!-- Bottom: one figure highlighted -->
+  <circle cx="200" cy="297" r="9" fill="#f5c842"/>
+  <path d="M190,308 Q200,334 210,308 Z" fill="#f5c842"/>
+  <!-- Arrow going up -->
+  <line x1="200" y1="105" x2="200" y2="70" stroke="#c0cfff" stroke-width="2.5" opacity="0.6"/>
+  <polygon points="200,58 192,74 208,74" fill="#c0cfff" opacity="0.6"/>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg73" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d0a4e"/>
+      <stop offset="100%" stop-color="#6a0572"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg73)"/>
+  <!-- Shelf line -->
+  <rect x="55" y="270" width="290" height="8" rx="3" fill="#ffd166" opacity="0.5"/>
+  <rect x="55" y="320" width="290" height="6" rx="3" fill="#ffd166" opacity="0.3"/>
+  <!-- Product A (tall, market leader) -->
+  <rect x="80" y="160" width="65" height="110" rx="6" fill="#ff6b9d" opacity="0.85"/>
+  <rect x="87" y="175" width="51" height="14" rx="3" fill="#ffffff" opacity="0.15"/>
+  <circle cx="112" cy="220" r="18" fill="#ffffff" opacity="0.1"/>
+  <text x="112" y="240" font-family="sans-serif" font-size="10" fill="#ffffff" text-anchor="middle" opacity="0.8">A</text>
+  <!-- Market share bar A -->
+  <rect x="80" y="130" width="65" height="20" rx="3" fill="#ff6b9d" opacity="0.5"/>
+  <text x="112" y="144" font-family="sans-serif" font-size="10" fill="#ffd166" text-anchor="middle" font-weight="bold">42%</text>
+  <!-- Product B (medium) -->
+  <rect x="167" y="190" width="65" height="80" rx="6" fill="#ffd166" opacity="0.8"/>
+  <rect x="174" y="205" width="51" height="12" rx="3" fill="#ffffff" opacity="0.15"/>
+  <circle cx="199" cy="242" r="14" fill="#ffffff" opacity="0.1"/>
+  <text x="199" y="257" font-family="sans-serif" font-size="10" fill="#2d0a4e" text-anchor="middle" opacity="0.9">B</text>
+  <rect x="167" y="160" width="65" height="20" rx="3" fill="#ffd166" opacity="0.4"/>
+  <text x="199" y="174" font-family="sans-serif" font-size="10" fill="#ffd166" text-anchor="middle" font-weight="bold">31%</text>
+  <!-- Product C (smaller challenger) -->
+  <rect x="254" y="210" width="65" height="60" rx="6" fill="#c084fc" opacity="0.75"/>
+  <rect x="261" y="223" width="51" height="10" rx="3" fill="#ffffff" opacity="0.15"/>
+  <text x="286" y="248" font-family="sans-serif" font-size="10" fill="#ffffff" text-anchor="middle" opacity="0.8">C</text>
+  <rect x="254" y="182" width="65" height="20" rx="3" fill="#c084fc" opacity="0.4"/>
+  <text x="286" y="196" font-family="sans-serif" font-size="10" fill="#ffd166" text-anchor="middle" font-weight="bold">27%</text>
+  <!-- Channel arrows below shelf -->
+  <path d="M112,328 Q112,350 112,355" fill="none" stroke="#ff6b9d" stroke-width="2" opacity="0.5"/>
+  <path d="M200,328 Q200,345 245,355" fill="none" stroke="#ffd166" stroke-width="2" opacity="0.5"/>
+  <path d="M286,328 Q300,342 320,355" fill="none" stroke="#c084fc" stroke-width="2" opacity="0.4"/>
+  <text x="105" y="372" font-family="sans-serif" font-size="9" fill="#ff6b9d" text-anchor="middle" opacity="0.6">MASS</text>
+  <text x="240" y="372" font-family="sans-serif" font-size="9" fill="#ffd166" text-anchor="middle" opacity="0.6">TRADE</text>
+  <text x="318" y="372" font-family="sans-serif" font-size="9" fill="#c084fc" text-anchor="middle" opacity="0.6">DIGITAL</text>
+</svg>

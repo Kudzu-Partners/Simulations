@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg017" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <radialGradient id="exitGlow017" cx="75%" cy="25%" r="35%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg017)"/>
+  <circle cx="310" cy="100" r="80" fill="url(#exitGlow017)"/>
+
+  <!-- Portfolio company 1 — large, mature, exiting (top-right) -->
+  <circle cx="278" cy="118" r="55" fill="#00ff88" fill-opacity="0.18" stroke="#00ff88" stroke-width="2.5"/>
+  <!-- Exit arrow from company 1 -->
+  <line x1="310" y1="86" x2="340" y2="62" stroke="#00ff88" stroke-width="2.5" stroke-opacity="0.80"/>
+  <polygon points="333,55 345,62 337,70" fill="#00ff88" fill-opacity="0.80"/>
+
+  <!-- Portfolio company 2 — medium, growing (bottom-right) -->
+  <circle cx="270" cy="262" r="40" fill="#00bfff" fill-opacity="0.18" stroke="#00bfff" stroke-width="2.5"/>
+
+  <!-- Portfolio company 3 — small, early stage (bottom-left) -->
+  <circle cx="138" cy="272" r="28" fill="#00bfff" fill-opacity="0.15" stroke="#00bfff" stroke-width="2" stroke-opacity="0.70"/>
+
+  <!-- Portfolio company 4 — medium, turnaround (top-left) -->
+  <circle cx="132" cy="140" r="38" fill="#00ff88" fill-opacity="0.15" stroke="#00ff88" stroke-width="2" stroke-opacity="0.65"/>
+
+  <!-- Fund center node -->
+  <circle cx="200" cy="205" r="20" fill="#0a0f1e" stroke="#f5c842" stroke-width="2.5"/>
+  <circle cx="200" cy="205" r="10" fill="#f5c842" fill-opacity="0.80"/>
+
+  <!-- Connection lines from fund to each portfolio -->
+  <line x1="200" y1="205" x2="260" y2="148" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.45"/>
+  <line x1="200" y1="205" x2="248" y2="252" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.45"/>
+  <line x1="200" y1="205" x2="152" y2="258" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.35"/>
+  <line x1="200" y1="205" x2="152" y2="158" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.35"/>
+
+  <!-- Value creation bars inside companies (small internal bars) -->
+  <rect x="258" y="106" width="8" height="18" rx="1" fill="#00ff88" fill-opacity="0.70"/>
+  <rect x="268" y="100" width="8" height="24" rx="1" fill="#00ff88" fill-opacity="0.80"/>
+
+  <!-- IRR label -->
+  <text x="200" y="368" font-family="Arial Black, Arial, sans-serif" font-size="22" font-weight="900" fill="#00ff88" text-anchor="middle" opacity="0.85">IRR</text>
+
+</svg>

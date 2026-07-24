@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg059" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1000"/>
+      <stop offset="100%" stop-color="#2d2000"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg059)"/>
+
+  <!-- Governance shield (center) -->
+  <path d="M 200,62 L 272,90 L 272,188 Q 272,248 200,278 Q 128,248 128,188 L 128,90 Z"
+        fill="#1a1000" fill-opacity="0.85" stroke="#f5c842" stroke-width="3" stroke-opacity="0.75"/>
+
+  <!-- AI circuit pattern inside shield -->
+  <g stroke="#f5c842" stroke-width="1" stroke-opacity="0.30">
+    <line x1="172" y1="130" x2="200" y2="130"/>
+    <line x1="200" y1="115" x2="200" y2="145"/>
+    <line x1="200" y1="130" x2="228" y2="130"/>
+    <line x1="172" y1="165" x2="200" y2="165"/>
+    <line x1="200" y1="165" x2="228" y2="165"/>
+    <line x1="200" y1="145" x2="200" y2="180"/>
+    <line x1="172" y1="200" x2="228" y2="200"/>
+    <line x1="172" y1="130" x2="172" y2="165"/>
+    <line x1="228" y1="130" x2="228" y2="165"/>
+  </g>
+  <!-- Circuit nodes -->
+  <g fill="#f5c842" fill-opacity="0.65">
+    <circle cx="200" cy="115" r="3.5"/>
+    <circle cx="172" cy="130" r="3"/>
+    <circle cx="228" cy="130" r="3"/>
+    <circle cx="172" cy="165" r="3"/>
+    <circle cx="228" cy="165" r="3"/>
+    <circle cx="200" cy="180" r="3.5"/>
+  </g>
+
+  <!-- EU AI Act badge (top-right of shield) -->
+  <circle cx="258" cy="96" r="12" fill="#1a1000" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.65"/>
+  <text x="258" y="100" font-family="Arial Black, sans-serif" font-size="7" font-weight="900" fill="#f5c842" text-anchor="middle" opacity="0.80">EU</text>
+
+  <!-- Compliance indicators (right of shield) -->
+  <!-- Passed: checkmarks -->
+  <g fill="none" stroke="#52b788" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.80">
+    <polyline points="295,138 302,146 316,128"/>
+    <polyline points="295,168 302,176 316,158"/>
+  </g>
+  <text x="332" y="142" font-family="Arial, sans-serif" font-size="8" fill="#52b788" opacity="0.65">Pass</text>
+  <text x="332" y="172" font-family="Arial, sans-serif" font-size="8" fill="#52b788" opacity="0.65">Pass</text>
+
+  <!-- Risk: X marks -->
+  <g stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.75">
+    <line x1="296" y1="198" x2="315" y2="217"/>
+    <line x1="315" y1="198" x2="296" y2="217"/>
+  </g>
+  <text x="332" y="212" font-family="Arial, sans-serif" font-size="8" fill="#e74c3c" opacity="0.65">Risk</text>
+
+  <!-- Bias indicator (left of shield) -->
+  <text x="95" y="165" font-family="Arial, sans-serif" font-size="8" fill="#e74c3c" text-anchor="middle" opacity="0.60">Bias</text>
+  <!-- Bias scale (tilted bar) -->
+  <line x1="68" y1="175" x2="120" y2="175" stroke="#e74c3c" stroke-width="1.5" stroke-opacity="0.35"/>
+  <line x1="68" y1="175" x2="75"  y2="162" stroke="#e74c3c" stroke-width="2" stroke-opacity="0.55"/>
+  <line x1="120" y1="175" x2="113" y2="188" stroke="#c0cfff" stroke-width="2" stroke-opacity="0.35"/>
+
+  <!-- Credibility / Trust gauge (bottom of shield) -->
+  <rect x="148" y="295" width="104" height="12" rx="6" fill="#c0cfff" fill-opacity="0.10"/>
+  <rect x="148" y="295" width="72"  height="12" rx="6" fill="#f5c842" fill-opacity="0.55"/>
+  <text x="200" y="323" font-family="Arial, sans-serif" font-size="8" fill="#f5c842" text-anchor="middle" opacity="0.55">Trust</text>
+
+  <!-- CAIGO role label (bottom) -->
+  <text x="200" y="355" font-family="Arial, sans-serif" font-size="8" fill="#c0cfff" text-anchor="middle" opacity="0.38">Chief AI Governance Officer</text>
+</svg>

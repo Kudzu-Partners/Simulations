@@ -49,6 +49,10 @@ npm install jsdom
 node headless_replay.js 015
 ```
 
+## Contribute
+
+Bug reports, fixes, localizations, and new simulations are welcome — every contribution goes through the same quality gate as our own releases (format validation → headless replay in both languages → human review). See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`GOVERNANCE.md`](GOVERNANCE.md). Citing the catalog in a syllabus or paper? Use [`CITATION.cff`](CITATION.cff).
+
 ## Attribution
 
 © 2026 Kudzu Partners S.L. / Eureka Simulations · Simulations and player shared under CC BY-NC-SA 4.0 ([full terms](LICENSE.md)) · Chart.js (bundled in `player/vendor/`) is MIT-licensed by its contributors.

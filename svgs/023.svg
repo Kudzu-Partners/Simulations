@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg023" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+    <linearGradient id="funnel023" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#f5c842" stop-opacity="0.40"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg023)"/>
+
+  <!-- Territory hexagonal map (background, left half) -->
+  <g fill="none" stroke-width="1.5" stroke-opacity="0.45">
+    <!-- Territory A -->
+    <polygon points="95,95 140,95 162,132 140,170 95,170 72,132" stroke="#c0cfff" fill="#c0cfff" fill-opacity="0.08"/>
+    <!-- Territory B -->
+    <polygon points="140,95 185,95 207,132 185,170 140,170 118,132" stroke="#f5c842" fill="#f5c842" fill-opacity="0.10"/>
+    <!-- Territory C -->
+    <polygon points="95,170 140,170 162,207 140,245 95,245 72,207" stroke="#c0cfff" fill="#c0cfff" fill-opacity="0.08"/>
+    <!-- Territory D -->
+    <polygon points="140,170 185,170 207,207 185,245 140,245 118,207" stroke="#c0cfff" fill="#c0cfff" fill-opacity="0.06"/>
+  </g>
+
+  <!-- Territory performance dots -->
+  <circle cx="128" cy="132" r="6" fill="#f5c842" fill-opacity="0.80"/>
+  <circle cx="160" cy="132" r="8" fill="#f5c842" fill-opacity="0.90"/>
+  <circle cx="118" cy="207" r="5" fill="#c0cfff" fill-opacity="0.60"/>
+  <circle cx="160" cy="207" r="4" fill="#c0cfff" fill-opacity="0.50"/>
+
+  <!-- Pipeline funnel (right half) -->
+  <!-- Stage labels -->
+  <g font-family="Arial, sans-serif" font-size="9" fill="#f5c842" opacity="0.55" text-anchor="end">
+    <text x="390" y="118">Prospect</text>
+    <text x="390" y="178">Qualify</text>
+    <text x="390" y="238">Propose</text>
+    <text x="390" y="298">Close</text>
+  </g>
+
+  <!-- Funnel stages (trapezoids, narrowing downward) -->
+  <polygon points="228,100 372,100 360,145 240,145" fill="#f5c842" fill-opacity="0.25" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.60"/>
+  <polygon points="240,150 360,150 348,195 252,195" fill="#f5c842" fill-opacity="0.32" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.65"/>
+  <polygon points="252,200 348,200 336,245 264,245" fill="#f5c842" fill-opacity="0.42" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.70"/>
+  <polygon points="264,250 336,250 320,295 280,295" fill="#f5c842" fill-opacity="0.65" stroke="#f5c842" stroke-width="2" stroke-opacity="0.85"/>
+
+  <!-- Conversion count dots on each funnel stage -->
+  <g fill="#f5c842">
+    <circle cx="270" cy="122" r="4" fill-opacity="0.80"/><circle cx="285" cy="122" r="4" fill-opacity="0.80"/>
+    <circle cx="300" cy="122" r="4" fill-opacity="0.80"/><circle cx="315" cy="122" r="4" fill-opacity="0.80"/>
+    <circle cx="330" cy="122" r="4" fill-opacity="0.80"/>
+    <circle cx="276" cy="172" r="4" fill-opacity="0.80"/><circle cx="291" cy="172" r="4" fill-opacity="0.80"/>
+    <circle cx="306" cy="172" r="4" fill-opacity="0.80"/>
+    <circle cx="285" cy="222" r="4" fill-opacity="0.80"/><circle cx="300" cy="222" r="4" fill-opacity="0.80"/>
+    <circle cx="300" cy="272" r="5" fill-opacity="0.90"/>
+  </g>
+
+  <!-- Vertical divider between territory map and funnel -->
+  <line x1="220" y1="70" x2="220" y2="330" stroke="#c0cfff" stroke-width="1" stroke-opacity="0.20" stroke-dasharray="4,5"/>
+
+  <!-- $45M label -->
+  <text x="200" y="360" font-family="Arial Black, Arial, sans-serif" font-size="14" font-weight="900" fill="#f5c842" text-anchor="middle" opacity="0.75">$45M</text>
+
+</svg>

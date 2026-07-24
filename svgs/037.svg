@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg037" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1a2d"/>
+      <stop offset="100%" stop-color="#1a2d4f"/>
+    </linearGradient>
+    <linearGradient id="curve037" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e74c3c"/>
+      <stop offset="55%" stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#00c9a7"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg037)"/>
+
+  <!-- Acquisition funnel (left zone x55–170) -->
+  <polygon points="55,70 170,70 140,155 85,155"   fill="#00c9a7" fill-opacity="0.18" stroke="#00c9a7" stroke-width="1.5" stroke-opacity="0.55"/>
+  <polygon points="85,160 140,160 122,220 103,220" fill="#00c9a7" fill-opacity="0.22" stroke="#00c9a7" stroke-width="1.5" stroke-opacity="0.55"/>
+  <polygon points="103,225 122,225 115,270 110,270" fill="#00c9a7" fill-opacity="0.30" stroke="#00c9a7" stroke-width="1.5" stroke-opacity="0.60"/>
+  <!-- Funnel labels (right of funnel, clear zone) -->
+  <g font-family="Arial, sans-serif" font-size="9" fill="#00c9a7" opacity="0.60" text-anchor="start">
+    <text x="175" y="115">Acquire</text>
+    <text x="175" y="195">Convert</text>
+    <text x="175" y="252">Retain</text>
+  </g>
+
+  <!-- Axes for P&L curve (right zone x200–360) -->
+  <line x1="210" y1="68" x2="210" y2="310" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.30"/>
+  <line x1="200" y1="295" x2="360" y2="295" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.30"/>
+  <!-- Break-even dashed line at y=190 -->
+  <line x1="208" y1="190" x2="358" y2="190" stroke="#f5c842" stroke-width="1.5" stroke-dasharray="6,4" stroke-opacity="0.45"/>
+  <text x="205" y="187" font-family="Arial, sans-serif" font-size="8" fill="#f5c842" text-anchor="end" opacity="0.70">Break-even</text>
+  <!-- Month ticks on x-axis -->
+  <g stroke="#c0cfff" stroke-width="1" stroke-opacity="0.25">
+    <line x1="237" y1="293" x2="237" y2="298"/>
+    <line x1="264" y1="293" x2="264" y2="298"/>
+    <line x1="291" y1="293" x2="291" y2="298"/>
+    <line x1="318" y1="293" x2="318" y2="298"/>
+    <line x1="345" y1="293" x2="345" y2="298"/>
+  </g>
+  <text x="210" y="308" font-family="Arial, sans-serif" font-size="8" fill="#c0cfff" opacity="0.35">M1</text>
+  <text x="345" y="308" font-family="Arial, sans-serif" font-size="8" fill="#c0cfff" opacity="0.35" text-anchor="middle">M12</text>
+
+  <!-- P&L curve: starts negative (below break-even), crosses break-even, ends profitable -->
+  <path d="M 215,265 C 230,258 240,245 255,230 C 268,216 272,200 285,190 C 298,180 310,162 355,130"
+        fill="none" stroke="url(#curve037)" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Profitability zone fill above curve end -->
+  <path d="M 285,190 C 298,180 310,162 355,130 L 355,190 Z"
+        fill="#00c9a7" fill-opacity="0.12"/>
+  <!-- Break-even crossing dot -->
+  <circle cx="285" cy="190" r="6" fill="#f5c842" fill-opacity="0.95" stroke="#0f1a2d" stroke-width="1.5"/>
+  <!-- Profit end dot -->
+  <circle cx="355" cy="130" r="6" fill="#00c9a7" fill-opacity="0.95" stroke="#0f1a2d" stroke-width="1.5"/>
+
+  <!-- Axis labels -->
+  <text x="285" y="325" font-family="Arial, sans-serif" font-size="9" fill="#c0cfff" text-anchor="middle" opacity="0.45">12 months</text>
+  <text x="205" y="78"  font-family="Arial, sans-serif" font-size="9" fill="#c0cfff" text-anchor="end" opacity="0.45">P&amp;L</text>
+</svg>

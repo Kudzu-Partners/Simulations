@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg1230" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c3328"/>
+      <stop offset="100%" stop-color="#2f5c42"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg1230)"/>
+
+  <!-- Three doors of increasing size -->
+  <rect x="62" y="176" width="66" height="128" rx="8" fill="#e9f2ea" fill-opacity="0.12" stroke="#e9f2ea" stroke-width="2.5" stroke-opacity="0.6"/>
+  <circle cx="116" cy="242" r="4" fill="#e9f2ea" fill-opacity="0.8"/>
+  <rect x="164" y="150" width="74" height="154" rx="8" fill="#e9f2ea" fill-opacity="0.16" stroke="#f2c94c" stroke-width="3" stroke-opacity="0.85"/>
+  <circle cx="224" cy="230" r="4.5" fill="#f2c94c"/>
+  <rect x="274" y="124" width="82" height="180" rx="8" fill="#e9f2ea" fill-opacity="0.12" stroke="#e9f2ea" stroke-width="2.5" stroke-opacity="0.6"/>
+  <circle cx="340" cy="218" r="5" fill="#e9f2ea" fill-opacity="0.8"/>
+  <!-- Door signs: 1 person / 2 people / building -->
+  <circle cx="95" cy="206" r="7" fill="#7fd88f" fill-opacity="0.9"/>
+  <path d="M 84,226 Q 95,214 106,226" fill="none" stroke="#7fd88f" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="192" cy="182" r="6.5" fill="#f2c94c" fill-opacity="0.95"/>
+  <circle cx="212" cy="182" r="6.5" fill="#f2c94c" fill-opacity="0.95"/>
+  <path d="M 182,200 Q 192,190 202,200 M 202,200 Q 212,190 222,200" fill="none" stroke="#f2c94c" stroke-width="3.5" stroke-linecap="round"/>
+  <rect x="298" y="152" width="34" height="26" rx="3" fill="none" stroke="#7fd88f" stroke-width="3"/>
+  <line x1="306" y1="160" x2="306" y2="170" stroke="#7fd88f" stroke-width="2.5"/>
+  <line x1="315" y1="160" x2="315" y2="170" stroke="#7fd88f" stroke-width="2.5"/>
+  <line x1="324" y1="160" x2="324" y2="170" stroke="#7fd88f" stroke-width="2.5"/>
+  <!-- Ground line + sprout (founding) -->
+  <line x1="48" y1="326" x2="352" y2="326" stroke="#e9f2ea" stroke-width="2" stroke-opacity="0.4"/>
+  <path d="M 200,326 Q 198,346 200,356" fill="none" stroke="#7fd88f" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 200,340 Q 186,336 182,324 Q 196,326 200,340" fill="#7fd88f" fill-opacity="0.9"/>
+
+</svg>

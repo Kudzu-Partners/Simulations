@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg135" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+    <radialGradient id="centerGlow135" cx="50%" cy="50%" r="30%">
+      <stop offset="0%" stop-color="#00bfff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00bfff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="card1135" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e4d7b"/>
+      <stop offset="100%" stop-color="#0d2a42"/>
+    </linearGradient>
+    <linearGradient id="card2135" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a6b8a"/>
+      <stop offset="100%" stop-color="#0d3a4f"/>
+    </linearGradient>
+    <linearGradient id="card3135" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00bfff"/>
+      <stop offset="100%" stop-color="#0a5a78"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg135)"/>
+  <rect width="400" height="400" rx="32" fill="url(#centerGlow135)"/>
+
+  <!-- Background grid -->
+  <g stroke="#00bfff" stroke-width="0.4" opacity="0.07">
+    <line x1="0" y1="100" x2="400" y2="100"/>
+    <line x1="0" y1="200" x2="400" y2="200"/>
+    <line x1="0" y1="300" x2="400" y2="300"/>
+    <line x1="100" y1="0" x2="100" y2="400"/>
+    <line x1="200" y1="0" x2="200" y2="400"/>
+    <line x1="300" y1="0" x2="300" y2="400"/>
+  </g>
+
+  <!-- ── Sprint ring: 4 arc segments ── -->
+  <!-- Track (full ring background) -->
+  <circle cx="200" cy="195" r="130" fill="none" stroke="#00bfff" stroke-width="18" stroke-opacity="0.1"/>
+
+  <!-- Sprint 1 (top-right, complete) — 90° arc -->
+  <circle cx="200" cy="195" r="130" fill="none"
+          stroke="#00bfff" stroke-width="18" stroke-opacity="0.85"
+          stroke-dasharray="204 612"
+          stroke-dashoffset="0"
+          stroke-linecap="butt"/>
+
+  <!-- Sprint 2 (bottom-right, complete) -->
+  <circle cx="200" cy="195" r="130" fill="none"
+          stroke="#00bfff" stroke-width="18" stroke-opacity="0.62"
+          stroke-dasharray="200 612"
+          stroke-dashoffset="-208"
+          stroke-linecap="butt"/>
+
+  <!-- Sprint 3 (bottom-left, in progress ~60%) -->
+  <circle cx="200" cy="195" r="130" fill="none"
+          stroke="#7b2fff" stroke-width="18" stroke-opacity="0.55"
+          stroke-dasharray="122 612"
+          stroke-dashoffset="-412"
+          stroke-linecap="butt"/>
+
+  <!-- Sprint 4 (top-left, planned — very dim) -->
+  <circle cx="200" cy="195" r="130" fill="none"
+          stroke="#00bfff" stroke-width="18" stroke-opacity="0.18"
+          stroke-dasharray="196 612"
+          stroke-dashoffset="-534"
+          stroke-linecap="butt"/>
+
+  <!-- Gap dividers between sprints (4 white dots at 0°/90°/180°/270°) -->
+  <circle cx="330" cy="195" r="5" fill="#0d1b2a"/>
+  <circle cx="200" cy="325" r="5" fill="#0d1b2a"/>
+  <circle cx="70"  cy="195" r="5" fill="#0d1b2a"/>
+  <circle cx="200" cy="65"  r="5" fill="#0d1b2a"/>
+
+  <!-- Sprint number labels on the ring -->
+  <text x="285" y="120" text-anchor="middle" font-family="'Courier New',monospace" font-size="11" font-weight="bold" fill="#00bfff" opacity="0.9">S1</text>
+  <text x="285" y="278" text-anchor="middle" font-family="'Courier New',monospace" font-size="11" font-weight="bold" fill="#00bfff" opacity="0.7">S2</text>
+  <text x="115" y="278" text-anchor="middle" font-family="'Courier New',monospace" font-size="11" font-weight="bold" fill="#7b2fff" opacity="0.7">S3</text>
+  <text x="115" y="120" text-anchor="middle" font-family="'Courier New',monospace" font-size="11" font-weight="bold" fill="#00bfff" opacity="0.35">S4</text>
+
+  <!-- Rotation arrows on ring -->
+  <!-- Arrow tip at top (12 o'clock → clockwise direction) -->
+  <path d="M196 64 L204 64 L200 54 Z" fill="#00bfff" opacity="0.6"/>
+
+  <!-- ── Product increment stack (center) ── -->
+  <!-- Card 1 (bottom, oldest sprint) -->
+  <rect x="152" y="222" width="96" height="26" rx="5" fill="url(#card1135)" stroke="#00bfff" stroke-width="1.2" stroke-opacity="0.4"/>
+  <line x1="162" y1="230" x2="238" y2="230" stroke="#00bfff" stroke-width="1" opacity="0.3"/>
+  <line x1="162" y1="237" x2="218" y2="237" stroke="#00bfff" stroke-width="1" opacity="0.2"/>
+
+  <!-- Card 2 (mid) -->
+  <rect x="152" y="195" width="96" height="26" rx="5" fill="url(#card2135)" stroke="#00bfff" stroke-width="1.2" stroke-opacity="0.55"/>
+  <line x1="162" y1="203" x2="238" y2="203" stroke="#00bfff" stroke-width="1" opacity="0.4"/>
+  <line x1="162" y1="210" x2="225" y2="210" stroke="#00bfff" stroke-width="1" opacity="0.3"/>
+
+  <!-- Card 3 (top, current sprint — brightest) -->
+  <rect x="152" y="168" width="96" height="26" rx="5" fill="url(#card3135)" stroke="#00bfff" stroke-width="1.8" stroke-opacity="0.9"/>
+  <line x1="162" y1="176" x2="238" y2="176" stroke="#fff" stroke-width="1" opacity="0.4"/>
+  <line x1="162" y1="183" x2="230" y2="183" stroke="#fff" stroke-width="1" opacity="0.3"/>
+  <!-- "In progress" dot -->
+  <circle cx="234" cy="181" r="3.5" fill="#00ff88" opacity="0.9"/>
+
+  <!-- Velocity label -->
+  <text x="200" y="158" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#00bfff" opacity="0.55" letter-spacing="1">INCREMENT</text>
+
+  <!-- Bottom label -->
+  <text x="200" y="382" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="#00bfff" opacity="0.45" letter-spacing="2">SCRUM · 4 SPRINTS</text>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg006" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4a0e8f"/>
+      <stop offset="100%" stop-color="#7b2d8b"/>
+    </linearGradient>
+    <linearGradient id="curve006" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e67e22"/>
+      <stop offset="100%" stop-color="#ffd166"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg006)"/>
+
+  <!-- Subtle dot texture -->
+  <g fill="#ffd166" opacity="0.06">
+    <circle cx="50" cy="50" r="2"/><circle cx="100" cy="50" r="2"/><circle cx="150" cy="50" r="2"/><circle cx="200" cy="50" r="2"/><circle cx="250" cy="50" r="2"/><circle cx="300" cy="50" r="2"/><circle cx="350" cy="50" r="2"/>
+    <circle cx="50" cy="100" r="2"/><circle cx="100" cy="100" r="2"/><circle cx="150" cy="100" r="2"/><circle cx="200" cy="100" r="2"/><circle cx="250" cy="100" r="2"/><circle cx="300" cy="100" r="2"/><circle cx="350" cy="100" r="2"/>
+    <circle cx="50" cy="150" r="2"/><circle cx="100" cy="150" r="2"/><circle cx="150" cy="150" r="2"/><circle cx="200" cy="150" r="2"/><circle cx="250" cy="150" r="2"/><circle cx="300" cy="150" r="2"/><circle cx="350" cy="150" r="2"/>
+    <circle cx="50" cy="200" r="2"/><circle cx="100" cy="200" r="2"/><circle cx="150" cy="200" r="2"/><circle cx="200" cy="200" r="2"/><circle cx="250" cy="200" r="2"/><circle cx="300" cy="200" r="2"/><circle cx="350" cy="200" r="2"/>
+  </g>
+
+  <!-- Hotel building silhouette -->
+  <!-- Main tower -->
+  <rect x="130" y="210" width="140" height="130" fill="#ffd166" fill-opacity="0.12" stroke="#ffd166" stroke-width="2" stroke-opacity="0.55"/>
+  <!-- Roof detail (slight trapezoid top) -->
+  <polygon points="126,212 274,212 260,195 140,195" fill="#ffd166" fill-opacity="0.18" stroke="#ffd166" stroke-width="1.5" stroke-opacity="0.55"/>
+  <!-- Windows rows (2 rows, 4 cols) -->
+  <g fill="#ffd166" fill-opacity="0.35">
+    <rect x="148" y="225" width="18" height="22" rx="2"/>
+    <rect x="180" y="225" width="18" height="22" rx="2"/>
+    <rect x="212" y="225" width="18" height="22" rx="2"/>
+    <rect x="244" y="225" width="18" height="22" rx="2"/>
+    <rect x="148" y="262" width="18" height="22" rx="2"/>
+    <rect x="180" y="262" width="18" height="22" rx="2"/>
+    <rect x="212" y="262" width="18" height="22" rx="2"/>
+    <rect x="244" y="262" width="18" height="22" rx="2"/>
+  </g>
+  <!-- Entrance door -->
+  <rect x="184" y="298" width="32" height="42" rx="3" fill="#ffd166" fill-opacity="0.20" stroke="#ffd166" stroke-width="1.5" stroke-opacity="0.50"/>
+  <!-- Hotel flag / sign -->
+  <line x1="200" y1="174" x2="200" y2="194" stroke="#ffd166" stroke-width="2" stroke-opacity="0.65"/>
+  <polygon points="200,174 218,182 200,190" fill="#e67e22" fill-opacity="0.80"/>
+
+  <!-- Dynamic Revenue Curve (oscillating upward over the hotel) -->
+  <!-- Baseline (x-axis) -->
+  <line x1="62" y1="182" x2="338" y2="182" stroke="#ffd166" stroke-width="1" stroke-opacity="0.22" stroke-dasharray="4,5"/>
+  <!-- Revenue curve: starts low-left, oscillates upward with 5 seasonal peaks to upper-right -->
+  <path d="M 65,185
+           C 80,178 90,155 110,148
+           C 125,142 130,162 148,168
+           C 165,174 170,138 192,125
+           C 210,114 215,140 232,145
+           C 248,150 252,108 275,95
+           C 290,85 300,115 320,105
+           L 338,95"
+        fill="none" stroke="url(#curve006)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Peak markers on the curve -->
+  <circle cx="110" cy="148" r="5" fill="#ffd166" fill-opacity="0.90"/>
+  <circle cx="192" cy="125" r="5" fill="#ffd166" fill-opacity="0.90"/>
+  <circle cx="275" cy="95" r="5" fill="#ffd166" fill-opacity="0.90"/>
+  <!-- Upward arrow at curve end -->
+  <polygon points="335,88 342,95 335,102" fill="#ffd166" fill-opacity="0.80"/>
+
+  <!-- RevPAR label -->
+  <text x="200" y="370" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#ffd166" text-anchor="middle" opacity="0.85">RevPAR</text>
+
+</svg>

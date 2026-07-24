@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg052" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2333"/>
+      <stop offset="100%" stop-color="#2d3a4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg052)"/>
+
+  <!-- Building body (center) -->
+  <rect x="152" y="122" width="96" height="178" rx="4"
+        fill="#1a2333" fill-opacity="0.85" stroke="#4fc3f7" stroke-width="2.5"/>
+  <!-- Floor dividers -->
+  <g stroke="#4fc3f7" stroke-width="0.8" stroke-opacity="0.28">
+    <line x1="152" y1="160" x2="248" y2="160"/>
+    <line x1="152" y1="198" x2="248" y2="198"/>
+    <line x1="152" y1="236" x2="248" y2="236"/>
+    <line x1="152" y1="274" x2="248" y2="274"/>
+  </g>
+  <!-- Lit windows (leased floors) -->
+  <g fill="#f5c842" fill-opacity="0.80">
+    <rect x="163" y="132" width="13" height="16" rx="1.5"/>
+    <rect x="181" y="132" width="13" height="16" rx="1.5"/>
+    <rect x="199" y="132" width="13" height="16" rx="1.5"/>
+    <rect x="217" y="132" width="13" height="16" rx="1.5"/>
+    <rect x="163" y="168" width="13" height="16" rx="1.5"/>
+    <rect x="181" y="168" width="13" height="16" rx="1.5"/>
+    <rect x="199" y="168" width="13" height="16" rx="1.5"/>
+    <rect x="217" y="168" width="13" height="16" rx="1.5"/>
+    <rect x="163" y="206" width="13" height="16" rx="1.5"/>
+    <rect x="181" y="206" width="13" height="16" rx="1.5"/>
+  </g>
+  <!-- Dark windows (unleased floors) -->
+  <g fill="#4fc3f7" fill-opacity="0.18">
+    <rect x="199" y="206" width="13" height="16" rx="1.5"/>
+    <rect x="217" y="206" width="13" height="16" rx="1.5"/>
+    <rect x="163" y="244" width="13" height="16" rx="1.5"/>
+    <rect x="181" y="244" width="13" height="16" rx="1.5"/>
+    <rect x="199" y="244" width="13" height="16" rx="1.5"/>
+    <rect x="217" y="244" width="13" height="16" rx="1.5"/>
+    <rect x="163" y="282" width="13" height="16" rx="1.5"/>
+    <rect x="181" y="282" width="13" height="16" rx="1.5"/>
+    <rect x="199" y="282" width="13" height="16" rx="1.5"/>
+    <rect x="217" y="282" width="13" height="16" rx="1.5"/>
+  </g>
+  <!-- Roof (peaked) -->
+  <polygon points="152,122 200,78 248,122"
+           fill="#1a2333" fill-opacity="0.85" stroke="#4fc3f7" stroke-width="2.5"/>
+  <!-- Foundation -->
+  <rect x="138" y="300" width="124" height="16" rx="3"
+        fill="#95a5a6" fill-opacity="0.45" stroke="#95a5a6" stroke-width="1.5" stroke-opacity="0.60"/>
+
+  <!-- Capital stack (left zone) -->
+  <text x="88" y="72" font-family="Arial, sans-serif" font-size="8" fill="#c0cfff" text-anchor="middle" opacity="0.55">Capital Stack</text>
+  <!-- Senior debt -->
+  <rect x="62" y="142" width="52" height="52" rx="3"
+        fill="#4fc3f7" fill-opacity="0.35" stroke="#4fc3f7" stroke-width="1.5"/>
+  <text x="88" y="172" font-family="Arial, sans-serif" font-size="7.5" fill="#4fc3f7" text-anchor="middle" opacity="0.80">Sr Debt</text>
+  <!-- Mezzanine -->
+  <rect x="62" y="198" width="52" height="38" rx="3"
+        fill="#c0cfff" fill-opacity="0.28" stroke="#c0cfff" stroke-width="1.5"/>
+  <text x="88" y="222" font-family="Arial, sans-serif" font-size="7.5" fill="#c0cfff" text-anchor="middle" opacity="0.75">Mezz</text>
+  <!-- Equity -->
+  <rect x="62" y="240" width="52" height="44" rx="3"
+        fill="#f5c842" fill-opacity="0.50" stroke="#f5c842" stroke-width="1.5"/>
+  <text x="88" y="267" font-family="Arial, sans-serif" font-size="7.5" fill="#f5c842" text-anchor="middle" opacity="0.85">Equity</text>
+  <!-- Stack baseline -->
+  <line x1="56" y1="284" x2="120" y2="284" stroke="#95a5a6" stroke-width="1.5" stroke-opacity="0.35"/>
+
+  <!-- IRR/yield indicator (right zone) -->
+  <text x="322" y="72" font-family="Arial Black, sans-serif" font-size="12" font-weight="900" fill="#f5c842" text-anchor="middle" opacity="0.75">IRR</text>
+  <!-- Rising yield curve -->
+  <polyline points="292,285 305,255 318,228 330,198 345,165"
+            fill="none" stroke="#52b788" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="342,157 350,168 336,168" fill="#52b788" fill-opacity="0.80"/>
+  <!-- Baseline -->
+  <line x1="285" y1="285" x2="355" y2="285" stroke="#95a5a6" stroke-width="1" stroke-opacity="0.30"/>
+
+  <!-- Phase timeline (bottom strip) -->
+  <line x1="60" y1="348" x2="340" y2="348" stroke="#95a5a6" stroke-width="1" stroke-opacity="0.30"/>
+  <circle cx="90" cy="348" r="4" fill="#95a5a6" fill-opacity="0.55"/>
+  <text x="90" y="362" font-family="Arial, sans-serif" font-size="8" fill="#95a5a6" text-anchor="middle" opacity="0.55">Land</text>
+  <circle cx="183" cy="348" r="4" fill="#95a5a6" fill-opacity="0.55"/>
+  <text x="183" y="362" font-family="Arial, sans-serif" font-size="8" fill="#95a5a6" text-anchor="middle" opacity="0.55">Build</text>
+  <circle cx="276" cy="348" r="4" fill="#95a5a6" fill-opacity="0.55"/>
+  <text x="276" y="362" font-family="Arial, sans-serif" font-size="8" fill="#95a5a6" text-anchor="middle" opacity="0.55">Lease</text>
+  <circle cx="340" cy="348" r="4" fill="#f5c842" fill-opacity="0.70"/>
+  <text x="340" y="362" font-family="Arial, sans-serif" font-size="8" fill="#f5c842" text-anchor="middle" opacity="0.70">Exit</text>
+</svg>

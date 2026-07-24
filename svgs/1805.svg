@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg1805" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#241a3d"/>
+      <stop offset="100%" stop-color="#45276b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg1805)"/>
+
+  <!-- Brush stroke sweep -->
+  <path d="M 64,300 Q 130,220 210,240 Q 290,260 344,170" fill="none" stroke="#e86fa4" stroke-width="14" stroke-linecap="round" stroke-opacity="0.85"/>
+  <path d="M 64,300 Q 130,220 210,240 Q 290,260 344,170" fill="none" stroke="#f5b8d2" stroke-width="4" stroke-linecap="round" stroke-opacity="0.6"/>
+  <!-- Circuit nodes overlaying the stroke -->
+  <circle cx="120" cy="252" r="9" fill="#8fd8ff"/>
+  <circle cx="210" cy="240" r="9" fill="#8fd8ff"/>
+  <circle cx="300" cy="238" r="9" fill="#8fd8ff"/>
+  <line x1="120" y1="252" x2="210" y2="240" stroke="#8fd8ff" stroke-width="2.5" stroke-opacity="0.7"/>
+  <line x1="210" y1="240" x2="300" y2="238" stroke="#8fd8ff" stroke-width="2.5" stroke-opacity="0.7"/>
+  <line x1="210" y1="240" x2="210" y2="150" stroke="#8fd8ff" stroke-width="2.5" stroke-opacity="0.55" stroke-dasharray="5 5"/>
+  <circle cx="210" cy="140" r="12" fill="none" stroke="#8fd8ff" stroke-width="3" stroke-opacity="0.8"/>
+  <!-- Palette dot cluster -->
+  <circle cx="96" cy="112" r="16" fill="#e86fa4" fill-opacity="0.85"/>
+  <circle cx="132" cy="94" r="11" fill="#f2c94c" fill-opacity="0.85"/>
+  <circle cx="160" cy="120" r="8" fill="#8fd8ff" fill-opacity="0.85"/>
+  <!-- Frame corner -->
+  <path d="M 296,84 L 344,84 L 344,132" fill="none" stroke="#f5b8d2" stroke-width="3.5" stroke-opacity="0.7"/>
+
+</svg>

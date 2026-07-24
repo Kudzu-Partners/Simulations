@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg027" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#2d2d4f"/>
+    </linearGradient>
+    <radialGradient id="storeGlow027" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#e67e22" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#e67e22" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg027)"/>
+  <circle cx="200" cy="205" r="95" fill="url(#storeGlow027)"/>
+
+  <!-- Central store (physical) -->
+  <rect x="158" y="178" width="84" height="68" rx="4" fill="#1a1a2e" stroke="#e67e22" stroke-width="2.5"/>
+  <!-- Store roof -->
+  <polygon points="148,180 252,180 240,158 160,158" fill="#e67e22" fill-opacity="0.30" stroke="#e67e22" stroke-width="2"/>
+  <!-- Store entrance -->
+  <rect x="184" y="210" width="32" height="36" rx="3" fill="#e67e22" fill-opacity="0.20" stroke="#e67e22" stroke-width="1.5"/>
+  <!-- Store windows -->
+  <rect x="164" y="188" width="22" height="18" rx="2" fill="#e67e22" fill-opacity="0.30"/>
+  <rect x="214" y="188" width="22" height="18" rx="2" fill="#e67e22" fill-opacity="0.30"/>
+
+  <!-- Channel nodes around the store -->
+  <!-- Mobile (top) -->
+  <circle cx="200" cy="90" r="22" fill="#1a1a2e" stroke="#c0cfff" stroke-width="2.5"/>
+  <rect x="192" y="80" width="16" height="22" rx="3" fill="none" stroke="#c0cfff" stroke-width="1.8" stroke-opacity="0.80"/>
+  <rect x="197" y="96" width="6" height="3" rx="1" fill="#c0cfff" fill-opacity="0.70"/>
+
+  <!-- Web / E-commerce (top-right) -->
+  <circle cx="318" cy="138" r="22" fill="#1a1a2e" stroke="#c0cfff" stroke-width="2.5"/>
+  <circle cx="318" cy="138" r="10" fill="none" stroke="#c0cfff" stroke-width="1.8" stroke-opacity="0.80"/>
+  <line x1="308" y1="138" x2="328" y2="138" stroke="#c0cfff" stroke-width="1.2" stroke-opacity="0.65"/>
+  <line x1="318" y1="128" x2="318" y2="148" stroke="#c0cfff" stroke-width="1.2" stroke-opacity="0.65"/>
+
+  <!-- Delivery (right) -->
+  <circle cx="330" cy="222" r="22" fill="#1a1a2e" stroke="#c0cfff" stroke-width="2.5"/>
+  <polygon points="310,224 330,214 345,224 330,230" fill="#c0cfff" fill-opacity="0.65"/>
+  <circle cx="318" cy="231" r="4" fill="#c0cfff" fill-opacity="0.65"/>
+  <circle cx="335" cy="231" r="4" fill="#c0cfff" fill-opacity="0.65"/>
+
+  <!-- Social / D2C (left) -->
+  <circle cx="68" cy="175" r="22" fill="#1a1a2e" stroke="#c0cfff" stroke-width="2.5"/>
+  <circle cx="68" cy="175" r="9"  fill="none" stroke="#c0cfff" stroke-width="1.8" stroke-opacity="0.80"/>
+  <circle cx="75" cy="168" r="3"  fill="#c0cfff" fill-opacity="0.70"/>
+
+  <!-- Marketplace (bottom-left) -->
+  <circle cx="82" cy="290" r="22" fill="#1a1a2e" stroke="#c0cfff" stroke-width="2.5"/>
+  <rect x="72" y="282" width="20" height="16" rx="2" fill="none" stroke="#c0cfff" stroke-width="1.8" stroke-opacity="0.80"/>
+  <line x1="72" y1="287" x2="92" y2="287" stroke="#c0cfff" stroke-width="1.2" stroke-opacity="0.60"/>
+  <line x1="72" y1="292" x2="92" y2="292" stroke="#c0cfff" stroke-width="1.2" stroke-opacity="0.60"/>
+
+  <!-- Connecting flow lines (store ↔ channels) -->
+  <g stroke="#c0cfff" stroke-width="1.8" stroke-opacity="0.40" stroke-dasharray="5,4">
+    <line x1="200" y1="158" x2="200" y2="112"/>
+    <line x1="242" y1="178" x2="300" y2="152"/>
+    <line x1="242" y1="215" x2="308" y2="222"/>
+    <line x1="158" y1="192" x2="90"  y2="183"/>
+    <line x1="168" y1="232" x2="104" y2="274"/>
+  </g>
+
+  <!-- Flow direction arrows on lines -->
+  <polygon points="200,118 196,112 204,112" fill="#c0cfff" fill-opacity="0.50"/>
+  <polygon points="296,154 303,148 305,157" fill="#c0cfff" fill-opacity="0.50"/>
+
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg859" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#082c3f"/>
+      <stop offset="100%" stop-color="#12556e"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg859)"/>
+
+  <!-- Mountain source -->
+  <path d="M 40,170 L 110,80 L 180,170 Z" fill="#9bd4e4" fill-opacity="0.18" stroke="#9bd4e4" stroke-width="2" stroke-opacity="0.5"/>
+  <!-- Pipe run: descending steps -->
+  <path d="M 88,170 L 88,230 L 190,230 L 190,290 L 320,290" fill="none" stroke="#e8c05a" stroke-width="10" stroke-linecap="round" stroke-opacity="0.9"/>
+  <path d="M 88,170 L 88,230 L 190,230 L 190,290 L 320,290" fill="none" stroke="#082c3f" stroke-width="3" stroke-opacity="0.5"/>
+  <!-- Valve wheel -->
+  <circle cx="190" cy="230" r="17" fill="none" stroke="#9bd4e4" stroke-width="4" stroke-opacity="0.9"/>
+  <line x1="178" y1="218" x2="202" y2="242" stroke="#9bd4e4" stroke-width="3" stroke-opacity="0.8"/>
+  <line x1="202" y1="218" x2="178" y2="242" stroke="#9bd4e4" stroke-width="3" stroke-opacity="0.8"/>
+  <!-- Water drop at outlet -->
+  <path d="M 340,290 Q 352,310 340,322 Q 328,310 340,290" fill="#9bd4e4" fill-opacity="0.9"/>
+  <!-- Tank -->
+  <rect x="284" y="96" width="76" height="66" rx="8" fill="#9bd4e4" fill-opacity="0.14" stroke="#9bd4e4" stroke-width="2" stroke-opacity="0.55"/>
+  <line x1="284" y1="122" x2="360" y2="122" stroke="#9bd4e4" stroke-width="2" stroke-opacity="0.45"/>
+  <!-- Ripples -->
+  <path d="M 60,340 Q 90,330 120,340 Q 150,350 180,340" fill="none" stroke="#9bd4e4" stroke-width="2.5" stroke-opacity="0.4"/>
+  <path d="M 200,352 Q 230,342 260,352" fill="none" stroke="#9bd4e4" stroke-width="2.5" stroke-opacity="0.28"/>
+
+</svg>

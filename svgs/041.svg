@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg041" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1010"/>
+      <stop offset="100%" stop-color="#2a1a10"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg041)"/>
+
+  <!-- Boardroom table (top-down oval view) -->
+  <ellipse cx="200" cy="210" rx="130" ry="75"
+           fill="#d4a017" fill-opacity="0.08" stroke="#d4a017" stroke-width="2.5" stroke-opacity="0.60"/>
+
+  <!-- Board seats arranged around the table -->
+  <!-- Top row: 4 seats -->
+  <circle cx="130" cy="118" r="16" fill="#1a1010" stroke="#c0cfff" stroke-width="2" stroke-opacity="0.65"/>
+  <circle cx="172" cy="106" r="16" fill="#1a1010" stroke="#c0cfff" stroke-width="2" stroke-opacity="0.65"/>
+  <circle cx="228" cy="106" r="16" fill="#1a1010" stroke="#c0cfff" stroke-width="2" stroke-opacity="0.65"/>
+  <circle cx="270" cy="118" r="16" fill="#1a1010" stroke="#c0cfff" stroke-width="2" stroke-opacity="0.65"/>
+
+  <!-- Bottom row: 4 seats -->
+  <circle cx="130" cy="302" r="16" fill="#1a1010" stroke="#c0cfff" stroke-width="2" stroke-opacity="0.65"/>
+  <circle cx="172" cy="314" r="16" fill="#1a1010" stroke="#c0cfff" stroke-width="2" stroke-opacity="0.65"/>
+  <circle cx="228" cy="314" r="16" fill="#1a1010" stroke="#c0cfff" stroke-width="2" stroke-opacity="0.65"/>
+  <circle cx="270" cy="302" r="16" fill="#1a1010" stroke="#c0cfff" stroke-width="2" stroke-opacity="0.65"/>
+
+  <!-- Left seat: activist (red indicator) -->
+  <circle cx="64"  cy="210" r="18" fill="#1a1010" stroke="#e74c3c" stroke-width="2.5"/>
+  <circle cx="64"  cy="210" r="8"  fill="#e74c3c" fill-opacity="0.70"/>
+
+  <!-- Right seat: CEO under evaluation (gold, larger) -->
+  <circle cx="336" cy="210" r="20" fill="#1a1010" stroke="#d4a017" stroke-width="3"/>
+  <circle cx="336" cy="210" r="10" fill="#d4a017" fill-opacity="0.80"/>
+
+  <!-- Regulatory alert symbol on table (top-right of table interior) -->
+  <polygon points="248,175 258,195 238,195" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-opacity="0.55"/>
+  <text x="248" y="192" font-family="Arial, sans-serif" font-size="8" fill="#e74c3c" text-anchor="middle" opacity="0.55">!</text>
+
+  <!-- Vote/alignment dots on regular board seats (filled = agree, empty = dissent) -->
+  <circle cx="130" cy="118" r="6" fill="#c0cfff" fill-opacity="0.70"/>
+  <circle cx="172" cy="106" r="6" fill="#c0cfff" fill-opacity="0.70"/>
+  <circle cx="228" cy="106" r="6" fill="#c0cfff" fill-opacity="0.45"/>
+  <circle cx="270" cy="118" r="6" fill="#e74c3c" fill-opacity="0.65"/>
+  <circle cx="130" cy="302" r="6" fill="#c0cfff" fill-opacity="0.70"/>
+  <circle cx="172" cy="314" r="6" fill="#c0cfff" fill-opacity="0.65"/>
+  <circle cx="228" cy="314" r="6" fill="#c0cfff" fill-opacity="0.45"/>
+  <circle cx="270" cy="302" r="6" fill="#c0cfff" fill-opacity="0.55"/>
+
+  <!-- Capital allocation document on table center -->
+  <rect x="176" y="192" width="48" height="36" rx="3"
+        fill="#d4a017" fill-opacity="0.15" stroke="#d4a017" stroke-width="1.5" stroke-opacity="0.55"/>
+  <line x1="182" y1="202" x2="218" y2="202" stroke="#d4a017" stroke-width="1.2" stroke-opacity="0.50"/>
+  <line x1="182" y1="210" x2="218" y2="210" stroke="#d4a017" stroke-width="1.2" stroke-opacity="0.50"/>
+  <line x1="182" y1="218" x2="206" y2="218" stroke="#d4a017" stroke-width="1.2" stroke-opacity="0.50"/>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg75" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a0e8f"/>
+      <stop offset="100%" stop-color="#7b2d8b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg75)"/>
+  <!-- Three hotel silhouettes side by side -->
+  <!-- Property 1: Business tower (tall, left) -->
+  <rect x="62" y="130" width="80" height="185" rx="4" fill="#4a0e8f" stroke="#e67e22" stroke-width="2.5" opacity="0.95"/>
+  <!-- Windows grid -->
+  <g fill="#ffd166" opacity="0.5">
+    <rect x="72" y="145" width="12" height="10" rx="1"/>
+    <rect x="92" y="145" width="12" height="10" rx="1"/>
+    <rect x="112" y="145" width="12" height="10" rx="1"/>
+    <rect x="72" y="163" width="12" height="10" rx="1"/>
+    <rect x="92" y="163" width="12" height="10" rx="1"/>
+    <rect x="112" y="163" width="12" height="10" rx="1"/>
+    <rect x="72" y="181" width="12" height="10" rx="1"/>
+    <rect x="92" y="181" width="12" height="10" rx="1"/>
+    <rect x="112" y="181" width="12" height="10" rx="1"/>
+    <rect x="72" y="199" width="12" height="10" rx="1"/>
+    <rect x="92" y="199" width="12" height="10" rx="1"/>
+    <rect x="112" y="199" width="12" height="10" rx="1"/>
+  </g>
+  <text x="102" y="330" font-family="sans-serif" font-size="9" fill="#e67e22" text-anchor="middle" opacity="0.75">BUSINESS</text>
+  <!-- Property 2: Coastal resort (wide, center) -->
+  <rect x="160" y="200" width="80" height="115" rx="4" fill="#4a0e8f" stroke="#ffd166" stroke-width="2.5" opacity="0.95"/>
+  <path d="M150,200 Q200,170 250,200" fill="#4a0e8f" stroke="#ffd166" stroke-width="2" opacity="0.9"/>
+  <!-- Palm tree suggestion -->
+  <line x1="200" y1="170" x2="200" y2="200" stroke="#ffd166" stroke-width="2" opacity="0.5"/>
+  <path d="M200,170 Q215,158 225,165" fill="none" stroke="#ffd166" stroke-width="2" opacity="0.5"/>
+  <path d="M200,174 Q185,162 175,168" fill="none" stroke="#ffd166" stroke-width="2" opacity="0.5"/>
+  <g fill="#ffd166" opacity="0.4">
+    <rect x="170" y="215" width="14" height="10" rx="1"/>
+    <rect x="192" y="215" width="14" height="10" rx="1"/>
+    <rect x="214" y="215" width="14" height="10" rx="1"/>
+    <rect x="170" y="233" width="14" height="10" rx="1"/>
+    <rect x="192" y="233" width="14" height="10" rx="1"/>
+    <rect x="214" y="233" width="14" height="10" rx="1"/>
+  </g>
+  <text x="200" y="330" font-family="sans-serif" font-size="9" fill="#ffd166" text-anchor="middle" opacity="0.75">RESORT</text>
+  <!-- Property 3: Boutique (narrow, ornate, right) -->
+  <rect x="258" y="175" width="80" height="140" rx="8" fill="#4a0e8f" stroke="#e67e22" stroke-width="2.5" opacity="0.95"/>
+  <path d="M258,175 L298,145 L338,175" fill="#4a0e8f" stroke="#e67e22" stroke-width="2" opacity="0.9"/>
+  <circle cx="298" cy="160" r="8" fill="#e67e22" opacity="0.6"/>
+  <g fill="#e67e22" opacity="0.45">
+    <rect x="268" y="190" width="13" height="13" rx="2"/>
+    <rect x="287" y="190" width="13" height="13" rx="2"/>
+    <rect x="306" y="190" width="13" height="13" rx="2"/>
+    <rect x="268" y="211" width="13" height="13" rx="2"/>
+    <rect x="306" y="211" width="13" height="13" rx="2"/>
+  </g>
+  <!-- Door -->
+  <rect x="285" y="278" width="26" height="37" rx="4" fill="#e67e22" opacity="0.3"/>
+  <text x="298" y="330" font-family="sans-serif" font-size="9" fill="#e67e22" text-anchor="middle" opacity="0.75">BOUTIQUE</text>
+  <!-- Ground line -->
+  <rect x="55" y="315" width="290" height="4" rx="2" fill="#ffd166" opacity="0.25"/>
+</svg>

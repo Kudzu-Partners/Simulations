@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg77" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg77)"/>
+  <!-- Hotel silhouette -->
+  <rect x="130" y="160" width="140" height="155" rx="4" fill="#1b2d4f" stroke="#00bfff" stroke-width="2" opacity="0.9"/>
+  <path d="M118,160 L200,100 L282,160 Z" fill="#1b2d4f" stroke="#00bfff" stroke-width="2" opacity="0.9"/>
+  <!-- Hotel windows basic -->
+  <g fill="#00bfff" opacity="0.2">
+    <rect x="145" y="175" width="20" height="16" rx="2"/>
+    <rect x="175" y="175" width="20" height="16" rx="2"/>
+    <rect x="205" y="175" width="20" height="16" rx="2"/>
+    <rect x="235" y="175" width="20" height="16" rx="2"/>
+    <rect x="145" y="200" width="20" height="16" rx="2"/>
+    <rect x="175" y="200" width="20" height="16" rx="2"/>
+    <rect x="205" y="200" width="20" height="16" rx="2"/>
+    <rect x="235" y="200" width="20" height="16" rx="2"/>
+  </g>
+  <!-- Digital circuit overlay on hotel -->
+  <g stroke="#7b2fff" stroke-width="1.5" fill="none" opacity="0.55">
+    <!-- Horizontal traces -->
+    <line x1="130" y1="235" x2="270" y2="235"/>
+    <line x1="155" y1="255" x2="245" y2="255"/>
+    <!-- Vertical traces -->
+    <line x1="165" y1="225" x2="165" y2="265"/>
+    <line x1="235" y1="225" x2="235" y2="265"/>
+    <!-- Node dots -->
+    <circle cx="165" cy="235" r="4" fill="#7b2fff"/>
+    <circle cx="235" cy="235" r="4" fill="#7b2fff"/>
+    <circle cx="200" cy="255" r="4" fill="#00bfff"/>
+    <!-- WiFi-like arcs at top -->
+    <path d="M185,130 Q200,120 215,130"/>
+    <path d="M175,143 Q200,128 225,143"/>
+    <circle cx="200" cy="155" r="4" fill="#00bfff"/>
+  </g>
+  <!-- Budget pie (bottom left) -->
+  <circle cx="95" cy="305" r="38" fill="none" stroke="#00bfff" stroke-width="2" opacity="0.4"/>
+  <path d="M95,305 L95,267 A38,38 0 0,1 128,324 Z" fill="#00bfff" opacity="0.35"/>
+  <path d="M95,305 L128,324 A38,38 0 0,1 62,324 Z" fill="#7b2fff" opacity="0.35"/>
+  <path d="M95,305 L62,324 A38,38 0 0,1 95,267 Z" fill="#00bfff" opacity="0.2"/>
+  <!-- Dollar amount -->
+  <text x="200" y="355" font-family="monospace" font-size="13" fill="#00bfff" text-anchor="middle" opacity="0.65">$420K · 12 PROJECTS</text>
+</svg>

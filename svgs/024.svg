@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg024" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <linearGradient id="gaugeGrad024" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#00ff88"/>
+      <stop offset="40%"  stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#e74c3c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg024)"/>
+
+  <!-- Gauge track (half-circle, r=145, center 200,248) -->
+  <path d="M 55,248 A 145,145 0 0,1 345,248"
+        fill="none" stroke="#1a2744" stroke-width="28" stroke-linecap="round"/>
+  <!-- Colored gauge arc -->
+  <path d="M 55,248 A 145,145 0 0,1 345,248"
+        fill="none" stroke="url(#gaugeGrad024)" stroke-width="24" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- Gauge tick marks -->
+  <g stroke="#0a0f1e" stroke-width="2" stroke-opacity="0.70">
+    <!-- 0° (leftmost) -->
+    <line x1="55"  y1="236" x2="55"  y2="260"/>
+    <!-- 45° -->
+    <line x1="97"  y1="146" x2="107" y2="162"/>
+    <!-- 90° (top) -->
+    <line x1="200" y1="103" x2="200" y2="122"/>
+    <!-- 135° -->
+    <line x1="303" y1="146" x2="293" y2="162"/>
+    <!-- 180° (rightmost) -->
+    <line x1="345" y1="236" x2="345" y2="260"/>
+  </g>
+
+  <!-- Risk zone labels -->
+  <text x="62"  y="282" font-family="Arial, sans-serif" font-size="10" fill="#00ff88" opacity="0.70" text-anchor="middle">LOW</text>
+  <text x="200" y="100" font-family="Arial, sans-serif" font-size="10" fill="#f5c842" opacity="0.70" text-anchor="middle">MED</text>
+  <text x="338" y="282" font-family="Arial, sans-serif" font-size="10" fill="#e74c3c" opacity="0.70" text-anchor="middle">HIGH</text>
+
+  <!-- Needle — pointing to medium-high risk (~120° from left = 2/3 across) -->
+  <!-- Center: (200, 248). Angle=120° from left means 60° above horizontal from right.
+       Needle tip angle: start 0° at left (180° in standard), go clockwise.
+       At 2/3 of 180° = 120° from left → standard angle = 180°-120° = 60° from horizontal
+       Tip: (200 + 130*cos(60°), 248 - 130*sin(60°)) = (200+65, 248-113) = (265, 135) -->
+  <line x1="200" y1="248" x2="265" y2="135"
+        stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-opacity="0.92"/>
+  <circle cx="200" cy="248" r="10" fill="#ffffff" fill-opacity="0.90"/>
+  <circle cx="200" cy="248" r="5"  fill="#1a2744"/>
+
+  <!-- Portfolio risk breakdown bars (below gauge) -->
+  <text x="200" y="298" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle" opacity="0.55">UNDERWRITING PORTFOLIO</text>
+
+  <rect x="65"  y="308" width="50" height="14" rx="3" fill="#00ff88" fill-opacity="0.60"/>
+  <rect x="121" y="308" width="70" height="14" rx="3" fill="#f5c842" fill-opacity="0.65"/>
+  <rect x="197" y="308" width="55" height="14" rx="3" fill="#f5a623" fill-opacity="0.65"/>
+  <rect x="258" y="308" width="40" height="14" rx="3" fill="#e74c3c" fill-opacity="0.70"/>
+  <rect x="304" y="308" width="30" height="14" rx="3" fill="#e74c3c" fill-opacity="0.50"/>
+
+  <g font-family="Arial, sans-serif" font-size="8" text-anchor="middle" opacity="0.55">
+    <text x="90"  y="334" fill="#00ff88">Life</text>
+    <text x="156" y="334" fill="#f5c842">Property</text>
+    <text x="224" y="334" fill="#f5a623">Liability</text>
+    <text x="278" y="334" fill="#e74c3c">Reins.</text>
+    <text x="319" y="334" fill="#e74c3c">Cat</text>
+  </g>
+
+</svg>

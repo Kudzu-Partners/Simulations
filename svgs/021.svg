@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg021" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2a1a0a"/>
+      <stop offset="100%" stop-color="#4a3020"/>
+    </linearGradient>
+    <radialGradient id="crownGlow021" cx="50%" cy="30%" r="35%">
+      <stop offset="0%" stop-color="#d4a017" stop-opacity="0.50"/>
+      <stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg021)"/>
+  <circle cx="200" cy="120" r="90" fill="url(#crownGlow021)"/>
+
+  <!-- Crown -->
+  <path d="M 138,148 L 138,100 L 165,125 L 200,78 L 235,125 L 262,100 L 262,148 Z"
+        fill="#d4a017" fill-opacity="0.88" stroke="#d4a017" stroke-width="1.5" stroke-linejoin="round"/>
+  <rect x="132" y="145" width="136" height="18" rx="3" fill="#d4a017" fill-opacity="0.70"/>
+  <!-- Crown jewels -->
+  <circle cx="200" cy="108" r="7" fill="#fde8c8" fill-opacity="0.90"/>
+  <circle cx="165" cy="120" r="5" fill="#fde8c8" fill-opacity="0.70"/>
+  <circle cx="235" cy="120" r="5" fill="#fde8c8" fill-opacity="0.70"/>
+
+  <!-- Generation 1 (founder) — single node -->
+  <circle cx="200" cy="205" r="20" fill="#2a1a0a" stroke="#d4a017" stroke-width="2.5"/>
+  <text x="200" y="210" font-family="Arial Black, sans-serif" font-size="11" font-weight="900" fill="#d4a017" text-anchor="middle">G1</text>
+
+  <!-- G1 → G2 branches -->
+  <line x1="200" y1="225" x2="145" y2="268" stroke="#d4a017" stroke-width="1.8" stroke-opacity="0.55"/>
+  <line x1="200" y1="225" x2="255" y2="268" stroke="#d4a017" stroke-width="1.8" stroke-opacity="0.55"/>
+
+  <!-- Generation 2 — two siblings -->
+  <circle cx="145" cy="280" r="17" fill="#2a1a0a" stroke="#d4a017" stroke-width="2" stroke-opacity="0.65"/>
+  <text x="145" y="285" font-family="Arial Black, sans-serif" font-size="10" font-weight="900" fill="#d4a017" text-anchor="middle" opacity="0.75">G2</text>
+  <circle cx="255" cy="280" r="17" fill="#2a1a0a" stroke="#d4a017" stroke-width="2" stroke-opacity="0.65"/>
+  <text x="255" y="285" font-family="Arial Black, sans-serif" font-size="10" font-weight="900" fill="#d4a017" text-anchor="middle" opacity="0.75">G2</text>
+
+  <!-- G2 → G3 branches -->
+  <line x1="145" y1="297" x2="118" y2="338" stroke="#d4a017" stroke-width="1.5" stroke-opacity="0.45"/>
+  <line x1="145" y1="297" x2="165" y2="338" stroke="#d4a017" stroke-width="1.5" stroke-opacity="0.45"/>
+  <line x1="255" y1="297" x2="235" y2="338" stroke="#d4a017" stroke-width="1.5" stroke-opacity="0.45"/>
+  <line x1="255" y1="297" x2="282" y2="338" stroke="#d4a017" stroke-width="1.5" stroke-opacity="0.45"/>
+
+  <!-- Generation 3 — heir (participant) highlighted -->
+  <circle cx="118" cy="350" r="13" fill="#2a1a0a" stroke="#d4a017" stroke-width="1.5" stroke-opacity="0.45"/>
+  <circle cx="165" cy="350" r="13" fill="#2a1a0a" stroke="#d4a017" stroke-width="1.5" stroke-opacity="0.45"/>
+  <!-- The heir — prominent -->
+  <circle cx="235" cy="350" r="16" fill="#d4a017" fill-opacity="0.25" stroke="#d4a017" stroke-width="3"/>
+  <text x="235" y="355" font-family="Arial Black, sans-serif" font-size="9" font-weight="900" fill="#d4a017" text-anchor="middle">G3</text>
+  <circle cx="282" cy="350" r="13" fill="#2a1a0a" stroke="#d4a017" stroke-width="1.5" stroke-opacity="0.45"/>
+
+</svg>

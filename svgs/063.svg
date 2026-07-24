@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg63" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a2342"/>
+      <stop offset="100%" stop-color="#1a3a5c"/>
+    </linearGradient>
+    <radialGradient id="glow63" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#74b9ff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#74b9ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg63)"/>
+  <!-- Head silhouette -->
+  <ellipse cx="200" cy="175" rx="85" ry="95" fill="#1a3a5c" stroke="#74b9ff" stroke-width="2.5" opacity="0.9"/>
+  <!-- Brain folds suggestion inside head -->
+  <path d="M148,155 Q170,140 200,148 Q230,140 252,155" fill="none" stroke="#74b9ff" stroke-width="1.5" opacity="0.3"/>
+  <path d="M143,175 Q165,163 200,170 Q235,163 257,175" fill="none" stroke="#74b9ff" stroke-width="1.5" opacity="0.3"/>
+  <path d="M147,195 Q168,185 200,191 Q232,185 253,195" fill="none" stroke="#74b9ff" stroke-width="1.5" opacity="0.3"/>
+  <!-- Pulse/heartbeat line inside head -->
+  <polyline points="155,210 170,210 180,185 190,230 205,170 215,225 225,210 245,210" fill="none" stroke="#74b9ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+  <!-- Shield overlay (psychological safety) -->
+  <path d="M200,245 L200,245 Q200,245 200,245" fill="none"/>
+  <!-- Glow aura -->
+  <circle cx="200" cy="175" r="100" fill="url(#glow63)"/>
+  <!-- Balance bar at bottom (JD-R equilibrium) -->
+  <line x1="140" y1="320" x2="260" y2="320" stroke="#74b9ff" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <line x1="200" y1="295" x2="200" y2="325" stroke="#74b9ff" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <circle cx="200" cy="293" r="5" fill="#74b9ff" opacity="0.7"/>
+  <!-- Left side: demands (stress) -->
+  <rect x="100" y="295" width="30" height="25" rx="4" fill="#e74c3c" opacity="0.45"/>
+  <line x1="140" y1="320" x2="115" y2="295" stroke="#74b9ff" stroke-width="1.5" opacity="0.4"/>
+  <!-- Right side: resources (support) -->
+  <rect x="270" y="305" width="30" height="15" rx="4" fill="#74b9ff" opacity="0.45"/>
+  <line x1="260" y1="320" x2="285" y2="305" stroke="#74b9ff" stroke-width="1.5" opacity="0.4"/>
+</svg>

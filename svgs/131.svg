@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg131" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <radialGradient id="scanGlow131" cx="62%" cy="50%" r="30%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="alertGlow131" cx="72%" cy="38%" r="18%">
+      <stop offset="0%" stop-color="#ff4444" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ff4444" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur131">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg131)"/>
+  <rect width="400" height="400" rx="32" fill="url(#scanGlow131)"/>
+  <rect width="400" height="400" rx="32" fill="url(#alertGlow131)"/>
+
+  <!-- Background grid (data/monitoring feel) -->
+  <g stroke="#00ff88" stroke-width="0.4" opacity="0.08">
+    <line x1="0" y1="80"  x2="400" y2="80"/>
+    <line x1="0" y1="140" x2="400" y2="140"/>
+    <line x1="0" y1="200" x2="400" y2="200"/>
+    <line x1="0" y1="260" x2="400" y2="260"/>
+    <line x1="0" y1="320" x2="400" y2="320"/>
+    <line x1="80"  y1="0" x2="80"  y2="400"/>
+    <line x1="160" y1="0" x2="160" y2="400"/>
+    <line x1="240" y1="0" x2="240" y2="400"/>
+    <line x1="320" y1="0" x2="320" y2="400"/>
+  </g>
+
+  <!-- ── Transaction flow lanes (3 streams left → filter) ── -->
+
+  <!-- Lane 1: top stream (clean transactions) -->
+  <g opacity="0.75">
+    <line x1="52" y1="130" x2="232" y2="130" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,4" opacity="0.5"/>
+    <circle cx="72"  cy="130" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="2"/>
+    <circle cx="72"  cy="130" r="3.5" fill="#00ff88" opacity="0.8"/>
+    <circle cx="112" cy="130" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="2"/>
+    <circle cx="112" cy="130" r="3.5" fill="#00ff88" opacity="0.8"/>
+    <circle cx="152" cy="130" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="2"/>
+    <circle cx="152" cy="130" r="3.5" fill="#00ff88" opacity="0.8"/>
+    <circle cx="192" cy="130" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="2"/>
+    <circle cx="192" cy="130" r="3.5" fill="#00ff88" opacity="0.8"/>
+  </g>
+
+  <!-- Lane 2: middle stream — contains the suspicious node -->
+  <g opacity="0.75">
+    <line x1="52" y1="200" x2="232" y2="200" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,4" opacity="0.5"/>
+    <circle cx="72"  cy="200" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="2"/>
+    <circle cx="72"  cy="200" r="3.5" fill="#00ff88" opacity="0.8"/>
+    <circle cx="112" cy="200" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="2"/>
+    <circle cx="112" cy="200" r="3.5" fill="#00ff88" opacity="0.8"/>
+    <!-- SUSPICIOUS node -->
+    <circle cx="152" cy="200" r="11" fill="#1a0505" stroke="#ff4444" stroke-width="2.5"/>
+    <circle cx="152" cy="200" r="4.5" fill="#ff4444" opacity="0.95"/>
+    <!-- Pulse ring around suspicious -->
+    <circle cx="152" cy="200" r="17" fill="none" stroke="#ff4444" stroke-width="1.5" opacity="0.45"/>
+    <circle cx="152" cy="200" r="23" fill="none" stroke="#ff4444" stroke-width="1" opacity="0.22"/>
+    <!-- Node stopped — no connection forward from it -->
+    <circle cx="192" cy="200" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="2" opacity="0.35"/>
+  </g>
+
+  <!-- Lane 3: bottom stream (clean) -->
+  <g opacity="0.75">
+    <line x1="52" y1="270" x2="232" y2="270" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,4" opacity="0.5"/>
+    <circle cx="72"  cy="270" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="2"/>
+    <circle cx="72"  cy="270" r="3.5" fill="#00ff88" opacity="0.8"/>
+    <circle cx="112" cy="270" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="2"/>
+    <circle cx="112" cy="270" r="3.5" fill="#00ff88" opacity="0.8"/>
+    <circle cx="152" cy="270" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="2"/>
+    <circle cx="152" cy="270" r="3.5" fill="#00ff88" opacity="0.8"/>
+    <circle cx="192" cy="270" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="2"/>
+    <circle cx="192" cy="270" r="3.5" fill="#00ff88" opacity="0.8"/>
+  </g>
+
+  <!-- ── Detection filter wall ── -->
+  <rect x="228" y="100" width="6" height="200" rx="3" fill="#00ff88" opacity="0.25"/>
+  <rect x="229" y="100" width="4" height="200" rx="2" fill="#00ff88" opacity="0.55"/>
+  <!-- Filter nodes on wall -->
+  <circle cx="231" cy="130" r="5" fill="#00ff88" opacity="0.7"/>
+  <circle cx="231" cy="200" r="5" fill="#ff4444" opacity="0.95"/>
+  <circle cx="231" cy="270" r="5" fill="#00ff88" opacity="0.7"/>
+
+  <!-- Clean flows continue right of filter (lanes 1 & 3) -->
+  <line x1="234" y1="130" x2="340" y2="130" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,4" opacity="0.4"/>
+  <circle cx="270" cy="130" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="270" cy="130" r="3.5" fill="#00ff88" opacity="0.6"/>
+  <circle cx="310" cy="130" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="310" cy="130" r="3.5" fill="#00ff88" opacity="0.6"/>
+
+  <line x1="234" y1="270" x2="340" y2="270" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,4" opacity="0.4"/>
+  <circle cx="270" cy="270" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="270" cy="270" r="3.5" fill="#00ff88" opacity="0.6"/>
+  <circle cx="310" cy="270" r="9"  fill="#0a0f1e" stroke="#00ff88" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="310" cy="270" r="3.5" fill="#00ff88" opacity="0.6"/>
+
+  <!-- ── SAR badge (bottom-right) ── -->
+  <rect x="278" y="190" width="70" height="30" rx="6" fill="#ff4444" opacity="0.18" stroke="#ff4444" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="313" y="209" text-anchor="middle" font-family="'Courier New', monospace" font-size="12" font-weight="bold" fill="#ff4444" opacity="0.9" letter-spacing="2">SAR</text>
+
+  <!-- Arrow from suspicious node to SAR area -->
+  <path d="M163 200 Q220 200 278 205" stroke="#ff4444" stroke-width="1.5" stroke-dasharray="4,3" fill="none" opacity="0.5" marker-end="url(#arrow131)"/>
+
+  <!-- Magnifier over filter -->
+  <circle cx="231" cy="200" r="28" fill="none" stroke="#00bfff" stroke-width="1.5" opacity="0.3"/>
+  <line x1="251" y1="220" x2="262" y2="231" stroke="#00bfff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg050" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1a2a"/>
+      <stop offset="100%" stop-color="#1a2d3a"/>
+    </linearGradient>
+    <linearGradient id="ocean050" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00bfff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#00bfff" stop-opacity="0.06"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg050)"/>
+
+  <!-- Ocean (lower two-thirds) -->
+  <rect x="0" y="218" width="400" height="182" rx="0" fill="url(#ocean050)"/>
+  <!-- Water line -->
+  <path d="M 0,218 Q 50,210 100,218 Q 150,226 200,218 Q 250,210 300,218 Q 350,226 400,218"
+        fill="none" stroke="#00bfff" stroke-width="1.5" stroke-opacity="0.35"/>
+
+  <!-- Cargo ship silhouette (side view, on waterline) -->
+  <!-- Hull -->
+  <path d="M 68,218 L 72,238 L 298,238 L 312,218 Z"
+        fill="#1a2d3a" fill-opacity="0.85" stroke="#c0cfff" stroke-width="2" stroke-opacity="0.60"/>
+  <!-- Deck superstructure -->
+  <rect x="200" y="185" width="70" height="35" rx="3"
+        fill="#c0cfff" fill-opacity="0.20" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.55"/>
+  <!-- Bridge windows -->
+  <g fill="#00bfff" fill-opacity="0.55">
+    <rect x="208" y="191" width="10" height="8" rx="1"/>
+    <rect x="222" y="191" width="10" height="8" rx="1"/>
+    <rect x="236" y="191" width="10" height="8" rx="1"/>
+  </g>
+  <!-- Cargo containers on deck -->
+  <rect x="85"  y="198" width="32" height="22" rx="2" fill="#e67e22" fill-opacity="0.65" stroke="#e67e22" stroke-width="1"/>
+  <rect x="120" y="198" width="32" height="22" rx="2" fill="#f5c842" fill-opacity="0.65" stroke="#f5c842" stroke-width="1"/>
+  <rect x="155" y="198" width="32" height="22" rx="2" fill="#e67e22" fill-opacity="0.55" stroke="#e67e22" stroke-width="1"/>
+  <!-- Smokestack -->
+  <rect x="260" y="170" width="14" height="18" rx="2" fill="#c0cfff" fill-opacity="0.40"/>
+
+  <!-- Export route arrow (left to right, above ship) -->
+  <line x1="58" y1="155" x2="342" y2="155"
+        stroke="#f5c842" stroke-width="2.5" stroke-opacity="0.55"/>
+  <polygon points="340,150 350,155 340,160" fill="#f5c842" fill-opacity="0.55"/>
+  <!-- Origin dot -->
+  <circle cx="58" cy="155" r="6" fill="#f5c842" fill-opacity="0.70"/>
+
+  <!-- Trade document (top-left) -->
+  <rect x="58" y="68" width="80" height="65" rx="5"
+        fill="#1a2d3a" fill-opacity="0.80" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.50"/>
+  <text x="98" y="85" font-family="Arial, sans-serif" font-size="8" fill="#c0cfff" text-anchor="middle" opacity="0.70">LC Doc</text>
+  <g stroke="#c0cfff" stroke-width="1" stroke-opacity="0.35">
+    <line x1="68" y1="93" x2="128" y2="93"/>
+    <line x1="68" y1="102" x2="128" y2="102"/>
+    <line x1="68" y1="111" x2="110" y2="111"/>
+    <line x1="68" y1="120" x2="120" y2="120"/>
+  </g>
+
+  <!-- FX rate indicator (top-right) -->
+  <rect x="262" y="68" width="80" height="65" rx="5"
+        fill="#1a2d3a" fill-opacity="0.80" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.55"/>
+  <text x="302" y="85" font-family="Arial, sans-serif" font-size="8" fill="#f5c842" text-anchor="middle" opacity="0.70">FX Hedge</text>
+  <!-- Mini FX candle chart -->
+  <g stroke-width="3" stroke-linecap="round">
+    <line x1="278" y1="112" x2="278" y2="98"  stroke="#52b788" stroke-opacity="0.75"/>
+    <line x1="290" y1="108" x2="290" y2="96"  stroke="#52b788" stroke-opacity="0.75"/>
+    <line x1="302" y1="115" x2="302" y2="100" stroke="#e74c3c" stroke-opacity="0.70"/>
+    <line x1="314" y1="104" x2="314" y2="94"  stroke="#52b788" stroke-opacity="0.75"/>
+    <line x1="326" y1="110" x2="326" y2="97"  stroke="#52b788" stroke-opacity="0.75"/>
+  </g>
+
+  <!-- Route waypoints -->
+  <circle cx="130" cy="155" r="4" fill="#c0cfff" fill-opacity="0.50"/>
+  <circle cx="200" cy="155" r="4" fill="#c0cfff" fill-opacity="0.50"/>
+  <circle cx="270" cy="155" r="4" fill="#c0cfff" fill-opacity="0.50"/>
+</svg>

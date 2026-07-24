@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg884" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2a14"/>
+      <stop offset="100%" stop-color="#3c5226"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg884)"/>
+
+  <!-- Compounding curve -->
+  <path d="M 60,330 Q 160,326 230,290 Q 310,248 342,140" fill="none" stroke="#f0d060" stroke-width="5" stroke-linecap="round" stroke-opacity="0.95"/>
+  <!-- Decade ticks -->
+  <line x1="60" y1="336" x2="60" y2="348" stroke="#dce8c8" stroke-width="2.5" stroke-opacity="0.5"/>
+  <line x1="131" y1="336" x2="131" y2="348" stroke="#dce8c8" stroke-width="2.5" stroke-opacity="0.5"/>
+  <line x1="202" y1="336" x2="202" y2="348" stroke="#dce8c8" stroke-width="2.5" stroke-opacity="0.5"/>
+  <line x1="273" y1="336" x2="273" y2="348" stroke="#dce8c8" stroke-width="2.5" stroke-opacity="0.5"/>
+  <line x1="344" y1="336" x2="344" y2="348" stroke="#dce8c8" stroke-width="2.5" stroke-opacity="0.5"/>
+  <line x1="52" y1="342" x2="352" y2="342" stroke="#dce8c8" stroke-width="1.5" stroke-opacity="0.35"/>
+  <!-- Nest -->
+  <path d="M 96,208 Q 140,238 184,208 Q 176,252 140,252 Q 104,252 96,208" fill="#8a6f3d" fill-opacity="0.85"/>
+  <path d="M 92,212 Q 140,196 188,212" fill="none" stroke="#b08d4a" stroke-width="4" stroke-opacity="0.8"/>
+  <!-- Egg -->
+  <ellipse cx="140" cy="188" rx="30" ry="38" fill="#f0d060" fill-opacity="0.95"/>
+  <ellipse cx="131" cy="176" rx="9" ry="13" fill="#fff6d0" fill-opacity="0.55"/>
+  <!-- Coin sparkle at curve end -->
+  <circle cx="342" cy="140" r="16" fill="none" stroke="#f0d060" stroke-width="3" stroke-opacity="0.8"/>
+  <circle cx="342" cy="140" r="7" fill="#f0d060" fill-opacity="0.9"/>
+
+</svg>

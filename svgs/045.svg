@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg045" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f2027"/>
+      <stop offset="100%" stop-color="#203a43"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg045)"/>
+
+  <!-- Chart axes -->
+  <line x1="62" y1="60" x2="62"  y2="255" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.35"/>
+  <line x1="55" y1="250" x2="355" y2="250" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.35"/>
+
+  <!-- Historical data line (solid, left half) -->
+  <polyline points="72,210 100,195 128,205 156,182 184,170 212,185"
+            fill="none" stroke="#f5c842" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.85"/>
+  <!-- Historical data dots -->
+  <g fill="#f5c842" fill-opacity="0.90">
+    <circle cx="72"  cy="210" r="4"/>
+    <circle cx="100" cy="195" r="4"/>
+    <circle cx="128" cy="205" r="4"/>
+    <circle cx="156" cy="182" r="4"/>
+    <circle cx="184" cy="170" r="4"/>
+    <circle cx="212" cy="185" r="4"/>
+  </g>
+
+  <!-- Forecast region (right half, shaded confidence band) -->
+  <!-- Upper band -->
+  <path d="M 212,185 C 240,168 268,148 296,132 C 320,118 340,108 352,100"
+        fill="none" stroke="#00c9a7" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.40"/>
+  <!-- Lower band -->
+  <path d="M 212,185 C 240,195 268,192 296,185 C 320,178 340,172 352,168"
+        fill="none" stroke="#00c9a7" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.40"/>
+  <!-- Confidence fill between bands -->
+  <path d="M 212,185 C 240,168 268,148 296,132 C 320,118 340,108 352,100
+           L 352,168 C 340,172 320,178 296,185 C 268,192 240,195 212,185 Z"
+        fill="#00c9a7" fill-opacity="0.10"/>
+  <!-- Forecast center line (dashed) -->
+  <path d="M 212,185 C 240,182 268,170 296,158 C 320,148 340,140 352,134"
+        fill="none" stroke="#00c9a7" stroke-width="2.5" stroke-dasharray="7,4" stroke-linecap="round" stroke-opacity="0.85"/>
+  <!-- Forecast end dot -->
+  <circle cx="352" cy="134" r="5" fill="#00c9a7" fill-opacity="0.90"/>
+
+  <!-- Vertical separator: historical | forecast -->
+  <line x1="212" y1="60" x2="212" y2="252" stroke="#c0cfff" stroke-width="1" stroke-dasharray="4,4" stroke-opacity="0.25"/>
+  <text x="138" y="76" font-family="Arial, sans-serif" font-size="9" fill="#f5c842" text-anchor="middle" opacity="0.55">Historical</text>
+  <text x="284" y="76" font-family="Arial, sans-serif" font-size="9" fill="#00c9a7" text-anchor="middle" opacity="0.55">ML Forecast</text>
+
+  <!-- Inventory bars (bottom zone, below chart) -->
+  <text x="200" y="278" font-family="Arial, sans-serif" font-size="9" fill="#c0cfff" text-anchor="middle" opacity="0.45">Inventory Allocation — 20 Stores</text>
+  <!-- Bars representing stores (20 small bars) -->
+  <g fill-opacity="0.70">
+    <rect x="62"  y="290" width="10" height="30" rx="1" fill="#00c9a7"/>
+    <rect x="74"  y="298" width="10" height="22" rx="1" fill="#00c9a7"/>
+    <rect x="86"  y="285" width="10" height="35" rx="1" fill="#f5c842"/>
+    <rect x="98"  y="295" width="10" height="25" rx="1" fill="#00c9a7"/>
+    <rect x="110" y="282" width="10" height="38" rx="1" fill="#f5c842"/>
+    <rect x="122" y="292" width="10" height="28" rx="1" fill="#00c9a7"/>
+    <rect x="134" y="288" width="10" height="32" rx="1" fill="#00c9a7"/>
+    <rect x="146" y="300" width="10" height="20" rx="1" fill="#e74c3c" fill-opacity="0.55"/>
+    <rect x="158" y="286" width="10" height="34" rx="1" fill="#00c9a7"/>
+    <rect x="170" y="293" width="10" height="27" rx="1" fill="#f5c842"/>
+    <rect x="182" y="289" width="10" height="31" rx="1" fill="#00c9a7"/>
+    <rect x="194" y="297" width="10" height="23" rx="1" fill="#00c9a7"/>
+    <rect x="206" y="284" width="10" height="36" rx="1" fill="#f5c842"/>
+    <rect x="218" y="291" width="10" height="29" rx="1" fill="#00c9a7"/>
+    <rect x="230" y="302" width="10" height="18" rx="1" fill="#e74c3c" fill-opacity="0.55"/>
+    <rect x="242" y="287" width="10" height="33" rx="1" fill="#00c9a7"/>
+    <rect x="254" y="294" width="10" height="26" rx="1" fill="#f5c842"/>
+    <rect x="266" y="290" width="10" height="30" rx="1" fill="#00c9a7"/>
+    <rect x="278" y="283" width="10" height="37" rx="1" fill="#f5c842"/>
+    <rect x="290" y="296" width="10" height="24" rx="1" fill="#00c9a7"/>
+  </g>
+  <!-- Baseline for inventory bars -->
+  <line x1="62" y1="320" x2="306" y2="320" stroke="#c0cfff" stroke-width="1" stroke-opacity="0.20"/>
+</svg>

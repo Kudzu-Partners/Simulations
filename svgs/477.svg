@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg477" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a0e8f"/>
+      <stop offset="100%" stop-color="#2a0552"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg477)"/>
+
+  <text x="200" y="58" text-anchor="middle" fill="#ff6b6b" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">ONLINE REPUTATION CRISIS</text>
+
+  <!-- 5 STAR rating with 4 broken (hero) -->
+  <g transform="translate(200,170)">
+    <g fill="#3d1f08" stroke="#1a1a1a" stroke-width="1.5">
+      <polygon points="-100,0 -94,12 -82,14 -91,22 -88,34 -100,28 -112,34 -109,22 -118,14 -106,12"/>
+      <polygon points="-50,0 -44,12 -32,14 -41,22 -38,34 -50,28 -62,34 -59,22 -68,14 -56,12"/>
+      <polygon points="0,0 6,12 18,14 9,22 12,34 0,28 -12,34 -9,22 -18,14 -6,12"/>
+    </g>
+    <!-- broken star (highlight) -->
+    <g fill="#f5c842" stroke="#5a3210" stroke-width="1.5">
+      <polygon points="50,0 56,12 68,14 59,22 62,34 50,28 38,34 41,22 32,14 44,12"/>
+    </g>
+    <!-- last star with crack -->
+    <g>
+      <polygon points="100,0 106,12 118,14 109,22 112,34 100,28 88,34 91,22 82,14 94,12" fill="#3d1f08" stroke="#1a1a1a" stroke-width="1.5"/>
+      <path d="M 88 5 L 100 25 L 108 16" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+    </g>
+    <text x="0" y="55" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace" font-weight="bold">1.6</text>
+  </g>
+
+  <!-- NEGATIVE comments bubbles (bottom) -->
+  <g font-family="monospace" font-size="6" font-weight="bold">
+    <g transform="translate(90,290)">
+      <path d="M 0 0 L 50 0 Q 56 0 56 6 L 56 16 Q 56 22 50 22 L 14 22 L 10 28 L 12 22 L 0 22 Q -6 22 -6 16 L -6 6 Q -6 0 0 0 Z"
+            fill="#ff6b6b" fill-opacity="0.18" stroke="#ff6b6b" stroke-width="1.2"/>
+      <text x="25" y="14" text-anchor="middle" fill="#ff6b6b">"WORST!"</text>
+    </g>
+    <g transform="translate(200,310)">
+      <path d="M 0 0 L 60 0 Q 66 0 66 6 L 66 16 Q 66 22 60 22 L 14 22 L 10 28 L 12 22 L 0 22 Q -6 22 -6 16 L -6 6 Q -6 0 0 0 Z"
+            fill="#ff6b6b" fill-opacity="0.18" stroke="#ff6b6b" stroke-width="1.2"/>
+      <text x="30" y="14" text-anchor="middle" fill="#ff6b6b">"NEVER AGAIN"</text>
+    </g>
+    <g transform="translate(290,290)">
+      <path d="M 0 0 L 44 0 Q 50 0 50 6 L 50 16 Q 50 22 44 22 L 14 22 L 10 28 L 12 22 L 0 22 Q -6 22 -6 16 L -6 6 Q -6 0 0 0 Z"
+            fill="#ff6b6b" fill-opacity="0.18" stroke="#ff6b6b" stroke-width="1.2"/>
+      <text x="22" y="14" text-anchor="middle" fill="#ff6b6b">"1/10"</text>
+    </g>
+  </g>
+
+  <!-- ALERT bell (top-right) -->
+  <g transform="translate(335,90)">
+    <path d="M -12 8 Q -12 -12 0 -12 Q 12 -12 12 8 L 14 8 L 14 12 L -14 12 L -14 8 Z"
+          fill="#ff6b6b" fill-opacity="0.85" stroke="#fff" stroke-width="1.4"/>
+    <circle cx="0" cy="16" r="2.5" fill="#fff"/>
+    <circle cx="0" cy="-14" r="3" fill="#ffe27a"/>
+  </g>
+
+  <!-- INFLUENCER avatar (top-left) -->
+  <g transform="translate(60,90)">
+    <circle cx="0" cy="0" r="16" fill="#ffe27a" stroke="#c0cfff" stroke-width="2"/>
+    <circle cx="0" cy="-3" r="5" fill="#5a3210"/>
+    <path d="M -8 6 Q 0 13 8 6" fill="#5a3210"/>
+    <text x="22" y="5" fill="#ff6b9d" font-size="14" font-family="monospace" font-weight="bold">@</text>
+  </g>
+
+  <text x="200" y="378" text-anchor="middle" fill="#c0cfff" font-size="10" font-family="monospace" opacity="0.42" letter-spacing="1.2">Reputación · Hospitality · Online</text>
+</svg>

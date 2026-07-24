@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg022" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1f2e"/>
+      <stop offset="100%" stop-color="#2a3040"/>
+    </linearGradient>
+    <radialGradient id="mergeGlow022" cx="50%" cy="75%" r="30%">
+      <stop offset="0%" stop-color="#4fc3f7" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#4fc3f7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg022)"/>
+  <ellipse cx="200" cy="298" rx="80" ry="40" fill="url(#mergeGlow022)"/>
+
+  <!-- Left company org tree -->
+  <!-- Root -->
+  <circle cx="118" cy="80" r="16" fill="#1a1f2e" stroke="#a0aec0" stroke-width="2.5"/>
+  <circle cx="118" cy="80" r="8" fill="#a0aec0" fill-opacity="0.65"/>
+  <!-- L2 -->
+  <line x1="108" y1="96" x2="82"  y2="135" stroke="#a0aec0" stroke-width="1.8" stroke-opacity="0.55"/>
+  <line x1="128" y1="96" x2="148" y2="135" stroke="#a0aec0" stroke-width="1.8" stroke-opacity="0.55"/>
+  <circle cx="82"  cy="145" r="13" fill="#1a1f2e" stroke="#a0aec0" stroke-width="2" stroke-opacity="0.70"/>
+  <circle cx="148" cy="145" r="13" fill="#1a1f2e" stroke="#a0aec0" stroke-width="2" stroke-opacity="0.70"/>
+  <!-- L3 -->
+  <line x1="76"  y1="158" x2="62"  y2="192" stroke="#a0aec0" stroke-width="1.5" stroke-opacity="0.40"/>
+  <line x1="88"  y1="158" x2="98"  y2="192" stroke="#a0aec0" stroke-width="1.5" stroke-opacity="0.40"/>
+  <line x1="142" y1="158" x2="132" y2="192" stroke="#a0aec0" stroke-width="1.5" stroke-opacity="0.40"/>
+  <line x1="154" y1="158" x2="165" y2="192" stroke="#a0aec0" stroke-width="1.5" stroke-opacity="0.40"/>
+  <circle cx="62"  cy="200" r="10" fill="#1a1f2e" stroke="#a0aec0" stroke-width="1.5" stroke-opacity="0.50"/>
+  <circle cx="98"  cy="200" r="10" fill="#1a1f2e" stroke="#a0aec0" stroke-width="1.5" stroke-opacity="0.50"/>
+  <circle cx="132" cy="200" r="10" fill="#1a1f2e" stroke="#a0aec0" stroke-width="1.5" stroke-opacity="0.50"/>
+  <circle cx="165" cy="200" r="10" fill="#1a1f2e" stroke="#a0aec0" stroke-width="1.5" stroke-opacity="0.50"/>
+
+  <!-- Right company org tree (mirror) -->
+  <circle cx="282" cy="80" r="16" fill="#1a1f2e" stroke="#4fc3f7" stroke-width="2.5"/>
+  <circle cx="282" cy="80" r="8" fill="#4fc3f7" fill-opacity="0.65"/>
+  <line x1="272" y1="96" x2="252" y2="135" stroke="#4fc3f7" stroke-width="1.8" stroke-opacity="0.55"/>
+  <line x1="292" y1="96" x2="318" y2="135" stroke="#4fc3f7" stroke-width="1.8" stroke-opacity="0.55"/>
+  <circle cx="252" cy="145" r="13" fill="#1a1f2e" stroke="#4fc3f7" stroke-width="2" stroke-opacity="0.70"/>
+  <circle cx="318" cy="145" r="13" fill="#1a1f2e" stroke="#4fc3f7" stroke-width="2" stroke-opacity="0.70"/>
+  <line x1="246" y1="158" x2="235" y2="192" stroke="#4fc3f7" stroke-width="1.5" stroke-opacity="0.40"/>
+  <line x1="258" y1="158" x2="268" y2="192" stroke="#4fc3f7" stroke-width="1.5" stroke-opacity="0.40"/>
+  <line x1="312" y1="158" x2="302" y2="192" stroke="#4fc3f7" stroke-width="1.5" stroke-opacity="0.40"/>
+  <line x1="324" y1="158" x2="338" y2="192" stroke="#4fc3f7" stroke-width="1.5" stroke-opacity="0.40"/>
+  <circle cx="235" cy="200" r="10" fill="#1a1f2e" stroke="#4fc3f7" stroke-width="1.5" stroke-opacity="0.50"/>
+  <circle cx="268" cy="200" r="10" fill="#1a1f2e" stroke="#4fc3f7" stroke-width="1.5" stroke-opacity="0.50"/>
+  <circle cx="302" cy="200" r="10" fill="#1a1f2e" stroke="#4fc3f7" stroke-width="1.5" stroke-opacity="0.50"/>
+  <circle cx="338" cy="200" r="10" fill="#1a1f2e" stroke="#4fc3f7" stroke-width="1.5" stroke-opacity="0.50"/>
+
+  <!-- Convergence arrows pointing down to merged node -->
+  <line x1="118" y1="96"  x2="200" y2="268" stroke="#a0aec0" stroke-width="2" stroke-opacity="0.40" stroke-dasharray="5,4"/>
+  <line x1="282" y1="96"  x2="200" y2="268" stroke="#4fc3f7" stroke-width="2" stroke-opacity="0.40" stroke-dasharray="5,4"/>
+
+  <!-- Merged unified org root -->
+  <circle cx="200" cy="298" r="24" fill="#1a1f2e" stroke="#4fc3f7" stroke-width="3"/>
+  <circle cx="200" cy="298" r="13" fill="#4fc3f7" fill-opacity="0.75"/>
+
+  <!-- New org L2 -->
+  <line x1="188" y1="320" x2="160" y2="355" stroke="#4fc3f7" stroke-width="2" stroke-opacity="0.55"/>
+  <line x1="212" y1="320" x2="240" y2="355" stroke="#4fc3f7" stroke-width="2" stroke-opacity="0.55"/>
+  <circle cx="158" cy="360" r="12" fill="#1a1f2e" stroke="#4fc3f7" stroke-width="2" stroke-opacity="0.75"/>
+  <circle cx="242" cy="360" r="12" fill="#1a1f2e" stroke="#4fc3f7" stroke-width="2" stroke-opacity="0.75"/>
+
+</svg>

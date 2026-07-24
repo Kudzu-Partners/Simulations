@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg007" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a2342"/>
+      <stop offset="100%" stop-color="#1a3a5c"/>
+    </linearGradient>
+    <radialGradient id="crossGlow007" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#e74c3c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg007)"/>
+
+  <!-- Cross glow -->
+  <circle cx="200" cy="200" r="110" fill="url(#crossGlow007)"/>
+
+  <!-- Hospital cross (large, central) -->
+  <!-- Horizontal bar -->
+  <rect x="95" y="160" width="210" height="80" rx="8" fill="#e74c3c" fill-opacity="0.18" stroke="#e74c3c" stroke-width="2.5" stroke-opacity="0.85"/>
+  <!-- Vertical bar -->
+  <rect x="160" y="95" width="80" height="210" rx="8" fill="#e74c3c" fill-opacity="0.18" stroke="#e74c3c" stroke-width="2.5" stroke-opacity="0.85"/>
+
+  <!-- Patient flow path (clockwise through the cross) -->
+  <!-- Entry arrow: left → center -->
+  <path d="M 105,200 L 155,200" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.55" stroke-dasharray="5,4"/>
+  <polygon points="155,196 163,200 155,204" fill="#ffffff" fill-opacity="0.55"/>
+  <!-- Center → up (treatment) -->
+  <path d="M 200,190 L 200,108" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.55" stroke-dasharray="5,4"/>
+  <polygon points="196,108 200,100 204,108" fill="#ffffff" fill-opacity="0.55"/>
+  <!-- Down → discharge -->
+  <path d="M 200,210 L 200,292" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.55" stroke-dasharray="5,4"/>
+  <polygon points="196,292 200,300 204,292" fill="#ffffff" fill-opacity="0.55"/>
+  <!-- Exit: center → right -->
+  <path d="M 245,200 L 295,200" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.55" stroke-dasharray="5,4"/>
+  <polygon points="295,196 303,200 295,204" fill="#ffffff" fill-opacity="0.55"/>
+
+  <!-- Capacity bars (bed utilization) — left side -->
+  <g fill="#e74c3c" fill-opacity="0.70">
+    <rect x="58" y="270" width="12" height="28" rx="2"/>
+    <rect x="58" y="255" width="12" height="12" rx="2" fill-opacity="0.35"/>
+  </g>
+  <g fill="#ffffff" fill-opacity="0.45">
+    <rect x="72" y="262" width="12" height="36" rx="2"/>
+    <rect x="72" y="250" width="12" height="10" rx="2" fill-opacity="0.22"/>
+  </g>
+  <g fill="#e74c3c" fill-opacity="0.70">
+    <rect x="86" y="267" width="12" height="31" rx="2"/>
+  </g>
+
+  <!-- Small patient icons at flow nodes -->
+  <circle cx="105" cy="200" r="7" fill="#ffffff" fill-opacity="0.40" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.65"/>
+  <circle cx="295" cy="200" r="7" fill="#ffffff" fill-opacity="0.22" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.45"/>
+
+  <!-- Quality indicator top-right corner -->
+  <circle cx="335" cy="82" r="22" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.30"/>
+  <text x="335" y="87" font-family="Arial Black, Arial, sans-serif" font-size="13" font-weight="900" fill="#ffffff" text-anchor="middle" opacity="0.55">Q</text>
+
+</svg>

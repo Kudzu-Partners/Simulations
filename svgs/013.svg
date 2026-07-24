@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg013" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1b5e20"/>
+      <stop offset="100%" stop-color="#2d6a4f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg013)"/>
+
+  <!-- Dot texture -->
+  <g fill="#d8f3dc" opacity="0.06">
+    <circle cx="60" cy="60" r="2"/><circle cx="120" cy="60" r="2"/><circle cx="180" cy="60" r="2"/><circle cx="240" cy="60" r="2"/><circle cx="300" cy="60" r="2"/><circle cx="360" cy="60" r="2"/>
+    <circle cx="60" cy="120" r="2"/><circle cx="120" cy="120" r="2"/><circle cx="180" cy="120" r="2"/><circle cx="240" cy="120" r="2"/><circle cx="300" cy="120" r="2"/><circle cx="360" cy="120" r="2"/>
+    <circle cx="60" cy="300" r="2"/><circle cx="120" cy="300" r="2"/><circle cx="180" cy="300" r="2"/><circle cx="240" cy="300" r="2"/><circle cx="300" cy="300" r="2"/><circle cx="360" cy="300" r="2"/>
+    <circle cx="60" cy="360" r="2"/><circle cx="120" cy="360" r="2"/><circle cx="180" cy="360" r="2"/><circle cx="240" cy="360" r="2"/><circle cx="300" cy="360" r="2"/><circle cx="360" cy="360" r="2"/>
+  </g>
+
+  <!-- Circular economy loop: 4 arcs going clockwise, r=135, center (200,200) -->
+  <!-- Arc 1: top to right (Design → Produce) -->
+  <path d="M 200,65 A 135,135 0 0,1 335,200" fill="none" stroke="#52b788" stroke-width="8" stroke-linecap="round" stroke-opacity="0.85"/>
+  <polygon points="335,188 342,200 328,200" fill="#52b788" fill-opacity="0.85"/>
+
+  <!-- Arc 2: right to bottom (Produce → Use) -->
+  <path d="M 335,200 A 135,135 0 0,1 200,335" fill="none" stroke="#74c69d" stroke-width="8" stroke-linecap="round" stroke-opacity="0.85"/>
+  <polygon points="188,335 200,342 200,328" fill="#74c69d" fill-opacity="0.85"/>
+
+  <!-- Arc 3: bottom to left (Use → Recover) -->
+  <path d="M 200,335 A 135,135 0 0,1 65,200" fill="none" stroke="#95d5b2" stroke-width="8" stroke-linecap="round" stroke-opacity="0.85"/>
+  <polygon points="65,212 58,200 72,200" fill="#95d5b2" fill-opacity="0.85"/>
+
+  <!-- Arc 4: left to top (Recover → Design) -->
+  <path d="M 65,200 A 135,135 0 0,1 200,65" fill="none" stroke="#d8f3dc" stroke-width="8" stroke-linecap="round" stroke-opacity="0.85"/>
+  <polygon points="212,65 200,58 200,72" fill="#d8f3dc" fill-opacity="0.85"/>
+
+  <!-- Stage nodes -->
+  <!-- Top: Design -->
+  <circle cx="200" cy="65" r="24" fill="#1b5e20" stroke="#d8f3dc" stroke-width="2.5"/>
+  <polygon points="200,54 210,72 190,72" fill="#d8f3dc" fill-opacity="0.80"/>
+
+  <!-- Right: Produce (gear-like) -->
+  <circle cx="335" cy="200" r="24" fill="#1b5e20" stroke="#52b788" stroke-width="2.5"/>
+  <circle cx="335" cy="200" r="10" fill="#52b788" fill-opacity="0.80"/>
+  <circle cx="335" cy="200" r="5" fill="#1b5e20"/>
+
+  <!-- Bottom: Use/Consume -->
+  <circle cx="200" cy="335" r="24" fill="#1b5e20" stroke="#74c69d" stroke-width="2.5"/>
+  <rect x="190" y="325" width="20" height="18" rx="2" fill="#74c69d" fill-opacity="0.80"/>
+
+  <!-- Left: Recover/Recycle -->
+  <circle cx="65" cy="200" r="24" fill="#1b5e20" stroke="#95d5b2" stroke-width="2.5"/>
+  <!-- Recycle up-arrow -->
+  <path d="M 60,208 L 60,196 L 55,196 L 65,184 L 75,196 L 70,196 L 70,208 Z" fill="#95d5b2" fill-opacity="0.80"/>
+
+  <!-- Center: small factory icon -->
+  <rect x="186" y="186" width="28" height="24" rx="3" fill="#52b788" fill-opacity="0.30" stroke="#52b788" stroke-width="1.5" stroke-opacity="0.60"/>
+  <rect x="191" y="178" width="8" height="10" rx="1" fill="#52b788" fill-opacity="0.45"/>
+  <rect x="201" y="181" width="8" height="7" rx="1" fill="#52b788" fill-opacity="0.45"/>
+
+</svg>

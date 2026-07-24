@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" fill="none">
+  <defs>
+    <linearGradient id="g740" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6FCF97"/>
+      <stop offset="1" stop-color="#4DB579"/>
+    </linearGradient>
+  </defs>
+  <!-- el sol de la Sierra: asoma detrás de la ladera -->
+  <circle cx="250" cy="124" r="44" fill="#FFFFFF"/>
+  <circle cx="250" cy="124" r="34" fill="#93DEB2"/>
+  <!-- reborde blanco de la montaña (por encima del sol: capas de sticker) -->
+  <polygon points="60,320 200,80 340,320" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="18" stroke-linejoin="round"/>
+  <!-- Sierra Nevada: la montaña sagrada -->
+  <polygon points="72,312 200,92 328,312" fill="url(#g740)"/>
+  <!-- pico nevado -->
+  <polygon points="200,92 246,171 222,158 200,176 178,158 154,171" fill="#FFFFFF"/>
+  <!-- el tejido wiwa: camino ancestral en la falda -->
+  <g stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" fill="none">
+    <path d="M148 268 q26 -18 52 0 q26 18 52 0"/>
+    <path d="M128 296 q24 -16 48 0 q24 16 48 0 q24 -16 48 0" opacity="0.75"/>
+  </g>
+</svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg127" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+    <linearGradient id="scroll127" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#a87a10"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg127)"/>
+  <!-- One source data document at top, branching into 3 narrative streams -->
+  <!-- Source: financial doc -->
+  <g transform="translate(200 90)">
+    <rect x="-46" y="-32" width="92" height="64" rx="4" fill="#c0cfff" stroke="#ffffff" stroke-width="2"/>
+    <g fill="#1a2744" opacity="0.7">
+      <rect x="-36" y="-22" width="40" height="3"/>
+      <rect x="-36" y="-14" width="56" height="3"/>
+      <rect x="-36" y="-6" width="36" height="3"/>
+    </g>
+    <!-- Mini bar chart -->
+    <g transform="translate(-30 4)" fill="#7b2fff" opacity="0.85">
+      <rect x="0" y="14" width="6" height="14"/>
+      <rect x="10" y="6" width="6" height="22"/>
+      <rect x="20" y="10" width="6" height="18"/>
+      <rect x="30" y="2" width="6" height="26"/>
+      <rect x="40" y="-4" width="6" height="32"/>
+    </g>
+    <text x="22" y="22" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#00ff88">$</text>
+  </g>
+  <!-- Three branching streams with story scrolls -->
+  <g stroke="#f5c842" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.85">
+    <path d="M170 140 Q120 200 95 250"/>
+    <path d="M200 140 Q200 200 200 250"/>
+    <path d="M230 140 Q280 200 305 250"/>
+  </g>
+  <!-- Branch 1: Board (suit + crown) -->
+  <g transform="translate(95 305)">
+    <rect x="-38" y="-46" width="76" height="92" rx="6" fill="url(#scroll127)" stroke="#ffffff" stroke-width="2"/>
+    <!-- audience icon: board (suit) -->
+    <circle cx="0" cy="-22" r="11" fill="#1a2744"/>
+    <path d="M-18 -10 L-18 18 L18 18 L18 -10 L8 -14 L0 -8 L-8 -14 Z" fill="#1a2744" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M-3 -8 L0 -2 L3 -8" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+    <rect x="-30" y="28" width="60" height="3" fill="#1a2744" opacity="0.6"/>
+    <rect x="-30" y="34" width="44" height="3" fill="#1a2744" opacity="0.6"/>
+  </g>
+  <!-- Branch 2: Employees (group) -->
+  <g transform="translate(200 305)">
+    <rect x="-38" y="-46" width="76" height="92" rx="6" fill="url(#scroll127)" stroke="#ffffff" stroke-width="2"/>
+    <g fill="#1a2744">
+      <circle cx="-15" cy="-22" r="8"/>
+      <circle cx="0" cy="-26" r="9"/>
+      <circle cx="15" cy="-22" r="8"/>
+      <path d="M-26 -8 Q-15 -16 -4 -8 L-4 4 L-26 4 Z"/>
+      <path d="M-10 -12 Q0 -22 10 -12 L10 4 L-10 4 Z"/>
+      <path d="M4 -8 Q15 -16 26 -8 L26 4 L4 4 Z"/>
+    </g>
+    <rect x="-30" y="28" width="60" height="3" fill="#1a2744" opacity="0.6"/>
+    <rect x="-30" y="34" width="44" height="3" fill="#1a2744" opacity="0.6"/>
+  </g>
+  <!-- Branch 3: Media (microphone) -->
+  <g transform="translate(305 305)">
+    <rect x="-38" y="-46" width="76" height="92" rx="6" fill="url(#scroll127)" stroke="#ffffff" stroke-width="2"/>
+    <g transform="translate(0 -18)" stroke="#1a2744" stroke-width="2" fill="#1a2744" stroke-linejoin="round">
+      <rect x="-9" y="-18" width="18" height="26" rx="9"/>
+      <path d="M-14 -2 Q-14 14 0 14 Q14 14 14 -2" fill="none"/>
+      <line x1="0" y1="14" x2="0" y2="22" fill="none"/>
+      <line x1="-7" y1="22" x2="7" y2="22" fill="none"/>
+    </g>
+    <rect x="-30" y="28" width="60" height="3" fill="#1a2744" opacity="0.6"/>
+    <rect x="-30" y="34" width="44" height="3" fill="#1a2744" opacity="0.6"/>
+  </g>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg039" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c2333"/>
+      <stop offset="100%" stop-color="#2c3e50"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg039)"/>
+
+  <!-- BEFORE label (left) -->
+  <text x="95" y="68" font-family="Arial, sans-serif" font-size="11" fill="#e74c3c" text-anchor="middle" opacity="0.65">BEFORE</text>
+  <!-- AFTER label (right) -->
+  <text x="305" y="68" font-family="Arial, sans-serif" font-size="11" fill="#f1c40f" text-anchor="middle" opacity="0.65">AFTER</text>
+
+  <!-- Divider arrow (transformation) -->
+  <line x1="185" y1="200" x2="215" y2="200" stroke="#f1c40f" stroke-width="3" stroke-opacity="0.70"/>
+  <polygon points="215,195 227,200 215,205" fill="#f1c40f" fill-opacity="0.70"/>
+
+  <!-- BEFORE: congested production line (left half, x55–175) -->
+  <!-- Conveyor belt -->
+  <rect x="55" y="185" width="125" height="30" rx="4" fill="#e74c3c" fill-opacity="0.12" stroke="#e74c3c" stroke-width="1.5" stroke-opacity="0.40"/>
+  <!-- Belt rollers -->
+  <circle cx="68"  cy="200" r="6" fill="#2c3e50" stroke="#e74c3c" stroke-width="1.5" stroke-opacity="0.55"/>
+  <circle cx="168" cy="200" r="6" fill="#2c3e50" stroke="#e74c3c" stroke-width="1.5" stroke-opacity="0.55"/>
+  <!-- Waste items (piled up, red X) -->
+  <g fill="#e74c3c" fill-opacity="0.55">
+    <rect x="82"  y="152" width="22" height="22" rx="2"/>
+    <rect x="110" y="148" width="22" height="26" rx="2"/>
+    <rect x="138" y="154" width="22" height="20" rx="2"/>
+    <rect x="95"  y="118" width="20" height="18" rx="2"/>
+  </g>
+  <!-- Red X marks on waste -->
+  <g stroke="#1c2333" stroke-width="2" stroke-linecap="round">
+    <line x1="86"  y1="156" x2="100" y2="170"/><line x1="100" y1="156" x2="86"  y2="170"/>
+    <line x1="114" y1="152" x2="128" y2="170"/><line x1="128" y1="152" x2="114" y2="170"/>
+    <line x1="142" y1="158" x2="156" y2="170"/><line x1="156" y1="158" x2="142" y2="170"/>
+  </g>
+  <!-- Congestion arrows (blocked) -->
+  <g stroke="#e74c3c" stroke-width="2" stroke-opacity="0.50">
+    <line x1="68" y1="235" x2="68" y2="258"/>
+    <line x1="113" y1="235" x2="113" y2="268"/>
+    <line x1="158" y1="235" x2="158" y2="252"/>
+  </g>
+
+  <!-- AFTER: lean line (right half, x225–345) -->
+  <!-- Conveyor belt -->
+  <rect x="225" y="185" width="125" height="30" rx="4" fill="#f1c40f" fill-opacity="0.12" stroke="#f1c40f" stroke-width="1.5" stroke-opacity="0.55"/>
+  <!-- Belt rollers -->
+  <circle cx="238" cy="200" r="6" fill="#2c3e50" stroke="#f1c40f" stroke-width="1.5" stroke-opacity="0.65"/>
+  <circle cx="338" cy="200" r="6" fill="#2c3e50" stroke="#f1c40f" stroke-width="1.5" stroke-opacity="0.65"/>
+  <!-- Lean items (evenly spaced, no waste) -->
+  <g fill="#f1c40f" fill-opacity="0.60">
+    <rect x="248" y="162" width="20" height="20" rx="3"/>
+    <rect x="280" y="162" width="20" height="20" rx="3"/>
+    <rect x="312" y="162" width="20" height="20" rx="3"/>
+  </g>
+  <!-- Green checkmarks on lean items -->
+  <g stroke="#1c2333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="251,173 256,178 265,165"/>
+    <polyline points="283,173 288,178 297,165"/>
+    <polyline points="315,173 320,178 329,165"/>
+  </g>
+  <!-- Smooth flow arrows -->
+  <g stroke="#f1c40f" stroke-width="2" stroke-opacity="0.60">
+    <line x1="258" y1="235" x2="258" y2="255"/>
+    <polygon points="254,255 258,263 262,255" fill="#f1c40f" fill-opacity="0.60"/>
+    <line x1="290" y1="235" x2="290" y2="255"/>
+    <polygon points="286,255 290,263 294,255" fill="#f1c40f" fill-opacity="0.60"/>
+    <line x1="322" y1="235" x2="322" y2="255"/>
+    <polygon points="318,255 322,263 326,255" fill="#f1c40f" fill-opacity="0.60"/>
+  </g>
+
+  <!-- TPS label bottom center -->
+  <text x="200" y="318" font-family="Arial, sans-serif" font-size="9" fill="#95a5a6" text-anchor="middle" opacity="0.45">Toyota Production System</text>
+</svg>

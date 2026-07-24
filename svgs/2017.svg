@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg2017" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#301a10"/>
+      <stop offset="100%" stop-color="#5c3316"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg2017)"/>
+
+  <!-- Base trajectory -->
+  <path d="M 60,330 Q 140,320 190,270" fill="none" stroke="#f2a950" stroke-width="5" stroke-linecap="round" stroke-opacity="0.95"/>
+  <!-- Fork A: steep burn -->
+  <path d="M 190,270 Q 240,210 258,110" fill="none" stroke="#f2a950" stroke-width="5" stroke-linecap="round" stroke-opacity="0.95"/>
+  <polygon points="248,122 258,96 270,120" fill="#f2a950"/>
+  <!-- Fork B: steady climb -->
+  <path d="M 190,270 Q 268,252 336,208" fill="none" stroke="#e8d7b0" stroke-width="4" stroke-linecap="round" stroke-opacity="0.75" stroke-dasharray="9 7"/>
+  <polygon points="324,204 344,202 330,220" fill="#e8d7b0" fill-opacity="0.75"/>
+  <!-- Decision node -->
+  <circle cx="190" cy="270" r="12" fill="none" stroke="#e8d7b0" stroke-width="3.5" stroke-opacity="0.9"/>
+  <circle cx="190" cy="270" r="4.5" fill="#e8d7b0" fill-opacity="0.9"/>
+  <!-- Flame ticks under steep path -->
+  <path d="M 236,196 Q 228,208 236,218 Q 244,208 236,196" fill="#e0603a" fill-opacity="0.8"/>
+  <path d="M 252,158 Q 244,170 252,180 Q 260,170 252,158" fill="#e0603a" fill-opacity="0.6"/>
+  <!-- Runway cash bar -->
+  <rect x="60" y="352" width="150" height="9" rx="4.5" fill="#e8d7b0" fill-opacity="0.30"/>
+  <rect x="60" y="352" width="66" height="9" rx="4.5" fill="#e0603a" fill-opacity="0.85"/>
+
+</svg>

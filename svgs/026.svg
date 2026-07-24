@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg026" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1f12"/>
+      <stop offset="100%" stop-color="#1b3a20"/>
+    </linearGradient>
+    <linearGradient id="transition026" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#95a5a6"/>
+      <stop offset="50%"  stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#52b788"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg026)"/>
+
+  <!-- Transition timeline bar -->
+  <rect x="60" y="218" width="280" height="10" rx="5" fill="url(#transition026)" fill-opacity="0.70"/>
+  <!-- Arrow at end -->
+  <polygon points="340,213 352,223 340,233" fill="#52b788" fill-opacity="0.80"/>
+  <!-- Year markers -->
+  <g font-family="Arial, sans-serif" font-size="9" fill="#d8f3dc" text-anchor="middle" opacity="0.50">
+    <text x="60"  y="242">Y1</text>
+    <text x="107" y="242">Y2</text>
+    <text x="154" y="242">Y3</text>
+    <text x="200" y="242">Y4</text>
+    <text x="247" y="242">Y5</text>
+    <text x="294" y="242">Y6</text>
+  </g>
+
+  <!-- LEFT: Fossil fuel plant (coal/gas — dark, muted) -->
+  <!-- Main building -->
+  <rect x="62" y="148" width="80" height="65" rx="3" fill="#95a5a6" fill-opacity="0.15" stroke="#95a5a6" stroke-width="1.8" stroke-opacity="0.50"/>
+  <!-- Two chimneys -->
+  <rect x="74"  y="105" width="16" height="48" rx="2" fill="#95a5a6" fill-opacity="0.20" stroke="#95a5a6" stroke-width="1.5" stroke-opacity="0.55"/>
+  <rect x="98"  y="115" width="14" height="38" rx="2" fill="#95a5a6" fill-opacity="0.18" stroke="#95a5a6" stroke-width="1.5" stroke-opacity="0.50"/>
+  <!-- Smoke puffs -->
+  <circle cx="82"  cy="98"  r="9"  fill="#95a5a6" fill-opacity="0.20"/>
+  <circle cx="90"  cy="90"  r="7"  fill="#95a5a6" fill-opacity="0.15"/>
+  <circle cx="105" cy="108" r="8"  fill="#95a5a6" fill-opacity="0.18"/>
+
+  <!-- RIGHT: Renewable energy mix (bright, green/gold) -->
+  <!-- Wind turbine 1 -->
+  <line x1="288" y1="210" x2="288" y2="120" stroke="#52b788" stroke-width="3" stroke-opacity="0.80"/>
+  <circle cx="288" cy="120" r="4" fill="#52b788" fill-opacity="0.90"/>
+  <line x1="288" y1="120" x2="268" y2="88"  stroke="#52b788" stroke-width="2.5" stroke-opacity="0.80"/>
+  <line x1="288" y1="120" x2="312" y2="96"  stroke="#52b788" stroke-width="2.5" stroke-opacity="0.80"/>
+  <line x1="288" y1="120" x2="282" y2="152" stroke="#52b788" stroke-width="2.5" stroke-opacity="0.80"/>
+
+  <!-- Wind turbine 2 (smaller) -->
+  <line x1="320" y1="210" x2="320" y2="145" stroke="#52b788" stroke-width="2.5" stroke-opacity="0.65"/>
+  <circle cx="320" cy="145" r="3" fill="#52b788" fill-opacity="0.80"/>
+  <line x1="320" y1="145" x2="306" y2="122" stroke="#52b788" stroke-width="2" stroke-opacity="0.65"/>
+  <line x1="320" y1="145" x2="337" y2="128" stroke="#52b788" stroke-width="2" stroke-opacity="0.65"/>
+  <line x1="320" y1="145" x2="316" y2="168" stroke="#52b788" stroke-width="2" stroke-opacity="0.65"/>
+
+  <!-- Solar panels -->
+
+  <!-- Donut chart: energy mix transition -->
+  <!-- Before (left donut, mostly fossil) -->
+  <circle cx="130" cy="320" r="32" fill="none" stroke="#95a5a6" stroke-width="16" stroke-opacity="0.55"/>
+  <circle cx="130" cy="320" r="32" fill="none" stroke="#52b788" stroke-width="16" stroke-opacity="0.70"
+          stroke-dasharray="30 171" stroke-dashoffset="0"/>
+
+  <!-- After (right donut, mostly renewable) -->
+  <circle cx="270" cy="320" r="32" fill="none" stroke="#95a5a6" stroke-width="16" stroke-opacity="0.25"/>
+  <circle cx="270" cy="320" r="32" fill="none" stroke="#52b788" stroke-width="16" stroke-opacity="0.85"
+          stroke-dasharray="140 62" stroke-dashoffset="0"/>
+
+  <!-- Arrow between donuts -->
+  <line x1="168" y1="320" x2="228" y2="320" stroke="#f5c842" stroke-width="2.5" stroke-opacity="0.65"/>
+  <polygon points="228,315 238,320 228,325" fill="#f5c842" fill-opacity="0.65"/>
+
+</svg>

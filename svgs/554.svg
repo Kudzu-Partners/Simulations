@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg554" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1c2333"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg554)"/>
+
+  <text x="200" y="56" text-anchor="middle" fill="#e67e22" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">EVM · BOG–MED HIGHWAY</text>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- Axes -->
+    <line x1="64" y1="312" x2="336" y2="312" stroke="#dfe6e9" stroke-width="1.5" opacity="0.35"/>
+    <line x1="64" y1="80"  x2="64"  y2="312" stroke="#dfe6e9" stroke-width="1.5" opacity="0.35"/>
+
+    <!-- Planned Value (PV) line - straight diagonal -->
+    <line x1="64" y1="304" x2="336" y2="96" stroke="#74b9ff" stroke-width="4"/>
+
+    <!-- Earned Value (EV) line - lagging behind -->
+    <path d="M 64 304 L 120 264 L 176 224 L 232 184 L 280 152"
+          stroke="#52b788" stroke-width="4"/>
+
+    <!-- Actual Cost (AC) line - higher than planned -->
+    <path d="M 64 304 L 120 256 L 176 200 L 232 152 L 280 112"
+          stroke="#e74c3c" stroke-width="4"/>
+
+    <!-- Status line "today" -->
+    <line x1="280" y1="80" x2="280" y2="312" stroke="#f5c842" stroke-width="2" stroke-dasharray="6 5" opacity="0.7"/>
+
+    <!-- Gap markers at status line -->
+    <circle cx="280" cy="112" r="7" fill="#e74c3c"/>
+    <circle cx="280" cy="152" r="7" fill="#52b788"/>
+    <circle cx="280" cy="128" r="7" fill="#74b9ff"/>
+
+    <!-- Variance bracket between EV and AC (cost variance, red) -->
+    <line x1="296" y1="112" x2="296" y2="152" stroke="#e74c3c" stroke-width="2.5"/>
+    <line x1="292" y1="112" x2="300" y2="112" stroke="#e74c3c" stroke-width="2.5"/>
+    <line x1="292" y1="152" x2="300" y2="152" stroke="#e74c3c" stroke-width="2.5"/>
+
+    <!-- CPI badge top-left -->
+    <g transform="translate(48,84)">
+      <rect width="60" height="26" rx="4" fill="#e74c3c" fill-opacity="0.18" stroke="#e74c3c" stroke-width="1.5"/>
+      <text x="30" y="18" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="monospace" font-weight="bold">CPI</text>
+    </g>
+
+    <!-- SPI badge top-right -->
+    <g transform="translate(296,84)">
+      <rect width="60" height="26" rx="4" fill="#74b9ff" fill-opacity="0.18" stroke="#74b9ff" stroke-width="1.5"/>
+      <text x="30" y="18" text-anchor="middle" fill="#74b9ff" font-size="11" font-family="monospace" font-weight="bold">SPI</text>
+    </g>
+  </g>
+
+  <text x="200" y="372" text-anchor="middle" fill="#95a5a6" font-size="9" font-family="monospace" opacity="0.5" letter-spacing="1.2">EVM · Megaproject · CO</text>
+</svg>

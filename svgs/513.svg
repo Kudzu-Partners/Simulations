@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg513" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a0505"/>
+      <stop offset="100%" stop-color="#2a0a1a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg513)"/>
+
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Hotel building (protagonist) — most windows dark -->
+    <rect x="120" y="80" width="160" height="240" rx="8" stroke="#e74c3c" stroke-width="3.5" fill="#1a0505"/>
+
+    <!-- Windows grid 4x6, most dark (vacant) -->
+    <!-- Row 1 -->
+    <rect x="136" y="104" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+    <rect x="168" y="104" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+    <rect x="200" y="104" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+    <rect x="232" y="104" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+
+    <!-- Row 2 — one lit -->
+    <rect x="136" y="144" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+    <rect x="168" y="144" width="24" height="24" rx="4" fill="#f5c842" opacity="0.85" stroke="none"/>
+    <rect x="200" y="144" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+    <rect x="232" y="144" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+
+    <!-- Row 3 -->
+    <rect x="136" y="184" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+    <rect x="168" y="184" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+    <rect x="200" y="184" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+    <rect x="232" y="184" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+
+    <!-- Row 4 — one lit -->
+    <rect x="136" y="224" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+    <rect x="168" y="224" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+    <rect x="200" y="224" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+    <rect x="232" y="224" width="24" height="24" rx="4" fill="#f5c842" opacity="0.7" stroke="none"/>
+
+    <!-- Row 5 -->
+    <rect x="136" y="264" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+    <rect x="168" y="264" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+    <rect x="200" y="264" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+    <rect x="232" y="264" width="24" height="24" rx="4" stroke="#e74c3c" stroke-width="1.5" fill="#0d0303" opacity="0.7"/>
+
+    <!-- Demand collapse curve (context, top-right) -->
+    <path d="M 296 96 L 320 128 L 344 192 L 360 264" stroke="#e74c3c" stroke-width="3.5" opacity="0.8"/>
+    <circle cx="360" cy="264" r="4" fill="#e74c3c" stroke="none"/>
+  </g>
+</svg>

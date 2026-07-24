@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg012" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a3a5c"/>
+      <stop offset="100%" stop-color="#2c5f8a"/>
+    </linearGradient>
+    <radialGradient id="safetyGlow012" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#74b9ff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#74b9ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg012)"/>
+
+  <!-- Safety glow at center -->
+  <circle cx="200" cy="200" r="70" fill="url(#safetyGlow012)"/>
+
+  <!-- Pentagon team member positions (r=128 from center 200,200) -->
+  <!-- Top:      200, 72  -->
+  <!-- Top-R:    322, 159 -->
+  <!-- Bot-R:    279, 304 -->
+  <!-- Bot-L:    121, 304 -->
+  <!-- Top-L:     78, 159 -->
+
+  <!-- Connection lines — varying strength = psychological safety level -->
+  <!-- Strong (solid, thick): member 1 (top) and 3 (bot-R) -->
+  <line x1="200" y1="72"  x2="200" y2="200" stroke="#74b9ff" stroke-width="3" stroke-opacity="0.80"/>
+  <line x1="279" y1="304" x2="200" y2="200" stroke="#74b9ff" stroke-width="3" stroke-opacity="0.80"/>
+  <!-- Medium: member 2 (top-R) and 5 (top-L) -->
+  <line x1="322" y1="159" x2="200" y2="200" stroke="#74b9ff" stroke-width="2" stroke-opacity="0.55"/>
+  <line x1="78"  y1="159" x2="200" y2="200" stroke="#74b9ff" stroke-width="2" stroke-opacity="0.55"/>
+  <!-- Weak (dashed): member 4 (bot-L) — low psychological safety -->
+  <line x1="121" y1="304" x2="200" y2="200" stroke="#74b9ff" stroke-width="1.5" stroke-opacity="0.30" stroke-dasharray="5,5"/>
+
+  <!-- Peer connections (partial — between adjacent members) -->
+  <line x1="200" y1="72" x2="322" y2="159" stroke="#dfe6e9" stroke-width="1" stroke-opacity="0.22"/>
+  <line x1="322" y1="159" x2="279" y2="304" stroke="#dfe6e9" stroke-width="1" stroke-opacity="0.22"/>
+  <line x1="200" y1="72" x2="78" y2="159" stroke="#dfe6e9" stroke-width="1" stroke-opacity="0.22"/>
+
+  <!-- Center node: psychological safety space -->
+  <circle cx="200" cy="200" r="28" fill="#1a3a5c" stroke="#74b9ff" stroke-width="3"/>
+  <circle cx="200" cy="200" r="16" fill="#74b9ff" fill-opacity="0.85"/>
+
+  <!-- Team member nodes -->
+  <!-- Member 1 — top, high safety (bright) -->
+  <circle cx="200" cy="72" r="20" fill="#1a3a5c" stroke="#74b9ff" stroke-width="2.5"/>
+  <circle cx="200" cy="72" r="11" fill="#74b9ff" fill-opacity="0.80"/>
+
+  <!-- Member 2 — top-right, medium -->
+  <circle cx="322" cy="159" r="20" fill="#1a3a5c" stroke="#74b9ff" stroke-width="2"/>
+  <circle cx="322" cy="159" r="11" fill="#74b9ff" fill-opacity="0.55"/>
+
+  <!-- Member 3 — bottom-right, high safety -->
+  <circle cx="279" cy="304" r="20" fill="#1a3a5c" stroke="#74b9ff" stroke-width="2.5"/>
+  <circle cx="279" cy="304" r="11" fill="#74b9ff" fill-opacity="0.80"/>
+
+  <!-- Member 4 — bottom-left, low safety (dim, dashed ring) -->
+  <circle cx="121" cy="304" r="20" fill="#1a3a5c" stroke="#74b9ff" stroke-width="1.5" stroke-dasharray="4,3" stroke-opacity="0.45"/>
+  <circle cx="121" cy="304" r="11" fill="#74b9ff" fill-opacity="0.28"/>
+
+  <!-- Member 5 — top-left, medium -->
+  <circle cx="78" cy="159" r="20" fill="#1a3a5c" stroke="#74b9ff" stroke-width="2"/>
+  <circle cx="78" cy="159" r="11" fill="#74b9ff" fill-opacity="0.55"/>
+
+</svg>

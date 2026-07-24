@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg908" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2b1d2e"/>
+      <stop offset="100%" stop-color="#4a3050"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg908)"/>
+
+  <!-- Letter -->
+  <rect x="64" y="96" width="150" height="200" rx="8" fill="#efe3ef" fill-opacity="0.14" stroke="#efe3ef" stroke-width="2" stroke-opacity="0.55"/>
+  <line x1="84" y1="132" x2="194" y2="132" stroke="#efe3ef" stroke-width="4" stroke-opacity="0.6"/>
+  <line x1="84" y1="156" x2="194" y2="156" stroke="#efe3ef" stroke-width="3" stroke-opacity="0.4"/>
+  <line x1="84" y1="176" x2="194" y2="176" stroke="#efe3ef" stroke-width="3" stroke-opacity="0.4"/>
+  <line x1="84" y1="196" x2="166" y2="196" stroke="#efe3ef" stroke-width="3" stroke-opacity="0.4"/>
+  <!-- Signature line + pen redline -->
+  <line x1="84" y1="262" x2="150" y2="262" stroke="#e0b23e" stroke-width="3" stroke-opacity="0.85"/>
+  <path d="M 84,244 Q 104,232 118,246 Q 132,258 150,244" fill="none" stroke="#e0b23e" stroke-width="2.5" stroke-opacity="0.75"/>
+  <!-- Scale -->
+  <line x1="292" y1="110" x2="292" y2="290" stroke="#e0b23e" stroke-width="4" stroke-opacity="0.9"/>
+  <line x1="232" y1="150" x2="352" y2="150" stroke="#e0b23e" stroke-width="4" stroke-opacity="0.9" transform="rotate(-8 292 150)"/>
+  <path d="M 240,146 L 224,196 L 256,196 Z" fill="none" stroke="#efe3ef" stroke-width="3" stroke-opacity="0.7" transform="rotate(-8 292 150)"/>
+  <path d="M 344,146 L 328,188 L 360,188 Z" fill="none" stroke="#efe3ef" stroke-width="3" stroke-opacity="0.7" transform="rotate(-8 292 150)"/>
+  <rect x="270" y="288" width="44" height="10" rx="4" fill="#e0b23e" fill-opacity="0.85"/>
+
+</svg>
