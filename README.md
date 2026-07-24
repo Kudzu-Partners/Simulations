@@ -2,7 +2,7 @@
 
 Playable business simulations by [Eureka Simulations](https://www.eurekasimulations.com/) (Kudzu Partners S.L.), shared openly with a standalone player. Each simulation is a single self-contained JSON file — model, UI, styles, and translations included. The player runs them entirely in your browser: no backend, no account, no tracking.
 
-**License: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)** — free to use, share, and adapt for non-commercial purposes with attribution. For commercial licensing, [contact Eureka Simulations](https://www.eurekasimulations.com/).
+**License: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)** — free to use, share, and adapt for **personal, non-commercial purposes** with attribution. Classroom and institutional teaching deployment is commercial use under the NC clause ([details](LICENSE.md)). For licensing — class runs, corporate training, LMS integration — [contact Eureka Simulations](https://www.eurekasimulations.com/).
 
 ## Play
 
@@ -10,7 +10,7 @@ Playable business simulations by [Eureka Simulations](https://www.eurekasimulati
 
 Deep links work too: [`player/?sim=015`](https://open.eurekasimulations.com/player/?sim=015) (by external id) or `player/?src=<url>` (any CORS-enabled JSON).
 
-Prefer to run it locally (development, offline classrooms)?
+Prefer to run it locally (development, offline evaluation)?
 
 ```bash
 git clone https://github.com/Kudzu-Partners/Simulations.git
