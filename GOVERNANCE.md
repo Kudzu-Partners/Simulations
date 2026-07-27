@@ -14,7 +14,7 @@ How this catalog is maintained, who decides what ships, and how you gain a voice
 
 - **Waves, not trickles.** New simulations land in periodic themed waves. Every sim in a wave has passed the full quality gate: automated validation, headless replay in both languages, and human review. The wave cadence is the commitment; wave size flexes to whatever passed review.
 - **The canonical catalog lives here.** Forks are allowed by the license (BY-NC-SA), but issues, fixes, curation, and new waves happen in this repo. Improvements must flow back (ShareAlike).
-- **Community PRs** go through the identical gate as our own releases. Nothing ships under this catalog's name without passing it — that's the deal that keeps a 100+ sim library trustworthy.
+- **Community PRs** go through the identical gate as our own releases. Nothing ships under this catalog's name without passing it — that's the deal that keeps a library this size trustworthy.
 - **Deprecation.** A sim that fails QA and has no fix gets pulled from the manifest (the file stays in git history). We'd rather have fewer, working sims than a bigger, broken list.
 
 ## Decision-making

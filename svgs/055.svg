@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg055" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="100%" stop-color="#2d1a4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg055)"/>
+
+  <!-- Equity baseline (horizontal line) -->
+  <line x1="60" y1="295" x2="340" y2="295" stroke="#c0cfff" stroke-width="2" stroke-opacity="0.35"/>
+  <text x="200" y="315" font-family="Arial, sans-serif" font-size="8" fill="#c0cfff" text-anchor="middle" opacity="0.45">Equity Baseline</text>
+
+  <!-- Person figures BEFORE equity (varying heights = unequal starting points) -->
+  <!-- Person 1 (tall, dominant) -->
+  <circle cx="82" cy="218" r="14" fill="#f5c842" fill-opacity="0.70"/>
+  <rect x="74" y="233" width="16" height="38" rx="4" fill="#f5c842" fill-opacity="0.55"/>
+
+  <!-- Person 2 (short, disadvantaged) -->
+  <circle cx="130" cy="246" r="10" fill="#e74c3c" fill-opacity="0.65"/>
+  <rect x="124" y="257" width="13" height="20" rx="3" fill="#e74c3c" fill-opacity="0.50"/>
+
+  <!-- Person 3 (medium) -->
+  <circle cx="175" cy="232" r="12" fill="#00bfff" fill-opacity="0.65"/>
+  <rect x="168" y="245" width="15" height="32" rx="3" fill="#00bfff" fill-opacity="0.50"/>
+
+  <!-- Person 4 (short) -->
+  <circle cx="220" cy="250" r="9"  fill="#ff6b9d" fill-opacity="0.65"/>
+  <rect x="214" y="260" width="12" height="17" rx="3" fill="#ff6b9d" fill-opacity="0.50"/>
+
+  <!-- Person 5 (tall) -->
+  <circle cx="265" cy="215" r="14" fill="#52b788" fill-opacity="0.70"/>
+  <rect x="257" y="230" width="16" height="40" rx="4" fill="#52b788" fill-opacity="0.55"/>
+
+  <!-- Person 6 (medium-short) -->
+  <circle cx="312" cy="240" r="11" fill="#7b2fff" fill-opacity="0.65"/>
+  <rect x="306" y="252" width="14" height="25" rx="3" fill="#7b2fff" fill-opacity="0.50"/>
+
+  <!-- Inclusion arch connecting all figures (shared space / belonging) -->
+  <path d="M 68,200 Q 200,110 332,200"
+        fill="none" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.22" stroke-dasharray="5,4"/>
+
+  <!-- DEI label (top center) -->
+  <text x="200" y="82" font-family="Arial Black, sans-serif" font-size="28" font-weight="900" fill="#f5c842" text-anchor="middle" opacity="0.70">DEI</text>
+
+  <!-- Three pillar indicators (top zone, spread) -->
+  <!-- Hiring -->
+  <rect x="68" y="98" width="60" height="22" rx="4"
+        fill="#f5c842" fill-opacity="0.18" stroke="#f5c842" stroke-width="1" stroke-opacity="0.45"/>
+  <text x="98" y="113" font-family="Arial, sans-serif" font-size="8" fill="#f5c842" text-anchor="middle" opacity="0.70">Hiring</text>
+  <!-- Pay Equity -->
+  <rect x="170" y="98" width="60" height="22" rx="4"
+        fill="#52b788" fill-opacity="0.18" stroke="#52b788" stroke-width="1" stroke-opacity="0.45"/>
+  <text x="200" y="113" font-family="Arial, sans-serif" font-size="8" fill="#52b788" text-anchor="middle" opacity="0.70">Pay Equity</text>
+  <!-- ERG -->
+  <rect x="272" y="98" width="60" height="22" rx="4"
+        fill="#00bfff" fill-opacity="0.18" stroke="#00bfff" stroke-width="1" stroke-opacity="0.45"/>
+  <text x="302" y="113" font-family="Arial, sans-serif" font-size="8" fill="#00bfff" text-anchor="middle" opacity="0.70">ERG</text>
+
+  <!-- Progress bar (bottom) -->
+  <rect x="80" y="340" width="240" height="10" rx="5" fill="#c0cfff" fill-opacity="0.12"/>
+  <rect x="80" y="340" width="168" height="10" rx="5" fill="#7b2fff" fill-opacity="0.55"/>
+  <text x="260" y="349" font-family="Arial, sans-serif" font-size="7" fill="#7b2fff" opacity="0.60">70%</text>
+</svg>

@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg208" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+    <radialGradient id="glow208" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00bfff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#00bfff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="phoneA208" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a3a5c"/>
+      <stop offset="100%" stop-color="#0a1e34"/>
+    </linearGradient>
+    <linearGradient id="phoneB208" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d2058"/>
+      <stop offset="100%" stop-color="#150a2e"/>
+    </linearGradient>
+    <linearGradient id="bellCurve208" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg208)"/>
+  <rect width="400" height="400" rx="32" fill="url(#glow208)"/>
+
+  <!-- ── Two phones side by side (variant A vs B) ── -->
+
+  <!-- Variant A (left) -->
+  <g transform="translate(95, 90)">
+    <!-- Phone frame -->
+    <rect x="-38" y="0" width="76" height="138" rx="14" fill="#0a0f1e" stroke="#00bfff" stroke-width="2"/>
+    <rect x="-32" y="14" width="64" height="110" rx="3" fill="url(#phoneA208)"/>
+    <!-- Speaker -->
+    <rect x="-8" y="6" width="16" height="2.5" rx="1" fill="#00bfff" opacity="0.5"/>
+    <!-- "Sign up" button -->
+    <rect x="-22" y="60" width="44" height="14" rx="3" fill="#00bfff" opacity="0.85"/>
+    <text x="0" y="70" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#0a0f1e">SIGN UP</text>
+    <!-- Mini content lines -->
+    <line x1="-26" y1="22" x2="22" y2="22" stroke="#00bfff" stroke-width="1.2" opacity="0.5"/>
+    <line x1="-26" y1="32" x2="14" y2="32" stroke="#00bfff" stroke-width="0.8" opacity="0.3"/>
+    <line x1="-26" y1="42" x2="18" y2="42" stroke="#00bfff" stroke-width="0.8" opacity="0.3"/>
+    <line x1="-26" y1="84" x2="22" y2="84" stroke="#00bfff" stroke-width="0.8" opacity="0.3"/>
+    <line x1="-26" y1="94" x2="16" y2="94" stroke="#00bfff" stroke-width="0.8" opacity="0.3"/>
+    <line x1="-26" y1="104" x2="20" y2="104" stroke="#00bfff" stroke-width="0.8" opacity="0.3"/>
+
+    <!-- Variant label A -->
+    <circle cx="0" cy="-22" r="14" fill="#00bfff" opacity="0.95"/>
+    <text x="0" y="-17" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="#0d1b2a">A</text>
+
+    <!-- Conversion bar below -->
+    <rect x="-30" y="148" width="60" height="6" rx="2" fill="#1a2744" stroke="#00bfff" stroke-width="0.8" stroke-opacity="0.5"/>
+    <rect x="-30" y="148" width="22" height="6" rx="2" fill="#00bfff" opacity="0.85"/>
+    <text x="0" y="168" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#00bfff" opacity="0.95">3.6%</text>
+  </g>
+
+  <!-- Variant B (right) -->
+  <g transform="translate(305, 90)">
+    <rect x="-38" y="0" width="76" height="138" rx="14" fill="#0a0f1e" stroke="#7b2fff" stroke-width="2"/>
+    <rect x="-32" y="14" width="64" height="110" rx="3" fill="url(#phoneB208)"/>
+    <rect x="-8" y="6" width="16" height="2.5" rx="1" fill="#a572ff" opacity="0.5"/>
+    <!-- Different "Get started" button styling -->
+    <rect x="-26" y="56" width="52" height="18" rx="9" fill="#7b2fff" opacity="0.95"/>
+    <text x="0" y="68" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#fff">GET STARTED</text>
+    <!-- Different content layout -->
+    <rect x="-26" y="20" width="52" height="14" rx="2" fill="#a572ff" opacity="0.25"/>
+    <line x1="-26" y1="40" x2="22" y2="40" stroke="#a572ff" stroke-width="0.8" opacity="0.4"/>
+    <line x1="-26" y1="48" x2="18" y2="48" stroke="#a572ff" stroke-width="0.8" opacity="0.3"/>
+    <rect x="-26" y="84" width="22" height="22" rx="3" fill="#a572ff" opacity="0.18"/>
+    <rect x="0"   y="84" width="22" height="22" rx="3" fill="#a572ff" opacity="0.18"/>
+
+    <!-- Variant label B -->
+    <circle cx="0" cy="-22" r="14" fill="#7b2fff" opacity="0.95"/>
+    <text x="0" y="-17" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="#0d1b2a">B</text>
+
+    <!-- Conversion bar — winner -->
+    <rect x="-30" y="148" width="60" height="6" rx="2" fill="#1a2744" stroke="#7b2fff" stroke-width="0.8" stroke-opacity="0.5"/>
+    <rect x="-30" y="148" width="44" height="6" rx="2" fill="#7b2fff" opacity="0.95"/>
+    <text x="0" y="168" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#7b2fff" opacity="0.95">5.8%</text>
+    <!-- Winner crown -->
+    <path d="M-10 -38 L-5 -42 L0 -38 L5 -42 L10 -38 L10 -34 L-10 -34 Z" fill="#f5c842" opacity="0.95"/>
+  </g>
+
+  <!-- VS divider -->
+  <text x="200" y="158" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#c0cfff" opacity="0.65">vs</text>
+  <line x1="200" y1="80" x2="200" y2="135" stroke="#c0cfff" stroke-width="1" stroke-dasharray="3,4" opacity="0.35"/>
+  <line x1="200" y1="170" x2="200" y2="265" stroke="#c0cfff" stroke-width="1" stroke-dasharray="3,4" opacity="0.35"/>
+
+  <!-- ── Bell curve (statistical significance) ── -->
+  <g transform="translate(0,290)">
+    <!-- Axis -->
+    <line x1="50" y1="60" x2="350" y2="60" stroke="#c0cfff" stroke-width="1" opacity="0.4"/>
+    <!-- Bell curve filled area -->
+    <path d="M70 60 Q120 60 140 28 Q160 -8 180 -22 Q200 -28 220 -22 Q240 -8 260 28 Q280 60 330 60 Z"
+          fill="url(#bellCurve208)" stroke="#00ff88" stroke-width="2" opacity="0.95"/>
+    <!-- Significance threshold (vertical) -->
+    <line x1="252" y1="58" x2="252" y2="-10" stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.85"/>
+    <text x="252" y="-16" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#ff6b6b" opacity="0.95">α=.05</text>
+    <!-- Mean marker -->
+    <line x1="200" y1="60" x2="200" y2="-20" stroke="#00ff88" stroke-width="1" stroke-dasharray="2,3" opacity="0.7"/>
+    <!-- Result point in significance zone -->
+    <circle cx="280" cy="22" r="5" fill="#00ff88" opacity="0.95"/>
+    <circle cx="280" cy="22" r="10" fill="none" stroke="#00ff88" stroke-width="1" opacity="0.5"/>
+    <text x="290" y="18" font-family="'Courier New',monospace" font-size="7" fill="#00ff88" opacity="0.85">p=.01</text>
+  </g>
+
+  <!-- Header label -->
+  <text x="200" y="56" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="#c0cfff" opacity="0.55" letter-spacing="3">A/B EXPERIMENT</text>
+</svg>

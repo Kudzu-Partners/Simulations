@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" fill="none">
+  <defs>
+    <linearGradient id="g793" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#85DCF7"/>
+      <stop offset="1" stop-color="#56CCF2"/>
+    </linearGradient>
+  </defs>
+  <!-- reborde blanco -->
+  <circle cx="200" cy="200" r="140" fill="#FFFFFF"/>
+  <!-- la brújula ética -->
+  <circle cx="200" cy="200" r="130" fill="url(#g793)"/>
+  <circle cx="200" cy="200" r="102" stroke="#FFFFFF" stroke-width="8" fill="none"/>
+  <!-- los puntos cardinales del dilema -->
+  <g fill="#FFFFFF">
+    <circle cx="200" cy="86" r="9"/>
+    <circle cx="200" cy="314" r="9"/>
+    <circle cx="86" cy="200" r="9"/>
+    <circle cx="314" cy="200" r="9"/>
+  </g>
+  <!-- la aguja: hacia lo correcto o hacia la utilidad -->
+  <polygon points="200,108 232,200 200,232 168,200" fill="#2FA8DB"/>
+  <polygon points="200,292 168,200 200,168 232,200" fill="#FFFFFF"/>
+  <circle cx="200" cy="200" r="17" fill="#2FA8DB" stroke="#FFFFFF" stroke-width="7"/>
+</svg>

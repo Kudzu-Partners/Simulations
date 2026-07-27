@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg1797" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#241a3d"/>
+      <stop offset="100%" stop-color="#3d2b5e"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg1797)"/>
+  <line x1="200" y1="200" x2="132" y2="305" stroke="#8fd8ff" stroke-width="2.5" stroke-opacity="0.55"/><line x1="200" y1="200" x2="319" y2="162" stroke="#8fd8ff" stroke-width="2.5" stroke-opacity="0.55"/><line x1="200" y1="200" x2="275" y2="230" stroke="#8fd8ff" stroke-width="2.5" stroke-opacity="0.55"/><line x1="200" y1="200" x2="100" y2="227" stroke="#8fd8ff" stroke-width="2.5" stroke-opacity="0.55"/><line x1="200" y1="200" x2="193" y2="96" stroke="#8fd8ff" stroke-width="2.5" stroke-opacity="0.55"/><circle cx="200" cy="200" r="17" fill="#c9a6f2"/><circle cx="132" cy="305" r="12" fill="#c9a6f2" fill-opacity="0.9"/><circle cx="319" cy="162" r="9" fill="#8fd8ff" fill-opacity="0.9"/><circle cx="275" cy="230" r="12" fill="#c9a6f2" fill-opacity="0.9"/><circle cx="100" cy="227" r="9" fill="#8fd8ff" fill-opacity="0.9"/><circle cx="193" cy="96" r="12" fill="#c9a6f2" fill-opacity="0.9"/>
+  <circle cx="40" cy="366" r="5" fill="#c9a6f2" fill-opacity="0.9"/><circle cx="56" cy="366" r="5" fill="#c9a6f2" fill-opacity="0.9"/><circle cx="72" cy="366" r="5" fill="#c9a6f2" fill-opacity="0.25"/>
+</svg>

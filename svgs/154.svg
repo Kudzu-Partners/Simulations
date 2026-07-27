@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg154" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+    <radialGradient id="hubGlow154" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00bfff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00bfff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg154)"/>
+
+  <!-- Background hex grid (city) -->
+  <!-- Row 1 -->
+  <polygon points="120,68 148,52 176,68 176,100 148,116 120,100" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.15"/>
+  <polygon points="176,68 204,52 232,68 232,100 204,116 176,100" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.15"/>
+  <polygon points="232,68 260,52 288,68 288,100 260,116 232,100" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.15"/>
+  <!-- Row 2 -->
+  <polygon points="92,116 120,100 148,116 148,148 120,164 92,148" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.15"/>
+  <polygon points="148,116 176,100 204,116 204,148 176,164 148,148" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.15"/>
+  <polygon points="204,116 232,100 260,116 260,148 232,164 204,148" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.15"/>
+  <polygon points="260,116 288,100 316,116 316,148 288,164 260,148" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.15"/>
+  <!-- Row 3 (center) -->
+  <polygon points="120,164 148,148 176,164 176,196 148,212 120,196" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.2"/>
+  <polygon points="260,164 288,148 316,164 316,196 288,212 260,196" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.2"/>
+  <!-- Row 4 -->
+  <polygon points="92,212 120,196 148,212 148,244 120,260 92,244" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.15"/>
+  <polygon points="148,212 176,196 204,212 204,244 176,260 148,244" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.15"/>
+  <polygon points="204,212 232,196 260,212 260,244 232,260 204,244" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.15"/>
+  <polygon points="260,212 288,196 316,212 316,244 288,260 260,244" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.15"/>
+  <!-- Row 5 -->
+  <polygon points="120,260 148,244 176,260 176,292 148,308 120,292" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.12"/>
+  <polygon points="176,260 204,244 232,260 232,292 204,308 176,292" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.12"/>
+  <polygon points="232,260 260,244 288,260 288,292 260,308 232,292" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.12"/>
+
+  <!-- Hub glow -->
+  <circle cx="200" cy="200" r="80" fill="url(#hubGlow154)"/>
+
+  <!-- Center hex (platform hub) — highlighted -->
+  <polygon points="200,164 232,180 232,212 200,228 168,212 168,180" fill="#00bfff" opacity="0.15"/>
+  <polygon points="200,164 232,180 232,212 200,228 168,212 168,180" fill="none" stroke="#00bfff" stroke-width="3" opacity="0.9"/>
+
+  <!-- UrbanGrid label in hub -->
+  <text x="200" y="196" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#00bfff" text-anchor="middle" opacity="0.9">Urban</text>
+  <text x="200" y="210" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#00bfff" text-anchor="middle" opacity="0.9">Grid</text>
+
+  <!-- Open connections (dotted — open ecosystem) -->
+  <line x1="168" y1="196" x2="120" y2="180" stroke="#00bfff" stroke-width="2" stroke-dasharray="6 4" opacity="0.6"/>
+  <line x1="200" y1="164" x2="200" y2="116" stroke="#00bfff" stroke-width="2" stroke-dasharray="6 4" opacity="0.6"/>
+  <line x1="232" y1="196" x2="288" y2="180" stroke="#00bfff" stroke-width="2" stroke-dasharray="6 4" opacity="0.6"/>
+
+  <!-- Closed connections (solid — closed garden) -->
+  <line x1="168" y1="212" x2="120" y2="228" stroke="#7b2fff" stroke-width="2.5" opacity="0.75"/>
+  <line x1="200" y1="228" x2="200" y2="276" stroke="#7b2fff" stroke-width="2.5" opacity="0.75"/>
+  <line x1="232" y1="212" x2="280" y2="228" stroke="#7b2fff" stroke-width="2.5" opacity="0.75"/>
+
+  <!-- Partner nodes (open) -->
+  <circle cx="120" cy="180" r="14" fill="#0d1b2a"/>
+  <circle cx="120" cy="180" r="14" fill="none" stroke="#00bfff" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.7"/>
+  <circle cx="200" cy="108" r="14" fill="#0d1b2a"/>
+  <circle cx="200" cy="108" r="14" fill="none" stroke="#00bfff" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.7"/>
+  <circle cx="288" cy="180" r="14" fill="#0d1b2a"/>
+  <circle cx="288" cy="180" r="14" fill="none" stroke="#00bfff" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.7"/>
+
+  <!-- Partner nodes (closed) -->
+  <circle cx="120" cy="236" r="14" fill="#7b2fff" opacity="0.25"/>
+  <circle cx="120" cy="236" r="14" fill="none" stroke="#7b2fff" stroke-width="2" opacity="0.8"/>
+  <circle cx="200" cy="284" r="14" fill="#7b2fff" opacity="0.25"/>
+  <circle cx="200" cy="284" r="14" fill="none" stroke="#7b2fff" stroke-width="2" opacity="0.8"/>
+  <circle cx="282" cy="236" r="14" fill="#7b2fff" opacity="0.25"/>
+  <circle cx="282" cy="236" r="14" fill="none" stroke="#7b2fff" stroke-width="2" opacity="0.8"/>
+
+  <!-- EU regulatory badge -->
+  <rect x="308" y="52" width="44" height="22" rx="11" fill="#00bfff" opacity="0.15"/>
+  <rect x="308" y="52" width="44" height="22" rx="11" fill="none" stroke="#00bfff" stroke-width="1.5" opacity="0.7"/>
+  <text x="330" y="67" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#00bfff" text-anchor="middle" opacity="0.9">EU</text>
+
+  <!-- Open/Closed legend -->
+  <line x1="58" y1="345" x2="80" y2="345" stroke="#00bfff" stroke-width="2" stroke-dasharray="5 3" opacity="0.7"/>
+  <text x="85" y="349" font-family="Arial,sans-serif" font-size="8" fill="#00bfff" opacity="0.6">Open</text>
+  <line x1="118" y1="345" x2="140" y2="345" stroke="#7b2fff" stroke-width="2" opacity="0.7"/>
+  <text x="145" y="349" font-family="Arial,sans-serif" font-size="8" fill="#7b2fff" opacity="0.6">Closed</text>
+</svg>

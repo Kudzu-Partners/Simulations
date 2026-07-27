@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg182" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg182)"/>
+
+  <!-- Scenario cone: narrow present, wide future -->
+  <!-- Cone boundary lines -->
+  <line x1="100" y1="320" x2="350" y2="80" stroke="#c0cfff" stroke-width="1.5" opacity="0.3"/>
+  <line x1="100" y1="320" x2="350" y2="320" stroke="#c0cfff" stroke-width="1.5" opacity="0.2"/>
+  <line x1="100" y1="320" x2="350" y2="355" stroke="#c0cfff" stroke-width="1.5" opacity="0.25"/>
+
+  <!-- Cone fill (uncertainty grows) -->
+  <path d="M 100 320 L 350 80 L 350 355 Z" fill="#c0cfff" opacity="0.04"/>
+
+  <!-- Timeline base -->
+  <line x1="60" y1="320" x2="360" y2="320" stroke="#f5c842" stroke-width="2" opacity="0.4"/>
+  <polygon points="360,315 372,320 360,325" fill="#f5c842" opacity="0.4"/>
+  <text x="366" y="335" font-family="Arial,sans-serif" font-size="9" fill="#f5c842" opacity="0.5">Future</text>
+  <text x="82" y="335" font-family="Arial,sans-serif" font-size="9" fill="#f5c842" opacity="0.6">Now</text>
+
+  <!-- Present point (narrow) -->
+  <circle cx="100" cy="320" r="8" fill="#f5c842" opacity="0.9"/>
+  <text x="100" y="308" font-family="Arial,sans-serif" font-size="8" fill="#f5c842" text-anchor="middle" opacity="0.7">2024</text>
+
+  <!-- SCENARIO A — top path (optimistic: green energy transition) -->
+  <path d="M 100 320 Q 200 280 350 88" fill="none" stroke="#52b788" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <circle cx="350" cy="88" r="18" fill="#52b788" opacity="0.15"/>
+  <circle cx="350" cy="88" r="18" fill="none" stroke="#52b788" stroke-width="2" opacity="0.8"/>
+  <text x="350" y="83" font-family="Arial,sans-serif" font-size="7" fill="#52b788" text-anchor="middle" opacity="0.9">A</text>
+  <text x="350" y="95" font-family="Arial,sans-serif" font-size="6" fill="#52b788" text-anchor="middle" opacity="0.75">Green</text>
+  <text x="280" y="172" font-family="Arial,sans-serif" font-size="7" fill="#52b788" text-anchor="middle" opacity="0.6" transform="rotate(-28,280,172)">Transition</text>
+
+  <!-- SCENARIO B — middle path (base: gradual) -->
+  <path d="M 100 320 Q 220 315 350 210" fill="none" stroke="#f5c842" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+  <circle cx="350" cy="210" r="18" fill="#f5c842" opacity="0.15"/>
+  <circle cx="350" cy="210" r="18" fill="none" stroke="#f5c842" stroke-width="2" opacity="0.8"/>
+  <text x="350" y="205" font-family="Arial,sans-serif" font-size="7" fill="#f5c842" text-anchor="middle" opacity="0.9">B</text>
+  <text x="350" y="217" font-family="Arial,sans-serif" font-size="6" fill="#f5c842" text-anchor="middle" opacity="0.75">Base</text>
+
+  <!-- SCENARIO C — lower path (pessimistic: carbon crunch) -->
+  <path d="M 100 320 Q 200 340 350 345" fill="none" stroke="#e74c3c" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <circle cx="350" cy="345" r="18" fill="#e74c3c" opacity="0.15"/>
+  <circle cx="350" cy="345" r="18" fill="none" stroke="#e74c3c" stroke-width="2" opacity="0.75"/>
+  <text x="350" y="340" font-family="Arial,sans-serif" font-size="7" fill="#e74c3c" text-anchor="middle" opacity="0.9">C</text>
+  <text x="350" y="352" font-family="Arial,sans-serif" font-size="6" fill="#e74c3c" text-anchor="middle" opacity="0.75">Risk</text>
+
+  <!-- Uncertainty zone shading at mid-point -->
+  <rect x="195" y="130" width="8" height="200" rx="2" fill="#c0cfff" opacity="0.06"/>
+  <text x="199" y="118" font-family="Arial,sans-serif" font-size="7" fill="#c0cfff" text-anchor="middle" opacity="0.35">2027</text>
+
+  <!-- Strategy options branching from base -->
+  <!-- Real option markers -->
+  <circle cx="222" cy="315" r="5" fill="#f5c842" opacity="0.7"/>
+  <line x1="222" y1="310" x2="222" y2="285" stroke="#f5c842" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.45"/>
+  <text x="222" y="278" font-family="Arial,sans-serif" font-size="7" fill="#f5c842" text-anchor="middle" opacity="0.55">Option</text>
+
+  <!-- Energy company context -->
+  <text x="108" y="80" font-family="Arial,sans-serif" font-size="8" fill="#c0cfff" text-anchor="middle" opacity="0.35">Altiplano</text>
+  <text x="108" y="92" font-family="Arial,sans-serif" font-size="8" fill="#c0cfff" text-anchor="middle" opacity="0.35">Energía</text>
+  <text x="108" y="104" font-family="Arial,sans-serif" font-size="7" fill="#c0cfff" text-anchor="middle" opacity="0.3">$2.8B</text>
+
+  <!-- Title -->
+  <text x="200" y="48" font-family="Arial,sans-serif" font-size="9" fill="#c0cfff" text-anchor="middle" opacity="0.4" letter-spacing="1">SCENARIO PLANNING · FORESIGHT CONE</text>
+</svg>

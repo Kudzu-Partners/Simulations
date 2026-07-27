@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg137" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+    <radialGradient id="dealGlow137" cx="50%" cy="50%" r="22%">
+      <stop offset="0%" stop-color="#f5c842" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#f5c842" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="stalledGlow137" cx="50%" cy="50%" r="30%">
+      <stop offset="0%" stop-color="#ff6b6b" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#ff6b6b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg137)"/>
+  <rect width="400" height="400" rx="32" fill="url(#dealGlow137)"/>
+  <rect width="400" height="400" rx="32" fill="url(#stalledGlow137)"/>
+
+  <!-- ── Central deal node ── -->
+  <circle cx="200" cy="195" r="32" fill="#1a2744" stroke="#f5c842" stroke-width="3"/>
+  <circle cx="200" cy="195" r="26" fill="#f5c842" opacity="0.12"/>
+  <text x="200" y="188" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#f5c842" opacity="0.95">$</text>
+  <text x="200" y="205" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#f5c842" opacity="0.7">780K</text>
+
+  <!-- ── 6 stakeholder nodes — semicircle arrangement ── -->
+  <!-- Positions (radius 130 from center 200,195), spaced 30° apart from 300° to 60° -->
+  <!-- Node 1: top-right (30°) — Champion -->
+  <!-- Using 6 positions at 0°, 60°, 120°, 180°, 240°, 300° -->
+  <!-- r=130, center=(200,195) -->
+  <!-- 0°   → (330, 195) -->
+  <!-- 60°  → (265, 308) -->
+  <!-- 120° → (135, 308) -->
+  <!-- 180° → (70,  195) -->
+  <!-- 240° → (135, 82 ) -->
+  <!-- 300° → (265, 82 ) -->
+
+  <!-- Connection lines first (behind nodes) -->
+  <!-- Normal connections -->
+  <line x1="200" y1="195" x2="330" y2="195" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="200" y1="195" x2="265" y2="308" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="200" y1="195" x2="135" y2="308" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="200" y1="195" x2="70"  y2="195" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="200" y1="195" x2="135" y2="82"  stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.4"/>
+  <!-- STALLED connection — highlighted red, dashed -->
+  <line x1="200" y1="195" x2="265" y2="82" stroke="#ff6b6b" stroke-width="2.5" stroke-dasharray="6,4" stroke-opacity="0.85"/>
+
+  <!-- Node 1: Economic Buyer (right) — key influencer, gold -->
+  <circle cx="330" cy="195" r="20" fill="#1a2744" stroke="#f5c842" stroke-width="2.2"/>
+  <circle cx="330" cy="190" r="6" fill="#f5c842" opacity="0.85"/>
+  <path d="M320 205 Q330 210 340 205" stroke="#f5c842" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.85"/>
+  <text x="330" y="222" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" fill="#f5c842" opacity="0.8">BUYER</text>
+
+  <!-- Node 2: Champion (bottom-right) -->
+  <circle cx="265" cy="308" r="18" fill="#1a2744" stroke="#c0cfff" stroke-width="2"/>
+  <circle cx="265" cy="303" r="5.5" fill="#c0cfff" opacity="0.8"/>
+  <path d="M256 313 Q265 318 274 313" stroke="#c0cfff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <text x="265" y="333" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" fill="#c0cfff" opacity="0.75">CHAMPION</text>
+
+  <!-- Node 3: User (bottom-left) -->
+  <circle cx="135" cy="308" r="18" fill="#1a2744" stroke="#c0cfff" stroke-width="2"/>
+  <circle cx="135" cy="303" r="5.5" fill="#c0cfff" opacity="0.8"/>
+  <path d="M126 313 Q135 318 144 313" stroke="#c0cfff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <text x="135" y="333" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" fill="#c0cfff" opacity="0.75">USER</text>
+
+  <!-- Node 4: IT/Technical (left) -->
+  <circle cx="70" cy="195" r="18" fill="#1a2744" stroke="#c0cfff" stroke-width="2"/>
+  <circle cx="70" cy="190" r="5.5" fill="#c0cfff" opacity="0.8"/>
+  <path d="M61 200 Q70 205 79 200" stroke="#c0cfff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <text x="70" y="220" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" fill="#c0cfff" opacity="0.75">TECH</text>
+
+  <!-- Node 5: Finance/Procurement (top-left) -->
+  <circle cx="135" cy="82" r="18" fill="#1a2744" stroke="#c0cfff" stroke-width="2"/>
+  <circle cx="135" cy="77" r="5.5" fill="#c0cfff" opacity="0.8"/>
+  <path d="M126 87 Q135 92 144 87" stroke="#c0cfff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <text x="135" y="62" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" fill="#c0cfff" opacity="0.75">FINANCE</text>
+
+  <!-- Node 6: BLOCKER (top-right) — stalled node, red -->
+  <circle cx="265" cy="82" r="20" fill="#1a0a0a" stroke="#ff6b6b" stroke-width="2.5"/>
+  <circle cx="265" cy="77" r="5.5" fill="#ff6b6b" opacity="0.85"/>
+  <path d="M256 87 Q265 92 274 87" stroke="#ff6b6b" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+  <!-- Block symbol -->
+  <line x1="258" y1="70" x2="272" y2="84" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  <line x1="272" y1="70" x2="258" y2="84" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  <text x="265" y="62" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" fill="#ff6b6b" opacity="0.9">BLOCKER</text>
+
+  <!-- MEDDIC tag bottom -->
+  <rect x="144" y="356" width="112" height="22" rx="5" fill="#f5c842" opacity="0.1" stroke="#f5c842" stroke-width="1" stroke-opacity="0.35"/>
+  <text x="200" y="371" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" font-weight="bold" fill="#f5c842" opacity="0.65" letter-spacing="2">MEDDIC</text>
+</svg>

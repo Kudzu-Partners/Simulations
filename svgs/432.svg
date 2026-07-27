@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg432" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg432)"/>
+
+  <text x="200" y="58" text-anchor="middle" fill="#00ff88" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">BCG · ROIC · CAPITAL ALLOC</text>
+
+  <!-- BCG MATRIX (hero) -->
+  <g transform="translate(195,215)">
+    <!-- axes -->
+    <line x1="0" y1="-100" x2="0" y2="100" stroke="#c0cfff" stroke-width="1.5" opacity="0.6"/>
+    <line x1="-110" y1="0" x2="110" y2="0" stroke="#c0cfff" stroke-width="1.5" opacity="0.6"/>
+    <!-- quadrants -->
+    <g font-family="monospace" font-size="8" font-weight="bold">
+      <text x="-55" y="-88" text-anchor="middle" fill="#f5c842">STAR ★</text>
+      <text x="55" y="-88" text-anchor="middle" fill="#c0cfff">? Q-MARK</text>
+      <text x="-55" y="98" text-anchor="middle" fill="#52b788">CASH COW</text>
+      <text x="55" y="98" text-anchor="middle" fill="#ff6b6b">DOG</text>
+    </g>
+    <!-- bubbles (BUs of conglomerate) -->
+    <circle cx="-50" cy="-50" r="22" fill="#f5c842" fill-opacity="0.55" stroke="#f5c842" stroke-width="1.5"/>
+    <text x="-50" y="-46" text-anchor="middle" fill="#1a2744" font-size="9" font-family="monospace" font-weight="bold">BU1</text>
+    <circle cx="50" cy="-40" r="14" fill="#c0cfff" fill-opacity="0.45" stroke="#c0cfff" stroke-width="1.5"/>
+    <text x="50" y="-37" text-anchor="middle" fill="#1a2744" font-size="7" font-family="monospace" font-weight="bold">BU2</text>
+    <circle cx="-55" cy="50" r="28" fill="#52b788" fill-opacity="0.55" stroke="#52b788" stroke-width="1.5"/>
+    <text x="-55" y="54" text-anchor="middle" fill="#1a2744" font-size="9" font-family="monospace" font-weight="bold">BU3</text>
+    <circle cx="55" cy="60" r="10" fill="#ff6b6b" fill-opacity="0.55" stroke="#ff6b6b" stroke-width="1.5"/>
+    <text x="55" y="63" text-anchor="middle" fill="#1a2744" font-size="6" font-family="monospace" font-weight="bold">DIV</text>
+    <!-- axis labels -->
+    <text x="0" y="-105" text-anchor="middle" fill="#c0cfff" font-size="6" font-family="monospace" opacity="0.7">↑ GROWTH</text>
+    <text x="-115" y="3" text-anchor="end" fill="#c0cfff" font-size="6" font-family="monospace" opacity="0.7">SHARE ↑</text>
+  </g>
+
+  <!-- ROIC gauge (top-left) -->
+  <g transform="translate(70,95)">
+    <path d="M -20 8 A 20 20 0 0 1 20 8" fill="none" stroke="#1a2744" stroke-width="3.5"/>
+    <path d="M -20 8 A 20 20 0 0 1 8 -16" fill="none" stroke="#00ff88" stroke-width="3.5"/>
+    <text x="0" y="-2" text-anchor="middle" fill="#00ff88" font-size="9" font-family="monospace" font-weight="bold">ROIC</text>
+    <text x="0" y="24" text-anchor="middle" fill="#00ff88" font-size="6" font-family="monospace" opacity="0.85">18%</text>
+  </g>
+
+  <!-- ACTIVIST shield (top-right) -->
+  <g transform="translate(330,95)">
+    <path d="M 0 0 L 22 -4 L 22 14 Q 22 24 0 30 Q -22 24 -22 14 L -22 -4 Z"
+          fill="#ff6b6b" fill-opacity="0.18" stroke="#ff6b6b" stroke-width="1.4"/>
+    <text x="0" y="14" text-anchor="middle" fill="#ff6b6b" font-size="7" font-family="monospace" font-weight="bold">ACTIVE</text>
+    <text x="0" y="44" text-anchor="middle" fill="#ff6b6b" font-size="6" font-family="monospace" opacity="0.85">DEFENSE</text>
+  </g>
+
+  <text x="200" y="378" text-anchor="middle" fill="#c0cfff" font-size="10" font-family="monospace" opacity="0.42" letter-spacing="1.2">Portfolio · BCG · LATAM</text>
+</svg>

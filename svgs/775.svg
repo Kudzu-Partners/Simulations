@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" fill="none">
+  <defs>
+    <linearGradient id="g775" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#B57BEA"/>
+      <stop offset="1" stop-color="#9B51E0"/>
+    </linearGradient>
+  </defs>
+  <!-- reborde blanco -->
+  <g fill="#FFFFFF" stroke="#FFFFFF" stroke-width="18" stroke-linejoin="round">
+    <polygon points="60,320 340,320 340,236 60,300"/>
+  </g>
+  <circle cx="230" cy="212" r="60" fill="#FFFFFF"/>
+  <g stroke="#FFFFFF" stroke-linecap="round" fill="none">
+    <path d="M96 250 q34 -18 68 -10" stroke-width="36"/>
+  </g>
+  <!-- la rampa de la arquitectura de decisión -->
+  <polygon points="68,314 332,314 332,244 68,296" fill="url(#g775)"/>
+  <!-- el empujoncito: sutil, sin quitar opciones -->
+  <path d="M100 248 q30 -16 60 -9" stroke="#7A35C1" stroke-width="16" stroke-linecap="round" fill="none"/>
+  <polygon points="150,222 182,240 152,258" fill="#7A35C1"/>
+  <!-- el consumidor rodando hacia la mejor opción -->
+  <circle cx="230" cy="212" r="50" fill="#7A35C1"/>
+  <path d="M206 190 a34 34 0 0 1 34 -12" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" fill="none"/>
+</svg>

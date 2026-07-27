@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg228" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <linearGradient id="water228" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00bfff" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#0055aa" stop-opacity="0.9"/>
+    </linearGradient>
+    <clipPath id="vessel228clip">
+      <rect x="102" y="100" width="176" height="215" rx="8"/>
+    </clipPath>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg228)"/>
+
+  <!-- Vessel outline -->
+  <rect x="100" y="100" width="180" height="215" rx="10" fill="none" stroke="#00bfff" stroke-width="3" opacity="0.7"/>
+
+  <!-- Water fill (40% — stress depleted) -->
+  <rect x="103" y="228" width="174" height="84" fill="url(#water228)" clip-path="url(#vessel228clip)"/>
+
+  <!-- Water surface wave -->
+  <path d="M 103,230 Q 130,224 157,230 Q 184,236 211,230 Q 238,224 276,228"
+        fill="none" stroke="#00bfff" stroke-width="2" opacity="0.9"/>
+
+  <!-- Crack lines — stress damage -->
+  <path d="M 148,153 L 160,170 L 143,188" fill="none" stroke="#ff4444" stroke-width="2.5" opacity="0.85"/>
+  <path d="M 232,202 L 220,218 L 230,232" fill="none" stroke="#ff4444" stroke-width="2" opacity="0.8"/>
+  <path d="M 114,255 L 128,242 L 120,228" fill="none" stroke="#ff6600" stroke-width="1.8" opacity="0.65"/>
+
+  <!-- Level gauge right side -->
+  <line x1="298" y1="105" x2="298" y2="308" stroke="#a0aec0" stroke-width="1.5" opacity="0.45"/>
+  <!-- 100% tick -->
+  <line x1="292" y1="108" x2="298" y2="108" stroke="#a0aec0" stroke-width="1.5" opacity="0.45"/>
+  <text x="308" y="112" font-family="monospace" font-size="9" fill="#a0aec0" opacity="0.45">100%</text>
+  <!-- 40% tick (current level) -->
+  <line x1="292" y1="228" x2="298" y2="228" stroke="#ff4444" stroke-width="2" opacity="0.9"/>
+  <text x="308" y="232" font-family="monospace" font-size="10" fill="#ff4444" opacity="0.9">40%</text>
+
+  <!-- LCR label inside water -->
+  <text x="190" y="275" font-family="monospace" font-size="12" fill="#ffffff" text-anchor="middle" opacity="0.55">LCR</text>
+
+  <!-- STRESS arrow pushing down from top -->
+  <line x1="190" y1="58" x2="190" y2="88" stroke="#ff4444" stroke-width="3" opacity="0.9"/>
+  <polygon points="183,86 190,97 197,86" fill="#ff4444" opacity="0.9"/>
+  <text x="190" y="52" font-family="monospace" font-size="11" fill="#ff4444" text-anchor="middle" opacity="0.9">STRESS</text>
+
+  <!-- Basel III label bottom -->
+  <text x="190" y="348" font-family="monospace" font-size="10" fill="#a0aec0" text-anchor="middle" opacity="0.45">Basel III · NSFR</text>
+</svg>

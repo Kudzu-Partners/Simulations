@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg81" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a2342"/>
+      <stop offset="100%" stop-color="#1a3a5c"/>
+    </linearGradient>
+    <linearGradient id="pulse81" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e74c3c"/>
+      <stop offset="60%" stop-color="#e74c3c"/>
+      <stop offset="100%" stop-color="#74b9ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg81)"/>
+  <!-- Medical cross (faint background) -->
+  <rect x="175" y="80" width="50" height="160" rx="8" fill="#e74c3c" opacity="0.08"/>
+  <rect x="120" y="135" width="160" height="50" rx="8" fill="#e74c3c" opacity="0.08"/>
+  <!-- Heartbeat pulse becoming growth curve -->
+  <polyline points="55,220 90,220 110,220 125,170 140,260 158,130 175,220 200,220 230,185 260,155 290,130 325,105 355,85" fill="none" stroke="url(#pulse81)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Baseline -->
+  <line x1="55" y1="220" x2="355" y2="220" stroke="#ffffff" stroke-width="1" opacity="0.1"/>
+  <!-- Rocket (startup) at the end of the curve -->
+  <g transform="translate(340,78) rotate(-45)">
+    <path d="M0,-18 Q8,0 0,18 Q-8,0 0,-18 Z" fill="#74b9ff" opacity="0.8"/>
+    <path d="M-6,12 L0,18 L6,12 L4,20 L-4,20 Z" fill="#e74c3c" opacity="0.7"/>
+    <circle cx="0" cy="0" r="5" fill="#ffffff" opacity="0.5"/>
+  </g>
+  <!-- Burn rate gauge (bottom left) -->
+  <path d="M85,340 A50,50 0 0,1 185,340" fill="none" stroke="#1a3a5c" stroke-width="14" opacity="0.8"/>
+  <path d="M85,340 A50,50 0 0,1 140,297" fill="none" stroke="#e74c3c" stroke-width="14" stroke-linecap="round" opacity="0.7"/>
+  <text x="135" y="360" font-family="sans-serif" font-size="10" fill="#e74c3c" text-anchor="middle" opacity="0.7">BURN</text>
+  <!-- Runway indicator -->
+  <rect x="215" y="318" width="130" height="14" rx="4" fill="#1a3a5c" stroke="#74b9ff" stroke-width="1.5" opacity="0.7"/>
+  <rect x="215" y="318" width="72" height="14" rx="4" fill="#74b9ff" opacity="0.45"/>
+  <text x="280" y="350" font-family="sans-serif" font-size="10" fill="#74b9ff" text-anchor="middle" opacity="0.7">RUNWAY</text>
+</svg>

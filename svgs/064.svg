@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg64" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <linearGradient id="wave64" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ff88"/>
+      <stop offset="100%" stop-color="#00bfff"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg64)"/>
+  <!-- Currency labels FX -->
+  <text x="80" y="115" font-family="monospace" font-size="22" font-weight="bold" fill="#00ff88" opacity="0.9">ARS</text>
+  <text x="168" y="115" font-family="monospace" font-size="22" font-weight="bold" fill="#00bfff" opacity="0.9">BRL</text>
+  <text x="255" y="115" font-family="monospace" font-size="22" font-weight="bold" fill="#00ff88" opacity="0.9">MXN</text>
+  <text x="315" y="115" font-family="monospace" font-size="22" font-weight="bold" fill="#00bfff" opacity="0.6">COP</text>
+  <!-- Volatility wave 1 (large shock) -->
+  <path d="M55,220 Q80,180 100,220 Q120,260 140,160 Q160,60 185,220 Q210,380 230,200 Q250,80 270,220 Q290,340 310,200 Q330,100 350,230" fill="none" stroke="url(#wave64)" stroke-width="3" stroke-linecap="round"/>
+  <!-- Dampening overlay wave -->
+  <path d="M55,230 Q90,210 130,230 Q175,250 220,230 Q265,210 310,225 Q330,232 350,235" fill="none" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.4"/>
+  <!-- Horizontal baseline -->
+  <line x1="55" y1="230" x2="350" y2="230" stroke="#c0cfff" stroke-width="1" opacity="0.15"/>
+  <!-- CFO badge -->
+  <rect x="155" y="300" width="90" height="36" rx="8" fill="#00ff88" opacity="0.12" stroke="#00ff88" stroke-width="1.5" opacity="0.5"/>
+  <text x="200" y="323" font-family="monospace" font-size="16" font-weight="bold" fill="#00ff88" text-anchor="middle">CFO</text>
+  <!-- Shield / armor icon -->
+  <path d="M200,335 Q200,365 200,365 Q180,355 170,342 Q163,330 165,318 L235,318 Q237,330 230,342 Q220,355 200,365 Z" fill="#00ff88" opacity="0.12" stroke="#00ff88" stroke-width="1.5" opacity="0.5"/>
+</svg>

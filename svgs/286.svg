@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg286" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg286)"/>
+
+  <!-- Three horizon mountains -->
+  <!-- H1 (blue, tallest, left) -->
+  <path d="M 30 330 Q 80 200 120 120 Q 160 200 200 330 Z" fill="#74b9ff" opacity="0.85"/>
+  <!-- H2 (gold, medium, center) -->
+  <path d="M 130 330 Q 190 190 230 100 Q 270 190 310 330 Z" fill="#f5c842" opacity="0.75"/>
+  <!-- H3 (green, smallest emerging, right) -->
+  <path d="M 240 330 Q 295 220 320 148 Q 350 220 380 330 Z" fill="#00ff88" opacity="0.65"/>
+
+  <!-- Ground line -->
+  <line x1="20" y1="330" x2="388" y2="330" stroke="#8899aa" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- H labels on peaks -->
+  <text x="120" y="108" text-anchor="middle" font-family="'Courier New',monospace" font-size="26" font-weight="bold" fill="#0d1b2a" opacity="0.9">1</text>
+  <text x="230" y="88" text-anchor="middle" font-family="'Courier New',monospace" font-size="26" font-weight="bold" fill="#0d1b2a" opacity="0.85">2</text>
+  <text x="320" y="136" text-anchor="middle" font-family="'Courier New',monospace" font-size="26" font-weight="bold" fill="#0d1b2a" opacity="0.8">3</text>
+
+  <!-- Resource allocation bars bottom -->
+  <g transform="translate(30, 350)">
+    <rect x="0" y="0" width="200" height="14" rx="4" fill="#74b9ff" opacity="0.85"/>
+    <rect x="208" y="0" width="100" height="14" rx="4" fill="#f5c842" opacity="0.8"/>
+    <rect x="316" y="0" width="54" height="14" rx="4" fill="#00ff88" opacity="0.8"/>
+  </g>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg169" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+    <radialGradient id="forgeGlow169" cx="50%" cy="60%" r="45%">
+      <stop offset="0%" stop-color="#f5c842" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#f5c842" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg169)"/>
+
+  <!-- Forge glow on anvil -->
+  <ellipse cx="195" cy="285" rx="90" ry="30" fill="url(#forgeGlow169)"/>
+
+  <!-- ANVIL silhouette -->
+  <!-- Top face -->
+  <rect x="120" y="248" width="155" height="30" rx="6" fill="#c0cfff" opacity="0.3"/>
+  <rect x="120" y="248" width="155" height="30" rx="6" fill="none" stroke="#c0cfff" stroke-width="2.5" opacity="0.8"/>
+  <!-- Horn (left projection) -->
+  <path d="M 120 258 Q 90 258 78 268 Q 90 278 120 278 Z" fill="#c0cfff" opacity="0.25"/>
+  <path d="M 120 258 Q 90 258 78 268 Q 90 278 120 278 Z" fill="none" stroke="#c0cfff" stroke-width="1.5" opacity="0.6"/>
+  <!-- Body -->
+  <path d="M 135 278 L 260 278 L 248 318 L 148 318 Z" fill="#c0cfff" opacity="0.2"/>
+  <path d="M 135 278 L 260 278 L 248 318 L 148 318 Z" fill="none" stroke="#c0cfff" stroke-width="2" opacity="0.6"/>
+  <!-- Base -->
+  <rect x="138" y="316" width="120" height="16" rx="4" fill="#c0cfff" opacity="0.25"/>
+  <rect x="138" y="316" width="120" height="16" rx="4" fill="none" stroke="#c0cfff" stroke-width="1.5" opacity="0.5"/>
+  <!-- Base feet -->
+  <rect x="142" y="330" width="30" height="12" rx="3" fill="#c0cfff" opacity="0.2"/>
+  <rect x="224" y="330" width="30" height="12" rx="3" fill="#c0cfff" opacity="0.2"/>
+
+  <!-- BRAIN shape being forged on anvil top -->
+  <path d="M 196 218 Q 215 210 228 220 Q 244 215 250 230 Q 262 234 258 248 Q 254 258 242 256 Q 236 265 224 260 Q 218 270 208 264 Q 200 270 192 264 Q 182 270 176 260 Q 164 265 158 256 Q 146 258 142 248 Q 138 234 150 230 Q 156 215 172 220 Q 180 210 196 218 Z" fill="#f5c842" opacity="0.2"/>
+  <path d="M 196 218 Q 215 210 228 220 Q 244 215 250 230 Q 262 234 258 248 Q 254 258 242 256 Q 236 265 224 260 Q 218 270 208 264 Q 200 270 192 264 Q 182 270 176 260 Q 164 265 158 256 Q 146 258 142 248 Q 138 234 150 230 Q 156 215 172 220 Q 180 210 196 218 Z" fill="none" stroke="#f5c842" stroke-width="2.5" opacity="0.85"/>
+  <!-- Brain fissure -->
+  <line x1="200" y1="215" x2="200" y2="260" stroke="#f5c842" stroke-width="1.5" opacity="0.4"/>
+  <path d="M 200 228 Q 204 234 200 240 Q 196 246 200 252" fill="none" stroke="#f5c842" stroke-width="1" opacity="0.35"/>
+
+  <!-- HAMMER in motion (striking) -->
+  <!-- Handle -->
+  <line x1="288" y1="170" x2="248" y2="235" stroke="#c0cfff" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+  <!-- Head -->
+  <rect x="258" y="148" width="52" height="28" rx="6" fill="#c0cfff" opacity="0.5"/>
+  <rect x="258" y="148" width="52" height="28" rx="6" fill="none" stroke="#c0cfff" stroke-width="2" opacity="0.85"/>
+  <!-- Motion lines (impact) -->
+  <line x1="246" y1="230" x2="238" y2="222" stroke="#f5c842" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+  <line x1="244" y1="237" x2="234" y2="232" stroke="#f5c842" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+  <line x1="250" y1="242" x2="240" y2="240" stroke="#f5c842" stroke-width="1" opacity="0.3" stroke-linecap="round"/>
+
+  <!-- AI circuit background (contrasting — what AI CAN'T replace) -->
+  <!-- Circuit traces (subtle, top-left corner) -->
+  <line x1="52" y1="80" x2="90" y2="80" stroke="#7b2fff" stroke-width="1.5" opacity="0.3"/>
+  <line x1="90" y1="80" x2="90" y2="110" stroke="#7b2fff" stroke-width="1.5" opacity="0.3"/>
+  <line x1="90" y1="110" x2="120" y2="110" stroke="#7b2fff" stroke-width="1.5" opacity="0.3"/>
+  <circle cx="90" cy="80" r="4" fill="#7b2fff" opacity="0.4"/>
+  <circle cx="90" cy="110" r="4" fill="#7b2fff" opacity="0.35"/>
+  <line x1="52" y1="100" x2="70" y2="100" stroke="#7b2fff" stroke-width="1" opacity="0.2"/>
+  <line x1="70" y1="100" x2="70" y2="120" stroke="#7b2fff" stroke-width="1" opacity="0.2"/>
+  <circle cx="70" cy="100" r="3" fill="#7b2fff" opacity="0.3"/>
+  <!-- AI label (small, contrasting) -->
+  <text x="68" y="140" font-family="Arial,sans-serif" font-size="9" fill="#7b2fff" text-anchor="middle" opacity="0.4">AI ≠ Judgment</text>
+
+  <!-- Expertise spark at impact point -->
+  <circle cx="236" cy="246" r="6" fill="#f5c842" opacity="0.6"/>
+  <circle cx="236" cy="246" r="12" fill="none" stroke="#f5c842" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- Title -->
+  <text x="200" y="60" font-family="Arial,sans-serif" font-size="10" fill="#c0cfff" text-anchor="middle" opacity="0.4" letter-spacing="1">FORGING HUMAN JUDGMENT · AI ERA</text>
+</svg>

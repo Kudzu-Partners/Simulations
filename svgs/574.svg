@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg574" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg574)"/>
+
+  <text x="200" y="56" text-anchor="middle" fill="#f5c842" font-size="9" font-family="monospace" opacity="0.75" letter-spacing="2">EXEC COACHING · RESISTANCE</text>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- Two figures: coach + coachee with mirror dialogue (protagonist) -->
+    <!-- Coach (left, gold = open) -->
+    <g transform="translate(112,208)">
+      <circle cx="0" cy="-32" r="24" fill="#1b2d4f" stroke="#f5c842" stroke-width="3.5"/>
+      <circle cx="-6" cy="-34" r="3" fill="#f5c842"/>
+      <circle cx="6"  cy="-34" r="3" fill="#f5c842"/>
+      <path d="M -10 -22 Q 0 -16 10 -22" stroke="#f5c842" stroke-width="2.5" fill="none"/>
+      <!-- Body -->
+      <path d="M -32 16 Q 0 -8 32 16 L 32 64 L -32 64 Z" fill="#1b2d4f" stroke="#f5c842" stroke-width="3"/>
+      <!-- Speech bubble pointing right -->
+      <rect x="40" y="-48" width="64" height="40" rx="8" fill="#1b2d4f" stroke="#f5c842" stroke-width="2.5"/>
+      <path d="M 40 -16 L 32 -8 L 48 -8 Z" fill="#1b2d4f" stroke="#f5c842" stroke-width="2.5"/>
+      <line x1="48" y1="-36" x2="96" y2="-36" stroke="#f5c842" stroke-width="2" opacity="0.7"/>
+      <line x1="48" y1="-28" x2="88" y2="-28" stroke="#f5c842" stroke-width="2" opacity="0.5"/>
+      <line x1="48" y1="-20" x2="96" y2="-20" stroke="#f5c842" stroke-width="2" opacity="0.5"/>
+    </g>
+
+    <!-- Coachee (right, red = resisting) -->
+    <g transform="translate(288,208)">
+      <circle cx="0" cy="-32" r="24" fill="#1b2d4f" stroke="#e74c3c" stroke-width="3.5"/>
+      <!-- Crossed arms / closed -->
+      <circle cx="-6" cy="-34" r="3" fill="#e74c3c"/>
+      <circle cx="6"  cy="-34" r="3" fill="#e74c3c"/>
+      <line x1="-10" y1="-22" x2="10" y2="-22" stroke="#e74c3c" stroke-width="2.5"/>
+      <!-- Body with crossed arms -->
+      <path d="M -32 16 Q 0 -8 32 16 L 32 64 L -32 64 Z" fill="#1b2d4f" stroke="#e74c3c" stroke-width="3"/>
+      <line x1="-24" y1="32" x2="24" y2="48" stroke="#e74c3c" stroke-width="3.5"/>
+      <line x1="24"  y1="32" x2="-24" y2="48" stroke="#e74c3c" stroke-width="3.5"/>
+      <!-- Wall/barrier behind -->
+      <line x1="-40" y1="-56" x2="-40" y2="56" stroke="#e74c3c" stroke-width="2" stroke-dasharray="4 4" opacity="0.55"/>
+    </g>
+
+    <!-- Center bridge attempt -->
+    <line x1="160" y1="200" x2="240" y2="200" stroke="#dfe6e9" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.55"/>
+    <circle cx="200" cy="200" r="10" fill="none" stroke="#f5c842" stroke-width="2.5"/>
+  </g>
+
+  <text x="200" y="372" text-anchor="middle" fill="#c0cfff" font-size="9" font-family="monospace" opacity="0.4" letter-spacing="1.2">Bank · Executive · CO</text>
+</svg>

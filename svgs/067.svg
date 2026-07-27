@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg67" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg67)"/>
+  <!-- Boardroom table (ellipse viewed from above) -->
+  <ellipse cx="200" cy="205" rx="130" ry="90" fill="#1a2744" stroke="#f5c842" stroke-width="2.5" opacity="0.9"/>
+  <ellipse cx="200" cy="205" rx="105" ry="68" fill="none" stroke="#f5c842" stroke-width="1" opacity="0.3"/>
+  <!-- 5 board seats around the table -->
+  <!-- Top center -->
+  <rect x="183" y="95" width="34" height="22" rx="6" fill="#f5c842" opacity="0.8"/>
+  <circle cx="200" cy="90" r="10" fill="#c0cfff" opacity="0.7"/>
+  <!-- Top right -->
+  <rect x="282" y="118" width="34" height="22" rx="6" fill="#f5c842" opacity="0.75"/>
+  <circle cx="302" cy="113" r="10" fill="#c0cfff" opacity="0.7"/>
+  <!-- Bottom right -->
+  <rect x="276" y="272" width="34" height="22" rx="6" fill="#f5c842" opacity="0.75"/>
+  <circle cx="296" cy="300" r="10" fill="#c0cfff" opacity="0.7"/>
+  <!-- Bottom left -->
+  <rect x="90" y="272" width="34" height="22" rx="6" fill="#f5c842" opacity="0.75"/>
+  <circle cx="104" cy="300" r="10" fill="#c0cfff" opacity="0.7"/>
+  <!-- Top left -->
+  <rect x="84" y="118" width="34" height="22" rx="6" fill="#f5c842" opacity="0.75"/>
+  <circle cx="98" cy="113" r="10" fill="#c0cfff" opacity="0.7"/>
+  <!-- Gavel on table -->
+  <rect x="185" y="195" width="40" height="12" rx="4" fill="#f5c842" opacity="0.6" transform="rotate(-30,200,205)"/>
+  <rect x="215" y="193" width="14" height="16" rx="3" fill="#c0cfff" opacity="0.6" transform="rotate(-30,200,205)"/>
+  <!-- Corporate hierarchy lines (org chart suggestion) -->
+  <line x1="200" y1="175" x2="200" y2="160" stroke="#f5c842" stroke-width="1" opacity="0.2"/>
+  <line x1="200" y1="160" x2="170" y2="150" stroke="#f5c842" stroke-width="1" opacity="0.2"/>
+  <line x1="200" y1="160" x2="230" y2="150" stroke="#f5c842" stroke-width="1" opacity="0.2"/>
+</svg>

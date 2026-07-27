@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg74" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg74)"/>
+  <!-- Globe outline -->
+  <circle cx="200" cy="195" r="140" fill="none" stroke="#00bfff" stroke-width="1.5" opacity="0.3"/>
+  <!-- Latitude lines -->
+  <ellipse cx="200" cy="195" rx="140" ry="50" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.15"/>
+  <line x1="60" y1="195" x2="340" y2="195" stroke="#00bfff" stroke-width="1" opacity="0.15"/>
+  <line x1="200" y1="55" x2="200" y2="335" stroke="#00bfff" stroke-width="1" opacity="0.15"/>
+  <!-- Market nodes with R&D/product circles -->
+  <!-- Market 1 (Americas) -->
+  <circle cx="130" cy="175" r="42" fill="#00bfff" opacity="0.12" stroke="#00bfff" stroke-width="2"/>
+  <circle cx="130" cy="175" r="22" fill="#00bfff" opacity="0.2"/>
+  <text x="130" y="179" font-family="sans-serif" font-size="10" fill="#00bfff" text-anchor="middle" font-weight="bold">LATAM</text>
+  <!-- Market 2 (Europe) -->
+  <circle cx="230" cy="135" r="32" fill="#7b2fff" opacity="0.12" stroke="#7b2fff" stroke-width="2"/>
+  <circle cx="230" cy="135" r="16" fill="#7b2fff" opacity="0.2"/>
+  <text x="230" y="139" font-family="sans-serif" font-size="10" fill="#7b2fff" text-anchor="middle" font-weight="bold">EUR</text>
+  <!-- Market 3 (Asia) -->
+  <circle cx="285" cy="220" r="25" fill="#00bfff" opacity="0.1" stroke="#00bfff" stroke-width="1.5"/>
+  <circle cx="285" cy="220" r="12" fill="#00bfff" opacity="0.2"/>
+  <text x="285" y="224" font-family="sans-serif" font-size="9" fill="#00bfff" text-anchor="middle">ASIA</text>
+  <!-- R&D allocation bars -->
+  <rect x="55" y="310" width="25" height="50" rx="3" fill="#00bfff" opacity="0.6"/>
+  <rect x="85" y="325" width="25" height="35" rx="3" fill="#7b2fff" opacity="0.55"/>
+  <rect x="115" y="335" width="25" height="25" rx="3" fill="#00bfff" opacity="0.4"/>
+  <text x="85" y="376" font-family="sans-serif" font-size="10" fill="#00bfff" text-anchor="middle" opacity="0.6">R&amp;D</text>
+  <!-- Entry sequencing arrows -->
+  <path d="M130,175 Q170,150 214,138" fill="none" stroke="#7b2fff" stroke-width="1.5" opacity="0.4" stroke-dasharray="4,3"/>
+  <polygon points="214,138 202,134 206,146" fill="#7b2fff" opacity="0.5"/>
+  <path d="M230,152 Q258,185 273,210" fill="none" stroke="#00bfff" stroke-width="1.5" opacity="0.4" stroke-dasharray="4,3"/>
+  <polygon points="273,210 264,200 276,198" fill="#00bfff" opacity="0.5"/>
+  <!-- Disruption bolt -->
+  <path d="M318,90 L305,130 L316,130 L300,170" fill="none" stroke="#ffd166" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+</svg>

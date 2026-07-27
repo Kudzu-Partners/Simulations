@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg149" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg149)"/>
+
+  <!-- Compass circle -->
+  <circle cx="200" cy="200" r="130" fill="none" stroke="#f5c842" stroke-width="1.5" opacity="0.2"/>
+  <circle cx="200" cy="200" r="128" fill="none" stroke="#f5c842" stroke-width="0.5" opacity="0.1"/>
+  <circle cx="200" cy="200" r="6" fill="#f5c842" opacity="0.8"/>
+
+  <!-- Cardinal direction lines (planned routes — straight) -->
+  <!-- North -->
+  <line x1="200" y1="194" x2="200" y2="88" stroke="#c0cfff" stroke-width="2" opacity="0.5"/>
+  <polygon points="200,76 194,92 206,92" fill="#c0cfff" opacity="0.6"/>
+  <text x="200" y="70" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#c0cfff" text-anchor="middle" opacity="0.6">N</text>
+
+  <!-- South -->
+  <line x1="200" y1="206" x2="200" y2="312" stroke="#c0cfff" stroke-width="2" opacity="0.5"/>
+  <polygon points="200,324 194,308 206,308" fill="#c0cfff" opacity="0.6"/>
+  <text x="200" y="342" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#c0cfff" text-anchor="middle" opacity="0.6">S</text>
+
+  <!-- East -->
+  <line x1="206" y1="200" x2="312" y2="200" stroke="#c0cfff" stroke-width="2" opacity="0.5"/>
+  <polygon points="324,200 308,194 308,206" fill="#c0cfff" opacity="0.6"/>
+  <text x="342" y="204" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#c0cfff" text-anchor="middle" opacity="0.6">E</text>
+
+  <!-- West -->
+  <line x1="194" y1="200" x2="88" y2="200" stroke="#c0cfff" stroke-width="2" opacity="0.5"/>
+  <polygon points="76,200 92,194 92,206" fill="#c0cfff" opacity="0.6"/>
+  <text x="58" y="204" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#c0cfff" text-anchor="middle" opacity="0.6">W</text>
+
+  <!-- Diagonal tick marks (planned) -->
+  <line x1="200" y1="194" x2="248" y2="146" stroke="#c0cfff" stroke-width="1" opacity="0.25"/>
+  <line x1="200" y1="194" x2="152" y2="146" stroke="#c0cfff" stroke-width="1" opacity="0.25"/>
+  <line x1="200" y1="206" x2="248" y2="254" stroke="#c0cfff" stroke-width="1" opacity="0.25"/>
+  <line x1="200" y1="206" x2="152" y2="254" stroke="#c0cfff" stroke-width="1" opacity="0.25"/>
+
+  <!-- Serendipitous path — curved, unexpected direction (NE going unexpectedly curving to SE-far) -->
+  <path d="M 200 200 Q 260 140 310 110 Q 355 80 370 50" fill="none" stroke="#f5c842" stroke-width="3" stroke-linecap="round" opacity="0.85" stroke-dasharray="8 5"/>
+
+  <!-- Discovery marker at end of serendipitous path -->
+  <circle cx="366" cy="52" r="14" fill="#f5c842" opacity="0.2"/>
+  <circle cx="366" cy="52" r="14" fill="none" stroke="#f5c842" stroke-width="2" opacity="0.8"/>
+  <text x="366" y="57" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#f5c842" text-anchor="middle" opacity="0.9">!</text>
+
+  <!-- Needle (pointing slightly off-cardinal — uncertainty) -->
+  <polygon points="200,200 196,110 204,110" fill="#f5c842" opacity="0.6"/>
+  <polygon points="200,200 196,285 204,285" fill="#c0cfff" opacity="0.3"/>
+
+  <!-- Inner compass ring -->
+  <circle cx="200" cy="200" r="22" fill="#1a2744" opacity="0.9"/>
+  <circle cx="200" cy="200" r="22" fill="none" stroke="#f5c842" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Serendipity label -->
+  <text x="200" y="378" font-family="Arial,sans-serif" font-size="9" fill="#f5c842" text-anchor="middle" opacity="0.5" letter-spacing="2">STRATEGIC SERENDIPITY</text>
+</svg>

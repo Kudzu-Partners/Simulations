@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg177" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1b5e20"/>
+      <stop offset="100%" stop-color="#2d6a4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg177)"/>
+
+  <!-- Staircase going up left to right -->
+  <!-- Step 1 (bottom, low disclosure) -->
+  <rect x="55" y="298" width="56" height="24" rx="0" fill="#52b788" opacity="0.3"/>
+  <rect x="55" y="298" width="56" height="24" fill="none" stroke="#52b788" stroke-width="1.5" opacity="0.6"/>
+  <text x="83" y="314" font-family="Arial,sans-serif" font-size="8" fill="#d8f3dc" text-anchor="middle" opacity="0.7">Minimal</text>
+
+  <!-- Step 2 -->
+  <rect x="55" y="250" width="56" height="24" rx="0" fill="#52b788" opacity="0.35"/>
+  <rect x="55" y="250" width="56" height="24" fill="none" stroke="#52b788" stroke-width="1.5" opacity="0.6"/>
+  <rect x="111" y="274" width="56" height="24" rx="0" fill="#52b788" opacity="0.35"/>
+  <rect x="111" y="274" width="56" height="24" fill="none" stroke="#52b788" stroke-width="1.5" opacity="0.6"/>
+  <text x="139" y="290" font-family="Arial,sans-serif" font-size="8" fill="#d8f3dc" text-anchor="middle" opacity="0.7">Basic</text>
+  <text x="83" y="266" font-family="Arial,sans-serif" font-size="8" fill="#d8f3dc" text-anchor="middle" opacity="0.7">Selective</text>
+
+  <!-- Step 3 -->
+  <rect x="111" y="226" width="56" height="24" rx="0" fill="#52b788" opacity="0.4"/>
+  <rect x="111" y="226" width="56" height="24" fill="none" stroke="#52b788" stroke-width="1.5" opacity="0.65"/>
+  <rect x="167" y="250" width="56" height="24" rx="0" fill="#52b788" opacity="0.4"/>
+  <rect x="167" y="250" width="56" height="24" fill="none" stroke="#52b788" stroke-width="1.5" opacity="0.65"/>
+  <text x="139" y="242" font-family="Arial,sans-serif" font-size="8" fill="#d8f3dc" text-anchor="middle" opacity="0.8">Partial</text>
+  <text x="195" y="266" font-family="Arial,sans-serif" font-size="8" fill="#d8f3dc" text-anchor="middle" opacity="0.8">Full</text>
+
+  <!-- Step 4 -->
+  <rect x="167" y="202" width="56" height="24" rx="0" fill="#f5c842" opacity="0.25"/>
+  <rect x="167" y="202" width="56" height="24" fill="none" stroke="#f5c842" stroke-width="1.5" opacity="0.7"/>
+  <rect x="223" y="226" width="56" height="24" rx="0" fill="#f5c842" opacity="0.25"/>
+  <rect x="223" y="226" width="56" height="24" fill="none" stroke="#f5c842" stroke-width="1.5" opacity="0.7"/>
+  <text x="195" y="218" font-family="Arial,sans-serif" font-size="8" fill="#f5c842" text-anchor="middle" opacity="0.85">Verified</text>
+  <text x="251" y="242" font-family="Arial,sans-serif" font-size="8" fill="#f5c842" text-anchor="middle" opacity="0.85">Audited</text>
+
+  <!-- Step 5 (top, high risk zone — red) -->
+  <rect x="223" y="178" width="56" height="24" rx="0" fill="#e74c3c" opacity="0.2"/>
+  <rect x="223" y="178" width="56" height="24" fill="none" stroke="#e74c3c" stroke-width="2" opacity="0.75"/>
+  <rect x="279" y="202" width="56" height="24" rx="0" fill="#e74c3c" opacity="0.2"/>
+  <rect x="279" y="202" width="56" height="24" fill="none" stroke="#e74c3c" stroke-width="2" opacity="0.75"/>
+  <text x="251" y="194" font-family="Arial,sans-serif" font-size="8" fill="#e74c3c" text-anchor="middle" opacity="0.85">Maximum</text>
+  <text x="307" y="218" font-family="Arial,sans-serif" font-size="8" fill="#e74c3c" text-anchor="middle" opacity="0.85">Risk Zone</text>
+
+  <!-- Warning sign at top -->
+  <polygon points="307" fill="none"/>
+  <circle cx="307" cy="155" r="18" fill="#e74c3c" opacity="0.15"/>
+  <circle cx="307" cy="155" r="18" fill="none" stroke="#e74c3c" stroke-width="2" opacity="0.8"/>
+  <text x="307" y="150" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#e74c3c" text-anchor="middle" opacity="0.9">!</text>
+  <text x="307" y="163" font-family="Arial,sans-serif" font-size="7" fill="#e74c3c" text-anchor="middle" opacity="0.7">Scrutiny</text>
+
+  <!-- Figure walking up stairs -->
+  <circle cx="175" cy="238" r="7" fill="#d8f3dc" opacity="0.8"/>
+  <line x1="175" y1="245" x2="175" y2="262" stroke="#d8f3dc" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="175" y1="252" x2="168" y2="260" stroke="#d8f3dc" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <line x1="175" y1="252" x2="182" y2="258" stroke="#d8f3dc" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Paradox label: more disclosure = more risk -->
+  <path d="M 55 170 Q 80 150 120 160 Q 160 170 200 140 Q 240 110 280 130" fill="none" stroke="#f5c842" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.4"/>
+  <text x="160" y="128" font-family="Arial,sans-serif" font-size="8" fill="#f5c842" text-anchor="middle" opacity="0.6" transform="rotate(-12,160,128)">Exposure ↑</text>
+
+  <!-- Floor baseline -->
+  <line x1="55" y1="322" x2="335" y2="322" stroke="#52b788" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- Title -->
+  <text x="200" y="362" font-family="Arial,sans-serif" font-size="9" fill="#d8f3dc" text-anchor="middle" opacity="0.45" letter-spacing="1">GREENWASHING ESCALATION PARADOX</text>
+</svg>

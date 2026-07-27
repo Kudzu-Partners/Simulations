@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg020" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a2a3a"/>
+      <stop offset="100%" stop-color="#1a4a5c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg020)"/>
+
+  <!-- Stage gate vertical dividers -->
+  <g stroke="#00c9a7" stroke-width="1" stroke-opacity="0.20">
+    <line x1="145" y1="50" x2="145" y2="360"/>
+    <line x1="225" y1="50" x2="225" y2="360"/>
+    <line x1="305" y1="50" x2="305" y2="360"/>
+  </g>
+
+  <!-- Stage labels -->
+  <g font-family="Arial, sans-serif" font-size="10" fill="#00c9a7" text-anchor="middle" opacity="0.55">
+    <text x="88"  y="48">IDEA</text>
+    <text x="185" y="48">DEVELOP</text>
+    <text x="265" y="48">TEST</text>
+    <text x="348" y="48">LAUNCH</text>
+  </g>
+
+  <!-- Gate barriers (vertical lines, slightly thicker, with gate marker) -->
+  <g stroke="#00c9a7" stroke-width="3" stroke-opacity="0.50" stroke-linecap="round">
+    <line x1="145" y1="65" x2="145" y2="340"/>
+    <line x1="225" y1="65" x2="225" y2="340"/>
+    <line x1="305" y1="65" x2="305" y2="340"/>
+  </g>
+  <!-- Gate diamonds -->
+  <polygon points="145,190 152,200 145,210 138,200" fill="#00c9a7" fill-opacity="0.80"/>
+  <polygon points="225,190 232,200 225,210 218,200" fill="#00c9a7" fill-opacity="0.80"/>
+  <polygon points="305,190 312,200 305,210 298,200" fill="#00c9a7" fill-opacity="0.80"/>
+
+  <!-- Projects as circles — moving left to right through stages -->
+  <!-- Stage 1 (Idea): 3 projects -->
+  <circle cx="100" cy="120" r="22" fill="#00c9a7" fill-opacity="0.22" stroke="#00c9a7" stroke-width="2"/>
+  <circle cx="82"  cy="200" r="18" fill="#00c9a7" fill-opacity="0.18" stroke="#00c9a7" stroke-width="1.8"/>
+  <circle cx="105" cy="278" r="14" fill="#00c9a7" fill-opacity="0.15" stroke="#00c9a7" stroke-width="1.5"/>
+
+  <!-- Stage 2 (Develop): 3 projects -->
+  <circle cx="185" cy="135" r="20" fill="#f5c842" fill-opacity="0.22" stroke="#f5c842" stroke-width="2"/>
+  <circle cx="185" cy="210" r="16" fill="#00c9a7" fill-opacity="0.20" stroke="#00c9a7" stroke-width="1.8"/>
+  <circle cx="180" cy="285" r="13" fill="#00c9a7" fill-opacity="0.15" stroke="#00c9a7" stroke-width="1.5"/>
+
+  <!-- Stage 3 (Test): 2 projects -->
+  <circle cx="265" cy="148" r="24" fill="#f5c842" fill-opacity="0.28" stroke="#f5c842" stroke-width="2.5"/>
+  <circle cx="265" cy="255" r="15" fill="#00c9a7" fill-opacity="0.18" stroke="#00c9a7" stroke-width="1.8"/>
+
+  <!-- Stage 4 (Launch): 1 project — the winner -->
+  <circle cx="350" cy="185" r="28" fill="#f5c842" fill-opacity="0.30" stroke="#f5c842" stroke-width="3"/>
+  <polygon points="350,172 358,190 342,190" fill="#f5c842" fill-opacity="0.85"/>
+
+  <!-- Horizontal flow arrows (showing projects moving right) -->
+  <g stroke="#00c9a7" stroke-width="1.2" stroke-opacity="0.28" stroke-dasharray="4,4">
+    <line x1="122" y1="120" x2="143" y2="120"/>
+    <line x1="205" y1="135" x2="223" y2="135"/>
+    <line x1="289" y1="148" x2="303" y2="155"/>
+  </g>
+
+</svg>

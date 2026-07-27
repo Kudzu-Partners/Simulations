@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg138" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <linearGradient id="curve138" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#ff4444"/>
+      <stop offset="55%"  stop-color="#d4a574"/>
+      <stop offset="100%" stop-color="#00ff88"/>
+    </linearGradient>
+    <linearGradient id="redZone138" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff4444" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#ff4444" stop-opacity="0.04"/>
+    </linearGradient>
+    <radialGradient id="recoveryGlow138" cx="78%" cy="38%" r="28%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg138)"/>
+  <rect width="400" height="400" rx="32" fill="url(#recoveryGlow138)"/>
+
+  <!-- ── Axes ── -->
+  <!-- Y axis -->
+  <line x1="68" y1="55" x2="68" y2="330" stroke="#95a5a6" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+  <!-- X axis (zero / EBITDA breakeven) -->
+  <line x1="68" y1="215" x2="360" y2="215" stroke="#95a5a6" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Zero line label -->
+  <text x="52" y="219" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#95a5a6" opacity="0.6">$0</text>
+
+  <!-- Negative EBITDA zone (below zero) -->
+  <rect x="68" y="215" width="292" height="110" rx="0" fill="url(#redZone138)"/>
+  <text x="82" y="310" font-family="'Courier New',monospace" font-size="8.5" fill="#ff4444" opacity="0.5">EBITDA –</text>
+
+  <!-- Positive zone label -->
+  <text x="82" y="100" font-family="'Courier New',monospace" font-size="8.5" fill="#00ff88" opacity="0.45">EBITDA +</text>
+
+  <!-- ── Turnaround U-curve (dramatic fall → bottom → recovery) ── -->
+  <!-- Path: starts top-left (positive), crashes down through zero, bottoms, then rises sharply -->
+  <path d="M 82 115
+           C 100 130, 115 155, 130 185
+           C 145 215, 150 240, 160 278
+           C 168 305, 172 318, 178 322
+           C 186 325, 195 310, 205 285
+           C 218 250, 235 200, 260 158
+           C 280 125, 305 98, 340 82"
+        fill="none" stroke="url(#curve138)" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Bottom of crisis — minimum point marker -->
+  <circle cx="178" cy="322" r="7" fill="#0a0f1e" stroke="#d4a574" stroke-width="2.5"/>
+  <circle cx="178" cy="322" r="3" fill="#d4a574" opacity="0.9"/>
+  <!-- Standstill label at bottom -->
+  <text x="178" y="345" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#d4a574" opacity="0.8">STANDSTILL</text>
+
+  <!-- Starting point (crisis begins) -->
+  <circle cx="82" cy="115" r="6" fill="#0a0f1e" stroke="#ff4444" stroke-width="2.5"/>
+  <circle cx="82" cy="115" r="2.5" fill="#ff4444"/>
+
+  <!-- Recovery endpoint -->
+  <circle cx="340" cy="82" r="8" fill="#0a0f1e" stroke="#00ff88" stroke-width="2.5"/>
+  <circle cx="340" cy="82" r="3.5" fill="#00ff88" opacity="0.9"/>
+
+  <!-- Arrows on curve showing direction -->
+  <!-- Down arrow near middle of descent -->
+  <path d="M136 196 L130 208 L124 196" fill="none" stroke="#ff4444" stroke-width="1.5" stroke-linejoin="round" opacity="0.6"/>
+  <!-- Up arrow on recovery -->
+  <path d="M278 130 L284 118 L290 130" fill="none" stroke="#00ff88" stroke-width="1.5" stroke-linejoin="round" opacity="0.7"/>
+
+  <!-- ── $65M debt bar on the right side ── -->
+  <rect x="354" y="215" width="18" height="108" rx="3" fill="#ff4444" opacity="0.22" stroke="#ff4444" stroke-width="1.2" stroke-opacity="0.55"/>
+  <text x="363" y="212" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#ff4444" opacity="0.75">$65M</text>
+  <text x="363" y="335" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#ff4444" opacity="0.6">DEBT</text>
+
+  <!-- ── 90-day countdown badge ── -->
+  <rect x="238" y="285" width="78" height="36" rx="7" fill="#0a0f1e" stroke="#d4a574" stroke-width="2"/>
+  <text x="277" y="300" text-anchor="middle" font-family="'Courier New',monospace" font-size="11" font-weight="bold" fill="#d4a574" opacity="0.95">90 DAYS</text>
+  <text x="277" y="314" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#d4a574" opacity="0.65">STANDSTILL</text>
+
+  <!-- 4 round dots on curve (4 decision rounds) -->
+  <circle cx="108" cy="158" r="5" fill="#1a2744" stroke="#d4a574" stroke-width="1.8" opacity="0.9"/>
+  <circle cx="152" cy="255" r="5" fill="#1a2744" stroke="#d4a574" stroke-width="1.8" opacity="0.9"/>
+  <circle cx="218" cy="218" r="5" fill="#1a2744" stroke="#d4a574" stroke-width="1.8" opacity="0.9"/>
+  <circle cx="295" cy="122" r="5" fill="#1a2744" stroke="#d4a574" stroke-width="1.8" opacity="0.9"/>
+</svg>

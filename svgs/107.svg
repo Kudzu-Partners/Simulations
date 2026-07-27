@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg107" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <radialGradient id="lens107" cx="0.35" cy="0.35" r="0.7">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#00bfff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#00bfff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg107)"/>
+  <!-- Financial document behind -->
+  <g transform="translate(95 110) rotate(-6)">
+    <rect width="180" height="220" rx="6" fill="#0a0f1e" stroke="#00bfff" stroke-width="1.5" opacity="0.85"/>
+    <g fill="#00bfff" opacity="0.55">
+      <rect x="14" y="18" width="80" height="6" rx="2"/>
+      <rect x="14" y="32" width="55" height="4" rx="2"/>
+    </g>
+    <g fill="#00bfff" opacity="0.35">
+      <rect x="14" y="56" width="150" height="3"/>
+      <rect x="14" y="68" width="150" height="3"/>
+      <rect x="14" y="80" width="150" height="3"/>
+      <rect x="14" y="92" width="120" height="3"/>
+      <rect x="14" y="104" width="150" height="3"/>
+      <rect x="14" y="116" width="140" height="3"/>
+      <rect x="14" y="128" width="150" height="3"/>
+      <rect x="14" y="140" width="100" height="3"/>
+    </g>
+    <!-- bar chart row -->
+    <g transform="translate(14 160)">
+      <rect x="0" y="20" width="14" height="30" fill="#00bfff" opacity="0.5"/>
+      <rect x="20" y="10" width="14" height="40" fill="#00bfff" opacity="0.5"/>
+      <rect x="40" y="0" width="14" height="50" fill="#e74c3c" opacity="0.85"/>
+      <rect x="60" y="14" width="14" height="36" fill="#00bfff" opacity="0.5"/>
+      <rect x="80" y="6" width="14" height="44" fill="#00bfff" opacity="0.5"/>
+    </g>
+  </g>
+  <!-- Red flag planted on document -->
+  <g transform="translate(245 125)">
+    <line x1="0" y1="0" x2="0" y2="90" stroke="#dfe6e9" stroke-width="3" stroke-linecap="round"/>
+    <path d="M0 4 L42 14 L30 28 L42 42 L0 32 Z" fill="#e74c3c" stroke="#a02020" stroke-width="1.5" stroke-linejoin="round"/>
+  </g>
+  <!-- Magnifying glass over the chart -->
+  <g transform="translate(245 270)">
+    <circle r="62" fill="url(#lens107)" stroke="#dfe6e9" stroke-width="5"/>
+    <circle r="62" fill="none" stroke="#00bfff" stroke-width="1.5" opacity="0.6"/>
+    <line x1="44" y1="44" x2="92" y2="92" stroke="#dfe6e9" stroke-width="10" stroke-linecap="round"/>
+    <line x1="44" y1="44" x2="92" y2="92" stroke="#5a6470" stroke-width="6" stroke-linecap="round"/>
+    <!-- M-Score letter inside lens -->
+    <text x="0" y="12" font-family="Georgia, serif" font-size="46" font-weight="700" fill="#e74c3c" text-anchor="middle" opacity="0.92">M</text>
+  </g>
+</svg>

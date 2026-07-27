@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+    <radialGradient id="globeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f5c842" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#f5c842" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg)"/>
+
+  <!-- Globe body -->
+  <circle cx="200" cy="210" r="130" fill="#1a2744" fill-opacity="0.6" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.3"/>
+  <circle cx="200" cy="210" r="130" fill="url(#globeGlow)"/>
+
+  <!-- Latitude lines -->
+  <g stroke="#c0cfff" stroke-opacity="0.12" stroke-width="1" fill="none">
+    <ellipse cx="200" cy="210" rx="130" ry="26"/>
+    <ellipse cx="200" cy="210" rx="130" ry="55"/>
+    <ellipse cx="200" cy="210" rx="120" ry="85"/>
+    <ellipse cx="200" cy="210" rx="100" ry="108"/>
+    <!-- Longitude lines -->
+    <path d="M200,80 C230,130 230,290 200,340"/>
+    <path d="M200,80 C170,130 170,290 200,340"/>
+    <path d="M200,80 C260,140 260,280 200,340"/>
+    <path d="M200,80 C140,140 140,280 200,340"/>
+    <line x1="70" y1="210" x2="330" y2="210"/>
+  </g>
+
+  <!-- Origin point: Chile (bottom-left of globe) -->
+  <circle cx="178" cy="300" r="9" fill="#f5c842" opacity="1" stroke="#1a2744" stroke-width="2"/>
+  <circle cx="178" cy="300" r="15" fill="none" stroke="#f5c842" stroke-width="1.5" stroke-opacity="0.5"/>
+  <text x="178" y="328" text-anchor="middle" fill="#f5c842" font-size="10" font-family="monospace" opacity="0.8" font-weight="bold">CL</text>
+
+  <!-- Arrow 1: Peru (NW on globe) -->
+  <path d="M170,291 C160,270 148,248 138,225" fill="none" stroke="#f5c842" stroke-width="2.5" stroke-opacity="0.85"/>
+  <polygon points="131,222 138,215 143,226" fill="#f5c842" opacity="0.85"/>
+  <circle cx="138" cy="220" r="8" fill="#f5c842" fill-opacity="0.25" stroke="#f5c842" stroke-width="1.5"/>
+  <text x="120" y="210" text-anchor="middle" fill="#f5c842" font-size="9" font-family="monospace" opacity="0.75">PE</text>
+
+  <!-- Arrow 2: Brazil (N) -->
+  <path d="M183,291 C188,268 196,240 205,212" fill="none" stroke="#c0cfff" stroke-width="2.5" stroke-opacity="0.75"/>
+  <polygon points="198,209 205,202 210,213" fill="#c0cfff" opacity="0.75"/>
+  <circle cx="205" cy="207" r="8" fill="#c0cfff" fill-opacity="0.2" stroke="#c0cfff" stroke-width="1.5"/>
+  <text x="222" y="200" text-anchor="middle" fill="#c0cfff" font-size="9" font-family="monospace" opacity="0.7">BR</text>
+
+  <!-- Arrow 3: Canada (upper right, NE) -->
+  <path d="M186,292 C205,268 225,240 252,192" fill="none" stroke="#74b9ff" stroke-width="2.5" stroke-opacity="0.7"/>
+  <polygon points="245,190 252,183 257,194" fill="#74b9ff" opacity="0.7"/>
+  <circle cx="253" cy="188" r="8" fill="#74b9ff" fill-opacity="0.2" stroke="#74b9ff" stroke-width="1.5"/>
+  <text x="270" y="178" text-anchor="middle" fill="#74b9ff" font-size="9" font-family="monospace" opacity="0.7">CA</text>
+
+  <!-- Arrow 4: Australia (far right, SE direction) -->
+  <path d="M187,300 C220,295 260,280 295,258" fill="none" stroke="#52b788" stroke-width="2.5" stroke-opacity="0.7"/>
+  <polygon points="289,252 297,252 293,263" fill="#52b788" opacity="0.7"/>
+  <circle cx="296" cy="257" r="8" fill="#52b788" fill-opacity="0.2" stroke="#52b788" stroke-width="1.5"/>
+  <text x="315" y="250" text-anchor="middle" fill="#52b788" font-size="9" font-family="monospace" opacity="0.7">AU</text>
+
+  <!-- OLI label -->
+  <text x="200" y="110" text-anchor="middle" fill="#f5c842" font-size="16" font-family="monospace" font-weight="bold" opacity="0.6">OLI</text>
+  <text x="200" y="126" text-anchor="middle" fill="#c0cfff" font-size="9" font-family="sans-serif" opacity="0.4" letter-spacing="1">Ownership · Location · Internalization</text>
+
+  <!-- Compass rose hint (top-right) -->
+  <g transform="translate(340, 100)" opacity="0.35">
+    <line x1="0" y1="-14" x2="0" y2="14" stroke="#c0cfff" stroke-width="1.5"/>
+    <line x1="-14" y1="0" x2="14" y2="0" stroke="#c0cfff" stroke-width="1.5"/>
+    <polygon points="0,-14 -3,-8 3,-8" fill="#f5c842"/>
+    <text x="0" y="-18" text-anchor="middle" fill="#f5c842" font-size="9" font-family="monospace">N</text>
+  </g>
+</svg>

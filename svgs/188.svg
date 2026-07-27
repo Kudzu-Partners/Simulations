@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg188" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+    <linearGradient id="redOcean188" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#e74c3c" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="blueOcean188" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00bfff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00bfff" stop-opacity="0.04"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg188)"/>
+
+  <!-- Dividing diagonal line (the shift) -->
+  <line x1="195" y1="55" x2="205" y2="355" stroke="#f5c842" stroke-width="2.5" stroke-dasharray="8 5" opacity="0.6"/>
+
+  <!-- LEFT: Red Ocean zone -->
+  <rect x="40" y="60" width="155" height="280" rx="16" fill="url(#redOcean188)"/>
+  <text x="117" y="88" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#e74c3c" text-anchor="middle" opacity="0.8">Red Ocean</text>
+
+  <!-- Churning competition arrows (converging, crushing) -->
+  <!-- Multiple competitors as rectangles colliding -->
+  <rect x="58" y="115" width="44" height="26" rx="4" fill="#e74c3c" opacity="0.25"/>
+  <rect x="58" y="115" width="44" height="26" rx="4" fill="none" stroke="#e74c3c" stroke-width="1.5" opacity="0.7"/>
+  <text x="80" y="132" font-family="Arial,sans-serif" font-size="8" fill="#e74c3c" text-anchor="middle" opacity="0.8">Cemex</text>
+
+  <rect x="110" y="108" width="44" height="26" rx="4" fill="#e74c3c" opacity="0.2"/>
+  <rect x="110" y="108" width="44" height="26" rx="4" fill="none" stroke="#e74c3c" stroke-width="1.5" opacity="0.65"/>
+  <text x="132" y="125" font-family="Arial,sans-serif" font-size="8" fill="#e74c3c" text-anchor="middle" opacity="0.75">Holcim</text>
+
+  <rect x="75" y="150" width="52" height="26" rx="4" fill="#e74c3c" opacity="0.22"/>
+  <rect x="75" y="150" width="52" height="26" rx="4" fill="none" stroke="#e74c3c" stroke-width="1.5" opacity="0.65"/>
+  <text x="101" y="167" font-family="Arial,sans-serif" font-size="8" fill="#e74c3c" text-anchor="middle" opacity="0.75">Argos</text>
+
+  <!-- Price war down arrow -->
+  <line x1="101" y1="188" x2="101" y2="230" stroke="#e74c3c" stroke-width="2.5" opacity="0.6"/>
+  <polygon points="101,238 94,222 108,222" fill="#e74c3c" opacity="0.7"/>
+  <text x="101" y="255" font-family="Arial,sans-serif" font-size="8" fill="#e74c3c" text-anchor="middle" opacity="0.65">Price War</text>
+
+  <!-- Commodity label -->
+  <text x="101" y="275" font-family="Arial,sans-serif" font-size="7" fill="#e74c3c" text-anchor="middle" opacity="0.5">commodity trap</text>
+
+  <!-- Margin squeeze bars -->
+  <rect x="62" y="290" width="80" height="8" rx="2" fill="#e74c3c" opacity="0.15"/>
+  <rect x="62" y="290" width="28" height="8" rx="2" fill="#e74c3c" opacity="0.5"/>
+  <text x="62" y="312" font-family="Arial,sans-serif" font-size="7" fill="#e74c3c" opacity="0.5">Margin: low</text>
+
+  <!-- RIGHT: Blue Ocean zone -->
+  <rect x="205" y="60" width="155" height="280" rx="16" fill="url(#blueOcean188)"/>
+  <text x="283" y="88" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#00bfff" text-anchor="middle" opacity="0.8">Blue Ocean</text>
+
+  <!-- Boat/ship moving into open water -->
+  <path d="M 240 200 L 320 200 L 310 220 L 250 220 Z" fill="#00bfff" opacity="0.25"/>
+  <path d="M 240 200 L 320 200 L 310 220 L 250 220 Z" fill="none" stroke="#00bfff" stroke-width="2" opacity="0.75"/>
+  <!-- Sail -->
+  <line x1="280" y1="200" x2="280" y2="160" stroke="#00bfff" stroke-width="2" opacity="0.6"/>
+  <path d="M 280 160 L 316 196 L 280 196 Z" fill="#00bfff" opacity="0.3"/>
+
+  <!-- ERRC small badges -->
+  <rect x="214" y="120" width="40" height="18" rx="4" fill="#00bfff" opacity="0.12"/>
+  <rect x="214" y="120" width="40" height="18" rx="4" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.5"/>
+  <text x="234" y="133" font-family="Arial,sans-serif" font-size="7" fill="#00bfff" text-anchor="middle" opacity="0.75">Eliminate</text>
+
+  <rect x="258" y="120" width="38" height="18" rx="4" fill="#00bfff" opacity="0.12"/>
+  <rect x="258" y="120" width="38" height="18" rx="4" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.5"/>
+  <text x="277" y="133" font-family="Arial,sans-serif" font-size="7" fill="#00bfff" text-anchor="middle" opacity="0.75">Reduce</text>
+
+  <rect x="300" y="120" width="38" height="18" rx="4" fill="#f5c842" opacity="0.12"/>
+  <rect x="300" y="120" width="38" height="18" rx="4" fill="none" stroke="#f5c842" stroke-width="1" opacity="0.5"/>
+  <text x="319" y="133" font-family="Arial,sans-serif" font-size="7" fill="#f5c842" text-anchor="middle" opacity="0.75">Raise</text>
+
+  <rect x="214" y="142" width="38" height="18" rx="4" fill="#52b788" opacity="0.12"/>
+  <rect x="214" y="142" width="38" height="18" rx="4" fill="none" stroke="#52b788" stroke-width="1" opacity="0.5"/>
+  <text x="233" y="155" font-family="Arial,sans-serif" font-size="7" fill="#52b788" text-anchor="middle" opacity="0.75">Create</text>
+
+  <!-- Noncustomers arrow -->
+  <path d="M 240 240 Q 283 250 326 240" fill="none" stroke="#f5c842" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.5"/>
+  <polygon points="326,235 338,240 326,245" fill="#f5c842" opacity="0.55"/>
+  <text x="283" y="268" font-family="Arial,sans-serif" font-size="7" fill="#f5c842" text-anchor="middle" opacity="0.6">non-customers</text>
+
+  <!-- Value innovation star/burst -->
+  <circle cx="283" cy="310" r="20" fill="#f5c842" opacity="0.1"/>
+  <circle cx="283" cy="310" r="20" fill="none" stroke="#f5c842" stroke-width="1.5" opacity="0.5"/>
+  <text x="283" y="306" font-family="Arial,sans-serif" font-size="7" fill="#f5c842" text-anchor="middle" opacity="0.8">Value</text>
+  <text x="283" y="318" font-family="Arial,sans-serif" font-size="7" fill="#f5c842" text-anchor="middle" opacity="0.8">Innovation</text>
+
+  <!-- Shift arrow across the divide -->
+  <path d="M 155 196 Q 175 186 205 186" fill="none" stroke="#f5c842" stroke-width="2.5" opacity="0.7"/>
+  <polygon points="205,181 220,186 205,191" fill="#f5c842" opacity="0.8"/>
+
+  <!-- Label -->
+  <text x="200" y="358" font-family="Arial,sans-serif" font-size="8" fill="#c0cfff" text-anchor="middle" opacity="0.35">BlueShift · Cementos Pacífico</text>
+  <text x="200" y="374" font-family="Arial,sans-serif" font-size="9" fill="#f5c842" text-anchor="middle" opacity="0.4" letter-spacing="1">BLUE OCEAN STRATEGY</text>
+</svg>

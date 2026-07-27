@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg223" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1220"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <radialGradient id="centerGlow223" cx="50%" cy="55%" r="30%">
+      <stop offset="0%" stop-color="#f5c842" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#f5c842" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg223)"/>
+  <rect width="400" height="400" rx="32" fill="url(#centerGlow223)"/>
+
+  <!-- Title -->
+  <text x="200" y="42" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#f5c842" opacity="0.9" letter-spacing="2">FACTOR INVESTING · REGIME CYCLES</text>
+
+  <!-- ── Central regime cycle arrow ── -->
+  <g transform="translate(200, 210)">
+    <!-- Outer regime ring (dashed cycle) -->
+    <circle r="110" fill="none" stroke="#f5c842" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.35"/>
+    <!-- Inner ring -->
+    <circle r="78" fill="none" stroke="#ccddee" stroke-width="0.6" opacity="0.2"/>
+
+    <!-- Regime arc arrows suggesting cycle direction -->
+    <path d="M 0 -110 A 110 110 0 0 1 110 0" fill="none" stroke="#f5c842" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    <polygon points="108,-4 118,8 102,10" fill="#f5c842" opacity="0.7" transform="rotate(10, 110, 0)"/>
+
+    <!-- ── 5 Factor pills arranged in pentagon ── -->
+
+    <!-- VALUE (top) -->
+    <g transform="translate(0, -130)">
+      <rect x="-30" y="-14" width="60" height="28" rx="14" fill="#2980b9" stroke="#74b9ff" stroke-width="1.5"/>
+      <text y="-3" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" font-weight="bold" fill="#fff">VALUE</text>
+      <text y="9" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" fill="#74b9ff" opacity="0.9">P/E low</text>
+    </g>
+
+    <!-- MOMENTUM (top-right) -->
+    <g transform="translate(124, -40)">
+      <rect x="-34" y="-14" width="68" height="28" rx="14" fill="#00b894" stroke="#00ff88" stroke-width="1.5"/>
+      <text y="-3" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" font-weight="bold" fill="#fff">MOMENTUM</text>
+      <text y="9" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" fill="#00ff88" opacity="0.9">12M trend</text>
+    </g>
+
+    <!-- QUALITY (bottom-right) -->
+    <g transform="translate(76, 100)">
+      <rect x="-30" y="-14" width="60" height="28" rx="14" fill="#6c5ce7" stroke="#a29bfe" stroke-width="1.5"/>
+      <text y="-3" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" font-weight="bold" fill="#fff">QUALITY</text>
+      <text y="9" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" fill="#a29bfe" opacity="0.9">ROE high</text>
+    </g>
+
+    <!-- LOW-VOL (bottom-left) -->
+    <g transform="translate(-76, 100)">
+      <rect x="-32" y="-14" width="64" height="28" rx="14" fill="#0984e3" stroke="#74b9ff" stroke-width="1.5"/>
+      <text y="-3" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" font-weight="bold" fill="#fff">LOW-VOL</text>
+      <text y="9" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" fill="#74b9ff" opacity="0.9">β &lt; 1</text>
+    </g>
+
+    <!-- SIZE (top-left) -->
+    <g transform="translate(-124, -40)">
+      <rect x="-28" y="-14" width="56" height="28" rx="14" fill="#e17055" stroke="#ff7675" stroke-width="1.5"/>
+      <text y="-3" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" font-weight="bold" fill="#fff">SIZE</text>
+      <text y="9" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" fill="#ff9f9f" opacity="0.9">small-cap</text>
+    </g>
+
+    <!-- ── Multi-factor blend in center ── -->
+    <circle r="40" fill="#0a1220" stroke="#f5c842" stroke-width="2"/>
+    <text y="-8" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" font-weight="bold" fill="#f5c842">MULTI</text>
+    <text y="4" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" font-weight="bold" fill="#f5c842">FACTOR</text>
+    <text y="16" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" fill="#f5c842" opacity="0.75">BLEND</text>
+  </g>
+
+  <!-- ── Regime bands (bottom) ── -->
+  <g transform="translate(30, 340)">
+    <text x="0" y="-6" font-family="'Courier New',monospace" font-size="7.5" fill="#8899aa" opacity="0.85" letter-spacing="1">ECONOMIC REGIME</text>
+    <!-- Expansion -->
+    <rect x="0" y="0" width="76" height="28" rx="5" fill="#00b894" opacity="0.22" stroke="#00b894" stroke-width="0.8" stroke-opacity="0.6"/>
+    <text x="38" y="10" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#00ff88" opacity="0.95">EXPANSION</text>
+    <text x="38" y="22" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" fill="#00ff88" opacity="0.7">MOM+QUA</text>
+    <!-- Contraction -->
+    <rect x="82" y="0" width="76" height="28" rx="5" fill="#e17055" opacity="0.22" stroke="#e17055" stroke-width="0.8" stroke-opacity="0.6"/>
+    <text x="120" y="10" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#ff7675" opacity="0.95">RECESSION</text>
+    <text x="120" y="22" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" fill="#ff7675" opacity="0.7">LOW-VOL</text>
+    <!-- Recovery -->
+    <rect x="164" y="0" width="76" height="28" rx="5" fill="#f5c842" opacity="0.18" stroke="#f5c842" stroke-width="0.8" stroke-opacity="0.6"/>
+    <text x="202" y="10" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#f5c842" opacity="0.95">RECOVERY</text>
+    <text x="202" y="22" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" fill="#f5c842" opacity="0.7">VAL+SIZE</text>
+    <!-- Inflation -->
+    <rect x="246" y="0" width="88" height="28" rx="5" fill="#6c5ce7" opacity="0.22" stroke="#6c5ce7" stroke-width="0.8" stroke-opacity="0.6"/>
+    <text x="290" y="10" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#a29bfe" opacity="0.95">INFLATION</text>
+    <text x="290" y="22" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" fill="#a29bfe" opacity="0.7">VALUE</text>
+  </g>
+
+  <text x="200" y="390" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#f5c842" opacity="0.4" letter-spacing="2">QUANTITATIVE FACTOR LAB</text>
+</svg>

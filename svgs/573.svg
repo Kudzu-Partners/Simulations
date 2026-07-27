@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg573" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a2342"/>
+      <stop offset="100%" stop-color="#1a3a5c"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg573)"/>
+
+  <text x="200" y="56" text-anchor="middle" fill="#e74c3c" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">EMOTIONAL IQ · HOSPITAL CRISIS</text>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- Brain split with heart inside (protagonist) -->
+    <g transform="translate(200,208)">
+      <!-- Brain outer -->
+      <path d="M 0 -88 Q 56 -88 80 -56 Q 96 -16 80 32 Q 56 80 0 80 Q -56 80 -80 32 Q -96 -16 -80 -56 Q -56 -88 0 -88 Z"
+            fill="#1a3a5c" stroke="#dfe6e9" stroke-width="3.5"/>
+      <!-- Brain hemisphere line -->
+      <line x1="0" y1="-88" x2="0" y2="80" stroke="#dfe6e9" stroke-width="2" opacity="0.6"/>
+
+      <!-- Brain wrinkles -->
+      <path d="M -56 -32 Q -48 -56 -32 -40" stroke="#dfe6e9" stroke-width="2" fill="none" opacity="0.5"/>
+      <path d="M -56 16 Q -40 32 -24 16" stroke="#dfe6e9" stroke-width="2" fill="none" opacity="0.5"/>
+      <path d="M 32 -40 Q 48 -56 56 -32" stroke="#dfe6e9" stroke-width="2" fill="none" opacity="0.5"/>
+      <path d="M 24 16 Q 40 32 56 16" stroke="#dfe6e9" stroke-width="2" fill="none" opacity="0.5"/>
+
+      <!-- Heart inside (center) -->
+      <path d="M 0 16 C -32 -8 -48 -32 -32 -52 C -16 -64 0 -52 0 -40 C 0 -52 16 -64 32 -52 C 48 -32 32 -8 0 16 Z"
+            fill="#e74c3c" stroke="#dfe6e9" stroke-width="3"/>
+    </g>
+
+    <!-- Pulse line top-left -->
+    <g transform="translate(48,108)">
+      <path d="M 0 12 L 12 12 L 18 0 L 26 24 L 32 12 L 56 12" stroke="#e74c3c" stroke-width="2.5" fill="none"/>
+    </g>
+
+    <!-- Hospital cross badge top-right -->
+    <g transform="translate(296,84)">
+      <rect width="56" height="26" rx="4" fill="#e74c3c" fill-opacity="0.18" stroke="#e74c3c" stroke-width="1.5"/>
+      <rect x="22" y="6" width="12" height="14" rx="1" fill="#e74c3c"/>
+      <rect x="18" y="10" width="20" height="6" rx="1" fill="#e74c3c"/>
+    </g>
+  </g>
+
+  <text x="200" y="372" text-anchor="middle" fill="#dfe6e9" font-size="9" font-family="monospace" opacity="0.5" letter-spacing="1.2">Hospital · Bogotá · CO</text>
+</svg>

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg160" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c2333"/>
+      <stop offset="100%" stop-color="#2c3e50"/>
+    </linearGradient>
+    <radialGradient id="chipGlow160" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e67e22" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#e67e22" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg160)"/>
+
+  <!-- Central chip glow -->
+  <circle cx="200" cy="200" r="70" fill="url(#chipGlow160)"/>
+
+  <!-- Circular arrows (3 segments forming full loop) -->
+  <!-- Arrow 1: top-right arc -->
+  <path d="M 200 85 A 115 115 0 0 1 315 200" fill="none" stroke="#e67e22" stroke-width="7" stroke-linecap="round" opacity="0.85"/>
+  <polygon points="315,200 302,188 298,206" fill="#e67e22" opacity="0.85"/>
+
+  <!-- Arrow 2: bottom arc -->
+  <path d="M 315 215 A 115 115 0 0 1 85 215" fill="none" stroke="#95a5a6" stroke-width="7" stroke-linecap="round" opacity="0.7"/>
+  <polygon points="85,215 98,228 102,210" fill="#95a5a6" opacity="0.7"/>
+
+  <!-- Arrow 3: left arc going back up -->
+  <path d="M 85 185 A 115 115 0 0 1 200 85" fill="none" stroke="#e67e22" stroke-width="7" stroke-linecap="round" opacity="0.75"/>
+  <polygon points="200,85 186,96 202,100" fill="#e67e22" opacity="0.75"/>
+
+  <!-- Stage labels on arrows -->
+  <text x="290" y="142" font-family="Arial,sans-serif" font-size="8" fill="#e67e22" text-anchor="middle" opacity="0.7">Manufacture</text>
+  <text x="200" y="338" font-family="Arial,sans-serif" font-size="8" fill="#95a5a6" text-anchor="middle" opacity="0.7">Reverse Logistics</text>
+  <text x="108" y="142" font-family="Arial,sans-serif" font-size="8" fill="#e67e22" text-anchor="middle" opacity="0.7">Recovery</text>
+
+  <!-- Central electronics chip -->
+  <rect x="164" y="164" width="72" height="72" rx="6" fill="#1c2333" opacity="0.95"/>
+  <rect x="164" y="164" width="72" height="72" rx="6" fill="none" stroke="#e67e22" stroke-width="2.5" opacity="0.9"/>
+
+  <!-- Chip grid lines -->
+  <line x1="181" y1="164" x2="181" y2="236" stroke="#e67e22" stroke-width="0.8" opacity="0.35"/>
+  <line x1="200" y1="164" x2="200" y2="236" stroke="#e67e22" stroke-width="0.8" opacity="0.35"/>
+  <line x1="219" y1="164" x2="219" y2="236" stroke="#e67e22" stroke-width="0.8" opacity="0.35"/>
+  <line x1="164" y1="181" x2="236" y2="181" stroke="#e67e22" stroke-width="0.8" opacity="0.35"/>
+  <line x1="164" y1="200" x2="236" y2="200" stroke="#e67e22" stroke-width="0.8" opacity="0.35"/>
+  <line x1="164" y1="219" x2="236" y2="219" stroke="#e67e22" stroke-width="0.8" opacity="0.35"/>
+
+  <!-- Chip pins top -->
+  <rect x="176" y="156" width="8" height="8" rx="2" fill="#e67e22" opacity="0.6"/>
+  <rect x="196" y="156" width="8" height="8" rx="2" fill="#e67e22" opacity="0.6"/>
+  <rect x="216" y="156" width="8" height="8" rx="2" fill="#e67e22" opacity="0.6"/>
+  <!-- Chip pins bottom -->
+  <rect x="176" y="236" width="8" height="8" rx="2" fill="#e67e22" opacity="0.6"/>
+  <rect x="196" y="236" width="8" height="8" rx="2" fill="#e67e22" opacity="0.6"/>
+  <rect x="216" y="236" width="8" height="8" rx="2" fill="#e67e22" opacity="0.6"/>
+  <!-- Chip pins left -->
+  <rect x="156" y="176" width="8" height="8" rx="2" fill="#e67e22" opacity="0.6"/>
+  <rect x="156" y="196" width="8" height="8" rx="2" fill="#e67e22" opacity="0.6"/>
+  <rect x="156" y="216" width="8" height="8" rx="2" fill="#e67e22" opacity="0.6"/>
+  <!-- Chip pins right -->
+  <rect x="236" y="176" width="8" height="8" rx="2" fill="#e67e22" opacity="0.6"/>
+  <rect x="236" y="196" width="8" height="8" rx="2" fill="#e67e22" opacity="0.6"/>
+  <rect x="236" y="216" width="8" height="8" rx="2" fill="#e67e22" opacity="0.6"/>
+
+  <!-- Recycling symbol inside chip -->
+  <text x="200" y="207" font-family="Arial,sans-serif" font-size="22" fill="#e67e22" text-anchor="middle" opacity="0.6">♻</text>
+
+  <!-- Label -->
+  <text x="200" y="370" font-family="Arial,sans-serif" font-size="9" fill="#e67e22" text-anchor="middle" opacity="0.5" letter-spacing="1">CIRCULAR SUPPLY CHAIN · VOLTEX</text>
+</svg>

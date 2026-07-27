@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg283" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+    <linearGradient id="strat283" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#e67e00"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg283)"/>
+
+  <!-- Strategy block (top) -->
+  <rect x="60" y="55" width="280" height="70" rx="12" fill="#1a3a5c" stroke="#f5c842" stroke-width="3"/>
+  <!-- Gold fill bar inside -->
+  <rect x="72" y="67" width="256" height="46" rx="8" fill="url(#strat283)" opacity="0.85"/>
+
+  <!-- Cascade arrows (4) -->
+  <g stroke="#f5c842" stroke-width="2.5" opacity="0.6" stroke-linecap="round">
+    <line x1="112" y1="125" x2="88" y2="168"/>
+    <line x1="168" y1="125" x2="163" y2="168"/>
+    <line x1="232" y1="125" x2="237" y2="168"/>
+    <line x1="288" y1="125" x2="312" y2="168"/>
+  </g>
+
+  <!-- 4 silo boxes -->
+  <!-- box 1: good -->
+  <rect x="48" y="168" width="70" height="68" rx="8" fill="#1a2744" stroke="#74b9ff" stroke-width="2"/>
+  <rect x="56" y="210" width="54" height="10" rx="3" fill="#1a3a5c"/>
+  <rect x="56" y="210" width="30" height="10" rx="3" fill="#74b9ff" opacity="0.7"/>
+
+  <!-- box 2: good -->
+  <rect x="130" y="168" width="70" height="68" rx="8" fill="#1a2744" stroke="#00ff88" stroke-width="2"/>
+  <rect x="138" y="210" width="54" height="10" rx="3" fill="#1a3a5c"/>
+  <rect x="138" y="210" width="42" height="10" rx="3" fill="#00ff88" opacity="0.7"/>
+
+  <!-- box 3: bad (red) -->
+  <rect x="212" y="168" width="70" height="68" rx="8" fill="#2a1a1a" stroke="#e74c3c" stroke-width="2.5"/>
+  <rect x="220" y="210" width="54" height="10" rx="3" fill="#1a2a1a"/>
+  <rect x="220" y="210" width="18" height="10" rx="3" fill="#e74c3c" opacity="0.8"/>
+
+  <!-- box 4: medium -->
+  <rect x="294" y="168" width="58" height="68" rx="8" fill="#1a2744" stroke="#a29bfe" stroke-width="2"/>
+  <rect x="300" y="210" width="46" height="10" rx="3" fill="#1a3a5c"/>
+  <rect x="300" y="210" width="28" height="10" rx="3" fill="#a29bfe" opacity="0.7"/>
+
+  <!-- GAP zone (red crack) -->
+  <g transform="translate(48, 252)">
+    <rect x="0" y="0" width="304" height="28" rx="6" fill="#7d0000" opacity="0.4" stroke="#e74c3c" stroke-width="2" stroke-dasharray="8,5"/>
+    <!-- Lightning bolt = gap -->
+    <path d="M 148 6 L 136 18 L 144 18 L 132 28 L 160 14 L 150 14 L 162 6 Z" fill="#e74c3c" opacity="0.9"/>
+  </g>
+
+  <!-- Bridge bar (bottom) -->
+  <rect x="48" y="302" width="304" height="40" rx="10" fill="#0a1f10" stroke="#00ff88" stroke-width="2.5"/>
+  <!-- Fill showing partial alignment -->
+  <rect x="52" y="306" width="168" height="32" rx="8" fill="#00ff88" opacity="0.5"/>
+</svg>

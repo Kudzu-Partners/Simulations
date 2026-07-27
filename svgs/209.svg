@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg209" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a2342"/>
+      <stop offset="100%" stop-color="#1a3a5c"/>
+    </linearGradient>
+    <radialGradient id="glow209" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f5c842" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#f5c842" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="poolGrad209" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a5078"/>
+      <stop offset="100%" stop-color="#1a3a5c"/>
+    </linearGradient>
+    <linearGradient id="prodA209" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#52b788"/>
+      <stop offset="100%" stop-color="#74c69d"/>
+    </linearGradient>
+    <linearGradient id="prodB209" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#ffd166"/>
+    </linearGradient>
+    <linearGradient id="prodC209" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ff6b6b"/>
+      <stop offset="100%" stop-color="#ff8888"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg209)"/>
+  <rect width="400" height="400" rx="32" fill="url(#glow209)"/>
+
+  <!-- ── Top: 4 cost pools (overhead activities) ── -->
+  <g transform="translate(0,60)">
+    <text x="200" y="-2" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#c0cfff" opacity="0.55" letter-spacing="2">OVERHEAD POOLS</text>
+
+    <!-- Pool 1 -->
+    <rect x="40"  y="10" width="68" height="38" rx="6" fill="url(#poolGrad209)" stroke="#74b9ff" stroke-width="1.5" stroke-opacity="0.7"/>
+    <text x="74" y="26" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#c0cfff" opacity="0.85">SETUPS</text>
+    <text x="74" y="38" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#74b9ff">$1.8M</text>
+
+    <!-- Pool 2 -->
+    <rect x="124" y="10" width="68" height="38" rx="6" fill="url(#poolGrad209)" stroke="#74b9ff" stroke-width="1.5" stroke-opacity="0.7"/>
+    <text x="158" y="26" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#c0cfff" opacity="0.85">QC</text>
+    <text x="158" y="38" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#74b9ff">$2.1M</text>
+
+    <!-- Pool 3 -->
+    <rect x="208" y="10" width="68" height="38" rx="6" fill="url(#poolGrad209)" stroke="#74b9ff" stroke-width="1.5" stroke-opacity="0.7"/>
+    <text x="242" y="26" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#c0cfff" opacity="0.85">PROC</text>
+    <text x="242" y="38" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#74b9ff">$0.9M</text>
+
+    <!-- Pool 4 -->
+    <rect x="292" y="10" width="68" height="38" rx="6" fill="url(#poolGrad209)" stroke="#74b9ff" stroke-width="1.5" stroke-opacity="0.7"/>
+    <text x="326" y="26" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#c0cfff" opacity="0.85">CS</text>
+    <text x="326" y="38" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#74b9ff">$1.2M</text>
+  </g>
+
+  <!-- ── Driver lines (cascading down to products) ── -->
+  <g stroke="#f5c842" fill="none" opacity="0.55">
+    <!-- From pools to allocation hub -->
+    <path d="M74  108 Q90  150 200 175" stroke-width="1.5"/>
+    <path d="M158 108 Q170 142 200 175" stroke-width="1.8"/>
+    <path d="M242 108 Q230 142 200 175" stroke-width="1.5"/>
+    <path d="M326 108 Q310 150 200 175" stroke-width="1.5"/>
+  </g>
+
+  <!-- Allocation engine (center) -->
+  <circle cx="200" cy="180" r="20" fill="#0a2342" stroke="#f5c842" stroke-width="2.5"/>
+  <text x="200" y="184" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#f5c842" opacity="0.95">ABC</text>
+  <circle cx="200" cy="180" r="28" fill="none" stroke="#f5c842" stroke-width="1" opacity="0.4"/>
+
+  <!-- Distribution lines from ABC engine to products -->
+  <g stroke="#f5c842" fill="none" opacity="0.6">
+    <path d="M186 195 Q140 220 100 256" stroke-width="1.5"/>
+    <path d="M200 200 L200 256" stroke-width="1.8"/>
+    <path d="M214 195 Q260 220 300 256" stroke-width="1.5"/>
+  </g>
+
+  <!-- ── 3 Product bars (bottom) — different ABC margins ── -->
+  <!-- Product A — high (was high under absorption, low under ABC) -->
+  <g transform="translate(100, 260)">
+    <rect x="-30" y="0" width="60" height="80" rx="5" fill="url(#prodA209)" opacity="0.85"/>
+    <rect x="-30" y="0" width="60" height="80" rx="5" fill="none" stroke="#52b788" stroke-width="1.5" opacity="0.7"/>
+    <!-- ABC margin indicator (shorter than absorption — overhead consumes more) -->
+    <rect x="-30" y="56" width="60" height="24" rx="0" fill="#0a2342" opacity="0.5"/>
+    <text y="20" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#fff" opacity="0.95">A</text>
+    <text y="35" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#fff" opacity="0.85">4.1%</text>
+    <text y="98" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#52b788" opacity="0.75">PERSONAL</text>
+  </g>
+
+  <!-- Product B — medium (improved under ABC) -->
+  <g transform="translate(200, 260)">
+    <rect x="-30" y="0" width="60" height="80" rx="5" fill="url(#prodB209)" opacity="0.85"/>
+    <rect x="-30" y="0" width="60" height="80" rx="5" fill="none" stroke="#f5c842" stroke-width="1.5" opacity="0.7"/>
+    <text y="20" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#0a2342" opacity="0.95">B</text>
+    <text y="35" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#0a2342" opacity="0.85">11.4%</text>
+    <!-- Up arrow (ABC reveals winner) -->
+    <path d="M0 50 L-6 60 L-2 60 L-2 70 L2 70 L2 60 L6 60 Z" fill="#0a2342" opacity="0.85"/>
+    <text y="98" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#f5c842" opacity="0.85">HOUSEHOLD</text>
+  </g>
+
+  <!-- Product C — small (was loss-making under absorption, profit under ABC) -->
+  <g transform="translate(300, 280)">
+    <rect x="-25" y="0" width="50" height="60" rx="5" fill="url(#prodC209)" opacity="0.85"/>
+    <rect x="-25" y="0" width="50" height="60" rx="5" fill="none" stroke="#ff6b6b" stroke-width="1.5" opacity="0.7"/>
+    <text y="20" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#fff" opacity="0.95">C</text>
+    <text y="35" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#fff" opacity="0.85">3.8%</text>
+    <text y="78" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#ff6b6b" opacity="0.75">FOOD</text>
+  </g>
+
+  <!-- Variance bars (right side) -->
+  <g transform="translate(360,160)">
+    <rect x="-3" y="-30" width="6" height="20" fill="#52b788" opacity="0.7"/>
+    <rect x="-3" y="-10" width="6" height="20" fill="#52b788" opacity="0.55"/>
+    <rect x="-3" y="10" width="6" height="14" fill="#ff6b6b" opacity="0.7"/>
+    <line x1="-8" y1="0" x2="8" y2="0" stroke="#c0cfff" stroke-width="1" opacity="0.5"/>
+  </g>
+</svg>

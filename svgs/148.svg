@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg148" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg148)"/>
+
+  <!-- Balance beam pivot -->
+  <circle cx="200" cy="222" r="8" fill="#00bfff" opacity="0.8"/>
+  <!-- Fulcrum -->
+  <polygon points="200,230 175,270 225,270" fill="#00bfff" opacity="0.45"/>
+  <rect x="162" y="268" width="76" height="8" rx="4" fill="#00bfff" opacity="0.35"/>
+
+  <!-- Beam — slightly tilted toward human side (human overrides AI sometimes) -->
+  <rect x="60" y="212" width="280" height="12" rx="6" fill="#00bfff" opacity="0.5" transform="rotate(-4,200,218)"/>
+
+  <!-- Left chain (human side) -->
+  <line x1="95" y1="207" x2="95" y2="155" stroke="#7b2fff" stroke-width="2" opacity="0.5" stroke-dasharray="5 3" transform="rotate(-4,200,218)"/>
+  <!-- Right chain (AI side) -->
+  <line x1="305" y1="220" x2="305" y2="168" stroke="#00bfff" stroke-width="2" opacity="0.5" stroke-dasharray="5 3" transform="rotate(-4,200,218)"/>
+
+  <!-- Left pan: Brain (human) -->
+  <ellipse cx="95" cy="148" rx="46" ry="10" fill="#7b2fff" opacity="0.2"/>
+  <ellipse cx="95" cy="148" rx="46" ry="10" fill="none" stroke="#7b2fff" stroke-width="2" opacity="0.6"/>
+  <!-- Brain shape -->
+  <path d="M 75 148 Q 72 132 82 126 Q 90 120 100 126 Q 108 118 118 124 Q 128 118 132 130 Q 140 136 136 148 Q 132 158 120 156 Q 110 164 100 156 Q 88 162 78 156 Q 70 150 75 148 Z" fill="#7b2fff" opacity="0.35"/>
+  <path d="M 75 148 Q 72 132 82 126 Q 90 120 100 126 Q 108 118 118 124 Q 128 118 132 130 Q 140 136 136 148 Q 132 158 120 156 Q 110 164 100 156 Q 88 162 78 156 Q 70 150 75 148 Z" fill="none" stroke="#7b2fff" stroke-width="2" opacity="0.85"/>
+  <!-- Brain fissure line -->
+  <line x1="100" y1="122" x2="100" y2="158" stroke="#7b2fff" stroke-width="1" opacity="0.5"/>
+  <path d="M 100 130 Q 104 136 100 142 Q 96 148 100 154" fill="none" stroke="#7b2fff" stroke-width="1" opacity="0.4"/>
+  <!-- Label -->
+  <text x="95" y="175" font-family="Arial,sans-serif" font-size="9" fill="#7b2fff" text-anchor="middle" opacity="0.8">Human</text>
+
+  <!-- Right pan: AI Chip -->
+  <ellipse cx="305" cy="162" rx="46" ry="10" fill="#00bfff" opacity="0.2"/>
+  <ellipse cx="305" cy="162" rx="46" ry="10" fill="none" stroke="#00bfff" stroke-width="2" opacity="0.6"/>
+  <!-- Microchip -->
+  <rect x="279" y="130" width="52" height="52" rx="5" fill="#00bfff" opacity="0.12"/>
+  <rect x="279" y="130" width="52" height="52" rx="5" fill="none" stroke="#00bfff" stroke-width="2" opacity="0.85"/>
+  <!-- Grid lines inside chip -->
+  <line x1="292" y1="130" x2="292" y2="182" stroke="#00bfff" stroke-width="0.8" opacity="0.4"/>
+  <line x1="305" y1="130" x2="305" y2="182" stroke="#00bfff" stroke-width="0.8" opacity="0.4"/>
+  <line x1="318" y1="130" x2="318" y2="182" stroke="#00bfff" stroke-width="0.8" opacity="0.4"/>
+  <line x1="279" y1="143" x2="331" y2="143" stroke="#00bfff" stroke-width="0.8" opacity="0.4"/>
+  <line x1="279" y1="156" x2="331" y2="156" stroke="#00bfff" stroke-width="0.8" opacity="0.4"/>
+  <line x1="279" y1="169" x2="331" y2="169" stroke="#00bfff" stroke-width="0.8" opacity="0.4"/>
+  <!-- Chip pins left -->
+  <rect x="270" y="137" width="9" height="5" rx="2" fill="#00bfff" opacity="0.6"/>
+  <rect x="270" y="148" width="9" height="5" rx="2" fill="#00bfff" opacity="0.6"/>
+  <rect x="270" y="159" width="9" height="5" rx="2" fill="#00bfff" opacity="0.6"/>
+  <rect x="270" y="170" width="9" height="5" rx="2" fill="#00bfff" opacity="0.6"/>
+  <!-- Chip pins right -->
+  <rect x="331" y="137" width="9" height="5" rx="2" fill="#00bfff" opacity="0.6"/>
+  <rect x="331" y="148" width="9" height="5" rx="2" fill="#00bfff" opacity="0.6"/>
+  <rect x="331" y="159" width="9" height="5" rx="2" fill="#00bfff" opacity="0.6"/>
+  <rect x="331" y="170" width="9" height="5" rx="2" fill="#00bfff" opacity="0.6"/>
+  <!-- AI label -->
+  <text x="305" y="195" font-family="Arial,sans-serif" font-size="9" fill="#00bfff" text-anchor="middle" opacity="0.8">AI</text>
+
+  <!-- Override spark in center -->
+  <text x="200" y="315" font-family="Arial,sans-serif" font-size="10" fill="#c0cfff" text-anchor="middle" opacity="0.4">Trust · Override · Govern</text>
+  <!-- Question marks indicating judgment call -->
+  <text x="200" y="88" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#00bfff" text-anchor="middle" opacity="0.2">?</text>
+  <text x="200" y="92" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#7b2fff" text-anchor="middle" opacity="0.15">?</text>
+</svg>

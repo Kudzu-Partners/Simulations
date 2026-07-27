@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+    <linearGradient id="curveL" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00bfff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#00bfff" stop-opacity="0.6"/>
+    </linearGradient>
+    <linearGradient id="curveR" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7b2fff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#7b2fff" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg)"/>
+
+  <!-- Axis line (horizontal base) -->
+  <line x1="55" y1="300" x2="345" y2="300" stroke="#c0cfff" stroke-width="1.5" stroke-opacity="0.3"/>
+  <text x="345" y="315" fill="#c0cfff" font-size="11" font-family="sans-serif" opacity="0.35">tiempo</text>
+
+  <!-- LEFT CURVE: Innovators + Early Adopters (bell peak, left side) -->
+  <!-- Filled area under left curve -->
+  <path d="M55,300 C70,300 85,250 100,200 C115,150 125,120 140,105 C155,90 165,105 175,140 C185,175 188,230 190,270 L190,300 Z"
+        fill="#00bfff" fill-opacity="0.1"/>
+  <path d="M55,300 C70,300 85,250 100,200 C115,150 125,120 140,105 C155,90 165,105 175,140 C185,175 188,230 190,270"
+        fill="none" stroke="#00bfff" stroke-width="2.5" stroke-opacity="0.75"/>
+
+  <!-- Labels left -->
+  <text x="100" y="188" text-anchor="middle" fill="#00bfff" font-size="10" font-family="sans-serif" opacity="0.7">Early</text>
+  <text x="100" y="200" text-anchor="middle" fill="#00bfff" font-size="10" font-family="sans-serif" opacity="0.7">Adopters</text>
+  <circle cx="140" cy="105" r="4" fill="#00bfff" opacity="0.9"/>
+
+  <!-- THE CHASM (gap/valley) -->
+  <rect x="190" y="240" width="20" height="60" rx="3" fill="#1b2d4f"/>
+  <!-- Chasm walls -->
+  <line x1="190" y1="240" x2="190" y2="300" stroke="#ff4444" stroke-width="2.5" stroke-opacity="0.7"/>
+  <line x1="210" y1="240" x2="210" y2="300" stroke="#ff4444" stroke-width="2.5" stroke-opacity="0.7"/>
+  <!-- Chasm label -->
+  <text x="200" y="232" text-anchor="middle" fill="#ff4444" font-size="9" font-family="sans-serif" opacity="0.8" font-weight="bold">CHASM</text>
+  <!-- Depth lines in chasm -->
+  <line x1="194" y1="255" x2="206" y2="255" stroke="#ff4444" stroke-width="1" stroke-opacity="0.4"/>
+  <line x1="194" y1="265" x2="206" y2="265" stroke="#ff4444" stroke-width="1" stroke-opacity="0.3"/>
+  <line x1="194" y1="275" x2="206" y2="275" stroke="#ff4444" stroke-width="1" stroke-opacity="0.2"/>
+
+  <!-- RIGHT CURVE: Early Majority rise -->
+  <path d="M210,300 C212,270 214,230 220,190 C228,150 245,110 265,95 C285,80 305,95 315,130 C330,165 338,230 345,300 Z"
+        fill="#7b2fff" fill-opacity="0.1"/>
+  <path d="M210,300 C212,270 214,230 220,190 C228,150 245,110 265,95 C285,80 305,95 315,130 C330,165 338,230 345,300"
+        fill="none" stroke="#7b2fff" stroke-width="2.5" stroke-opacity="0.65"/>
+  <circle cx="265" cy="95" r="4" fill="#7b2fff" opacity="0.85"/>
+  <text x="295" y="87" text-anchor="middle" fill="#7b2fff" font-size="10" font-family="sans-serif" opacity="0.7">Early</text>
+  <text x="295" y="99" text-anchor="middle" fill="#7b2fff" font-size="10" font-family="sans-serif" opacity="0.7">Majority</text>
+
+  <!-- ROCKET leaping the chasm -->
+  <!-- Rocket body -->
+  <ellipse cx="200" cy="175" rx="10" ry="20" fill="#ffd166" opacity="0.9" transform="rotate(-30, 200, 175)"/>
+  <polygon points="200,155 208,168 192,168" fill="#00bfff" opacity="0.9" transform="rotate(-30, 200, 175)"/>
+  <polygon points="192,186 186,196 196,190" fill="#ff6b6b" opacity="0.8" transform="rotate(-30, 200, 175)"/>
+  <polygon points="208,186 214,196 204,190" fill="#ff6b6b" opacity="0.8" transform="rotate(-30, 200, 175)"/>
+  <!-- Rocket trail -->
+  <path d="M182,188 C175,198 168,208 158,215" stroke="#ffd166" stroke-width="2" stroke-opacity="0.6" fill="none" stroke-dasharray="3,3"/>
+  <!-- Rocket trajectory arc -->
+  <path d="M170,245 C175,210 190,185 210,175 C225,168 235,168 245,175"
+        fill="none" stroke="#ffd166" stroke-width="1.5" stroke-opacity="0.45" stroke-dasharray="6,5"/>
+  <!-- Arrow at end of trajectory -->
+  <polygon points="245,172 253,178 241,181" fill="#ffd166" opacity="0.7" transform="rotate(15, 247, 177)"/>
+</svg>

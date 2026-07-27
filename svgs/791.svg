@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" fill="none">
+  <defs>
+    <linearGradient id="g791" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F7B678"/>
+      <stop offset="1" stop-color="#F2994A"/>
+    </linearGradient>
+  </defs>
+  <!-- reborde blanco -->
+  <g stroke="#FFFFFF" stroke-linecap="round" fill="none">
+    <path d="M200 148 v40 M110 250 v-30 h180 v30 M200 220 v30" stroke-width="30"/>
+  </g>
+  <g fill="#FFFFFF" stroke="#FFFFFF" stroke-width="16" stroke-linejoin="round">
+    <rect x="136" y="62" width="128" height="88" rx="18"/>
+    <rect x="56" y="248" width="108" height="86" rx="16"/>
+    <rect x="146" y="248" width="108" height="86" rx="16"/>
+    <rect x="236" y="248" width="108" height="86" rx="16"/>
+  </g>
+  <!-- las líneas de reporte -->
+  <g stroke="#D97A28" stroke-width="12" stroke-linecap="round" fill="none">
+    <path d="M200 150 v38 M110 252 v-32 h180 v32 M200 220 v32"/>
+  </g>
+  <!-- la dirección -->
+  <rect x="142" y="68" width="116" height="76" rx="14" fill="url(#g791)"/>
+  <circle cx="200" cy="94" r="15" fill="#FFFFFF"/>
+  <path d="M174 130 a26 18 0 0 1 52 0 Z" fill="#FFFFFF"/>
+  <!-- los tres equipos: span of control -->
+  <rect x="62" y="254" width="96" height="74" rx="12" fill="#D97A28"/>
+  <rect x="152" y="254" width="96" height="74" rx="12" fill="url(#g791)"/>
+  <rect x="242" y="254" width="96" height="74" rx="12" fill="#D97A28"/>
+  <g fill="#FFFFFF">
+    <circle cx="110" cy="279" r="11"/><path d="M91 310 a19 14 0 0 1 38 0 Z"/>
+    <circle cx="200" cy="279" r="11"/><path d="M181 310 a19 14 0 0 1 38 0 Z"/>
+    <circle cx="290" cy="279" r="11"/><path d="M271 310 a19 14 0 0 1 38 0 Z"/>
+  </g>
+</svg>

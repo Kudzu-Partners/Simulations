@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg203" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+    <radialGradient id="radarGlow203" cx="50%" cy="55%" r="50%">
+      <stop offset="0%" stop-color="#00bfff" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#00bfff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#00bfff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sweep203" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0.55"/>
+    </linearGradient>
+    <radialGradient id="threatGlow203" cx="78%" cy="32%" r="20%">
+      <stop offset="0%" stop-color="#ff4444" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ff4444" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg203)"/>
+  <rect width="400" height="400" rx="32" fill="url(#radarGlow203)"/>
+  <rect width="400" height="400" rx="32" fill="url(#threatGlow203)"/>
+
+  <!-- Concentric radar rings -->
+  <circle cx="200" cy="210" r="135" fill="none" stroke="#00bfff" stroke-width="1.2" opacity="0.4"/>
+  <circle cx="200" cy="210" r="105" fill="none" stroke="#00bfff" stroke-width="1"   opacity="0.3"/>
+  <circle cx="200" cy="210" r="75"  fill="none" stroke="#00bfff" stroke-width="0.9" opacity="0.25"/>
+  <circle cx="200" cy="210" r="45"  fill="none" stroke="#00bfff" stroke-width="0.8" opacity="0.2"/>
+  <circle cx="200" cy="210" r="15"  fill="none" stroke="#00bfff" stroke-width="0.7" opacity="0.18"/>
+
+  <!-- Cross hairs -->
+  <line x1="65" y1="210" x2="335" y2="210" stroke="#00bfff" stroke-width="0.6" opacity="0.18"/>
+  <line x1="200" y1="75" x2="200" y2="345" stroke="#00bfff" stroke-width="0.6" opacity="0.18"/>
+
+  <!-- Sweep beam (triangular sector) -->
+  <path d="M200 210 L335 130 A140 140 0 0 0 308 102 Z" fill="url(#sweep203)" opacity="0.7"/>
+  <line x1="200" y1="210" x2="335" y2="130" stroke="#00ff88" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- Center node (HQ) -->
+  <circle cx="200" cy="210" r="6" fill="#00bfff" opacity="0.95"/>
+  <circle cx="200" cy="210" r="11" fill="none" stroke="#00bfff" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- Signal blips -->
+  <!-- Competitor blips (cyan) -->
+  <circle cx="142" cy="172" r="5" fill="#00bfff" opacity="0.85"/>
+  <text x="142" y="160" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#00bfff" opacity="0.7">C1</text>
+
+  <circle cx="240" cy="276" r="5" fill="#00bfff" opacity="0.85"/>
+  <text x="240" y="294" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#00bfff" opacity="0.7">C2</text>
+
+  <circle cx="118" cy="248" r="4" fill="#00bfff" opacity="0.7"/>
+  <text x="116" y="266" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#00bfff" opacity="0.55">C3</text>
+
+  <circle cx="270" cy="178" r="4" fill="#00bfff" opacity="0.7"/>
+  <text x="270" y="166" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#00bfff" opacity="0.55">C4</text>
+
+  <!-- THREAT blip (in sweep beam) -->
+  <circle cx="298" cy="138" r="8" fill="#ff4444" opacity="0.95"/>
+  <circle cx="298" cy="138" r="13" fill="none" stroke="#ff4444" stroke-width="1.5" opacity="0.55"/>
+  <circle cx="298" cy="138" r="19" fill="none" stroke="#ff4444" stroke-width="1" opacity="0.3"/>
+  <text x="298" y="124" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" font-weight="bold" fill="#ff4444" opacity="0.95">THREAT</text>
+
+  <!-- Bearing dial markings -->
+  <g font-family="'Courier New',monospace" font-size="8" fill="#00bfff" opacity="0.6">
+    <text x="200" y="68"  text-anchor="middle">0°</text>
+    <text x="345" y="214" text-anchor="middle">90°</text>
+    <text x="200" y="358" text-anchor="middle">180°</text>
+    <text x="55"  y="214" text-anchor="middle">270°</text>
+  </g>
+
+  <!-- War game indicator panel (bottom-left) -->
+  <rect x="22" y="22" width="78" height="46" rx="6" fill="#0d1b2a" stroke="#00bfff" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="61" y="38" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#00bfff" opacity="0.7" letter-spacing="1">WAR ROOM</text>
+  <line x1="32" y1="44" x2="90" y2="44" stroke="#00ff88" stroke-width="1" opacity="0.4"/>
+  <circle cx="35" cy="54" r="2.5" fill="#00ff88" opacity="0.85"/>
+  <text x="44" y="58" font-family="'Courier New',monospace" font-size="7" fill="#00ff88" opacity="0.7">SCENARIO 03</text>
+
+  <!-- EARLY WARNING tag -->
+  <rect x="295" y="356" width="86" height="22" rx="5" fill="#ff4444" opacity="0.16" stroke="#ff4444" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="338" y="371" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#ff4444" opacity="0.85" letter-spacing="1">ALERT</text>
+</svg>

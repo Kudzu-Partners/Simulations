@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg176" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg176)"/>
+
+  <!-- Globe outline (simplified) -->
+  <circle cx="200" cy="195" r="120" fill="none" stroke="#c0cfff" stroke-width="1.5" opacity="0.2"/>
+  <ellipse cx="200" cy="195" rx="55" ry="120" fill="none" stroke="#c0cfff" stroke-width="1" opacity="0.15"/>
+  <line x1="80" y1="195" x2="320" y2="195" stroke="#c0cfff" stroke-width="1" opacity="0.15"/>
+  <path d="M 82 148 Q 200 165 318 148" fill="none" stroke="#c0cfff" stroke-width="1" opacity="0.12"/>
+  <path d="M 82 242 Q 200 225 318 242" fill="none" stroke="#c0cfff" stroke-width="1" opacity="0.12"/>
+
+  <!-- LEFT HALF: Office (in-person) -->
+  <!-- Office building silhouette -->
+  <rect x="88" y="132" width="78" height="90" rx="4" fill="#f5c842" opacity="0.12"/>
+  <rect x="88" y="132" width="78" height="90" rx="4" fill="none" stroke="#f5c842" stroke-width="2" opacity="0.7"/>
+  <!-- Windows grid -->
+  <rect x="96" y="142" width="14" height="12" rx="2" fill="#f5c842" opacity="0.4"/>
+  <rect x="116" y="142" width="14" height="12" rx="2" fill="#f5c842" opacity="0.4"/>
+  <rect x="136" y="142" width="14" height="12" rx="2" fill="#f5c842" opacity="0.3"/>
+  <rect x="152" y="142" width="8" height="12" rx="2" fill="#f5c842" opacity="0.3"/>
+  <rect x="96" y="162" width="14" height="12" rx="2" fill="#f5c842" opacity="0.35"/>
+  <rect x="116" y="162" width="14" height="12" rx="2" fill="#f5c842" opacity="0.45"/>
+  <rect x="136" y="162" width="14" height="12" rx="2" fill="#f5c842" opacity="0.35"/>
+  <rect x="96" y="182" width="14" height="12" rx="2" fill="#f5c842" opacity="0.3"/>
+  <rect x="116" y="182" width="14" height="12" rx="2" fill="#f5c842" opacity="0.3"/>
+  <rect x="136" y="182" width="14" height="12" rx="2" fill="#f5c842" opacity="0.4"/>
+  <!-- Door -->
+  <rect x="118" y="202" width="18" height="20" rx="2" fill="#f5c842" opacity="0.3"/>
+  <!-- Office label -->
+  <text x="127" y="238" font-family="Arial,sans-serif" font-size="8" fill="#f5c842" text-anchor="middle" opacity="0.7">Office</text>
+
+  <!-- RIGHT HALF: Home/remote -->
+  <!-- House silhouette -->
+  <polygon points="272,148 234,148 234,222 310,222 310,148" fill="none" stroke="#74b9ff" stroke-width="2" opacity="0.7"/>
+  <polygon points="222,150 272,112 322,150" fill="#74b9ff" opacity="0.12"/>
+  <polygon points="222,150 272,112 322,150" fill="none" stroke="#74b9ff" stroke-width="2" opacity="0.7"/>
+  <!-- Laptop inside house -->
+  <rect x="248" y="185" width="48" height="28" rx="3" fill="#74b9ff" opacity="0.15"/>
+  <rect x="248" y="185" width="48" height="28" rx="3" fill="none" stroke="#74b9ff" stroke-width="1.5" opacity="0.6"/>
+  <rect x="240" y="212" width="64" height="5" rx="2" fill="#74b9ff" opacity="0.3"/>
+  <!-- Screen glow -->
+  <rect x="252" y="188" width="40" height="22" rx="2" fill="#74b9ff" opacity="0.2"/>
+  <!-- WiFi signal -->
+  <path d="M 268 175 Q 272 168 276 175" fill="none" stroke="#74b9ff" stroke-width="1.5" opacity="0.6"/>
+  <path d="M 264 171 Q 272 163 280 171" fill="none" stroke="#74b9ff" stroke-width="1" opacity="0.4"/>
+  <!-- Remote label -->
+  <text x="272" y="238" font-family="Arial,sans-serif" font-size="8" fill="#74b9ff" text-anchor="middle" opacity="0.7">Remote</text>
+
+  <!-- Culture bridge connecting both sides -->
+  <path d="M 166 190 Q 200 170 234 190" fill="none" stroke="#c0cfff" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <!-- Bridge pillars -->
+  <line x1="178" y1="190" x2="178" y2="205" stroke="#c0cfff" stroke-width="2" opacity="0.4"/>
+  <line x1="200" y1="174" x2="200" y2="205" stroke="#c0cfff" stroke-width="2" opacity="0.4"/>
+  <line x1="222" y1="190" x2="222" y2="205" stroke="#c0cfff" stroke-width="2" opacity="0.4"/>
+  <!-- Bridge label -->
+  <text x="200" y="218" font-family="Arial,sans-serif" font-size="8" fill="#c0cfff" text-anchor="middle" opacity="0.55">Culture</text>
+
+  <!-- 12 country dots (small) around globe -->
+  <circle cx="145" cy="108" r="3" fill="#c0cfff" opacity="0.5"/>
+  <circle cx="260" cy="100" r="3" fill="#c0cfff" opacity="0.5"/>
+  <circle cx="308" cy="155" r="3" fill="#c0cfff" opacity="0.45"/>
+  <circle cx="312" cy="240" r="3" fill="#c0cfff" opacity="0.45"/>
+  <circle cx="265" cy="282" r="3" fill="#c0cfff" opacity="0.5"/>
+  <circle cx="140" cy="285" r="3" fill="#c0cfff" opacity="0.5"/>
+  <circle cx="88" cy="240" r="3" fill="#c0cfff" opacity="0.45"/>
+  <circle cx="85" cy="155" r="3" fill="#c0cfff" opacity="0.45"/>
+  <circle cx="188" cy="78" r="3" fill="#c0cfff" opacity="0.5"/>
+  <circle cx="215" cy="78" r="3" fill="#c0cfff" opacity="0.5"/>
+  <circle cx="335" cy="195" r="3" fill="#c0cfff" opacity="0.4"/>
+  <circle cx="65" cy="195" r="3" fill="#c0cfff" opacity="0.4"/>
+
+  <!-- Stats -->
+  <text x="200" y="345" font-family="Arial,sans-serif" font-size="8" fill="#c0cfff" text-anchor="middle" opacity="0.4">3,800 employees · 12 countries</text>
+  <text x="200" y="360" font-family="Arial,sans-serif" font-size="9" fill="#c0cfff" text-anchor="middle" opacity="0.35" letter-spacing="1">HYBRID CULTURE DESIGN</text>
+</svg>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg460" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d0a4e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <linearGradient id="megGrad460" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b9d"/>
+      <stop offset="100%" stop-color="#c0392b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg460)"/>
+
+  <text x="200" y="58" text-anchor="middle" fill="#ff6b9d" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">BRAND CRISIS · INFLUENCER</text>
+
+  <!-- propagation rings (background) -->
+  <g fill="none" stroke="#ff6b6b" stroke-width="1" stroke-opacity="0.4">
+    <circle cx="280" cy="180" r="40" stroke-dasharray="3,3"/>
+    <circle cx="280" cy="180" r="65" stroke-dasharray="3,3"/>
+    <circle cx="280" cy="180" r="95" stroke-dasharray="3,3"/>
+  </g>
+
+  <!-- MEGAPHONE BROKEN (hero, central) -->
+  <g transform="translate(180,225)">
+    <!-- handle -->
+    <rect x="-95" y="-12" width="50" height="24" rx="3" fill="#5a3210" stroke="#3d1f08" stroke-width="1.5"/>
+    <!-- horn body -->
+    <path d="M -45 -28 L 30 -50 L 30 50 L -45 28 Z" fill="url(#megGrad460)" stroke="#1a2744" stroke-width="2.5"/>
+    <!-- crack -->
+    <path d="M -10 -45 L 0 -25 L -8 -10 L 5 5 L -4 25 L 8 45" fill="none" stroke="#1a2744" stroke-width="2.5"/>
+    <!-- inner ring -->
+    <ellipse cx="30" cy="0" rx="6" ry="50" fill="#7a1418" stroke="#1a2744" stroke-width="1.5"/>
+    <!-- sound waves emanating (but broken) -->
+    <g stroke="#ff6b6b" stroke-width="2" fill="none" opacity="0.85">
+      <path d="M 45 -30 Q 60 -28 65 -22"/>
+      <path d="M 45 0 Q 65 0 80 0"/>
+      <path d="M 45 30 Q 60 28 65 22"/>
+    </g>
+    <!-- sparks (controversy) -->
+    <g fill="#f5c842">
+      <polygon points="92,-10 86,-2 96,-2 90,8 100,-2 90,-2 96,-12"/>
+      <polygon points="100,15 96,21 104,21 100,29 108,21 100,21 104,11"/>
+    </g>
+  </g>
+
+  <!-- BROKEN SHIELD (top-right, brand damaged) -->
+  <g transform="translate(320,180)">
+    <path d="M 0 -25 L 22 -19 L 22 12 Q 22 30 0 38 Q -22 30 -22 12 L -22 -19 Z"
+          fill="#c0cfff" fill-opacity="0.2" stroke="#c0cfff" stroke-width="1.5"/>
+    <!-- crack inside -->
+    <path d="M -8 -16 L -2 0 L -12 12 L 4 22 L -2 30" stroke="#ff6b6b" stroke-width="2.2" fill="none"/>
+  </g>
+
+  <!-- Influencer avatar (top-left) -->
+  <g transform="translate(60,90)">
+    <circle cx="0" cy="0" r="16" fill="#ff6b9d" stroke="#c0cfff" stroke-width="2"/>
+    <circle cx="0" cy="-3" r="5" fill="#ffe27a"/>
+    <path d="M -8 6 Q 0 14 8 6" fill="#ffe27a"/>
+    <!-- @ symbol -->
+    <text x="22" y="6" fill="#ff6b9d" font-size="14" font-family="monospace" font-weight="bold">@</text>
+  </g>
+
+  <!-- LEGAL § (bottom-left) -->
+  <g transform="translate(60,335)">
+    <circle cx="0" cy="0" r="14" fill="#c0cfff" fill-opacity="0.18" stroke="#c0cfff" stroke-width="1.3"/>
+    <text x="0" y="4" text-anchor="middle" fill="#c0cfff" font-size="13" font-family="Georgia, serif" font-weight="bold">§</text>
+  </g>
+
+  <text x="200" y="378" text-anchor="middle" fill="#c0cfff" font-size="10" font-family="monospace" opacity="0.42" letter-spacing="1.2">Brand Crisis · Influencer · Recovery</text>
+</svg>

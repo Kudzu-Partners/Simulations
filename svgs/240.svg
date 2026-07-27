@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg240" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+    <radialGradient id="lensfill240" cx="0.38" cy="0.38" r="0.55">
+      <stop offset="0%" stop-color="#1a3a6c" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#0a1530" stop-opacity="0.97"/>
+    </radialGradient>
+    <clipPath id="lensclip240">
+      <circle cx="172" cy="178" r="90"/>
+    </clipPath>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg240)"/>
+
+  <!-- ── Document behind the lens ── -->
+  <rect x="88" y="88" width="168" height="215" rx="7"
+        fill="#1a2a50" stroke="#00bfff" stroke-width="1.5" opacity="0.55"/>
+  <line x1="104" y1="118" x2="240" y2="118" stroke="#a0aec0" stroke-width="1" opacity="0.38"/>
+  <line x1="104" y1="134" x2="240" y2="134" stroke="#a0aec0" stroke-width="1" opacity="0.32"/>
+  <line x1="104" y1="150" x2="240" y2="150" stroke="#a0aec0" stroke-width="1" opacity="0.32"/>
+  <line x1="104" y1="166" x2="240" y2="166" stroke="#a0aec0" stroke-width="1" opacity="0.32"/>
+  <line x1="104" y1="182" x2="240" y2="182" stroke="#a0aec0" stroke-width="1" opacity="0.28"/>
+  <line x1="104" y1="198" x2="240" y2="198" stroke="#a0aec0" stroke-width="1" opacity="0.28"/>
+  <line x1="104" y1="214" x2="180" y2="214" stroke="#a0aec0" stroke-width="1" opacity="0.24"/>
+
+  <!-- ── Magnifying lens fill ── -->
+  <circle cx="172" cy="178" r="90" fill="url(#lensfill240)" opacity="0.94"/>
+
+  <!-- ── Content inside lens (magnified — red flag triangle) ── -->
+  <g clip-path="url(#lensclip240)">
+    <!-- Magnified document lines -->
+    <line x1="104" y1="148" x2="244" y2="148" stroke="#a0aec0" stroke-width="2" opacity="0.45"/>
+    <line x1="104" y1="168" x2="244" y2="168" stroke="#a0aec0" stroke-width="2" opacity="0.4"/>
+    <line x1="104" y1="188" x2="244" y2="188" stroke="#a0aec0" stroke-width="2" opacity="0.4"/>
+    <line x1="104" y1="208" x2="200" y2="208" stroke="#a0aec0" stroke-width="2" opacity="0.35"/>
+
+    <!-- Red flag warning triangle — centered in lens -->
+    <polygon points="172,118 136,202 208,202"
+             fill="#ff3333" opacity="0.88"/>
+    <polygon points="172,118 136,202 208,202"
+             fill="none" stroke="#ff6666" stroke-width="2.5"/>
+    <!-- Exclamation mark -->
+    <rect x="169" y="136" width="6" height="38" rx="3" fill="white" opacity="0.92"/>
+    <circle cx="172" cy="190" r="4.5" fill="white" opacity="0.92"/>
+
+    <!-- "RED FLAG" label below triangle inside lens -->
+    <text x="172" y="218" font-family="monospace" font-size="9" fill="#ff9999"
+          text-anchor="middle" opacity="0.82">RED FLAG</text>
+  </g>
+
+  <!-- ── Lens ring ── -->
+  <circle cx="172" cy="178" r="90" fill="none" stroke="#f5c842" stroke-width="3.8" opacity="0.92"/>
+  <!-- Lens shine -->
+  <circle cx="148" cy="152" r="22" fill="white" opacity="0.035"/>
+
+  <!-- ── Handle ── -->
+  <line x1="244" y1="252" x2="328" y2="340"
+        stroke="#f5c842" stroke-width="12" stroke-linecap="round" opacity="0.88"/>
+  <line x1="244" y1="252" x2="328" y2="340"
+        stroke="#f5a623" stroke-width="6"  stroke-linecap="round" opacity="0.45"/>
+
+  <!-- ── Audit results panel (right side) ── -->
+  <!-- Check 1 -->
+  <text x="340" y="106" font-family="monospace" font-size="18" fill="#00ff88" opacity="0.82">✓</text>
+  <!-- Check 2 -->
+  <text x="340" y="138" font-family="monospace" font-size="18" fill="#00ff88" opacity="0.82">✓</text>
+  <!-- X — failed control -->
+  <text x="342" y="170" font-family="monospace" font-size="18" fill="#ff3333" opacity="0.90">✗</text>
+  <!-- Check 3 -->
+  <text x="340" y="202" font-family="monospace" font-size="18" fill="#00ff88" opacity="0.65">✓</text>
+
+  <!-- Bottom label -->
+  <text x="175" y="372" font-family="monospace" font-size="9.5" fill="#a0aec0" text-anchor="middle" opacity="0.42">Audit Risk Assessment</text>
+</svg>

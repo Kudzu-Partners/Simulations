@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg116" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+    <linearGradient id="shield116" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00bfff"/>
+      <stop offset="100%" stop-color="#0a4070"/>
+    </linearGradient>
+    <radialGradient id="bulb116" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0%" stop-color="#fff8c0"/>
+      <stop offset="60%" stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#a87a10"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg116)"/>
+  <!-- Shield -->
+  <g transform="translate(200 200)">
+    <path d="M0 -130 L100 -100 L100 -10 Q100 80 0 135 Q-100 80 -100 -10 L-100 -100 Z"
+          fill="url(#shield116)" stroke="#ffffff" stroke-width="3" stroke-linejoin="round"/>
+    <!-- Inner shield outline -->
+    <path d="M0 -110 L82 -85 L82 -10 Q82 65 0 115 Q-82 65 -82 -10 L-82 -85 Z"
+          fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.45"/>
+    <!-- Lightbulb (the IP idea being protected) -->
+    <g transform="translate(0 -10)">
+      <circle r="38" fill="url(#bulb116)" stroke="#ffffff" stroke-width="2.5"/>
+      <path d="M-14 28 L-14 38 Q-14 46 -6 46 L6 46 Q14 46 14 38 L14 28 Z" fill="#ffffff" opacity="0.95" stroke="#0d1b2a" stroke-width="1.5"/>
+      <line x1="-10" y1="34" x2="10" y2="34" stroke="#0d1b2a" stroke-width="1.2"/>
+      <line x1="-10" y1="40" x2="10" y2="40" stroke="#0d1b2a" stroke-width="1.2"/>
+      <!-- Filament -->
+      <path d="M-8 -10 Q0 4 8 -10" fill="none" stroke="#a87a10" stroke-width="2"/>
+      <!-- Rays -->
+      <g stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.7">
+        <line x1="0" y1="-50" x2="0" y2="-60"/>
+        <line x1="-36" y1="-26" x2="-46" y2="-32"/>
+        <line x1="36" y1="-26" x2="46" y2="-32"/>
+        <line x1="-44" y1="0" x2="-54" y2="0"/>
+        <line x1="44" y1="0" x2="54" y2="0"/>
+      </g>
+    </g>
+    <!-- Patent ® symbol -->
+    <g transform="translate(0 78)">
+      <circle r="14" fill="#ffffff" opacity="0.95"/>
+      <text y="6" font-family="Georgia, serif" font-size="20" font-weight="700" fill="#0d1b2a" text-anchor="middle">®</text>
+    </g>
+  </g>
+  <!-- Threats around shield (arrows pointing in, deflected) -->
+  <g stroke="#e74c3c" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.85">
+    <path d="M50 70 L95 105"/>
+    <polyline points="92,98 96,108 86,108"/>
+    <path d="M350 70 L305 105"/>
+    <polyline points="308,98 304,108 314,108"/>
+    <path d="M50 330 L95 295"/>
+    <polyline points="92,302 96,292 86,292"/>
+    <path d="M350 330 L305 295"/>
+    <polyline points="308,302 304,292 314,292"/>
+  </g>
+</svg>
