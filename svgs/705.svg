@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg705" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4a0e8f"/>
+      <stop offset="1" stop-color="#7b2d8b"/>
+    </linearGradient>
+    <linearGradient id="peak705" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd166" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#e67e22" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg705)"/>
+
+  <!-- pico secundario -->
+  <polygon points="60,320 160,150 240,320" fill="#e67e22" opacity="0.25"/>
+  <!-- pico principal -->
+  <polygon points="140,320 250,100 350,320" fill="url(#peak705)" stroke="#ffd166" stroke-width="3" stroke-opacity="0.8"/>
+  <!-- nieve de la cima -->
+  <polyline points="222,158 250,100 277,158 262,146 250,162 238,146" fill="#ffd166" opacity="0.9"/>
+
+  <!-- sendero zigzag que sube al pico -->
+  <polyline points="170,320 220,282 188,250 240,212 218,186 248,150" fill="none" stroke="#ffd166" stroke-width="5" stroke-dasharray="2 11" stroke-linecap="round" opacity="0.95"/>
+
+  <!-- acceso restringido: señal de prohibido sobre el sendero -->
+  <g>
+    <line x1="204" y1="266" x2="204" y2="296" stroke="#dfe6e9" stroke-width="4" opacity="0.8"/>
+    <circle cx="204" cy="248" r="22" fill="#4a0e8f" stroke="#e74c3c" stroke-width="5"/>
+    <line x1="190" y1="234" x2="218" y2="262" stroke="#e74c3c" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <!-- brújula del operador de aventura -->
+  <g transform="translate(96 110)">
+    <circle r="30" fill="#4a0e8f" opacity="0.6" stroke="#e67e22" stroke-width="4"/>
+    <polygon points="0,-17 7,0 0,17 -7,0" fill="#ffd166"/>
+    <polygon points="0,-17 7,0 0,0 -7,0" fill="#e67e22"/>
+    <circle r="3.5" fill="#4a0e8f"/>
+  </g>
+
+  <!-- línea de suelo -->
+  <line x1="56" y1="320" x2="348" y2="320" stroke="#ffd166" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+</svg>

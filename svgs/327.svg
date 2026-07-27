@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a3a5c"/>
+      <stop offset="100%" stop-color="#2c5f8a"/>
+    </linearGradient>
+    <linearGradient id="billGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#52b788" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#74b9ff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#52b788" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="stream1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#74b9ff" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#74b9ff" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="stream2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#52b788" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#52b788" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="stream3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5c842" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#f5c842" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg)"/>
+
+  <!-- PAYCHECK / SALARY BILL at top -->
+  <rect x="80" y="60" width="240" height="85" rx="10"
+        fill="url(#billGrad)" stroke="#74b9ff" stroke-width="2" stroke-opacity="0.6"/>
+  <!-- Bill decoration lines -->
+  <line x1="95" y1="80" x2="305" y2="80" stroke="#74b9ff" stroke-width="1" stroke-opacity="0.3"/>
+  <line x1="95" y1="130" x2="305" y2="130" stroke="#74b9ff" stroke-width="1" stroke-opacity="0.3"/>
+  <!-- Dollar/salary icon in bill -->
+  <text x="200" y="112" text-anchor="middle" fill="#dfe6e9" font-size="26" font-family="monospace" font-weight="bold" opacity="0.85">$SUELDO</text>
+  <!-- Corner seal -->
+  <circle cx="105" cy="103" r="12" fill="none" stroke="#74b9ff" stroke-width="1.5" stroke-opacity="0.45"/>
+  <text x="105" y="107" text-anchor="middle" fill="#74b9ff" font-size="9" font-family="monospace" opacity="0.6">$</text>
+  <circle cx="295" cy="103" r="12" fill="none" stroke="#74b9ff" stroke-width="1.5" stroke-opacity="0.45"/>
+  <text x="295" y="107" text-anchor="middle" fill="#74b9ff" font-size="9" font-family="monospace" opacity="0.6">$</text>
+
+  <!-- SPLIT FUNNEL from bill down -->
+  <path d="M200,145 L200,178" stroke="#dfe6e9" stroke-width="3" stroke-opacity="0.6"/>
+  <!-- Split point -->
+  <circle cx="200" cy="180" r="6" fill="#dfe6e9" opacity="0.7"/>
+  <!-- Three diverging paths -->
+  <path d="M200,180 C190,195 130,205 110,218" stroke="url(#stream1)" stroke-width="3" fill="none"/>
+  <path d="M200,180 C200,195 200,208 200,222" stroke="url(#stream2)" stroke-width="3" fill="none"/>
+  <path d="M200,180 C210,195 270,205 290,218" stroke="url(#stream3)" stroke-width="3" fill="none"/>
+
+  <!-- STREAM 1: Gastos / Wallet (left) -->
+  <rect x="70" y="218" width="80" height="72" rx="12"
+        fill="#74b9ff" fill-opacity="0.12" stroke="#74b9ff" stroke-width="2" stroke-opacity="0.65"/>
+  <!-- Wallet icon -->
+  <rect x="84" y="233" width="52" height="34" rx="5" fill="none" stroke="#74b9ff" stroke-width="2" opacity="0.75"/>
+  <rect x="95" y="229" width="30" height="8" rx="3" fill="#74b9ff" opacity="0.5"/>
+  <circle cx="124" cy="250" r="5" fill="#74b9ff" opacity="0.75"/>
+  <!-- Label -->
+  <text x="110" y="310" text-anchor="middle" fill="#74b9ff" font-size="11" font-family="sans-serif" opacity="0.75" font-weight="bold">GASTOS</text>
+  <text x="110" y="325" text-anchor="middle" fill="#74b9ff" font-size="10" font-family="monospace" opacity="0.55">~50%</text>
+
+  <!-- STREAM 2: Ahorro / Coin jar (center) -->
+  <rect x="160" y="222" width="80" height="72" rx="12"
+        fill="#52b788" fill-opacity="0.12" stroke="#52b788" stroke-width="2" stroke-opacity="0.65"/>
+  <!-- Piggy/coin stack icon -->
+  <ellipse cx="200" cy="261" rx="20" ry="10" fill="#52b788" opacity="0.3" stroke="#52b788" stroke-width="1.5" stroke-opacity="0.7"/>
+  <ellipse cx="200" cy="252" rx="20" ry="10" fill="#52b788" opacity="0.35" stroke="#52b788" stroke-width="1.5" stroke-opacity="0.7"/>
+  <ellipse cx="200" cy="243" rx="20" ry="10" fill="#52b788" opacity="0.4" stroke="#52b788" stroke-width="2" stroke-opacity="0.8"/>
+  <!-- Label -->
+  <text x="200" y="310" text-anchor="middle" fill="#52b788" font-size="11" font-family="sans-serif" opacity="0.75" font-weight="bold">AHORRO</text>
+  <text x="200" y="325" text-anchor="middle" fill="#52b788" font-size="10" font-family="monospace" opacity="0.55">~30%</text>
+
+  <!-- STREAM 3: Inversión / Bar chart (right) -->
+  <rect x="250" y="218" width="80" height="72" rx="12"
+        fill="#f5c842" fill-opacity="0.1" stroke="#f5c842" stroke-width="2" stroke-opacity="0.6"/>
+  <!-- Growing bar chart -->
+  <rect x="266" y="272" width="10" height="16" rx="2" fill="#f5c842" opacity="0.6"/>
+  <rect x="280" y="258" width="10" height="30" rx="2" fill="#f5c842" opacity="0.75"/>
+  <rect x="294" y="244" width="10" height="44" rx="2" fill="#f5c842" opacity="0.9"/>
+  <line x1="264" y1="288" x2="308" y2="288" stroke="#f5c842" stroke-width="1.5" opacity="0.5"/>
+  <!-- Up arrow on last bar -->
+  <polygon points="299,236 303,244 307,236" fill="#f5c842" opacity="0.85"/>
+  <!-- Label -->
+  <text x="290" y="310" text-anchor="middle" fill="#f5c842" font-size="11" font-family="sans-serif" opacity="0.75" font-weight="bold">INVERSIÓN</text>
+  <text x="290" y="325" text-anchor="middle" fill="#f5c842" font-size="10" font-family="monospace" opacity="0.55">~20%</text>
+
+  <!-- Sofía name hint -->
+  <text x="200" y="368" text-anchor="middle" fill="#dfe6e9" font-size="11" font-family="sans-serif" opacity="0.35" letter-spacing="1">SOFÍA MORALES · 18 años · Ecuador</text>
+</svg>

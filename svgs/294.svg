@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg294" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg294)"/>
+
+  <!-- SWOT 2x2 grid -->
+  <!-- Dividers -->
+  <line x1="200" y1="48" x2="200" y2="352" stroke="#f5c842" stroke-width="2" opacity="0.35"/>
+  <line x1="48" y1="200" x2="352" y2="200" stroke="#f5c842" stroke-width="2" opacity="0.35"/>
+
+  <!-- S: Strengths (top-left, green) -->
+  <rect x="52" y="52" width="140" height="140" rx="12" fill="#0a1f10" stroke="#00ff88" stroke-width="2.5"/>
+  <!-- Shield icon -->
+  <path d="M 122 76 L 102 86 L 102 118 Q 102 138 122 148 Q 142 138 142 118 L 142 86 Z"
+        fill="#00ff88" opacity="0.8"/>
+  <path d="M 113 114 L 120 121 L 134 106" stroke="#0a1f10" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- W: Weaknesses (top-right, red) -->
+  <rect x="208" y="52" width="140" height="140" rx="12" fill="#2a0a0a" stroke="#e74c3c" stroke-width="2.5"/>
+  <!-- Crack/weak icon -->
+  <path d="M 278 76 L 262 110 L 274 110 L 258 148" stroke="#e74c3c" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- O: Opportunities (bottom-left, blue) -->
+  <rect x="52" y="208" width="140" height="140" rx="12" fill="#1a2744" stroke="#74b9ff" stroke-width="2.5"/>
+  <!-- Rocket icon -->
+  <path d="M 122 338 L 108 310 L 108 268 Q 122 248 136 268 L 136 310 Z" fill="#74b9ff" opacity="0.8"/>
+  <circle cx="122" cy="268" r="10" fill="#1a2744"/>
+  <!-- Flames -->
+  <path d="M 112 312 Q 116 330 122 338 Q 128 330 132 312" fill="#f5c842" opacity="0.7"/>
+
+  <!-- T: Threats (bottom-right, orange) -->
+  <rect x="208" y="208" width="140" height="140" rx="12" fill="#1a1200" stroke="#f39c12" stroke-width="2.5"/>
+  <!-- Warning triangle icon -->
+  <path d="M 278 228 L 242 292 L 314 292 Z" fill="none" stroke="#f39c12" stroke-width="5" stroke-linejoin="round"/>
+  <line x1="278" y1="248" x2="278" y2="272" stroke="#f39c12" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="278" cy="284" r="4" fill="#f39c12"/>
+
+  <!-- Center SWOT tag -->
+  <circle cx="200" cy="200" r="16" fill="#1a3a5c" stroke="#f5c842" stroke-width="2.5"/>
+  <text x="200" y="205" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#f5c842">SW</text>
+
+  <!-- Letters in corners -->
+  <text x="78" y="78" font-family="'Courier New',monospace" font-size="22" font-weight="bold" fill="#00ff88" opacity="0.5">S</text>
+  <text x="316" y="78" font-family="'Courier New',monospace" font-size="22" font-weight="bold" fill="#e74c3c" opacity="0.5">W</text>
+  <text x="78" y="234" font-family="'Courier New',monospace" font-size="22" font-weight="bold" fill="#74b9ff" opacity="0.5">O</text>
+  <text x="316" y="234" font-family="'Courier New',monospace" font-size="22" font-weight="bold" fill="#f39c12" opacity="0.5">T</text>
+</svg>
