@@ -8,7 +8,9 @@ Playable business simulations by [Eureka Simulations](https://www.eurekasimulati
 
 **▶ [Play in your browser — open.eurekasimulations.com/player](https://open.eurekasimulations.com/player/)** — hosted with GitHub Pages. No install, no account.
 
-Deep links work too: [`player/?sim=015`](https://open.eurekasimulations.com/player/?sim=015) (by external id) or `player/?src=<url>` (any CORS-enabled JSON).
+Deep links work too: [`player/?sim=015`](https://open.eurekasimulations.com/player/?sim=015) (by external id), `player/?src=<url>` (any CORS-enabled JSON), or `?lang=es` to open the player and the simulation in Spanish — [`player/?sim=015&lang=es`](https://open.eurekasimulations.com/player/?sim=015&lang=es).
+
+Every simulation ships in **English and Spanish**. The player records which languages each one supports, lets you filter the catalog by language, and starts a simulation in your language rather than defaulting to English; the choice follows you across the site and into shared links.
 
 Prefer to run it locally (development, offline evaluation)?
 
@@ -41,12 +43,13 @@ This catalog is seeded progressively as simulations pass our quality-review life
 
 A simulation JSON carries metadata (`externalid`, `name`, `description`, `category`, `level`, `max_periods`) plus three payloads: `view` (HTML), `css`, and `js` — a class extending `USF.SimulationAdapter` that implements the round loop: `initialize`, `setupUI`, `validateDecisions`, `calculateResults`, charts, history, hints, translations (`en`/`es`), and a final performance summary. The player embeds an open implementation of that runtime and sandboxes each sim in an iframe. Full details in [`player/README.md`](player/README.md).
 
-Round-trip smoke test for any sim:
+Round-trip smoke test for any sim, in one language or in every language it ships:
 
 ```bash
 cd player/test
 npm install jsdom
 node headless_replay.js 015
+node headless_replay.js --lang all 015
 ```
 
 ## Contribute

@@ -8,7 +8,9 @@ A standalone, zero-backend player for **Eureka Express business simulations**. E
 
 **▶ Hosted player: [open.eurekasimulations.com/player](https://open.eurekasimulations.com/player/)** — this repository is published with GitHub Pages, so the player is live as-is. Nothing to install.
 
-Deep links: [`?sim=015`](https://open.eurekasimulations.com/player/?sim=015) loads a catalog sim by external id; `?src=https://…/sim.json` loads one from any CORS-enabled URL.
+Deep links: [`?sim=015`](https://open.eurekasimulations.com/player/?sim=015) loads a catalog sim by external id; `?src=https://…/sim.json` loads one from any CORS-enabled URL; `?lang=es` opens the player *and* the simulation in Spanish ([`?sim=015&lang=es`](https://open.eurekasimulations.com/player/?sim=015&lang=es)).
+
+The language choice is remembered (`eureka-lang` in `localStorage`, shared with the landing page), so it carries from link to link. Without it the player follows the browser language, falling back to English.
 
 To run it locally instead (development, offline use):
 
@@ -25,7 +27,7 @@ Or simply open `player/index.html` from disk and **drag & drop** any simulation 
 ```
 player/
   index.html           the player: catalog browser + sandboxed runtime + USF shim
-  manifest.json        generated catalog index (id, name, category, level, rounds…)
+  manifest.json        generated catalog index (id, name, category, level, rounds, langs…)
   build_manifest.py    regenerates manifest.json from a folder of sim JSONs
   vendor/chart.umd.min.js   Chart.js 4.4.0 (MIT), inlined into each sim for charts
   test/headless_replay.js   jsdom smoke test that auto-plays sims round by round
@@ -76,13 +78,25 @@ The **USF runtime shim** embedded in `index.html` implements this contract: i18n
 
 ## Player features
 
-Catalog search and category/level filters, cover thumbnails, random pick, language switcher (auto-detected from each sim's translations), round progress, on-demand hints from the sim's own coach logic, restart, fullscreen, and **session export** (downloads your decisions, per-round results, and final summary as JSON — handy for classroom debriefs).
+Catalog search and category/level/**language** filters, cover thumbnails, random pick, round progress, on-demand hints from the sim's own coach logic, restart, fullscreen, and **session export** (downloads your decisions, per-round results, and final summary as JSON — handy for classroom debriefs).
+
+### Languages
+
+`build_manifest.py` reads each sim's `getTranslations()` and records the languages it ships as `langs` in `manifest.json`, so the catalog knows what's available before anything loads:
+
+- **Filter** the catalog down to the sims you can teach in (`Any language` → `English` / `Spanish`).
+- Each catalog row carries an `EN·ES` badge listing what that sim ships.
+- A sim **starts in your language** — the player sets `<html lang>` on the sandboxed frame and the shim picks it up — instead of always opening in English.
+- The per-sim buttons in the top bar switch a running sim live; the chrome follows, so the page never ends up half-translated.
+- The choice persists (`eureka-lang`) and is reflected in the URL (`?lang=`), so a link you paste into a syllabus opens the way you left it.
+
+A sim that doesn't ship the preferred language (only reachable via `?src=`) falls back to English and says so in a notice.
 
 ## Adding or updating simulations
 
 1. Drop the new `{externalid}.json` into `jsons/`.
-2. Regenerate the catalog: `cd player && python build_manifest.py`.
-3. Smoke-test: `cd player/test && npm install jsdom && node headless_replay.js <id>` — it plays every round headlessly and reports runtime errors.
+2. Regenerate the catalog: `cd player && python build_manifest.py` — it reports any sim that ships fewer than two languages.
+3. Smoke-test: `cd player/test && npm install jsdom && node headless_replay.js <id>` — it plays every round headlessly and reports runtime errors. Add `--lang es` for one language, or `--lang all` to replay each sim once per language it ships.
 
 ## Hosting (GitHub Pages)
 

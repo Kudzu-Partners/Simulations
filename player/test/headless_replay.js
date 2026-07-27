@@ -15,6 +15,8 @@
  *   node headless_replay.js 001 002 271 1550     # specific sims
  *   node headless_replay.js --all                # entire catalog (slow)
  *   node headless_replay.js --jsons ../../jsons  # custom sims folder
+ *   node headless_replay.js --lang es 015        # replay in Spanish
+ *   node headless_replay.js --lang all 015       # once per language it ships
  *
  * Requires: npm install jsdom
  */
@@ -32,6 +34,7 @@ function opt(name, dflt) {
 }
 const JSONS = opt('jsons', path.join(__dirname, '..', '..', 'jsons'));
 const SAMPLE = parseInt(opt('sample', '0'), 10);
+const LANG = opt('lang', 'en');   // 'en' | 'es' | any code | 'all'
 const ALL = args.includes('--all');
 if (ALL) args.splice(args.indexOf('--all'), 1);
 
@@ -40,10 +43,11 @@ const shimMatch = indexHtml.match(/<script type="text\/plain" id="usf-shim-src">
 if (!shimMatch) { console.error('Could not extract USF shim from index.html'); process.exit(2); }
 const SHIM = shimMatch[1];
 
-function buildDoc(sim) {
+function buildDoc(sim, lang) {
   // mirror of buildFrame() in index.html (Chart.js replaced by a stub: jsdom has no canvas)
+  // <html lang> is what the USF shim reads to choose its starting language
   const esc = (s) => String(s).replace(/<\/(script|style)/gi, (m) => '<\\/' + m.slice(2));
-  return '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><style>' + esc(sim.css || '') + '</style></head><body>' +
+  return '<!DOCTYPE html><html lang="' + (lang || 'en') + '"><head><meta charset="UTF-8"><style>' + esc(sim.css || '') + '</style></head><body>' +
     (sim.view || '') +
     '<script>window.__USF_MAX_PERIODS__=' + (parseInt(sim.max_periods, 10) || 5) + ';</scr' + 'ipt>' +
     '<script>' + esc(SHIM) + '</scr' + 'ipt>' +
@@ -53,7 +57,7 @@ function buildDoc(sim) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-async function runSim(file) {
+async function runSim(file, lang) {
   const sim = JSON.parse(fs.readFileSync(path.join(JSONS, file), 'utf-8'));
   const maxP = parseInt(sim.max_periods, 10) || 5;
   const errors = [];
@@ -61,7 +65,7 @@ async function runSim(file) {
   const vc = new VirtualConsole();
   vc.on('jsdomError', (e) => errors.push('jsdom: ' + (e.detail && e.detail.message || e.message)));
 
-  const dom = new JSDOM(buildDoc(sim), {
+  const dom = new JSDOM(buildDoc(sim, lang), {
     runScripts: 'dangerously',
     pretendToBeVisual: true,
     virtualConsole: vc,
@@ -84,8 +88,11 @@ async function runSim(file) {
   for (let i = 0; i < 60 && !window.mySimulation; i++) await sleep(10);
   if (!window.mySimulation) {
     dom.window.close();
-    return { file, ok: false, stage: 'bootstrap', periods: 0, maxP, errors: errors.slice(0, 2) };
+    return { file, lang, ok: false, stage: 'bootstrap', periods: 0, maxP, errors: errors.slice(0, 2) };
   }
+  // what the shim actually picked — a sim that doesn't ship `lang` falls back
+  const ready = msgs.find((m) => m.type === 'ready') || {};
+  if (lang && ready.lang && ready.lang !== lang) errors.push('language not available: ' + lang + ' (ran in ' + ready.lang + ')');
 
   const fire = (el, type) => el.dispatchEvent(new window.Event(type, { bubbles: true }));
   function nudgeInputs() {
@@ -146,7 +153,7 @@ async function runSim(file) {
   // without meaningful human input (validateDecisions() = false) are healthy.
   const ok = hardErrors.length === 0;
   return {
-    file, ok, maxP, periods, finished,
+    file, lang: ready.lang || lang, langs: ready.langs || [], ok, maxP, periods, finished,
     hasSummary: summary != null,
     stage: hardErrors.length ? 'js-error' : (finished ? 'complete' : (periods > 0 ? 'partial(needs choices)' : 'blocked(needs choices)')),
     errors: hardErrors.slice(0, 2)
@@ -162,18 +169,30 @@ async function runSim(file) {
     const step = Math.max(1, Math.floor(files.length / n));
     files = files.filter((_, i) => i % step === 0).slice(0, n);
   }
-  console.log(`Replaying ${files.length} simulation(s) from ${JSONS}\n`);
-  let pass = 0, complete = 0, partial = 0, fail = 0;
-  for (const f of files) {
+  console.log(`Replaying ${files.length} simulation(s) from ${JSONS}` +
+              (LANG === 'all' ? ' — once per language each one ships\n' : ` in "${LANG}"\n`));
+  let pass = 0, complete = 0, partial = 0, fail = 0, runs = 0;
+
+  const attempt = async (f, l) => {
     let r;
-    try { r = await runSim(f); }
-    catch (e) { r = { file: f, ok: false, stage: 'harness:' + e.message.split('\n')[0], periods: 0, errors: [] }; }
+    try { r = await runSim(f, l); }
+    catch (e) { r = { file: f, lang: l, ok: false, stage: 'harness:' + e.message.split('\n')[0], periods: 0, errors: [] }; }
+    runs++;
     if (r.ok) { pass++; if (r.finished) complete++; else partial++; }
     else fail++;
     const icon = r.ok ? (r.finished ? '✔' : '◐') : '✘';
     if (!r.ok || files.length <= 60 || process.env.VERBOSE)
-      console.log(`${icon} ${r.file.padEnd(14)} ${String(r.periods).padStart(2)}/${r.maxP || '?'} rounds  ${r.stage}${r.hasSummary ? ' +summary' : ''}${r.errors && r.errors.length ? '  | ' + r.errors[0] : ''}`);
+      console.log(`${icon} ${r.file.padEnd(14)} [${r.lang || '??'}] ${String(r.periods).padStart(2)}/${r.maxP || '?'} rounds  ${r.stage}${r.hasSummary ? ' +summary' : ''}${r.errors && r.errors.length ? '  | ' + r.errors[0] : ''}`);
+    return r;
+  };
+
+  for (const f of files) {
+    // "replay-tested in both languages" only holds if the harness boots each
+    // one. The first run reports what the sim ships, so no parsing is needed.
+    const first = await attempt(f, LANG === 'all' ? 'en' : LANG);
+    if (LANG !== 'all') continue;
+    for (const l of (first.langs || []).filter((l) => l !== first.lang)) await attempt(f, l);
   }
-  console.log(`\n${pass}/${files.length} ok (${complete} played to completion, ${partial} advanced but blocked on human choices), ${fail} failed`);
+  console.log(`\n${pass}/${runs} ok (${complete} played to completion, ${partial} advanced but blocked on human choices), ${fail} failed`);
   process.exit(fail ? 1 : 0);
 })();

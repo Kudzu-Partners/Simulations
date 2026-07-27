@@ -2,6 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+/* Language init, before paint: ?lang= wins, then the shared "eureka-lang"
+   preference (same key the landing page and the interactive cases use), then
+   the browser language. Sets <html lang> so the chrome renders once, correctly. */
+(function () {
+  var lang = 'en';
+  try {
+    var q = (new URLSearchParams(location.search).get('lang') || '').toLowerCase().slice(0, 2);
+    var saved = localStorage.getItem('eureka-lang');
+    var nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+    lang = (q === 'en' || q === 'es') ? q
+         : (saved === 'en' || saved === 'es') ? saved
+         : (nav.indexOf('es') === 0 ? 'es' : 'en');
+  } catch (e) {}
+  document.documentElement.lang = lang;
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Eureka Express — Open Simulation Player</title>
 <style>
@@ -17,7 +34,7 @@
 
   /* ───── sidebar / catalog ───── */
   #side{flex:0 0 340px;display:flex;flex-direction:column;background:var(--panel);border-right:1px solid var(--line);min-width:0}
-  #brand{padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+  #brand{padding:14px 16px 10px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
   #brand h1{margin:0;font-size:16px;letter-spacing:.3px}
   #brand h1 span{color:var(--accent)}
   #brand .sub{font-size:11px;color:var(--muted);margin-top:2px}
@@ -27,14 +44,22 @@
   #chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
   .chip{font-size:11px;padding:4px 9px;border-radius:20px;border:1px solid var(--line);background:var(--panel2);color:var(--muted);cursor:pointer;user-select:none;text-transform:capitalize}
   .chip.on{color:#04121f;font-weight:700;border-color:transparent}
-  #lvlrow{display:flex;gap:5px;margin-top:8px;align-items:center}
-  #lvlrow select{flex:1;padding:5px 8px;border-radius:7px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font-size:12px}
-  #btnRandom{padding:5px 10px;border-radius:7px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font-size:12px;cursor:pointer}
+  #lvlrow{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;align-items:center}
+  #lvlrow select{flex:1 1 42%;min-width:0;padding:5px 8px;border-radius:7px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font-size:12px}
+  #btnRandom{flex:0 0 auto;padding:5px 10px;border-radius:7px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font-size:12px;cursor:pointer}
   #btnRandom:hover{border-color:var(--accent)}
+
+  /* ───── language switch (shared "eureka-lang" preference) ───── */
+  .lang-switch{display:inline-flex;flex-shrink:0;border:1px solid var(--line);border-radius:99px;overflow:hidden}
+  .lang-switch button{border:none;background:var(--panel2);color:var(--muted);font:inherit;font-size:10.5px;font-weight:800;letter-spacing:.5px;padding:4px 9px;cursor:pointer}
+  .lang-switch button + button{border-left:1px solid var(--line)}
+  .lang-switch button:hover{color:var(--ink)}
+  .lang-switch button[aria-pressed="true"]{background:var(--accent);color:#04121f}
   #count{font-size:11px;color:var(--muted);margin-top:8px}
   #list{flex:1;overflow-y:auto;min-height:0}
   .row{display:flex;gap:10px;padding:9px 12px;border-bottom:1px solid rgba(51,65,85,.5);cursor:pointer;align-items:center}
   .row:hover{background:var(--panel2)}
+  .row:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
   .row.sel{background:#0c4a6e}
   .thumb{flex:0 0 40px;width:40px;height:40px;border-radius:9px;background:#0b1220;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#fff;overflow:hidden}
   .thumb img{width:100%;height:100%;object-fit:contain;background:#fff}
@@ -42,6 +67,7 @@
   .row .nm{font-size:12.5px;font-weight:600;line-height:1.25;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
   .row .mt{font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .row .mt b{color:var(--accent);font-weight:600}
+  .row .lg{display:inline-block;margin-left:5px;padding:0 5px;border-radius:4px;border:1px solid var(--line);font-size:9.5px;font-weight:700;letter-spacing:.4px;color:#cbd5e1;text-transform:uppercase}
   #more{display:block;width:100%;padding:10px;background:none;border:none;color:var(--accent);font-size:12px;cursor:pointer}
   #sideFoot{padding:8px 12px;border-top:1px solid var(--line);font-size:10.5px;color:var(--muted);line-height:1.5}
   #sideFoot a{color:var(--accent);text-decoration:none}
@@ -88,26 +114,33 @@
 </head>
 <body>
 
-<div id="dropOverlay">Drop a simulation JSON to play it</div>
+<div id="dropOverlay" data-i18n="drop">Drop a simulation JSON to play it</div>
 <div id="toast"></div>
 
 <div id="app">
   <aside id="side">
     <div id="brand">
-      <h1>EUREKA <span>EXPRESS</span> · Open Player</h1>
-      <div class="sub">Standalone runtime for Express simulation JSONs</div>
+      <div>
+        <h1>EUREKA <span>EXPRESS</span> · Open Player</h1>
+        <div class="sub" data-i18n="tagline">Standalone runtime for Express simulation JSONs</div>
+      </div>
+      <div class="lang-switch" role="group" aria-label="Language / Idioma">
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+      </div>
     </div>
     <div id="tools">
-      <input id="search" type="search" placeholder="Search simulations…  ( / )" autocomplete="off">
+      <input id="search" type="search" data-i18n-ph="search" data-i18n-aria="searchAria" placeholder="Search simulations…  ( / )" aria-label="Search simulations" autocomplete="off">
       <div id="chips"></div>
       <div id="lvlrow">
-        <select id="lvl"><option value="">All levels</option></select>
-        <button id="btnRandom" title="Load a random simulation">🎲 Random</button>
+        <select id="lvl" data-i18n-aria="levelAria" aria-label="Filter by level"><option value="" data-i18n="allLevels">All levels</option></select>
+        <select id="simlang" data-i18n-aria="langAria" aria-label="Filter by language"><option value="" data-i18n="anyLang">Any language</option></select>
+        <button id="btnRandom" data-i18n-title="randomTitle" title="Load a random simulation">🎲 <span data-i18n="random">Random</span></button>
       </div>
       <div id="count"></div>
     </div>
     <div id="list"></div>
-    <div id="sideFoot">
+    <div id="sideFoot" data-i18n="foot">
       Simulations © Eureka Simulations — shared under
       <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>.
       Player code included, same license.
@@ -116,36 +149,36 @@
 
   <main id="main">
     <div id="bar">
-      <button id="btnMenu" class="abtn">☰</button>
-      <div id="simTitle">No simulation loaded</div>
+      <button id="btnMenu" class="abtn" data-i18n-aria="menuAria" aria-label="Show catalog">☰</button>
+      <div id="simTitle" data-i18n="noSim">No simulation loaded</div>
       <span id="simMeta"></span>
       <span id="progress" style="display:none"></span>
-      <div id="langs"></div>
-      <button id="btnHint"    class="abtn" style="display:none" title="Ask the built-in coach for a hint">💡 Hint</button>
-      <button id="btnRestart" class="abtn" style="display:none">↺ Restart</button>
-      <button id="btnExport"  class="abtn" style="display:none" title="Download decisions & results as JSON">⤓ Session</button>
-      <button id="btnFull"    class="abtn" style="display:none">⛶</button>
-      <label class="abtn" style="cursor:pointer">📂 Open JSON<input id="filePick" type="file" accept=".json,application/json" multiple style="display:none"></label>
+      <div id="langs" data-i18n-aria="simLangAria" role="group" aria-label="Simulation language"></div>
+      <button id="btnHint"    class="abtn" style="display:none" data-i18n-title="hintTitle" title="Ask the built-in coach for a hint">💡 <span data-i18n="hint">Hint</span></button>
+      <button id="btnRestart" class="abtn" style="display:none">↺ <span data-i18n="restart">Restart</span></button>
+      <button id="btnExport"  class="abtn" style="display:none" data-i18n-title="exportTitle" title="Download decisions & results as JSON">⤓ <span data-i18n="session">Session</span></button>
+      <button id="btnFull"    class="abtn" style="display:none" data-i18n-aria="fullAria" aria-label="Fullscreen">⛶</button>
+      <label class="abtn" style="cursor:pointer">📂 <span data-i18n="openJson">Open JSON</span><input id="filePick" type="file" accept=".json,application/json" multiple style="display:none"></label>
     </div>
     <div id="stage">
-      <div id="notice"><span id="noticeTx"></span><button id="noticeX">✕</button></div>
-      <iframe id="frame" style="display:none" sandbox="allow-scripts allow-modals" allow="fullscreen"></iframe>
+      <div id="notice"><span id="noticeTx"></span><button id="noticeX" data-i18n-aria="dismissAria" aria-label="Dismiss">✕</button></div>
+      <iframe id="frame" style="display:none" data-i18n-title="frameTitle" title="Simulation" sandbox="allow-scripts allow-modals" allow="fullscreen"></iframe>
       <div id="welcome">
         <div class="card">
-          <h2>Play an Express simulation</h2>
-          <p>Every Express simulation is a single self-contained JSON file (<code>view</code> + <code>css</code> + <code>js</code>).
+          <h2 data-i18n="welcomeH">Play an Express simulation</h2>
+          <p data-i18n="welcomeP1">Every Express simulation is a single self-contained JSON file (<code>view</code> + <code>css</code> + <code>js</code>).
              This player embeds an open-source implementation of the USF runtime, so the sims run entirely
              in your browser — no backend, no account, no network calls.</p>
-          <p><b>Pick one from the catalog</b> on the left, <b>drag &amp; drop</b> a <code>.json</code> anywhere on
+          <p data-i18n="welcomeP2"><b>Pick one from the catalog</b> on the left, <b>drag &amp; drop</b> a <code>.json</code> anywhere on
              this page, or use <b>Open JSON</b>.</p>
-          <div class="hintbox" id="serveHint" style="display:none">
+          <div class="hintbox" id="serveHint" style="display:none" data-i18n="serveHint">
             The catalog couldn't be loaded (<code>manifest.json</code>). If you opened this file directly
             from disk, drag &amp; drop still works. For the full catalog + charts, use the hosted player at
             <a href="https://open.eurekasimulations.com/player/">open.eurekasimulations.com/player</a>
             &mdash; or serve this folder over HTTP (<code>python -m http.server</code> from the repo root, then
             open <code>http://localhost:8000/player/</code>).
           </div>
-          <button class="bigbtn" id="btnWelcomeRandom" style="display:none">🎲 Surprise me</button>
+          <button class="bigbtn" id="btnWelcomeRandom" style="display:none">🎲 <span data-i18n="surprise">Surprise me</span></button>
         </div>
       </div>
     </div>
@@ -533,11 +566,147 @@
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
   var manifest = null, filtered = [], shown = 0, PAGE = 200;
-  var activeCat = '', activeLvl = '', query = '';
-  var current = null;      // {meta, data}
+  var activeCat = '', activeLvl = '', activeLang = '', query = '';
+  var current = null;      // {data, srcName, id, langs}
+  var lastProgress = null; // last progress message, so the bar can be re-rendered on a language switch
   var chartSrc = null;     // Chart.js source text (inlined into each iframe)
   var shimSrc = $('usf-shim-src').textContent;
   var CATCOLORS = { business: '#3b82f6', education: '#8b5cf6', finance: '#10b981', sustainability: '#14b8a6', hospitality: '#f59e0b', tourism: '#f43f5e' };
+
+  /* ───────── i18n: player chrome ─────────
+     One preference ("eureka-lang") drives three things: this chrome, which
+     language a simulation starts in, and the catalog's language filter. It is
+     shared with the landing page and the interactive cases, so a visitor who
+     picks Español once stays in Español across the whole site. */
+  var UI = {
+    en: {
+      tagline: 'Standalone runtime for Express simulation JSONs',
+      search: 'Search simulations…  ( / )', searchAria: 'Search simulations',
+      allLevels: 'All levels', levelAria: 'Filter by level',
+      anyLang: 'Any language', langAria: 'Filter by language',
+      random: 'Random', randomTitle: 'Load a random simulation',
+      all: 'all', count: '{n} simulation', countN: '{n} simulations',
+      more: 'Show {n} more…', rounds: 'rounds',
+      noCatalog: 'Catalog unavailable — drag & drop a JSON to play.',
+      foot: 'Simulations © Eureka Simulations — shared under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>. Player code included, same license.',
+      noSim: 'No simulation loaded', menuAria: 'Show catalog',
+      simLangAria: 'Simulation language',
+      hint: 'Hint', hintTitle: 'Ask the built-in coach for a hint',
+      restart: 'Restart', session: 'Session',
+      exportTitle: 'Download decisions & results as JSON',
+      fullAria: 'Fullscreen', dismissAria: 'Dismiss', frameTitle: 'Simulation',
+      openJson: 'Open JSON', surprise: 'Surprise me',
+      drop: 'Drop a simulation JSON to play it',
+      welcomeH: 'Play an Express simulation',
+      welcomeP1: 'Every Express simulation is a single self-contained JSON file (<code>view</code> + <code>css</code> + <code>js</code>). This player embeds an open-source implementation of the USF runtime, so the sims run entirely in your browser — no backend, no account, no network calls.',
+      welcomeP2: '<b>Pick one from the catalog</b> on the left, <b>drag &amp; drop</b> a <code>.json</code> anywhere on this page, or use <b>Open JSON</b>.',
+      serveHint: 'The catalog couldn\'t be loaded (<code>manifest.json</code>). If you opened this file directly from disk, drag &amp; drop still works. For the full catalog + charts, use the hosted player at <a href="https://open.eurekasimulations.com/player/">open.eurekasimulations.com/player</a> &mdash; or serve this folder over HTTP (<code>python -m http.server</code> from the repo root, then open <code>http://localhost:8000/player/</code>).',
+      round: 'Round {n}/{m}',
+      errLoad: 'Could not load {file} — {msg}',
+      errFetch: 'Could not fetch {url} — {msg} (CORS?)',
+      errJson: '{file} is not valid JSON: {msg}',
+      errShape: '{file} does not look like an Express simulation (needs "view", "css", "js").',
+      errSim: 'Simulation error — {msg}',
+      noHint: 'No hint available right now — make a move first.',
+      done: '🏁 Simulation complete',
+      onlyLang: 'This simulation only ships in {langs} — playing it in {lang}.',
+      cats: { business: 'business', education: 'education', finance: 'finance', sustainability: 'sustainability', hospitality: 'hospitality', tourism: 'tourism', other: 'other' },
+      lvls: { basic: 'basic', intermediate: 'intermediate', advanced: 'advanced' },
+      langNames: { en: 'English', es: 'Spanish' }
+    },
+    es: {
+      tagline: 'Motor autónomo para los JSON de simulaciones Express',
+      search: 'Buscar simulaciones…  ( / )', searchAria: 'Buscar simulaciones',
+      allLevels: 'Todos los niveles', levelAria: 'Filtrar por nivel',
+      anyLang: 'Cualquier idioma', langAria: 'Filtrar por idioma',
+      random: 'Aleatoria', randomTitle: 'Cargar una simulación al azar',
+      all: 'todas', count: '{n} simulación', countN: '{n} simulaciones',
+      more: 'Ver {n} más…', rounds: 'rondas',
+      noCatalog: 'Catálogo no disponible — arrastra un JSON para jugar.',
+      foot: 'Simulaciones © Eureka Simulations — publicadas bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>. El código del reproductor va incluido, con la misma licencia.',
+      noSim: 'Ninguna simulación cargada', menuAria: 'Mostrar catálogo',
+      simLangAria: 'Idioma de la simulación',
+      hint: 'Pista', hintTitle: 'Pide una pista al coach integrado',
+      restart: 'Reiniciar', session: 'Sesión',
+      exportTitle: 'Descargar decisiones y resultados en JSON',
+      fullAria: 'Pantalla completa', dismissAria: 'Cerrar', frameTitle: 'Simulación',
+      openJson: 'Abrir JSON', surprise: 'Sorpréndeme',
+      drop: 'Suelta un JSON de simulación para jugarlo',
+      welcomeH: 'Juega una simulación Express',
+      welcomeP1: 'Cada simulación Express es un único archivo JSON autocontenido (<code>view</code> + <code>css</code> + <code>js</code>). Este reproductor incorpora una implementación abierta del runtime USF, así que las simulaciones se ejecutan enteramente en tu navegador: sin servidor, sin cuenta, sin llamadas de red.',
+      welcomeP2: '<b>Elige una del catálogo</b> de la izquierda, <b>arrastra y suelta</b> un <code>.json</code> en cualquier punto de esta página, o usa <b>Abrir JSON</b>.',
+      serveHint: 'No se pudo cargar el catálogo (<code>manifest.json</code>). Si abriste este archivo directamente desde el disco, arrastrar y soltar sigue funcionando. Para el catálogo completo y los gráficos, usa el reproductor alojado en <a href="https://open.eurekasimulations.com/player/">open.eurekasimulations.com/player</a> &mdash; o sirve esta carpeta por HTTP (<code>python -m http.server</code> desde la raíz del repositorio, y abre <code>http://localhost:8000/player/</code>).',
+      round: 'Ronda {n}/{m}',
+      errLoad: 'No se pudo cargar {file} — {msg}',
+      errFetch: 'No se pudo obtener {url} — {msg} (¿CORS?)',
+      errJson: '{file} no es un JSON válido: {msg}',
+      errShape: '{file} no parece una simulación Express (necesita "view", "css", "js").',
+      errSim: 'Error en la simulación — {msg}',
+      noHint: 'No hay pista disponible ahora mismo — haz primero una jugada.',
+      done: '🏁 Simulación completada',
+      onlyLang: 'Esta simulación solo está disponible en {langs} — se juega en {lang}.',
+      cats: { business: 'negocios', education: 'educación', finance: 'finanzas', sustainability: 'sostenibilidad', hospitality: 'hostelería', tourism: 'turismo', other: 'otros' },
+      lvls: { basic: 'básico', intermediate: 'intermedio', advanced: 'avanzado' },
+      langNames: { en: 'inglés', es: 'español' }
+    }
+  };
+  var UI_LANGS = Object.keys(UI);
+  var lang = UI[document.documentElement.lang] ? document.documentElement.lang : 'en';
+
+  function T(key, params) {
+    var s = UI[lang][key];
+    if (s == null) s = UI.en[key];
+    if (s == null) return key;
+    if (params) for (var k in params) s = String(s).split('{' + k + '}').join(params[k]);
+    return s;
+  }
+  function catLabel(c) { return (UI[lang].cats[c] || c); }
+  function lvlLabel(l) { return (UI[lang].lvls[l] || l); }
+  function langName(l) { return (UI[lang].langNames[l] || l.toUpperCase()); }
+
+  /* Re-render every translated string in the chrome. Cheap enough to just run
+     the whole thing on each switch — the page is small and it keeps the
+     dynamic bits (counts, progress, rows) honest. */
+  function applyUI() {
+    document.documentElement.lang = lang;
+    document.title = 'Eureka Express — ' + (lang === 'es' ? 'Reproductor abierto de simulaciones' : 'Open Simulation Player');
+    document.querySelectorAll('[data-i18n]').forEach(function (el) { el.innerHTML = T(el.getAttribute('data-i18n')); });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function (el) { el.setAttribute('placeholder', T(el.getAttribute('data-i18n-ph'))); });
+    document.querySelectorAll('[data-i18n-title]').forEach(function (el) { el.setAttribute('title', T(el.getAttribute('data-i18n-title'))); });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) { el.setAttribute('aria-label', T(el.getAttribute('data-i18n-aria'))); });
+    document.querySelectorAll('.lang-switch [data-set-lang]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
+    });
+    if (manifest) { buildFilters(); applyFilter(); }
+    if (current) {
+      $('simMeta').textContent = metaLine(current.data);
+      if (lastProgress) showProgress(lastProgress);
+    }
+  }
+
+  /* The one place the preference is written. Sims already running are asked to
+     switch too, so the chrome and the simulation never disagree. */
+  function setLang(next, opts) {
+    if (UI_LANGS.indexOf(next) < 0 || next === lang) return;
+    lang = next;
+    try { localStorage.setItem('eureka-lang', lang); } catch (e) {}
+    applyUI();
+    syncUrl();
+    if (!(opts && opts.fromSim)) tellSim(lang);
+  }
+  function tellSim(l) {
+    var f = $('frame');
+    if (current && f.contentWindow) f.contentWindow.postMessage({ usfHost: true, type: 'setLang', lang: l }, '*');
+  }
+  /* Keep ?sim= and ?lang= together so any URL a user copies replays exactly. */
+  function syncUrl() {
+    try {
+      var p = new URLSearchParams(location.search);
+      if (current && current.id) p.set('sim', current.id); else p.delete('sim');
+      p.set('lang', lang);
+      history.replaceState(null, '', '?' + p.toString());
+    } catch (e) {}
+  }
 
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
   function deent(s) { return String(s).replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#0?39;/g, "'"); } // some sim names ship pre-encoded entities
@@ -554,33 +723,62 @@
       applyFilter();
       $('btnWelcomeRandom').style.display = 'inline-block';
       var p = new URLSearchParams(location.search);
-      if (p.get('sim')) { var hit = m.sims.find(function (s) { return s.id === p.get('sim') || s.file.indexOf(p.get('sim')) === 0; }); if (hit) loadFromManifest(hit); }
+      if (p.get('sim')) {
+        var want = p.get('sim');
+        var hit = m.sims.find(function (s) { return s.id === want || s.file.indexOf(want) === 0; });
+        if (hit) loadFromManifest(hit);
+        else notice(T('errLoad', { file: want, msg: 'not in the catalog' }), 'err');
+      }
       else if (p.get('src')) loadFromUrl(p.get('src'));
     }).catch(function () {
       $('serveHint').style.display = 'block';
-      $('count').textContent = 'Catalog unavailable — drag & drop a JSON to play.';
+      $('count').textContent = T('noCatalog');
     });
   }
 
+  function simLangs(s) { return (s && s.langs && s.langs.length) ? s.langs : ['en']; }
+
   function buildFilters() {
-    var cats = {}, lvls = {};
-    manifest.sims.forEach(function (s) { cats[s.cat] = (cats[s.cat] || 0) + 1; if (s.level) lvls[s.level] = 1; });
+    var cats = {}, lvls = {}, langs = {};
+    manifest.sims.forEach(function (s) {
+      cats[s.cat] = (cats[s.cat] || 0) + 1;
+      if (s.level) lvls[s.level] = 1;
+      simLangs(s).forEach(function (l) { langs[l] = (langs[l] || 0) + 1; });
+    });
+
     var chips = $('chips');
     chips.innerHTML = '';
     var all = document.createElement('span');
-    all.className = 'chip on'; all.textContent = 'all (' + manifest.sims.length + ')';
+    all.className = 'chip'; all.textContent = T('all') + ' (' + manifest.sims.length + ')';
     all.onclick = function () { activeCat = ''; selChip(all); applyFilter(); };
     chips.appendChild(all);
+    var activeEl = all;
     Object.keys(cats).sort().forEach(function (c) {
       var el = document.createElement('span');
-      el.className = 'chip'; el.textContent = c + ' (' + cats[c] + ')';
+      el.className = 'chip'; el.textContent = catLabel(c) + ' (' + cats[c] + ')';
       el.style.setProperty('--c', CATCOLORS[c] || '#64748b');
       el.onclick = function () { activeCat = c; selChip(el); applyFilter(); };
       chips.appendChild(el);
+      if (c === activeCat) activeEl = el;
     });
-    Object.keys(lvls).sort().forEach(function (l) {
-      var o = document.createElement('option'); o.value = l; o.textContent = l; $('lvl').appendChild(o);
+    selChip(activeEl);
+
+    fillSelect($('lvl'), Object.keys(lvls).sort(), activeLvl, T('allLevels'), lvlLabel);
+    /* Languages a simulation is actually available in — the catalog knows this
+       from the manifest, so you can narrow to what you can teach in. */
+    fillSelect($('simlang'), Object.keys(langs).sort(), activeLang, T('anyLang'), function (l) {
+      return langName(l) + ' (' + langs[l] + ')';
     });
+  }
+  function fillSelect(sel, values, active, allLabel, label) {
+    sel.innerHTML = '';
+    var o0 = document.createElement('option'); o0.value = ''; o0.textContent = allLabel;
+    sel.appendChild(o0);
+    values.forEach(function (v) {
+      var o = document.createElement('option'); o.value = v; o.textContent = label ? label(v) : v;
+      sel.appendChild(o);
+    });
+    sel.value = active || '';
   }
   function selChip(el) {
     document.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('on'); c.style.background = ''; c.style.color = ''; });
@@ -594,12 +792,13 @@
     filtered = manifest.sims.filter(function (s) {
       if (activeCat && s.cat !== activeCat) return false;
       if (activeLvl && s.level !== activeLvl) return false;
+      if (activeLang && simLangs(s).indexOf(activeLang) < 0) return false;
       if (q && (s.name + ' ' + s.id + ' ' + (s.desc || '')).toLowerCase().indexOf(q) < 0) return false;
       return true;
     });
     shown = 0;
     $('list').innerHTML = '';
-    $('count').textContent = filtered.length + ' simulation' + (filtered.length === 1 ? '' : 's');
+    $('count').textContent = T(filtered.length === 1 ? 'count' : 'countN', { n: filtered.length });
     renderMore();
   }
 
@@ -612,7 +811,7 @@
     $('list').appendChild(frag);
     if (shown < filtered.length) {
       var b = document.createElement('button');
-      b.id = 'more'; b.textContent = 'Show ' + Math.min(PAGE, filtered.length - shown) + ' more…';
+      b.id = 'more'; b.textContent = T('more', { n: Math.min(PAGE, filtered.length - shown) });
       b.onclick = renderMore;
       $('list').appendChild(b);
     }
@@ -620,15 +819,21 @@
 
   function rowEl(s) {
     var d = document.createElement('div');
-    d.className = 'row'; d.dataset.id = s.id;
+    d.className = 'row' + (current && current.id === s.id ? ' sel' : '');
+    d.dataset.id = s.id;
+    d.tabIndex = 0; d.setAttribute('role', 'button');
+    var ls = simLangs(s);
     var color = CATCOLORS[s.cat] || '#64748b';
     var thumb = s.svg
       ? '<div class="thumb"><img loading="lazy" src="' + esc(s.svg) + '" alt=""></div>'
       : '<div class="thumb" style="background:' + color + '">' + esc((s.name || '?').charAt(0).toUpperCase()) + '</div>';
     d.innerHTML = thumb + '<div class="tx"><div class="nm">' + esc(deent(s.name)) + '</div>' +
-      '<div class="mt"><b>#' + esc(s.id) + '</b> · ' + esc(s.cat) + (s.level ? ' · ' + esc(s.level) : '') +
-      (s.periods ? ' · ' + s.periods + ' rounds' : '') + '</div></div>';
+      '<div class="mt"><b>#' + esc(s.id) + '</b> · ' + esc(catLabel(s.cat)) + (s.level ? ' · ' + esc(lvlLabel(s.level)) : '') +
+      (s.periods ? ' · ' + s.periods + ' ' + T('rounds') : '') +
+      '<span class="lg" title="' + esc(ls.map(langName).join(' · ')) + '">' + esc(ls.join('·')) + '</span>' +
+      '</div></div>';
     d.onclick = function () { loadFromManifest(s); };
+    d.onkeydown = function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadFromManifest(s); } };
     return d;
   }
 
@@ -637,50 +842,60 @@
     document.querySelectorAll('.row.sel').forEach(function (r) { r.classList.remove('sel'); });
     var r = document.querySelector('.row[data-id="' + CSS.escape(s.id) + '"]'); if (r) r.classList.add('sel');
     fetch(s.path).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(function (data) {
-        try { history.replaceState(null, '', '?sim=' + encodeURIComponent(s.id)); } catch (e) {}
-        play(data, s.file);
-      })
-      .catch(function (e) { notice('Could not load ' + s.file + ' — ' + e.message, 'err'); });
+      .then(function (data) { play(data, s.file, s); })
+      .catch(function (e) { notice(T('errLoad', { file: s.file, msg: e.message }), 'err'); });
     document.body.classList.remove('menu');
   }
   function loadFromUrl(url) {
     fetch(url).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(function (d) { play(d, url.split('/').pop()); })
-      .catch(function (e) { notice('Could not fetch ' + url + ' — ' + e.message + ' (CORS?)', 'err'); });
+      .catch(function (e) { notice(T('errFetch', { url: url, msg: e.message }), 'err'); });
   }
   function loadFromFile(file) {
     var rd = new FileReader();
     rd.onload = function () {
       try { play(JSON.parse(rd.result), file.name); }
-      catch (e) { notice(file.name + ' is not valid JSON: ' + e.message, 'err'); }
+      catch (e) { notice(T('errJson', { file: file.name, msg: e.message }), 'err'); }
     };
     rd.readAsText(file);
   }
 
   /* ───────── runtime ───────── */
-  function play(data, srcName) {
+  function metaLine(d) {
+    return [d.externalid ? '#' + d.externalid : '', catLabel((d.category || '').toLowerCase()), lvlLabel((d.level || '').toLowerCase())]
+      .filter(Boolean).join(' · ');
+  }
+  function play(data, srcName, meta) {
     if (!data || typeof data !== 'object' || !data.js || !data.view) {
-      notice((srcName || 'File') + ' does not look like an Express simulation (needs "view", "css", "js").', 'err');
+      notice(T('errShape', { file: srcName || 'File' }), 'err');
       return;
     }
-    current = { data: data, srcName: srcName };
+    /* id only when it came from the catalog — a dropped or ?src= sim has no
+       ?sim= to link back to, and stamping one would break a reload */
+    current = { data: data, srcName: srcName, id: (meta && meta.id) || null, langs: meta ? simLangs(meta) : null };
     $('notice').className = '';
     $('welcome').style.display = 'none';
     $('frame').style.display = 'block';
+    $('simTitle').removeAttribute('data-i18n');   // holds the sim's own name from here on
     $('simTitle').textContent = deent(data.name || srcName || 'Simulation');
     $('simTitle').title = data.description || '';
-    $('simMeta').textContent = [data.externalid ? '#' + data.externalid : '', data.category, data.level].filter(Boolean).join(' · ');
+    $('simMeta').textContent = metaLine(data);
     ['btnHint', 'btnRestart', 'btnExport', 'btnFull'].forEach(function (b) { $(b).style.display = 'inline-block'; });
     $('progress').style.display = 'inline-block';
     $('progress').textContent = '…';
     $('langs').innerHTML = '';
+    lastProgress = null;
+    if (meta) syncUrl();
     buildFrame();
   }
 
   function buildFrame() {
     var d = current.data;
-    var doc = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
+    /* The USF shim picks its starting language from <html lang>, so a sim that
+       ships the preferred language opens in it — no click needed. Sims that
+       don't (only possible via ?src= today) fall back inside the shim. */
+    var startLang = (!current.langs || current.langs.indexOf(lang) >= 0) ? lang : 'en';
+    var doc = '<!DOCTYPE html><html lang="' + esc(startLang) + '"><head><meta charset="UTF-8">' +
       '<meta name="viewport" content="width=device-width, initial-scale=1">' +
       '<style>html{-webkit-text-size-adjust:100%}body{margin:0}</style>' +
       '<style>' + escScript(d.css || '') + '</style></head><body>' +
@@ -696,29 +911,27 @@
   /* messages from the sim iframe */
   window.addEventListener('message', function (ev) {
     var m = ev.data || {};
-    if (!m.usfPlayer) return;
+    /* only the sandboxed sim frame may drive the chrome */
+    if (!m.usfPlayer || ev.source !== $('frame').contentWindow) return;
     if (m.type === 'ready') {
-      var L = $('langs'); L.innerHTML = '';
-      if ((m.langs || []).length > 1) {
-        m.langs.forEach(function (lg) {
-          var b = document.createElement('button');
-          b.className = 'lbtn' + (lg === m.lang ? ' on' : ''); b.textContent = lg;
-          b.onclick = function () { $('frame').contentWindow.postMessage({ usfHost: true, type: 'setLang', lang: lg }, '*'); };
-          L.appendChild(b);
-        });
+      current.langs = (m.langs && m.langs.length) ? m.langs : ['en'];
+      renderSimLangs(m.langs || [], m.lang);
+      /* a ?src= sim may simply not have the preferred language */
+      if (m.lang !== lang && current.langs.indexOf(lang) < 0) {
+        notice(T('onlyLang', { langs: current.langs.map(langName).join(', '), lang: langName(m.lang) }), 'info');
       }
     }
     if (m.type === 'lang') {
-      document.querySelectorAll('.lbtn').forEach(function (b) { b.classList.toggle('on', b.textContent === m.lang); });
+      renderSimLangs(current && current.langs ? current.langs : [m.lang], m.lang);
+      /* switching the sim switches the chrome too — one language, one page */
+      if (m.lang !== lang) setLang(m.lang, { fromSim: true });
     }
-    if (m.type === 'progress') {
-      $('progress').textContent = m.finished ? '✔ ' + m.maxPeriods + '/' + m.maxPeriods : 'Round ' + m.period + '/' + m.maxPeriods;
-    }
+    if (m.type === 'progress') { lastProgress = m; showProgress(m); }
     if (m.type === 'hint' && m.text) toast('💡 ' + m.text);
-    if (m.type === 'hint' && m.empty) toast('No hint available right now — make a move first.');
-    if (m.type === 'finished') toast('🏁 Simulation complete');
+    if (m.type === 'hint' && m.empty) toast(T('noHint'));
+    if (m.type === 'finished') toast(T('done'));
     if (m.type === 'restart') buildFrame();
-    if (m.type === 'error') notice('Simulation error — ' + m.message, 'err');
+    if (m.type === 'error') notice(T('errSim', { msg: m.message }), 'err');
     if (m.type === 'session') {
       var d = current ? current.data : {};
       var payload = Object.assign({ simulation: { externalid: d.externalid, name: d.name, category: d.category, level: d.level } }, m.session);
@@ -730,6 +943,28 @@
       setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
     }
   });
+
+  /* Per-simulation language buttons: what THIS sim ships, with the active one
+     marked. Always rendered (even for a single language) so the catalog's
+     promise — "playable in the languages it supports" — is visible in the bar. */
+  function renderSimLangs(langs, active) {
+    var L = $('langs');
+    L.innerHTML = '';
+    (langs.length ? langs : ['en']).forEach(function (lg) {
+      var b = document.createElement('button');
+      b.className = 'lbtn' + (lg === active ? ' on' : '');
+      b.textContent = lg;
+      b.title = langName(lg);
+      b.setAttribute('aria-pressed', String(lg === active));
+      b.onclick = function () { tellSim(lg); };
+      L.appendChild(b);
+    });
+  }
+  function showProgress(m) {
+    $('progress').textContent = m.finished
+      ? '✔ ' + m.maxPeriods + '/' + m.maxPeriods
+      : T('round', { n: m.period, m: m.maxPeriods });
+  }
 
   /* ───────── chrome buttons ───────── */
   $('btnRestart').onclick = function () { if (current) buildFrame(); };
@@ -743,6 +978,10 @@
 
   $('search').addEventListener('input', function () { query = this.value; applyFilter(); });
   $('lvl').addEventListener('change', function () { activeLvl = this.value; applyFilter(); });
+  $('simlang').addEventListener('change', function () { activeLang = this.value; applyFilter(); });
+  document.querySelectorAll('.lang-switch [data-set-lang]').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
+  });
   document.addEventListener('keydown', function (e) {
     if (e.key === '/' && document.activeElement !== $('search')) { e.preventDefault(); $('search').focus(); }
   });
@@ -770,6 +1009,9 @@
     .then(function (t) { chartSrc = t; if (current) buildFrame(); })
     .catch(function () { console.warn('Chart.js unavailable — sims will run without charts.'); });
 
+  /* A ?lang= deep link is an explicit choice — remember it like a click. */
+  try { localStorage.setItem('eureka-lang', lang); } catch (e) {}
+  applyUI();
   loadManifest();
 })();
 </script>
