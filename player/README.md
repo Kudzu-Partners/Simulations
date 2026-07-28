@@ -26,7 +26,10 @@ Or simply open `player/index.html` from disk and **drag & drop** any simulation 
 
 ```
 player/
-  index.html           the player: catalog browser + sandboxed runtime + USF shim
+  index.html           the player: markup only, links css/player.css + js/player.js — three views (catalog grid, preview, play)
+  css/player.css        chrome styles (catalog grid, preview screen, top bar, welcome screen)
+  js/player.js           host logic: catalog browsing/filtering, preview routing, driving sims
+  js/usf-shim.js         the USF runtime, fetched as text and injected into each sim's iframe
   manifest.json        generated catalog index (id, name, category, level, rounds, langs…)
   build_manifest.py    regenerates manifest.json from a folder of sim JSONs
   vendor/chart.umd.min.js   Chart.js 4.4.0 (MIT), inlined into each sim for charts
@@ -74,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 The view must include a `#nextPeriodBtn` (submit round) and conventionally `#undoBtn`, `#currentDay`, `#maxPeriods`, and `#usfHistoryTable`. Translations use `data-i18n` / `data-i18n-placeholder` attributes.
 
-The **USF runtime shim** embedded in `index.html` implements this contract: i18n with live language switching, data bindings, the round loop with undo, Chart.js charts, the history table, hints, notifications, and an end-of-game summary. Sims run inside a sandboxed iframe (`sandbox="allow-scripts"`, opaque origin) and talk to the player chrome only via `postMessage` — a community-contributed JSON can't touch your page, storage, or network.
+The **USF runtime shim** (`js/usf-shim.js`) implements this contract: i18n with live language switching, data bindings, the round loop with undo, Chart.js charts, the history table, hints, notifications, and an end-of-game summary. `js/player.js` fetches it as text and inlines it into each sim's iframe — it never runs in the host page itself. Sims run inside a sandboxed iframe (`sandbox="allow-scripts"`, opaque origin) and talk to the player chrome only via `postMessage` — a community-contributed JSON can't touch your page, storage, or network.
 
 ## Player features
 
