@@ -12,16 +12,18 @@ Thanks for wanting to improve the catalog. Every contribution — a bug report, 
 
 ## The quality gate (what your PR must pass)
 
-Every PR — ours included — must clear all three before merge:
+Every PR — ours included — must clear all four before merge, **in this order**:
 
 1. **Format validation.** The JSON parses, carries the required metadata (`externalid`, `name`, `description`, `category`, `level`, `max_periods`) and the three payloads (`view`, `css`, `js`).
-2. **Headless replay.** A full round-trip run in both languages with zero JS errors:
+2. **Security review — read the payload before you run it.** A simulation's `js`, `view`, and `css` are executable code. Simulations are self-contained by design, so a payload is rejected if it makes network calls of any kind (`fetch`, `XMLHttpRequest`, `WebSocket`, `EventSource`, `navigator.sendBeacon`, remote `src` attributes, CSS `@import`, webfont URLs), uses `eval` / `new Function`, touches storage or cookies, reaches for `parent`/`top` outside the documented `postMessage` contract, shows credential- or payment-shaped UI, or arrives obfuscated or minified. Full threat model in [`SECURITY.md`](SECURITY.md).
+3. **Headless replay.** A full round-trip run in both languages with zero JS errors:
    ```bash
    cd player/test
    npm install jsdom
    node headless_replay.js <externalid>
    ```
-3. **Human review.** A maintainer (or curator) plays the sim and checks the pedagogy: decisions must matter, scores must react, feedback must teach.
+   ⚠️ The replay harness executes the sim's `js` with jsdom's `runScripts: 'dangerously'` — in Node, outside the browser sandbox, with filesystem and network access. That's why step 2 comes first. Reviewers: prefer a container or throwaway VM for unfamiliar contributions.
+4. **Human review.** A maintainer (or curator) plays the sim and checks the pedagogy: decisions must matter, scores must react, feedback must teach.
 
 ## Rules
 
@@ -29,6 +31,7 @@ Every PR — ours included — must clear all three before merge:
 - **One sim per PR**, with a description of what was broken and how you verified the fix (replay output welcome).
 - **Both languages or nothing.** UI text, chart labels, and performance summaries must work in `en` and `es`. Hard-coded strings in `js` are the most common review failure.
 - **No real people, no real companies as protagonists,** no client names, no trademarks beyond fair descriptive use. Fictional scenarios only.
+- **Found a security bug? Don't open an issue.** Report it privately — see [`SECURITY.md`](SECURITY.md).
 - **License.** By contributing you agree your contribution is released under the repo license (CC BY-NC-SA 4.0). See [`GOVERNANCE.md`](GOVERNANCE.md) for how decisions get made.
 
 ## New releases
