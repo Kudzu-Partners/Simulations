@@ -33,6 +33,21 @@
   <meta property="og:description"
     content="Play 500 openly licensed business simulations in your browser — reviewed, replay-tested, free for personal use.">
   <meta property="og:url" content="https://open.eurekasimulations.com/player/index.html">
+  <!-- Same card as the catalogue home, and this page is the one that actually gets shared:
+       the deep links handed out for individual simulations (player/?sim=NNN) all land here.
+       It cannot be per-simulation — GitHub Pages is static and scrapers do not run the JS
+       that loads the sim — so one card for the player as a whole is the honest ceiling.
+       1200x630 because below 1200x627 the preview loses its description. -->
+  <meta property="og:image" content="https://open.eurekasimulations.com/og-open-simulations.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt"
+    content="Open Simulations — 500 openly licensed business simulations for teaching, playable in your browser">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Eureka Express — Open Simulation Player">
+  <meta name="twitter:description"
+    content="Play 500 openly licensed business simulations in your browser — reviewed, replay-tested, free for personal use.">
+  <meta name="twitter:image" content="https://open.eurekasimulations.com/og-open-simulations.png">
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Cpath d='M24 18l22 14-22 14z' fill='%23f2c94c'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/player.css">
