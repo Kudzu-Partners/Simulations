@@ -1,3 +1,9 @@
 **/langcache/*.php
 .claude/**
 simulations.code-workspace
+
+# The headless replay test (the C3 quality gate) is run with `npm install jsdom`
+# in player/test. Those artefacts are regenerated on demand, never committed.
+player/test/node_modules/
+player/test/package.json
+player/test/package-lock.json

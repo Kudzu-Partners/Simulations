@@ -2,8 +2,8 @@
 /*
  * Headless smoke test for the Eureka Express Open Player.
  *
- * Assembles each simulation exactly like index.html does (same USF shim,
- * extracted from index.html so test == production), runs it in jsdom, and
+ * Assembles each simulation exactly like the player does (the same USF shim,
+ * read from player/js/usf-shim.js so test == production), runs it in jsdom, and
  * plays every round by clicking #nextPeriodBtn with the sim's default inputs.
  * If a round refuses to advance (validateDecisions() = false), it nudges
  * generic inputs (sliders to mid, radios/checkboxes on, texts filled) and
@@ -38,13 +38,19 @@ const LANG = opt('lang', 'en');   // 'en' | 'es' | any code | 'all'
 const ALL = args.includes('--all');
 if (ALL) args.splice(args.indexOf('--all'), 1);
 
-const indexHtml = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf-8');
-const shimMatch = indexHtml.match(/<script type="text\/plain" id="usf-shim-src">([\s\S]*?)<\/script>/);
-if (!shimMatch) { console.error('Could not extract USF shim from index.html'); process.exit(2); }
-const SHIM = shimMatch[1];
+// The runtime shim is a standalone file that player.js fetches as text and
+// injects into each sim's iframe srcdoc. Read the same file here so the test
+// runs exactly what production runs.
+const SHIM_PATH = path.join(__dirname, '..', 'js', 'usf-shim.js');
+if (!fs.existsSync(SHIM_PATH)) {
+  console.error('Could not read the USF shim at ' + SHIM_PATH);
+  console.error('If the player was refactored again, point SHIM_PATH at whatever player.js now fetches.');
+  process.exit(2);
+}
+const SHIM = fs.readFileSync(SHIM_PATH, 'utf-8');
 
 function buildDoc(sim, lang) {
-  // mirror of buildFrame() in index.html (Chart.js replaced by a stub: jsdom has no canvas)
+  // mirror of buildFrame() in player/js/player.js (Chart.js replaced by a stub: jsdom has no canvas)
   // <html lang> is what the USF shim reads to choose its starting language
   const esc = (s) => String(s).replace(/<\/(script|style)/gi, (m) => '<\\/' + m.slice(2));
   return '<!DOCTYPE html><html lang="' + (lang || 'en') + '"><head><meta charset="UTF-8"><style>' + esc(sim.css || '') + '</style></head><body>' +
