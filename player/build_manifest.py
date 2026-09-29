@@ -103,6 +103,20 @@ def sim_langs(js):
     return langs
 
 
+CASE_STOPWORDS = {
+    "en": ("the", "and", "of", "to", "was", "had", "with"),
+    "es": ("el", "la", "los", "las", "del", "que", "con"),
+    "pt": ("o", "os", "as", "do", "da", "não", "com"),
+}
+
+
+def case_lang(text):
+    """Language of a case study, by stopword count (cases ship in one language)."""
+    words = re.findall(r"[a-záéíóúãõçñ]+", text.lower())
+    counts = {lg: sum(1 for w in words if w in sw) for lg, sw in CASE_STOPWORDS.items()}
+    return max(counts, key=counts.get)
+
+
 def find_svg(svgs, svg_dir, outdir, stem, eid):
     cands = []
     if eid:
@@ -121,11 +135,13 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--jsons", default="../jsons", help="folder with {externalid}.json files")
     ap.add_argument("--svgs", default="../svgs", help="folder with SVG thumbnails (optional)")
+    ap.add_argument("--cases", default="../cases", help="folder with {externalid}.md case studies (optional)")
     ap.add_argument("--out", default="manifest.json")
     a = ap.parse_args()
 
     outdir = os.path.dirname(os.path.abspath(a.out)) or "."
     svgs = set(os.listdir(a.svgs)) if os.path.isdir(a.svgs) else set()
+    cases = set(os.listdir(a.cases)) if os.path.isdir(a.cases) else set()
 
     sims, skipped = [], []
     cats = collections.Counter()
@@ -156,7 +172,7 @@ def main():
         langs = sorted(sim_langs(d.get("js") or "") or ["en"], key=lambda l: (l != "en", l))
         for lg in langs:
             langcount[lg] += 1
-        sims.append({
+        entry = {
             "id": eid,
             "file": fn,
             "path": relhref(path, outdir),
@@ -168,7 +184,14 @@ def main():
             "langs": langs,
             "svg": find_svg(svgs, a.svgs, outdir, stem, eid),
             "usf": "USF.SimulationAdapter" in (d.get("js") or ""),
-        })
+        }
+        # optional case study, cases/{externalid}.md — all rights reserved, see LICENSE.md
+        if eid + ".md" in cases:
+            case_path = os.path.join(a.cases, eid + ".md")
+            with open(case_path, encoding="utf-8") as f:
+                entry["case"] = relhref(case_path, outdir)
+                entry["caseLang"] = case_lang(f.read())
+        sims.append(entry)
 
     def sortkey(s):
         m = re.match(r"^(\d+)", s["id"])
@@ -181,6 +204,7 @@ def main():
         "count": len(sims),
         "categories": dict(cats),
         "languages": dict(langcount),
+        "cases": sum(1 for s in sims if s.get("case")),
         "sims": sims,
     }
     with open(a.out, "w", encoding="utf-8") as f:
@@ -190,6 +214,7 @@ def main():
     monolingual = [s["id"] for s in sims if len(s["langs"]) < 2]
     print(f"Wrote {a.out}: {len(sims)} sims, {len(skipped)} skipped, "
           f"{sum(1 for s in sims if s['svg'])} with thumbnails, "
+          f"{manifest['cases']} with a case study, "
           f"languages {dict(langcount)}, "
           f"size {os.path.getsize(a.out) // 1024} KB")
     if monolingual:

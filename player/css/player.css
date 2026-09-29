@@ -1359,3 +1359,196 @@ body.dragging #dropOverlay {
     order: 2
   }
 }
+
+/* ───── case study: preview button, card marker, reader dialog ───── */
+.bigbtn.ghostbtn {
+  background: transparent;
+  color: var(--gold);
+  box-shadow: inset 0 0 0 1.5px var(--gold)
+}
+
+.bigbtn.ghostbtn:hover {
+  background: rgba(242, 201, 76, .12);
+  box-shadow: inset 0 0 0 1.5px var(--gold), 0 4px 14px rgba(201, 162, 39, .25)
+}
+
+.casemark {
+  font-size: 11px;
+  line-height: 1;
+  opacity: .8
+}
+
+#caseModal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(5, 9, 20, .72);
+  backdrop-filter: blur(3px)
+}
+
+#caseModal[hidden] {
+  display: none
+}
+
+#caseSheet {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 820px;
+  height: 100%;
+  max-height: 100%;
+  background: #fdfcf8;
+  color: #1f2937;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .5)
+}
+
+#caseHead {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px 10px 22px;
+  background: var(--bg-2);
+  color: var(--text);
+  border-bottom: 1px solid var(--line)
+}
+
+#caseModalTitle {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  color: var(--gold)
+}
+
+#caseRights {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 8px 22px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: #6b5d3a;
+  background: #f4efe1;
+  border-bottom: 1px solid #e6dfcb
+}
+
+#caseBody {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 28px 44px 44px;
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-size: 16.5px;
+  line-height: 1.7
+}
+
+#caseBody h1 {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 27px;
+  line-height: 1.25;
+  margin: 0 0 12px;
+  color: #0b1120
+}
+
+#caseBody h2,
+#caseBody h3 {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.3;
+  margin: 1.8em 0 .6em;
+  color: #0b1120
+}
+
+#caseBody h2 {
+  font-size: 20px
+}
+
+#caseBody h3 {
+  font-size: 17px
+}
+
+#caseBody p,
+#caseBody ul,
+#caseBody ol {
+  margin: 0 0 1em
+}
+
+#caseBody hr {
+  border: 0;
+  border-top: 1px solid #e2dccb;
+  margin: 1.6em 0
+}
+
+#caseBody blockquote {
+  margin: 1.2em 0;
+  padding: 2px 18px;
+  border-left: 3px solid var(--gold-deep);
+  color: #4b5563;
+  font-size: 15px
+}
+
+#caseBody table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 1.2em 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.45
+}
+
+#caseBody th,
+#caseBody td {
+  padding: 7px 10px;
+  border: 1px solid #e2dccb;
+  text-align: left;
+  vertical-align: top
+}
+
+#caseBody th {
+  background: #f4efe1;
+  font-weight: 700
+}
+
+#caseBody a {
+  color: #0369a1
+}
+
+#caseBody code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .88em;
+  background: #f1ede2;
+  border-radius: 4px;
+  padding: 1px 5px
+}
+
+@media (max-width: 760px) {
+  #caseModal {
+    padding: 0
+  }
+
+  #caseSheet {
+    max-width: none;
+    border-radius: 0
+  }
+
+  #caseRights {
+    padding: 8px 16px
+  }
+
+  #caseBody {
+    padding: 20px 16px 32px;
+    font-size: 16px
+  }
+
+  #caseBody h1 {
+    font-size: 22px
+  }
+}

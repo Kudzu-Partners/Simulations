@@ -2,7 +2,7 @@
 
 A standalone, zero-backend player for **Eureka Express business simulations**. Each simulation is a single self-contained JSON file; this player provides an open implementation of the runtime they need, entirely in the browser. No server, no account, no tracking, no network calls at play time.
 
-**License: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)** — simulations and player code © Eureka Simulations / Kudzu Partners, shared for non-commercial use with attribution, share-alike.
+**License: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)** — simulations and player code © Eureka Simulations / Kudzu Partners, shared for non-commercial use with attribution, share-alike. The case studies in `../cases/` are the exception: all rights reserved (see [`LICENSE.md`](../LICENSE.md)).
 
 ## Quick start
 
@@ -30,12 +30,14 @@ player/
   css/player.css        chrome styles (catalog grid, preview screen, top bar, welcome screen)
   js/player.js           host logic: catalog browsing/filtering, preview routing, driving sims
   js/usf-shim.js         the USF runtime, fetched as text and injected into each sim's iframe
-  manifest.json        generated catalog index (id, name, category, level, rounds, langs…)
+  manifest.json        generated catalog index (id, name, category, level, rounds, langs, case…)
   build_manifest.py    regenerates manifest.json from a folder of sim JSONs
   vendor/chart.umd.min.js   Chart.js 4.4.0 (MIT), inlined into each sim for charts
+  vendor/marked.min.js      marked 9.1.6 (MIT), renders the case studies in the host page
   test/headless_replay.js   jsdom smoke test that auto-plays sims round by round
 jsons/                 the simulation catalog — one JSON per simulation
 svgs/                  optional cover illustrations, matched by external id
+cases/                 optional case studies, {externalid}.md — all rights reserved
 ```
 
 ## The simulation format
@@ -95,9 +97,20 @@ Catalog search and category/level/**language** filters, cover thumbnails, random
 
 A sim that doesn't ship the preferred language (only reachable via `?src=`) falls back to English and says so in a notice.
 
+### Case studies
+
+A catalog sim can have a companion case, `cases/{externalid}.md`: the teaching case it is built on (protagonist, company, baseline numbers, what the player controls). `build_manifest.py` records it as `case` (relative path) and `caseLang` (the case's language, detected from its text: cases ship in one language) in `manifest.json`, and counts them in the top-level `cases` field.
+
+- The preview screen shows **📄 Case study** next to Play, and the top bar shows **📄 Case** while playing. Catalog cards with a case carry a 📄 marker.
+- When `caseLang` differs from the page language the button says so, e.g. *Caso (en inglés)*.
+- The case opens in a reader dialog in the host page, rendered with `vendor/marked.min.js`. Raw HTML in the Markdown is shown as text, never rendered; links open in a new tab. Esc, the ✕ button or a click on the backdrop closes it.
+- The reader states above every case that it is all rights reserved and not covered by the CC license.
+
+Cases are copied verbatim from the Express source library; they are not edited here.
+
 ## Adding or updating simulations
 
-1. Drop the new `{externalid}.json` into `jsons/`.
+1. Drop the new `{externalid}.json` into `jsons/` (and its case, if it has one, as `cases/{externalid}.md`).
 2. Regenerate the catalog: `cd player && python build_manifest.py` — it reports any sim that ships fewer than two languages.
 3. Smoke-test: `cd player/test && npm install jsdom && node headless_replay.js <id>` — it plays every round headlessly and reports runtime errors. Add `--lang es` for one language, or `--lang all` to replay each sim once per language it ships.
 
@@ -107,4 +120,4 @@ The player is served with **GitHub Pages** straight from this repository, at the
 
 ## Attribution
 
-Created by [Eureka Simulations](https://www.eurekasimulations.com/) (Kudzu Partners S.L.). Chart.js is © its contributors, MIT-licensed. If you remix or redistribute, keep the attribution and the CC BY-NC-SA 4.0 terms.
+Created by [Eureka Simulations](https://www.eurekasimulations.com/) (Kudzu Partners S.L.). Chart.js and marked are © their contributors, MIT-licensed. If you remix or redistribute, keep the attribution and the CC BY-NC-SA 4.0 terms.

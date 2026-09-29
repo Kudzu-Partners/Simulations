@@ -176,6 +176,8 @@
             <p id="previewDesc"></p>
             <div id="previewActions">
               <button id="btnPlay" class="bigbtn"><span data-i18n="playSim">▶ Play simulation</span></button>
+              <button id="btnCase" class="bigbtn ghostbtn" style="display:none" data-i18n-title="caseTitle"
+                title="Read the case study this simulation is built on">📄 <span class="caseLabel">Case study</span></button>
             </div>
           </div>
         </div>
@@ -197,6 +199,8 @@
         <span id="simMeta"></span>
         <span id="progress" style="display:none"></span>
         <div id="langs" data-i18n-aria="simLangAria" role="group" aria-label="Simulation language"></div>
+        <button id="btnCaseBar" class="abtn" style="display:none" data-i18n-title="caseTitle"
+          title="Read the case study this simulation is built on">📄 <span class="caseBarLabel">Case</span></button>
         <button id="btnHint" class="abtn" style="display:none" data-i18n-title="hintTitle"
           title="Ask the built-in coach for a hint">💡
           <span data-i18n="hint">Hint</span></button>
@@ -214,6 +218,22 @@
 
   </div>
 
+  <!-- ═══════════════════════ CASE STUDY READER ═══════════════════════ -->
+  <div id="caseModal" role="dialog" aria-modal="true" aria-labelledby="caseModalTitle" hidden>
+    <div id="caseSheet">
+      <header id="caseHead">
+        <span id="caseModalTitle" data-i18n="caseHeading">Case study</span>
+        <button id="caseClose" class="abtn" type="button" data-i18n-aria="caseCloseAria"
+          aria-label="Close case study">✕</button>
+      </header>
+      <p id="caseRights" data-i18n="caseRights">© 2026 Kudzu Partners / Eureka Express — all rights reserved. The case is
+        shared to be read alongside the simulation; unlike the simulations, it is not covered by the CC BY-NC-SA
+        licence.</p>
+      <article id="caseBody"></article>
+    </div>
+  </div>
+
+  <script src="vendor/marked.min.js"></script>
   <script src="js/player.js"></script>
 </body>
 

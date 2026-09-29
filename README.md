@@ -4,6 +4,8 @@ Playable business simulations by [Eureka Simulations](https://www.eurekasimulati
 
 **License: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)** — free to use, share, and adapt for **personal, non-commercial purposes** with attribution. Classroom and institutional teaching deployment is commercial use under the NC clause ([details](LICENSE.md)). For licensing — class runs, corporate training, LMS integration — [contact Eureka Simulations](https://www.eurekasimulations.com/).
 
+**Exception — case studies:** the cases in `cases/` are © Kudzu Partners / Eureka Express, **all rights reserved**. They are here to be read alongside the simulations in the player, and are not covered by the CC license ([details](LICENSE.md#exception-case-studies-cases--all-rights-reserved)).
+
 ## Play
 
 **▶ [Play in your browser — open.eurekasimulations.com/player](https://open.eurekasimulations.com/player/)** — hosted with GitHub Pages. No install, no account.
@@ -11,6 +13,8 @@ Playable business simulations by [Eureka Simulations](https://www.eurekasimulati
 Deep links work too: [`player/?sim=015`](https://open.eurekasimulations.com/player/?sim=015) (by external id), `player/?src=<url>` (any CORS-enabled JSON), or `?lang=es` to open the player and the simulation in Spanish — [`player/?sim=015&lang=es`](https://open.eurekasimulations.com/player/?sim=015&lang=es).
 
 Every simulation ships in **English and Spanish**. The player records which languages each one supports, lets you filter the catalog by language, and starts a simulation in your language rather than defaulting to English; the choice follows you across the site and into shared links.
+
+Most simulations come with the **case study** they are built on: a short teaching case that sets the scene: who you are, what you run, where things stand and what you control. Open it with **📄 Case study** on the simulation's page or from the top bar while you play. Each case is written in one language, and the button says which when it differs from yours.
 
 Prefer to run it locally (development, offline evaluation)?
 
@@ -35,6 +39,7 @@ The player above is single-learner, in your browser. To teach any of these simul
 player/    the standalone player: catalog browser + open USF runtime + headless test
 jsons/     the simulations — one JSON per simulation
 svgs/      cover illustrations
+cases/     case studies, {externalid}.md — all rights reserved, see LICENSE.md
 ```
 
 This catalog is seeded progressively as simulations pass our quality-review lifecycle; the full Express library holds 1,600+ simulations across business, finance, education, sustainability, hospitality, and tourism. Watch or star the repo to follow new drops.
@@ -58,4 +63,4 @@ Bug reports, fixes, localizations, and new simulations are welcome — every con
 
 ## Attribution
 
-© 2026 Kudzu Partners S.L. / Eureka Simulations · Simulations and player shared under CC BY-NC-SA 4.0 ([full terms](LICENSE.md)) · Chart.js (bundled in `player/vendor/`) is MIT-licensed by its contributors.
+© 2026 Kudzu Partners S.L. / Eureka Simulations · Simulations and player shared under CC BY-NC-SA 4.0 ([full terms](LICENSE.md)) · Case studies in `cases/` © Kudzu Partners / Eureka Express, all rights reserved · Chart.js and marked (bundled in `player/vendor/`) are MIT-licensed by their contributors.

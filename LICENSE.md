@@ -22,6 +22,15 @@ Under the following terms:
 
 No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
+## Exception: case studies (`cases/`) — all rights reserved
+
+The case studies in `cases/` (one Markdown file per simulation, `{externalid}.md`) are **not** covered by the CC BY-NC-SA 4.0 license above.
+
+© 2026 Kudzu Partners S.L. / Eureka Express. **All rights reserved.** They are published here so that anyone playing a simulation in the Open Player can read the case it is built on. No license to copy, redistribute, adapt, translate or republish them is granted, in whole or in part, beyond what applicable law allows without permission (for example, brief quotation). The player displays this notice above every case.
+
+For permission to use the cases in a course, a course pack or any other publication, contact Eureka Simulations: https://www.eurekasimulations.com/
+
 ## Third-party components
 
 - **Chart.js** (`player/vendor/chart.umd.min.js`) — © Chart.js contributors, licensed under the [MIT License](https://github.com/chartjs/Chart.js/blob/master/LICENSE.md). Not covered by the CC BY-NC-SA terms above.
+- **marked** (`player/vendor/marked.min.js`, v9.1.6), used to render the case studies — © Christopher Jeffrey and the marked contributors, licensed under the [MIT License](https://github.com/markedjs/marked/blob/master/LICENSE.md). Not covered by the CC BY-NC-SA terms above.

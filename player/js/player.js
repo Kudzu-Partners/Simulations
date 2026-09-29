@@ -99,9 +99,13 @@
       noHint: 'No hint available right now — make a move first.',
       done: '🏁 Simulation complete',
       onlyLang: 'This simulation only ships in {langs} — playing it in {lang}.',
+      caseBtn: 'Case study', caseBtnIn: 'Case study (in {lang})', caseShort: 'Case', caseShortIn: 'Case (in {lang})',
+      caseTitle: 'Read the case study this simulation is built on', caseHeading: 'Case study', caseCloseAria: 'Close the case study',
+      caseRights: '© 2026 Kudzu Partners / Eureka Express — all rights reserved. The case is shared to be read alongside the simulation; unlike the simulations, it is not covered by the CC BY-NC-SA licence.',
+      caseLoading: 'Loading the case…', caseErr: 'Could not load the case study — {msg}',
       cats: { business: 'business', education: 'education', finance: 'finance', sustainability: 'sustainability', hospitality: 'hospitality', tourism: 'tourism', other: 'other' },
       lvls: { basic: 'basic', intermediate: 'intermediate', advanced: 'advanced' },
-      langNames: { en: 'English', es: 'Spanish' },
+      langNames: { en: 'English', es: 'Spanish', pt: 'Portuguese' },
       topics: { marketing: 'Marketing', strategy: 'Strategy', innovation: 'Innovation', digital: 'Digital & AI', leadership: 'Leadership', negotiation: 'Negotiation', governance: 'Governance', operations: 'Operations', crisis: 'Crisis Mgmt', ethics: 'Ethics' },
       durGroups: {
         '1-2': { label: 'Quick', hint: '1–2 rounds' },
@@ -147,9 +151,13 @@
       noHint: 'No hay pista disponible ahora mismo — haz primero una jugada.',
       done: '🏁 Simulación completada',
       onlyLang: 'Esta simulación solo está disponible en {langs} — se juega en {lang}.',
+      caseBtn: 'Caso de estudio', caseBtnIn: 'Caso de estudio (en {lang})', caseShort: 'Caso', caseShortIn: 'Caso (en {lang})',
+      caseTitle: 'Lee el caso de estudio en el que se basa esta simulación', caseHeading: 'Caso de estudio', caseCloseAria: 'Cerrar el caso de estudio',
+      caseRights: '© 2026 Kudzu Partners / Eureka Express — todos los derechos reservados. El caso se comparte para leerlo junto a la simulación; a diferencia de las simulaciones, no está bajo la licencia CC BY-NC-SA.',
+      caseLoading: 'Cargando el caso…', caseErr: 'No se pudo cargar el caso de estudio — {msg}',
       cats: { business: 'negocios', education: 'educación', finance: 'finanzas', sustainability: 'sostenibilidad', hospitality: 'hostelería', tourism: 'turismo', other: 'otros' },
       lvls: { basic: 'básico', intermediate: 'intermedio', advanced: 'avanzado' },
-      langNames: { en: 'inglés', es: 'español' },
+      langNames: { en: 'inglés', es: 'español', pt: 'portugués' },
       topics: { marketing: 'Marketing', strategy: 'Estrategia', innovation: 'Innovación', digital: 'Digital e IA', leadership: 'Liderazgo', negotiation: 'Negociación', governance: 'Gobernanza', operations: 'Operaciones', crisis: 'Gestión de crisis', ethics: 'Ética' },
       durGroups: {
         '1-2': { label: 'Rápida', hint: '1–2 rondas' },
@@ -190,6 +198,7 @@
     });
     if (manifest) { buildFilters(); applyFilter(); }
     if (current && view === 'preview') renderPreviewMeta();
+    if (current) renderCaseButtons();
     if (view === 'play' && current) {
       $('simMeta').textContent = playMetaLine(current.data, current.manifestSim);
       if (lastProgress) showProgress(lastProgress);
@@ -251,6 +260,7 @@
   /* ───────── view routing ───────── */
   function setView(v) {
     view = v;
+    closeCase();
     $('viewCatalog').classList.toggle('active', v === 'catalog');
     $('viewPreview').classList.toggle('active', v === 'preview');
     $('viewPlay').classList.toggle('active', v === 'play');
@@ -543,13 +553,14 @@
     var lvlHtml = s.level ? '<span class="lvlbadge lvl-' + esc(s.level) + '">' + esc(lvlLabel(s.level)) + '</span>' : '';
     var ls = simLangs(s);
     var langHtml = '<span class="lg" title="' + esc(ls.map(langName).join(' · ')) + '">' + esc(ls.join('·')) + '</span>';
+    var caseHtml = s.case ? '<span class="casemark" title="' + esc(T('caseBtn')) + '" aria-label="' + esc(T('caseBtn')) + '">📄</span>' : '';
     var q = query.trim();
     var nameHtml = highlightName(s.name);
     var snippet = (q && nameHtml.indexOf('<mark>') < 0) ? descSnippet(s.desc, q) : ''; // surface why a desc-only match hit
     d.innerHTML = '<div class="cardcover">' + cover + '</div>' +
       '<div class="cardbody">' +
       '<div class="cardname">' + nameHtml + '</div>' +
-      '<div class="cardtags"><span class="catpill" style="background:' + color + '">' + esc(catLabel(s.cat)) + '</span>' + lvlHtml + langHtml + '</div>' +
+      '<div class="cardtags"><span class="catpill" style="background:' + color + '">' + esc(catLabel(s.cat)) + '</span>' + lvlHtml + langHtml + caseHtml + '</div>' +
       (s.periods ? '<div class="cardrounds">' + s.periods + ' ' + T(s.periods === 1 ? 'round' : 'rounds') + '</div>' : '') +
       (snippet ? '<div class="cardsnip">' + snippet + '</div>' : '') +
       '</div>';
@@ -596,6 +607,7 @@
     current = { data: data, srcName: srcName, manifestSim: manifestSim || null, langs: manifestSim ? simLangs(manifestSim) : null };
     $('notice').className = '';
     renderPreview();
+    renderCaseButtons();
     setView('preview');
     syncUrl();
   }
@@ -656,6 +668,76 @@
   $('btnPlay').onclick = function () { playCurrent(); };
   $('btnPlayBar').onclick = function () { playCurrent(); };
 
+  /* ───────── case study reader ─────────
+     cases/{id}.md is the teaching case a sim is built on. Unlike the sims it is
+     all rights reserved (see LICENSE.md), which the reader states above the
+     text. Raw HTML in the markdown is shown as text, never rendered; links
+     open in a new tab. */
+  var caseMd = window.marked ? new marked.Marked({
+    gfm: true,
+    renderer: { html: function (html) { return esc(html); } }
+  }) : null;
+  var caseLoaded = null, caseReturnFocus = null;
+  function caseSim() { return (caseMd && current && current.manifestSim && current.manifestSim.case) ? current.manifestSim : null; }
+  /* the case ships in one language — say so on the button when it isn't the page's */
+  function caseLabel(key) {
+    var s = caseSim();
+    return (s.caseLang && s.caseLang !== lang) ? T(key + 'In', { lang: langName(s.caseLang) }) : T(key);
+  }
+  function renderCaseButtons() {
+    var s = caseSim();
+    $('btnCase').style.display = s ? 'inline-block' : 'none';
+    $('btnCaseBar').style.display = s ? 'inline-block' : 'none';
+    if (!s) return;
+    $('btnCase').querySelector('.caseLabel').textContent = caseLabel('caseBtn');
+    $('btnCaseBar').querySelector('.caseBarLabel').textContent = caseLabel('caseShort');
+  }
+  function openCase() {
+    var s = caseSim();
+    if (!s) return;
+    caseReturnFocus = document.activeElement;
+    $('caseModal').hidden = false;
+    $('caseClose').focus();
+    if (caseLoaded === s.case) return;
+    var body = $('caseBody');
+    body.setAttribute('lang', s.caseLang || 'en');
+    body.textContent = T('caseLoading');
+    body.scrollTop = 0;
+    fetch(s.case).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(function (md) {
+        if (caseSim() !== s) return; // moved on to another sim while it loaded
+        body.innerHTML = caseMd.parse(md);
+        body.querySelectorAll('a[href]').forEach(function (a) {
+          var href = a.getAttribute('href');
+          if (!/^(https?:|mailto:|#)/i.test(href)) { a.removeAttribute('href'); return; }
+          if (href.charAt(0) !== '#') { a.target = '_blank'; a.rel = 'noopener'; }
+        });
+        caseLoaded = s.case;
+      })
+      .catch(function (e) { body.textContent = T('caseErr', { msg: e.message }); });
+  }
+  function closeCase() {
+    if ($('caseModal').hidden) return;
+    $('caseModal').hidden = true;
+    if (caseReturnFocus && caseReturnFocus.focus) caseReturnFocus.focus();
+    caseReturnFocus = null;
+  }
+  $('btnCase').onclick = openCase;
+  $('btnCaseBar').onclick = openCase;
+  $('caseClose').onclick = closeCase;
+  $('caseModal').addEventListener('click', function (e) { if (e.target === this) closeCase(); });
+  /* Escape closes; Tab stays inside the dialog while it is open */
+  document.addEventListener('keydown', function (e) {
+    if ($('caseModal').hidden) return;
+    if (e.key === 'Escape') { closeCase(); return; }
+    if (e.key !== 'Tab') return;
+    var f = $('caseModal').querySelectorAll('button, a[href]');
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    else if (!$('caseModal').contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+  });
+
   /* ───────── runtime (Play view) ───────── */
   function playMetaLine(d, s) {
     var cat = ((s && s.cat) || d.category || '').toLowerCase();
@@ -670,6 +752,7 @@
     $('simTitle').title = d.description || '';
     $('simMeta').textContent = playMetaLine(d, current.manifestSim);
     ['btnHint', 'btnRestart', 'btnExport', 'btnFull'].forEach(function (b) { $(b).style.display = 'inline-block'; });
+    renderCaseButtons();
     $('progress').style.display = 'inline-block';
     $('progress').textContent = '…';
     $('langs').innerHTML = '';
