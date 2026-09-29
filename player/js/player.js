@@ -633,9 +633,22 @@
       '<meta name="viewport" content="width=device-width,initial-scale=1">' +
       '<style>*{box-sizing:border-box}html{margin:0;overflow-x:hidden}body{margin:0;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}body::-webkit-scrollbar{display:none}<\/style>' +
       '<style>' + escScript(d.css || '') + '<\/style><\/head>' +
-      '<body>' + (d.view || '') + '<\/body><\/html>';
+      '<body>' + previewView(d.view || '') + '<\/body><\/html>';
     $('previewLive').srcdoc = prevDoc;
     requestAnimationFrame(updatePreviewScale);
+  }
+
+  /* The static preview has no runtime, so a designer default would show as if it had
+     been chosen, including answers the EQIL guard clears at play time. Strip the
+     defaults here: lists render blank, boxes and radios unticked. Disabled inputs
+     (mandatory items) keep their state. */
+  function previewView(html) {
+    return String(html)
+      .replace(/<(option|input)\b[^>]*>/gi, function (tag) {
+        if (/\sdisabled\b/i.test(tag)) return tag;
+        return tag.replace(/\s(selected|checked)(\s*=\s*("[^"]*"|'[^']*'|[^\s>]+))?(?=[\s\/>])/gi, '');
+      })
+      .replace(/<select\b[^>]*>/gi, function (tag) { return tag + '<option value="" selected hidden></option>'; });
   }
 
   /* Just the translatable pills — re-run on a language switch without

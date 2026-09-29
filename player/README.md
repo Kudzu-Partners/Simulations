@@ -85,6 +85,8 @@ The **USF runtime shim** (`js/usf-shim.js`) implements this contract: i18n with 
 
 Catalog search and category/level/**language** filters, cover thumbnails, random pick, round progress, on-demand hints from the sim's own coach logic, restart, fullscreen, and **session export** (downloads your decisions, per-round results, and final summary as JSON — handy for classroom debriefs).
 
+The read-only **preview** renders the sim's `view` without running it. Designer defaults are stripped there (lists render blank; boxes and radios unticked; disabled mandatory items keep their state), the way the sims start at play time, so the preview never shows an option as if it had already been chosen.
+
 ### Languages
 
 `build_manifest.py` reads each sim's `getTranslations()` and records the languages it ships as `langs` in `manifest.json`, so the catalog knows what's available before anything loads:
