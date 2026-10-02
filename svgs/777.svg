@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" fill="none">
+  <defs>
+    <linearGradient id="g777" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5BB8EA"/>
+      <stop offset="1" stop-color="#2D9CDB"/>
+    </linearGradient>
+  </defs>
+  <!-- reborde blanco -->
+  <path d="M200 96 q-44 -26 -116 -18 v210 q72 -8 116 18 q44 -26 116 -18 v-210 q-72 8 -116 -18 Z"
+        fill="#FFFFFF" stroke="#FFFFFF" stroke-width="18" stroke-linejoin="round"/>
+  <!-- el libro mayor de la balanza de pagos -->
+  <path d="M200 104 q-40 -22 -108 -16 v196 q68 -6 108 16 Z" fill="url(#g777)"/>
+  <path d="M200 104 q40 -22 108 -16 v196 q-68 -6 -108 16 Z" fill="#1F7BB8"/>
+  <line x1="200" y1="104" x2="200" y2="300" stroke="#FFFFFF" stroke-width="9"/>
+  <!-- entra: crédito -->
+  <g stroke="#FFFFFF" stroke-width="11" stroke-linecap="round">
+    <line x1="122" y1="188" x2="172" y2="188"/>
+  </g>
+  <polygon points="164,170 188,188 164,206" fill="#FFFFFF"/>
+  <!-- sale: débito -->
+  <line x1="278" y1="216" x2="228" y2="216" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+  <polygon points="236,198 212,216 236,234" fill="#FFFFFF"/>
+</svg>

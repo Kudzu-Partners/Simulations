@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg227" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1220"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <linearGradient id="seniorCLO227" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2980b9"/>
+      <stop offset="100%" stop-color="#1a5276"/>
+    </linearGradient>
+    <linearGradient id="mezzCLO227" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f39c12"/>
+      <stop offset="100%" stop-color="#d35400"/>
+    </linearGradient>
+    <linearGradient id="eqCLO227" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e74c3c"/>
+      <stop offset="100%" stop-color="#922b21"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg227)"/>
+
+  <!-- Title -->
+  <text x="200" y="38" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#e74c3c" opacity="0.9" letter-spacing="2">CREDIT DERIVATIVES · CDS · CLO</text>
+
+  <!-- ── CLO Structure (center protagonist) ── -->
+  <!-- Loan pool (left) -->
+  <g transform="translate(30, 80)">
+    <text x="0" y="-8" font-family="'Courier New',monospace" font-size="7.5" fill="#8899aa" opacity="0.8">LOAN POOL</text>
+    <rect x="0" y="0" width="80" height="240" rx="6" fill="#0a1220" stroke="#ccddee" stroke-width="1.2" opacity="0.8"/>
+    <!-- Individual loans as colored bars -->
+    <g opacity="0.75">
+      <rect x="6" y="6" width="68" height="14" rx="2" fill="#2980b9"/>
+      <rect x="6" y="24" width="68" height="14" rx="2" fill="#27ae60"/>
+      <rect x="6" y="42" width="68" height="14" rx="2" fill="#e74c3c"/>
+      <rect x="6" y="60" width="68" height="14" rx="2" fill="#f39c12"/>
+      <rect x="6" y="78" width="68" height="14" rx="2" fill="#2980b9"/>
+      <rect x="6" y="96" width="68" height="14" rx="2" fill="#27ae60"/>
+      <rect x="6" y="114" width="68" height="14" rx="2" fill="#2980b9"/>
+      <rect x="6" y="132" width="68" height="14" rx="2" fill="#e74c3c"/>
+      <rect x="6" y="150" width="68" height="14" rx="2" fill="#f39c12"/>
+      <rect x="6" y="168" width="68" height="14" rx="2" fill="#27ae60"/>
+      <rect x="6" y="186" width="68" height="14" rx="2" fill="#2980b9"/>
+      <rect x="6" y="204" width="68" height="14" rx="2" fill="#e74c3c"/>
+      <rect x="6" y="222" width="68" height="14" rx="2" fill="#f39c12"/>
+    </g>
+    <text x="40" y="252" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" fill="#8899aa">125 LOANS</text>
+  </g>
+
+  <!-- Flow arrow pool → CLO -->
+  <line x1="110" y1="200" x2="138" y2="200" stroke="#ccddee" stroke-width="2" opacity="0.5"/>
+  <polygon points="136,196 144,200 136,204" fill="#ccddee" opacity="0.6"/>
+
+  <!-- CLO tranches (center) -->
+  <g transform="translate(144, 80)">
+    <text x="60" y="-8" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" fill="#8899aa" opacity="0.8">CLO TRANCHES</text>
+    <!-- Senior AAA (large) -->
+    <rect x="0" y="0" width="120" height="100" rx="5" fill="url(#seniorCLO227)" stroke="#74b9ff" stroke-width="1.5"/>
+    <text x="60" y="35" text-anchor="middle" font-family="'Courier New',monospace" font-size="8.5" font-weight="bold" fill="#fff">AAA</text>
+    <text x="60" y="50" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" fill="#fff" opacity="0.9">SENIOR</text>
+    <text x="60" y="64" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#74b9ff" opacity="0.9">70% / L+140</text>
+    <text x="60" y="78" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#fff" opacity="0.75">LAST LOSS</text>
+    <!-- Mezz BBB -->
+    <rect x="0" y="106" width="120" height="65" rx="5" fill="url(#mezzCLO227)" stroke="#ffc107" stroke-width="1.5"/>
+    <text x="60" y="128" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" font-weight="bold" fill="#fff">BB/BBB MEZZ</text>
+    <text x="60" y="143" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#ffc107" opacity="0.9">20% / L+350</text>
+    <text x="60" y="158" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#fff" opacity="0.75">MID LOSS</text>
+    <!-- Equity (first loss) -->
+    <rect x="0" y="177" width="120" height="58" rx="5" fill="url(#eqCLO227)" stroke="#ff7675" stroke-width="1.5"/>
+    <text x="60" y="200" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" font-weight="bold" fill="#fff">EQUITY</text>
+    <text x="60" y="214" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#ff9f9f" opacity="0.9">10% FIRST LOSS</text>
+    <text x="60" y="228" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#fff" opacity="0.75">RESIDUAL</text>
+  </g>
+
+  <!-- ── CDS Protection umbrella (right) ── -->
+  <g transform="translate(290, 80)">
+    <text x="50" y="-8" text-anchor="middle" font-family="'Courier New',monospace" font-size="7.5" fill="#8899aa" opacity="0.8">CDS</text>
+    <!-- Umbrella shape -->
+    <path d="M 50 30 Q 5 30 5 70 Q 5 80 20 80 Q 20 60 35 60 Q 35 80 50 80 Q 65 80 65 60 Q 80 60 80 80 Q 95 80 95 70 Q 95 30 50 30"
+          fill="#1a4a1a" stroke="#00ff88" stroke-width="2"/>
+    <!-- Umbrella top arc -->
+    <path d="M 5 70 Q 5 20 50 16 Q 95 20 95 70"
+          fill="none" stroke="#00ff88" stroke-width="2.5"/>
+    <!-- Handle -->
+    <line x1="50" y1="80" x2="50" y2="108" stroke="#00ff88" stroke-width="2"/>
+    <path d="M 50 108 Q 50 118 40 118" stroke="#00ff88" stroke-width="2" fill="none"/>
+    <!-- PROTECTION label -->
+    <text x="50" y="54" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" font-weight="bold" fill="#00ff88">PROT.</text>
+    <text x="50" y="66" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#00ff88">BUYER</text>
+
+    <!-- Premium flow -->
+    <text x="50" y="130" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" fill="#f5c842" opacity="0.85">PREMIUM</text>
+    <line x1="50" y1="134" x2="50" y2="148" stroke="#f5c842" stroke-width="1.2" stroke-dasharray="3,2" opacity="0.7"/>
+    <polygon points="44,145 56,145 50,152" fill="#f5c842" opacity="0.7"/>
+    <text x="50" y="165" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" fill="#e74c3c" opacity="0.85">DEFAULT</text>
+    <text x="50" y="175" text-anchor="middle" font-family="'Courier New',monospace" font-size="6.5" fill="#e74c3c" opacity="0.85">PAYMENT</text>
+  </g>
+
+  <!-- Default correlation matrix (bottom-left) -->
+  <g transform="translate(30, 340)">
+    <text x="0" y="-5" font-family="'Courier New',monospace" font-size="7" fill="#8899aa" opacity="0.8" letter-spacing="1">DEFAULT CORRELATION ρ</text>
+    <!-- mini 3x3 heatmap -->
+    <rect x="0" y="0" width="16" height="16" rx="1" fill="#27ae60" opacity="0.7"/>
+    <rect x="18" y="0" width="16" height="16" rx="1" fill="#f39c12" opacity="0.7"/>
+    <rect x="36" y="0" width="16" height="16" rx="1" fill="#e74c3c" opacity="0.8"/>
+    <rect x="0" y="18" width="16" height="16" rx="1" fill="#f39c12" opacity="0.7"/>
+    <rect x="18" y="18" width="16" height="16" rx="1" fill="#27ae60" opacity="0.7"/>
+    <rect x="36" y="18" width="16" height="16" rx="1" fill="#f39c12" opacity="0.7"/>
+    <rect x="0" y="36" width="16" height="16" rx="1" fill="#e74c3c" opacity="0.8"/>
+    <rect x="18" y="36" width="16" height="16" rx="1" fill="#f39c12" opacity="0.7"/>
+    <rect x="36" y="36" width="16" height="16" rx="1" fill="#27ae60" opacity="0.7"/>
+    <!-- ρ value -->
+    <text x="68" y="18" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#f5c842" opacity="0.9">ρ=0.25</text>
+    <text x="68" y="34" font-family="'Courier New',monospace" font-size="6.5" fill="#8899aa">sector correl.</text>
+    <text x="68" y="46" font-family="'Courier New',monospace" font-size="6.5" fill="#8899aa">Vasicek model</text>
+  </g>
+
+  <!-- CDS spread curve badge -->
+  <g transform="translate(200, 340)">
+    <text x="0" y="-5" font-family="'Courier New',monospace" font-size="7" fill="#8899aa" opacity="0.8">CDS SPREAD CURVE</text>
+    <polyline points="0,38 30,30 60,22 90,18 120,16 150,15"
+              stroke="#e74c3c" stroke-width="2" fill="none" opacity="0.85"/>
+    <text x="152" y="18" font-family="'Courier New',monospace" font-size="6" fill="#e74c3c">30Y</text>
+    <line x1="0" y1="40" x2="155" y2="40" stroke="#ccddee" stroke-width="0.5" opacity="0.3"/>
+  </g>
+
+  <text x="200" y="392" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#e74c3c" opacity="0.4" letter-spacing="2">CREDIT CHAIN</text>
+</svg>

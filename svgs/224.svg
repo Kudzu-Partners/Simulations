@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg224" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1923"/>
+      <stop offset="100%" stop-color="#1a2a3a"/>
+    </linearGradient>
+    <linearGradient id="pipe224" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#48bb78"/>
+      <stop offset="50%" stop-color="#4299e1"/>
+      <stop offset="100%" stop-color="#ed8936"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg224)"/>
+
+  <!-- Header label -->
+  <text x="200" y="38" text-anchor="middle" font-family="'Courier New',monospace" font-size="8.5" font-weight="bold" fill="#63b3ed" opacity="0.9" letter-spacing="2">MONETARY POLICY TRANSMISSION</text>
+
+  <!-- ── Central Bank (top center) ── -->
+  <g transform="translate(200, 78)">
+    <rect x="-52" y="-18" width="104" height="36" rx="6" fill="#1e3a5f" stroke="#4299e1" stroke-width="2"/>
+    <text y="-4" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" font-weight="bold" fill="#63b3ed" opacity="0.95">CENTRAL BANK</text>
+    <text y="8" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" font-weight="bold" fill="#4299e1">2.50%</text>
+    <!-- Policy rate arrow -->
+    <line x1="0" y1="18" x2="0" y2="35" stroke="#4299e1" stroke-width="2" marker-end="url(#arrow224)"/>
+  </g>
+
+  <!-- SVG arrowhead defs -->
+  <defs>
+    <marker id="arrow224" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#48bb78" opacity="0.8"/>
+    </marker>
+    <marker id="arrowOrange224" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#ed8936" opacity="0.8"/>
+    </marker>
+  </defs>
+
+  <!-- ── MONEY MARKETS chain (left column, green) ── -->
+  <g transform="translate(52, 130)">
+    <text x="0" y="-6" font-family="'Courier New',monospace" font-size="7" fill="#48bb78" opacity="0.8" letter-spacing="2">MONEY MARKETS</text>
+
+    <!-- Fed Funds -->
+    <rect x="0" y="0" width="130" height="36" rx="5" fill="#162535" stroke="#48bb78" stroke-width="1.5"/>
+    <text x="65" y="12" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#8899aa">FED FUNDS RATE</text>
+    <text x="65" y="27" text-anchor="middle" font-family="'Courier New',monospace" font-size="12" font-weight="bold" fill="#48bb78">2.55%</text>
+    <line x1="65" y1="36" x2="65" y2="50" stroke="#48bb78" stroke-width="1.5" opacity="0.7"/>
+
+    <!-- Repo -->
+    <rect x="0" y="50" width="130" height="36" rx="5" fill="#162535" stroke="#48bb78" stroke-width="1.2"/>
+    <text x="65" y="62" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#8899aa">REPO RATE</text>
+    <text x="65" y="77" text-anchor="middle" font-family="'Courier New',monospace" font-size="12" font-weight="bold" fill="#48bb78">2.60%</text>
+    <line x1="65" y1="86" x2="65" y2="100" stroke="#48bb78" stroke-width="1.5" opacity="0.7"/>
+
+    <!-- T-Bill -->
+    <rect x="0" y="100" width="130" height="36" rx="5" fill="#162535" stroke="#48bb78" stroke-width="1.2"/>
+    <text x="65" y="112" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#8899aa">T-BILL RATE</text>
+    <text x="65" y="127" text-anchor="middle" font-family="'Courier New',monospace" font-size="12" font-weight="bold" fill="#48bb78">2.40%</text>
+    <line x1="65" y1="136" x2="65" y2="150" stroke="#4299e1" stroke-width="1.5" opacity="0.7"/>
+
+    <!-- CP -->
+    <rect x="0" y="150" width="130" height="36" rx="5" fill="#162535" stroke="#4299e1" stroke-width="1.2"/>
+    <text x="65" y="162" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#8899aa">COMM. PAPER</text>
+    <text x="65" y="177" text-anchor="middle" font-family="'Courier New',monospace" font-size="12" font-weight="bold" fill="#4299e1">3.00%</text>
+  </g>
+
+  <!-- ── CAPITAL MARKETS chain (right column, orange) ── -->
+  <g transform="translate(218, 130)">
+    <text x="0" y="-6" font-family="'Courier New',monospace" font-size="7" fill="#ed8936" opacity="0.8" letter-spacing="2">CAPITAL MARKETS</text>
+
+    <!-- Corp Bond Spread -->
+    <rect x="0" y="0" width="130" height="36" rx="5" fill="#162535" stroke="#ed8936" stroke-width="1.5"/>
+    <text x="65" y="12" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#8899aa">CORP BOND SPREAD</text>
+    <text x="65" y="27" text-anchor="middle" font-family="'Courier New',monospace" font-size="12" font-weight="bold" fill="#ed8936">150 bps</text>
+    <line x1="65" y1="36" x2="65" y2="50" stroke="#ed8936" stroke-width="1.5" opacity="0.7"/>
+
+    <!-- MBS Spread -->
+    <rect x="0" y="50" width="130" height="36" rx="5" fill="#162535" stroke="#ed8936" stroke-width="1.2"/>
+    <text x="65" y="62" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#8899aa">MBS SPREAD</text>
+    <text x="65" y="77" text-anchor="middle" font-family="'Courier New',monospace" font-size="12" font-weight="bold" fill="#ed8936">85 bps</text>
+    <line x1="65" y1="86" x2="65" y2="100" stroke="#ed8936" stroke-width="1.5" opacity="0.7"/>
+
+    <!-- Equity Index -->
+    <rect x="0" y="100" width="130" height="36" rx="5" fill="#162535" stroke="#f5c842" stroke-width="1.5"/>
+    <text x="65" y="112" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#8899aa">EQUITY INDEX</text>
+    <text x="65" y="127" text-anchor="middle" font-family="'Courier New',monospace" font-size="12" font-weight="bold" fill="#f5c842">10,000</text>
+    <line x1="65" y1="136" x2="65" y2="150" stroke="#f5c842" stroke-width="1.5" opacity="0.7"/>
+
+    <!-- Real Economy -->
+    <rect x="0" y="150" width="130" height="36" rx="5" fill="#1a3a1a" stroke="#48bb78" stroke-width="1.2"/>
+    <text x="65" y="162" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#8899aa">REAL ECONOMY</text>
+    <text x="65" y="177" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" font-weight="bold" fill="#48bb78">GDP +2.3%</text>
+  </g>
+
+  <!-- Connecting bridge between columns -->
+  <line x1="182" y1="185" x2="218" y2="200" stroke="#4299e1" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+  <line x1="182" y1="235" x2="218" y2="248" stroke="#4299e1" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+
+  <!-- ── System Stability bar (bottom) ── -->
+  <g transform="translate(52, 335)">
+    <text x="0" y="-5" font-family="'Courier New',monospace" font-size="7" fill="#8899aa" opacity="0.8" letter-spacing="1">SYSTEM STABILITY</text>
+    <rect x="0" y="0" width="296" height="16" rx="8" fill="#0f1923" stroke="#4299e1" stroke-width="0.8" stroke-opacity="0.4"/>
+    <rect x="0" y="0" width="252" height="16" rx="8" fill="#48bb78" opacity="0.8"/>
+    <text x="252" y="12" font-family="'Courier New',monospace" font-size="8" fill="#fff" font-weight="bold" opacity="0.9"> 85</text>
+  </g>
+
+  <!-- QE badge + stress badges -->
+  <g transform="translate(52, 362)">
+    <rect x="0" y="0" width="46" height="18" rx="9" fill="#2b6cb0" stroke="#4299e1" stroke-width="0.8"/>
+    <text x="23" y="12" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" font-weight="bold" fill="#fff">QE OFF</text>
+    <rect x="52" y="0" width="68" height="18" rx="9" fill="#7d3c00" stroke="#ed8936" stroke-width="0.8"/>
+    <text x="86" y="12" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#ed8936">BANK FAIL</text>
+    <rect x="126" y="0" width="66" height="18" rx="9" fill="#7d0000" stroke="#e53e3e" stroke-width="0.8"/>
+    <text x="159" y="12" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#ff7675">CP FREEZE</text>
+    <rect x="198" y="0" width="76" height="18" rx="9" fill="#4a0080" stroke="#9b59b6" stroke-width="0.8"/>
+    <text x="236" y="12" text-anchor="middle" font-family="'Courier New',monospace" font-size="7" fill="#c39bd3">SOVEREIGN↓</text>
+  </g>
+
+  <text x="200" y="393" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#63b3ed" opacity="0.35" letter-spacing="2">MARKET MICRO</text>
+</svg>

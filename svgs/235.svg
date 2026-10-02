@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg235" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="100%" stop-color="#2e1a48"/>
+    </linearGradient>
+    <radialGradient id="centerglow235" cx="0.5" cy="0.5" r="0.4">
+      <stop offset="0%" stop-color="#c9a227" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#c9a227" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg235)"/>
+  <rect width="400" height="400" rx="32" fill="url(#centerglow235)"/>
+
+  <!-- 8-pointed star: two overlapping squares rotated 0° and 45° -->
+  <!-- Square 1 (axis-aligned) -->
+  <rect x="148" y="148" width="104" height="104" rx="5"
+        fill="#c9a227" opacity="0.12"
+        transform="rotate(0,200,200)"/>
+  <rect x="148" y="148" width="104" height="104" rx="5"
+        fill="none" stroke="#c9a227" stroke-width="2.2" opacity="0.75"
+        transform="rotate(0,200,200)"/>
+  <!-- Square 2 (rotated 45°) -->
+  <rect x="148" y="148" width="104" height="104" rx="5"
+        fill="#c9a227" opacity="0.08"
+        transform="rotate(45,200,200)"/>
+  <rect x="148" y="148" width="104" height="104" rx="5"
+        fill="none" stroke="#c9a227" stroke-width="2.2" opacity="0.55"
+        transform="rotate(45,200,200)"/>
+
+  <!-- Outer octagon ring -->
+  <polygon points="200,118 236,131 252,164 252,236 236,269 200,282 164,269 148,236 148,164 164,131"
+           fill="none" stroke="#c9a227" stroke-width="1" opacity="0.22"/>
+
+  <!-- Center circle -->
+  <circle cx="200" cy="200" r="30" fill="#1a0a2e" stroke="#c9a227" stroke-width="2.5" opacity="0.95"/>
+  <!-- Crescent inside -->
+  <circle cx="200" cy="200" r="20" fill="#c9a227" opacity="0.22"/>
+  <circle cx="208" cy="196" r="15" fill="#1a0a2e"/>
+  <!-- Star dot -->
+  <circle cx="221" cy="190" r="3.5" fill="#c9a227" opacity="0.85"/>
+
+  <!-- 8 product labels at star tips — alternating gold / teal -->
+  <!-- Top -->
+  <text x="200" y="110" font-family="monospace" font-size="10.5" fill="#c9a227" text-anchor="middle" opacity="0.92">Sukuk</text>
+  <!-- Top-right -->
+  <text x="300" y="142" font-family="monospace" font-size="10.5" fill="#52b788" text-anchor="middle" opacity="0.85">Ijara</text>
+  <!-- Right -->
+  <text x="318" y="204" font-family="monospace" font-size="10.5" fill="#c9a227" text-anchor="middle" opacity="0.85">Istisna</text>
+  <!-- Bottom-right -->
+  <text x="300" y="266" font-family="monospace" font-size="10.5" fill="#52b788" text-anchor="middle" opacity="0.85">Takaful</text>
+  <!-- Bottom -->
+  <text x="200" y="300" font-family="monospace" font-size="10.5" fill="#c9a227" text-anchor="middle" opacity="0.92">Murabaha</text>
+  <!-- Bottom-left -->
+  <text x="100" y="266" font-family="monospace" font-size="10.5" fill="#52b788" text-anchor="middle" opacity="0.85">Mudaraba</text>
+  <!-- Left -->
+  <text x="82" y="204" font-family="monospace" font-size="10.5" fill="#c9a227" text-anchor="middle" opacity="0.85">Wakala</text>
+  <!-- Top-left -->
+  <text x="100" y="142" font-family="monospace" font-size="10.5" fill="#52b788" text-anchor="middle" opacity="0.85">Musharaka</text>
+
+  <!-- Accent dots at cardinal tips -->
+  <circle cx="200" cy="124" r="4" fill="#c9a227" opacity="0.8"/>
+  <circle cx="276" cy="200" r="4" fill="#c9a227" opacity="0.8"/>
+  <circle cx="200" cy="276" r="4" fill="#c9a227" opacity="0.8"/>
+  <circle cx="124" cy="200" r="4" fill="#c9a227" opacity="0.8"/>
+</svg>

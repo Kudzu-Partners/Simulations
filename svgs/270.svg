@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg270" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg270)"/>
+
+  <!-- Axes -->
+  <line x1="62" y1="318" x2="348" y2="318" stroke="#a0aec0" stroke-width="1.5" opacity="0.4"/>
+  <line x1="62" y1="62"  x2="62"  y2="318" stroke="#a0aec0" stroke-width="1.5" opacity="0.4"/>
+  <text x="205" y="340" font-family="monospace" font-size="8.5" fill="#a0aec0" text-anchor="middle" opacity="0.5">X (Predictor)</text>
+  <text x="28"  y="192" font-family="monospace" font-size="8.5" fill="#a0aec0" text-anchor="middle" opacity="0.5" transform="rotate(-90,28,192)">Y (Response)</text>
+
+  <!-- Scatter data points -->
+  <circle cx="82"  cy="295" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="98"  cy="280" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="112" cy="268" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="128" cy="260" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="144" cy="248" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="160" cy="238" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="176" cy="228" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="192" cy="218" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="208" cy="210" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="224" cy="200" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="240" cy="192" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="256" cy="182" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="272" cy="174" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="288" cy="164" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="304" cy="156" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <circle cx="320" cy="146" r="4.5" fill="#00bfff" opacity="0.6"/>
+  <!-- Scatter noise -->
+  <circle cx="105" cy="255" r="4"   fill="#00bfff" opacity="0.45"/>
+  <circle cx="158" cy="252" r="4"   fill="#00bfff" opacity="0.45"/>
+  <circle cx="195" cy="230" r="4"   fill="#00bfff" opacity="0.45"/>
+  <circle cx="244" cy="180" r="4"   fill="#00bfff" opacity="0.45"/>
+  <circle cx="290" cy="175" r="4"   fill="#00bfff" opacity="0.45"/>
+
+  <!-- OLS regression line -->
+  <line x1="68" y1="308" x2="338" y2="138" stroke="#f5c842" stroke-width="2.8" opacity="0.9"/>
+
+  <!-- Residuals (vertical lines from points to fitted line) -->
+  <line x1="98"  y1="280" x2="98"  y2="298" stroke="#ff6666" stroke-width="1.5" opacity="0.6"/>
+  <line x1="144" y1="248" x2="144" y2="263" stroke="#ff6666" stroke-width="1.5" opacity="0.6"/>
+  <line x1="176" y1="228" x2="176" y2="243" stroke="#ff6666" stroke-width="1.5" opacity="0.6"/>
+  <line x1="208" y1="210" x2="208" y2="223" stroke="#ff6666" stroke-width="1.5" opacity="0.6"/>
+  <line x1="240" y1="192" x2="240" y2="203" stroke="#ff6666" stroke-width="1.5" opacity="0.6"/>
+  <line x1="272" y1="174" x2="272" y2="183" stroke="#ff6666" stroke-width="1.5" opacity="0.6"/>
+  <line x1="304" y1="156" x2="304" y2="163" stroke="#ff6666" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Model stats panel (top right) -->
+  <rect x="228" y="58" width="118" height="72" rx="7" fill="#0d1428" stroke="#f5c842" stroke-width="1.8"/>
+  <text x="287" y="76"  font-family="monospace" font-size="8.5" fill="#f5c842"  text-anchor="middle" font-weight="bold">Model Stats</text>
+  <line x1="235" y1="82" x2="340" y2="82" stroke="#f5c842" stroke-width="0.8" opacity="0.3"/>
+  <text x="237" y="96"  font-family="monospace" font-size="8"   fill="#00ff88"  opacity="0.85">R² = 0.847</text>
+  <text x="237" y="110" font-family="monospace" font-size="8"   fill="#a0aec0"  opacity="0.7">β₁ = 1.24***</text>
+  <text x="237" y="124" font-family="monospace" font-size="8"   fill="#a0aec0"  opacity="0.7">RMSE = 8.3</text>
+
+  <!-- Application labels (bottom) -->
+  <rect x="62"  y="332" width="60" height="22" rx="4" fill="#00bfff" opacity="0.15"/>
+  <text x="92"  y="347" font-family="monospace" font-size="7.5" fill="#00bfff" text-anchor="middle">Housing</text>
+  <rect x="128" y="332" width="60" height="22" rx="4" fill="#52b788" opacity="0.15"/>
+  <text x="158" y="347" font-family="monospace" font-size="7.5" fill="#52b788" text-anchor="middle">Churn</text>
+  <rect x="194" y="332" width="60" height="22" rx="4" fill="#f5c842" opacity="0.15"/>
+  <text x="224" y="347" font-family="monospace" font-size="7.5" fill="#f5c842" text-anchor="middle">Sales</text>
+  <rect x="260" y="332" width="68" height="22" rx="4" fill="#ff6b9d" opacity="0.15"/>
+  <text x="294" y="347" font-family="monospace" font-size="7.5" fill="#ff6b9d" text-anchor="middle">Ad Effect</text>
+
+  <text x="200" y="378" font-family="monospace" font-size="9" fill="#a0aec0" text-anchor="middle" opacity="0.42">Regression · Diagnostics · DGP · 4 Applications</text>
+</svg>

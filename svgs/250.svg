@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg250" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg250)"/>
+
+  <!-- SELLER side (left) — knows quality -->
+  <text x="100" y="58" font-family="monospace" font-size="10" fill="#52b788" text-anchor="middle" opacity="0.8">SELLER</text>
+  <text x="100" y="72" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.55">knows quality</text>
+
+  <!-- Good car (top left, solid green) -->
+  <rect x="42" y="90" width="116" height="62" rx="8" fill="#52b788" opacity="0.15"/>
+  <rect x="42" y="90" width="116" height="62" rx="8" fill="none" stroke="#52b788" stroke-width="2.2"/>
+  <!-- Car body -->
+  <path d="M 58,132 L 58,118 L 68,106 L 90,106 L 100,118 L 142,118 L 142,132 Z"
+        fill="none" stroke="#52b788" stroke-width="1.8" opacity="0.8"/>
+  <circle cx="72"  cy="133" r="7" fill="none" stroke="#52b788" stroke-width="1.8" opacity="0.8"/>
+  <circle cx="128" cy="133" r="7" fill="none" stroke="#52b788" stroke-width="1.8" opacity="0.8"/>
+  <text x="100" y="145" font-family="monospace" font-size="8" fill="#52b788" text-anchor="middle" opacity="0.8">GOOD CAR ✓</text>
+
+  <!-- Lemon car (bottom left, cracked yellow) -->
+  <rect x="42" y="172" width="116" height="62" rx="8" fill="#f5c842" opacity="0.12"/>
+  <rect x="42" y="172" width="116" height="62" rx="8" fill="none" stroke="#f5c842" stroke-width="2.2" stroke-dasharray="5,3"/>
+  <path d="M 58,214 L 58,200 L 68,188 L 90,188 L 100,200 L 142,200 L 142,214 Z"
+        fill="none" stroke="#f5c842" stroke-width="1.8" opacity="0.65"/>
+  <circle cx="72"  cy="215" r="7" fill="none" stroke="#f5c842" stroke-width="1.8" opacity="0.65"/>
+  <circle cx="128" cy="215" r="7" fill="none" stroke="#f5c842" stroke-width="1.8" opacity="0.65"/>
+  <!-- Cracks -->
+  <path d="M 90,198 L 96,206 L 88,212" fill="none" stroke="#ff4444" stroke-width="1.5" opacity="0.7"/>
+  <text x="100" y="226" font-family="monospace" font-size="8" fill="#f5c842" text-anchor="middle" opacity="0.75">LEMON 🍋</text>
+
+  <!-- INFORMATION VEIL in center -->
+  <rect x="172" y="82" width="56" height="236" rx="6" fill="#a0aec0" opacity="0.06"/>
+  <rect x="172" y="82" width="56" height="236" rx="6" fill="none" stroke="#a0aec0" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.35"/>
+  <text x="200" y="156" font-family="monospace" font-size="8" fill="#a0aec0" text-anchor="middle" opacity="0.5" transform="rotate(-90,200,200)">INFO ASYMMETRY</text>
+  <!-- Eye symbols -->
+  <text x="200" y="178" font-family="monospace" font-size="18" text-anchor="middle" opacity="0.4">👁</text>
+  <text x="200" y="226" font-family="monospace" font-size="18" text-anchor="middle" opacity="0.22">👁</text>
+  <line x1="190" y1="222" x2="210" y2="222" stroke="#ff4444" stroke-width="2" opacity="0.4"/>
+
+  <!-- BUYER side (right) — doesn't know -->
+  <text x="300" y="58" font-family="monospace" font-size="10" fill="#00bfff" text-anchor="middle" opacity="0.8">BUYER</text>
+  <text x="300" y="72" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.55">can't tell</text>
+
+  <!-- Buyer sees only average price -->
+  <rect x="242" y="128" width="116" height="64" rx="8" fill="#00bfff" opacity="0.12"/>
+  <rect x="242" y="128" width="116" height="64" rx="8" fill="none" stroke="#00bfff" stroke-width="2"/>
+  <text x="300" y="155" font-family="monospace" font-size="9.5" fill="#00bfff" text-anchor="middle">Avg. Price?</text>
+  <text x="300" y="172" font-family="monospace" font-size="18" fill="#f5c842" text-anchor="middle">?</text>
+
+  <!-- Interventions (bottom) -->
+  <rect x="48" y="268" width="88" height="36" rx="6" fill="#52b788" opacity="0.15"/>
+  <text x="92" y="291" font-family="monospace" font-size="8" fill="#52b788" text-anchor="middle">Signaling</text>
+
+  <rect x="156" y="268" width="88" height="36" rx="6" fill="#00bfff" opacity="0.15"/>
+  <text x="200" y="291" font-family="monospace" font-size="8" fill="#00bfff" text-anchor="middle">Screening</text>
+
+  <rect x="264" y="268" width="88" height="36" rx="6" fill="#f5c842" opacity="0.15"/>
+  <text x="308" y="283" font-family="monospace" font-size="7.5" fill="#f5c842" text-anchor="middle">Mandatory</text>
+  <text x="308" y="297" font-family="monospace" font-size="7.5" fill="#f5c842" text-anchor="middle">Disclosure</text>
+
+  <text x="200" y="350" font-family="monospace" font-size="9" fill="#a0aec0" text-anchor="middle" opacity="0.42">Akerlof · Adverse Selection · Used Car Market</text>
+</svg>

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg384" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <linearGradient id="col384" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe27a"/>
+      <stop offset="100%" stop-color="#c98a2b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg384)"/>
+
+  <text x="200" y="58" text-anchor="middle" fill="#00ff88" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">M&amp;A · ECM · IPO</text>
+
+  <!-- BANK BUILDING (hero) -->
+  <g transform="translate(200,225)">
+    <!-- steps -->
+    <rect x="-100" y="80" width="200" height="6" fill="#5a3210"/>
+    <rect x="-92" y="72" width="184" height="8" fill="#7a4a18"/>
+    <!-- pediment (triangle roof) -->
+    <polygon points="-90,-50 90,-50 0,-95" fill="#5a3210" stroke="#3d1f08" stroke-width="2"/>
+    <polygon points="-78,-50 78,-50 0,-86" fill="#7a4a18" opacity="0.8"/>
+    <!-- entablature -->
+    <rect x="-95" y="-50" width="190" height="14" fill="url(#col384)" stroke="#5a3210" stroke-width="1.5"/>
+    <!-- columns (5) -->
+    <g fill="url(#col384)" stroke="#5a3210" stroke-width="1.3">
+      <rect x="-85" y="-36" width="14" height="108"/>
+      <rect x="-50" y="-36" width="14" height="108"/>
+      <rect x="-7" y="-36" width="14" height="108"/>
+      <rect x="36" y="-36" width="14" height="108"/>
+      <rect x="71" y="-36" width="14" height="108"/>
+    </g>
+    <!-- column flutes -->
+    <g stroke="#5a3210" stroke-width="0.5" opacity="0.6">
+      <line x1="-81" y1="-30" x2="-81" y2="68"/>
+      <line x1="-77" y1="-30" x2="-77" y2="68"/>
+      <line x1="-46" y1="-30" x2="-46" y2="68"/>
+      <line x1="-42" y1="-30" x2="-42" y2="68"/>
+      <line x1="-3" y1="-30" x2="-3" y2="68"/>
+      <line x1="1" y1="-30" x2="1" y2="68"/>
+      <line x1="40" y1="-30" x2="40" y2="68"/>
+      <line x1="44" y1="-30" x2="44" y2="68"/>
+      <line x1="75" y1="-30" x2="75" y2="68"/>
+      <line x1="79" y1="-30" x2="79" y2="68"/>
+    </g>
+    <!-- $ sign in pediment -->
+    <text x="0" y="-58" text-anchor="middle" fill="#f5c842" font-size="18" font-family="Georgia, serif" font-weight="bold">$</text>
+  </g>
+
+  <!-- M&A handshake mini (top-left) -->
+  <g transform="translate(60,80)">
+    <rect x="0" y="0" width="44" height="26" rx="4" fill="#52b788" fill-opacity="0.18" stroke="#52b788" stroke-width="1.3"/>
+    <text x="22" y="16" text-anchor="middle" fill="#52b788" font-size="11" font-family="monospace" font-weight="bold">M&amp;A</text>
+  </g>
+
+  <!-- IPO bell (top-right) -->
+  <g transform="translate(335,82)">
+    <path d="M -12 8 Q -12 -12 0 -12 Q 12 -12 12 8 L 14 8 L 14 12 L -14 12 L -14 8 Z"
+          fill="#f5c842" fill-opacity="0.85" stroke="#5a3210" stroke-width="1.4"/>
+    <circle cx="0" cy="16" r="2.5" fill="#5a3210"/>
+    <line x1="0" y1="-12" x2="0" y2="-16" stroke="#5a3210" stroke-width="1"/>
+    <text x="0" y="30" text-anchor="middle" fill="#f5c842" font-size="6" font-family="monospace" opacity="0.85">IPO</text>
+  </g>
+
+  <!-- Conflict icon (bottom-left) -->
+  <g transform="translate(60,335)">
+    <circle cx="0" cy="0" r="14" fill="#ff6b6b" fill-opacity="0.18" stroke="#ff6b6b" stroke-width="1.3"/>
+    <line x1="-5" y1="-5" x2="5" y2="5" stroke="#ff6b6b" stroke-width="2"/>
+    <line x1="5" y1="-5" x2="-5" y2="5" stroke="#ff6b6b" stroke-width="2"/>
+    <text x="0" y="28" text-anchor="middle" fill="#ff6b6b" font-size="6" font-family="monospace" opacity="0.85">COI</text>
+  </g>
+
+  <!-- ECM bar chart (bottom-right) -->
+  <g transform="translate(330,335)">
+    <rect x="-15" y="-5" width="6" height="14" fill="#00ff88" opacity="0.85"/>
+    <rect x="-7" y="-12" width="6" height="21" fill="#00ff88" opacity="0.85"/>
+    <rect x="1" y="-18" width="6" height="27" fill="#00ff88" opacity="0.85"/>
+    <rect x="9" y="-9" width="6" height="18" fill="#00ff88" opacity="0.85"/>
+    <text x="0" y="22" text-anchor="middle" fill="#00ff88" font-size="6" font-family="monospace" opacity="0.85">ECM</text>
+  </g>
+
+  <!-- CHILE pin -->
+  <g transform="translate(60,250)">
+    <rect x="-10" y="-7" width="20" height="7" fill="#c0cfff" opacity="0.9"/>
+    <rect x="-10" y="0" width="20" height="7" fill="#c0392b" opacity="0.9"/>
+    <rect x="-10" y="-7" width="8" height="7" fill="#1a4480" opacity="0.9"/>
+  </g>
+
+  <text x="200" y="385" text-anchor="middle" fill="#c0cfff" font-size="10" font-family="monospace" opacity="0.42" letter-spacing="1.2">IB · M&amp;A · Chile</text>
+</svg>

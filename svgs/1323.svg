@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg1323" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16233b"/>
+      <stop offset="100%" stop-color="#2b3f61"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg1323)"/>
+  <circle cx="182" cy="206" r="6" fill="#7fb3e8" fill-opacity="0.65"/><circle cx="153" cy="168" r="8" fill="#7fb3e8" fill-opacity="0.65"/><circle cx="121" cy="188" r="7" fill="#7fb3e8" fill-opacity="0.65"/><circle cx="211" cy="227" r="8" fill="#7fb3e8" fill-opacity="0.65"/><circle cx="93" cy="97" r="6" fill="#7fb3e8" fill-opacity="0.65"/><circle cx="228" cy="177" r="5" fill="#7fb3e8" fill-opacity="0.65"/><circle cx="254" cy="289" r="5" fill="#7fb3e8" fill-opacity="0.65"/><circle cx="147" cy="119" r="7" fill="#7fb3e8" fill-opacity="0.65"/><circle cx="100" cy="93" r="8" fill="#7fb3e8" fill-opacity="0.65"/>
+  <line x1="70" y1="120" x2="330" y2="300" stroke="#f2c94c" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="1 0"/>
+  <line x1="52" y1="340" x2="348" y2="340" stroke="#e8eef6" stroke-width="1.5" stroke-opacity="0.3"/>
+  <circle cx="40" cy="366" r="5" fill="#f2c94c" fill-opacity="0.9"/><circle cx="56" cy="366" r="5" fill="#f2c94c" fill-opacity="0.9"/><circle cx="72" cy="366" r="5" fill="#f2c94c" fill-opacity="0.9"/>
+</svg>

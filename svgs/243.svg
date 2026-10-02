@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg243" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg243)"/>
+
+  <!-- SOX 404 header badge -->
+  <rect x="130" y="48" width="140" height="34" rx="8" fill="#f5a623" opacity="0.18"/>
+  <rect x="130" y="48" width="140" height="34" rx="8" fill="none" stroke="#f5a623" stroke-width="2"/>
+  <text x="200" y="70" font-family="monospace" font-size="13" fill="#f5a623" text-anchor="middle" font-weight="bold">SOX 404</text>
+
+  <!-- Controls (left column) -->
+  <text x="90" y="108" font-family="monospace" font-size="8" fill="#a0aec0" text-anchor="middle" opacity="0.6">CONTROLS</text>
+  <rect x="48"  y="115" width="84" height="32" rx="5" fill="#00bfff" opacity="0.18"/>
+  <rect x="48"  y="115" width="84" height="32" rx="5" fill="none" stroke="#00bfff" stroke-width="1.8"/>
+  <text x="90" y="136" font-family="monospace" font-size="8.5" fill="#00bfff" text-anchor="middle">Ctrl A – Auth</text>
+
+  <rect x="48"  y="158" width="84" height="32" rx="5" fill="#00bfff" opacity="0.18"/>
+  <rect x="48"  y="158" width="84" height="32" rx="5" fill="none" stroke="#00bfff" stroke-width="1.8"/>
+  <text x="90" y="179" font-family="monospace" font-size="8.5" fill="#00bfff" text-anchor="middle">Ctrl B – Recon</text>
+
+  <rect x="48"  y="201" width="84" height="32" rx="5" fill="#00bfff" opacity="0.18"/>
+  <rect x="48"  y="201" width="84" height="32" rx="5" fill="none" stroke="#00bfff" stroke-width="1.8"/>
+  <text x="90" y="222" font-family="monospace" font-size="8.5" fill="#00bfff" text-anchor="middle">Ctrl C – Close</text>
+
+  <rect x="48"  y="244" width="84" height="32" rx="5" fill="#f5c842" opacity="0.18"/>
+  <rect x="48"  y="244" width="84" height="32" rx="5" fill="none" stroke="#f5c842" stroke-width="1.8"/>
+  <text x="90" y="265" font-family="monospace" font-size="8.5" fill="#f5c842" text-anchor="middle">Ctrl D – Access</text>
+
+  <rect x="48"  y="287" width="84" height="32" rx="5" fill="#ff4444" opacity="0.15"/>
+  <rect x="48"  y="287" width="84" height="32" rx="5" fill="none" stroke="#ff4444" stroke-width="1.8"/>
+  <text x="90" y="308" font-family="monospace" font-size="8.5" fill="#ff4444" text-anchor="middle">Ctrl E – Segreg.</text>
+
+  <!-- Assertions (right column) -->
+  <text x="310" y="108" font-family="monospace" font-size="8" fill="#a0aec0" text-anchor="middle" opacity="0.6">ASSERTIONS</text>
+  <rect x="268" y="115" width="84" height="32" rx="5" fill="#52b788" opacity="0.18"/>
+  <rect x="268" y="115" width="84" height="32" rx="5" fill="none" stroke="#52b788" stroke-width="1.8"/>
+  <text x="310" y="136" font-family="monospace" font-size="8.5" fill="#52b788" text-anchor="middle">Existence</text>
+
+  <rect x="268" y="158" width="84" height="32" rx="5" fill="#52b788" opacity="0.18"/>
+  <rect x="268" y="158" width="84" height="32" rx="5" fill="none" stroke="#52b788" stroke-width="1.8"/>
+  <text x="310" y="179" font-family="monospace" font-size="8.5" fill="#52b788" text-anchor="middle">Completeness</text>
+
+  <rect x="268" y="201" width="84" height="32" rx="5" fill="#52b788" opacity="0.18"/>
+  <rect x="268" y="201" width="84" height="32" rx="5" fill="none" stroke="#52b788" stroke-width="1.8"/>
+  <text x="310" y="222" font-family="monospace" font-size="8.5" fill="#52b788" text-anchor="middle">Valuation</text>
+
+  <rect x="268" y="244" width="84" height="32" rx="5" fill="#52b788" opacity="0.18"/>
+  <rect x="268" y="244" width="84" height="32" rx="5" fill="none" stroke="#52b788" stroke-width="1.8"/>
+  <text x="310" y="265" font-family="monospace" font-size="8.5" fill="#52b788" text-anchor="middle">Rights &amp; Obl.</text>
+
+  <rect x="268" y="287" width="84" height="32" rx="5" fill="#52b788" opacity="0.18"/>
+  <rect x="268" y="287" width="84" height="32" rx="5" fill="none" stroke="#52b788" stroke-width="1.8"/>
+  <text x="310" y="308" font-family="monospace" font-size="8.5" fill="#52b788" text-anchor="middle">Presentation</text>
+
+  <!-- Mapping lines (controls → assertions) -->
+  <line x1="132" y1="131" x2="268" y2="131" stroke="#a0aec0" stroke-width="1.2" opacity="0.35"/>
+  <line x1="132" y1="131" x2="268" y2="174" stroke="#a0aec0" stroke-width="1" opacity="0.22"/>
+  <line x1="132" y1="174" x2="268" y2="174" stroke="#a0aec0" stroke-width="1.2" opacity="0.35"/>
+  <line x1="132" y1="217" x2="268" y2="217" stroke="#a0aec0" stroke-width="1.2" opacity="0.35"/>
+  <line x1="132" y1="260" x2="268" y2="260" stroke="#f5c842" stroke-width="1.2" opacity="0.4"/>
+  <line x1="132" y1="260" x2="268" y2="131" stroke="#f5c842" stroke-width="1" opacity="0.2"/>
+  <line x1="132" y1="303" x2="268" y2="303" stroke="#ff4444" stroke-width="1.5" opacity="0.45"/>
+  <line x1="132" y1="303" x2="268" y2="217" stroke="#ff4444" stroke-width="1" opacity="0.25"/>
+
+  <!-- PCAOB label -->
+  <text x="200" y="358" font-family="monospace" font-size="9" fill="#a0aec0" text-anchor="middle" opacity="0.42">PCAOB AS 2201 · Key Controls</text>
+</svg>

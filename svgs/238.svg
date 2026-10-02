@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg238" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2744"/>
+      <stop offset="100%" stop-color="#2d3f6b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg238)"/>
+
+  <!-- ── 5-step ascending staircase ── -->
+  <!-- Step 1: bottom-left, narrowest column -->
+  <rect x="48"  y="268" width="52" height="62" rx="4" fill="#f5c842" opacity="0.18"/>
+  <rect x="48"  y="268" width="52" height="62" rx="4" fill="none" stroke="#f5c842" stroke-width="2"/>
+  <text x="74"  y="287" font-family="monospace" font-size="13" fill="#f5c842" text-anchor="middle" font-weight="bold">1</text>
+  <text x="74"  y="304" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.75">Contract</text>
+  <text x="74"  y="316" font-family="monospace" font-size="7" fill="#a0aec0" text-anchor="middle" opacity="0.55">identify</text>
+
+  <!-- Step 2 -->
+  <rect x="100" y="220" width="52" height="110" rx="4" fill="#f5c842" opacity="0.23"/>
+  <rect x="100" y="220" width="52" height="48"  rx="4" fill="none" stroke="#f5c842" stroke-width="2"/>
+  <text x="126" y="239" font-family="monospace" font-size="13" fill="#f5c842" text-anchor="middle" font-weight="bold">2</text>
+  <text x="126" y="256" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.75">Obligations</text>
+  <text x="126" y="268" font-family="monospace" font-size="7" fill="#a0aec0" text-anchor="middle" opacity="0.55">performance</text>
+
+  <!-- Step 3 -->
+  <rect x="152" y="172" width="52" height="158" rx="4" fill="#f5c842" opacity="0.28"/>
+  <rect x="152" y="172" width="52" height="48"  rx="4" fill="none" stroke="#f5c842" stroke-width="2"/>
+  <text x="178" y="191" font-family="monospace" font-size="13" fill="#f5c842" text-anchor="middle" font-weight="bold">3</text>
+  <text x="178" y="208" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.75">Price</text>
+  <text x="178" y="220" font-family="monospace" font-size="7" fill="#a0aec0" text-anchor="middle" opacity="0.55">determine</text>
+
+  <!-- Step 4 -->
+  <rect x="204" y="124" width="52" height="206" rx="4" fill="#f5c842" opacity="0.33"/>
+  <rect x="204" y="124" width="52" height="48"  rx="4" fill="none" stroke="#f5c842" stroke-width="2"/>
+  <text x="230" y="143" font-family="monospace" font-size="13" fill="#f5c842" text-anchor="middle" font-weight="bold">4</text>
+  <text x="230" y="160" font-family="monospace" font-size="7.5" fill="#a0aec0" text-anchor="middle" opacity="0.75">Allocate</text>
+  <text x="230" y="172" font-family="monospace" font-size="7" fill="#a0aec0" text-anchor="middle" opacity="0.55">transaction $</text>
+
+  <!-- Step 5: top-right, tallest -->
+  <rect x="256" y="76"  width="72" height="254" rx="4" fill="#f5c842" opacity="0.38"/>
+  <rect x="256" y="76"  width="72" height="55"  rx="4" fill="none" stroke="#f5c842" stroke-width="2.8"/>
+  <text x="292" y="100" font-family="monospace" font-size="14" fill="#f5c842" text-anchor="middle" font-weight="bold">5</text>
+  <text x="292" y="118" font-family="monospace" font-size="8" fill="#f5c842" text-anchor="middle">Recognize</text>
+
+  <!-- Dollar sign on top step -->
+  <text x="292" y="170" font-family="monospace" font-size="30" fill="#f5c842" text-anchor="middle" opacity="0.88">$</text>
+
+  <!-- Contract document icon (bottom left) -->
+  <rect x="48" y="348" width="28" height="36" rx="3" fill="none" stroke="#a0aec0" stroke-width="1.5" opacity="0.45"/>
+  <line x1="54" y1="360" x2="70" y2="360" stroke="#a0aec0" stroke-width="1" opacity="0.4"/>
+  <line x1="54" y1="368" x2="70" y2="368" stroke="#a0aec0" stroke-width="1" opacity="0.35"/>
+  <line x1="54" y1="376" x2="64" y2="376" stroke="#a0aec0" stroke-width="1" opacity="0.3"/>
+
+  <!-- Diagonal step-up guide line -->
+  <polyline points="48,330 100,282 152,234 204,186 256,138"
+            fill="none" stroke="#f5c842" stroke-width="1" stroke-dasharray="3,4" opacity="0.25"/>
+
+  <!-- Bottom label -->
+  <text x="200" y="370" font-family="monospace" font-size="9" fill="#a0aec0" text-anchor="middle" opacity="0.42">IFRS 15 · ASC 606</text>
+</svg>

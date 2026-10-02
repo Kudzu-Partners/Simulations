@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg486" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <linearGradient id="col486a" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#52b788"/>
+      <stop offset="100%" stop-color="#1a4d3a"/>
+    </linearGradient>
+    <linearGradient id="col486b" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#c98a2b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg486)"/>
+
+  <text x="200" y="58" text-anchor="middle" fill="#f5c842" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">DEFERRED TAX · IAS 12</text>
+
+  <!-- TWO COLUMNS (accounting vs tax base) -->
+  <g transform="translate(200,235)">
+    <!-- pedestal -->
+    <rect x="-100" y="80" width="200" height="10" fill="#5a3210"/>
+    <rect x="-110" y="90" width="220" height="8" fill="#3d1f08"/>
+    <!-- left column ACCOUNTING -->
+    <rect x="-85" y="-90" width="55" height="170" fill="url(#col486a)" stroke="#1a2744" stroke-width="2"/>
+    <rect x="-90" y="-95" width="65" height="10" fill="#52b788" stroke="#1a2744" stroke-width="1.3"/>
+    <text x="-57" y="0" text-anchor="middle" fill="#fff" font-size="11" font-family="monospace" font-weight="bold">BOOK</text>
+    <text x="-57" y="20" text-anchor="middle" fill="#fff" font-size="9" font-family="monospace" font-weight="bold">100</text>
+    <!-- right column TAX -->
+    <rect x="30" y="-65" width="55" height="145" fill="url(#col486b)" stroke="#1a2744" stroke-width="2"/>
+    <rect x="25" y="-70" width="65" height="10" fill="#f5c842" stroke="#1a2744" stroke-width="1.3"/>
+    <text x="57" y="0" text-anchor="middle" fill="#1a2744" font-size="11" font-family="monospace" font-weight="bold">TAX</text>
+    <text x="57" y="20" text-anchor="middle" fill="#1a2744" font-size="9" font-family="monospace" font-weight="bold">75</text>
+    <!-- difference arrow Δ -->
+    <g transform="translate(0,-75)">
+      <line x1="-25" y1="0" x2="25" y2="0" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="3,2"/>
+      <polygon points="-25,0 -19,-5 -19,5" fill="#ff6b6b"/>
+      <polygon points="25,0 19,-5 19,5" fill="#ff6b6b"/>
+      <text x="0" y="-8" text-anchor="middle" fill="#ff6b6b" font-size="9" font-family="monospace" font-weight="bold">Δ 25</text>
+    </g>
+  </g>
+
+  <!-- IAS 12 stamp (top-left) -->
+  <g transform="translate(55,90)">
+    <rect x="0" y="0" width="62" height="32" rx="4" fill="#c0cfff" fill-opacity="0.15" stroke="#c0cfff" stroke-width="1.3"/>
+    <text x="31" y="15" text-anchor="middle" fill="#c0cfff" font-size="11" font-family="monospace" font-weight="bold">IAS 12</text>
+    <text x="31" y="25" text-anchor="middle" fill="#c0cfff" font-size="6" font-family="monospace" opacity="0.85">IFRS</text>
+  </g>
+
+  <!-- DTA/DTL chip (top-right) -->
+  <g transform="translate(290,90)">
+    <rect x="0" y="0" width="60" height="32" rx="4" fill="#7b2fff" fill-opacity="0.25" stroke="#7b2fff" stroke-width="1.3"/>
+    <text x="30" y="14" text-anchor="middle" fill="#7b2fff" font-size="9" font-family="monospace" font-weight="bold">DTA/DTL</text>
+    <text x="30" y="24" text-anchor="middle" fill="#7b2fff" font-size="6" font-family="monospace" opacity="0.85">temp diff</text>
+  </g>
+
+  <text x="200" y="378" text-anchor="middle" fill="#c0cfff" font-size="10" font-family="monospace" opacity="0.42" letter-spacing="1.2">Deferred Tax · IAS 12 · IFRS</text>
+</svg>

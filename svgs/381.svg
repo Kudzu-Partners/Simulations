@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg381" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a2744"/>
+    </linearGradient>
+    <linearGradient id="coin381" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe27a"/>
+      <stop offset="100%" stop-color="#c98a2b"/>
+    </linearGradient>
+    <radialGradient id="pig381" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#ff9aa2"/>
+      <stop offset="100%" stop-color="#c0392b"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg381)"/>
+
+  <text x="200" y="58" text-anchor="middle" fill="#00ff88" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">PENSION FUND · AFORE</text>
+
+  <!-- Asset allocation pie (background) -->
+  <g transform="translate(80,140)" opacity="0.7">
+    <circle cx="0" cy="0" r="34" fill="none" stroke="#c0cfff" stroke-width="0.8" opacity="0.5"/>
+    <path d="M 0 0 L 0 -34 A 34 34 0 0 1 32 -10 Z" fill="#52b788" opacity="0.55"/>
+    <path d="M 0 0 L 32 -10 A 34 34 0 0 1 22 27 Z" fill="#f5c842" opacity="0.55"/>
+    <path d="M 0 0 L 22 27 A 34 34 0 0 1 -25 23 Z" fill="#00bfff" opacity="0.55"/>
+    <path d="M 0 0 L -25 23 A 34 34 0 0 1 0 -34 Z" fill="#ff6b9d" opacity="0.55"/>
+    <text x="0" y="55" text-anchor="middle" fill="#c0cfff" font-size="6" font-family="monospace" opacity="0.85">ALLOCATION</text>
+  </g>
+
+  <!-- 3 GENERATIONS arc (background) -->
+  <g transform="translate(320,140)" opacity="0.6">
+    <circle cx="-12" cy="0" r="6" fill="#c0cfff" fill-opacity="0.45" stroke="#c0cfff" stroke-width="1"/>
+    <circle cx="0" cy="-4" r="8" fill="#f5c842" fill-opacity="0.45" stroke="#f5c842" stroke-width="1"/>
+    <circle cx="14" cy="0" r="10" fill="#52b788" fill-opacity="0.45" stroke="#52b788" stroke-width="1"/>
+    <text x="0" y="22" text-anchor="middle" fill="#c0cfff" font-size="6" font-family="monospace" opacity="0.85">COHORTS</text>
+  </g>
+
+  <!-- PIGGY BANK + COINS (hero) -->
+  <g transform="translate(200,235)">
+    <!-- coins stacking up to pig -->
+    <g>
+      <ellipse cx="-115" cy="65" rx="22" ry="5" fill="url(#coin381)" stroke="#5a3210" stroke-width="1"/>
+      <ellipse cx="-115" cy="58" rx="22" ry="5" fill="url(#coin381)" stroke="#5a3210" stroke-width="1"/>
+      <ellipse cx="-115" cy="51" rx="22" ry="5" fill="url(#coin381)" stroke="#5a3210" stroke-width="1"/>
+      <ellipse cx="-115" cy="44" rx="22" ry="5" fill="url(#coin381)" stroke="#5a3210" stroke-width="1"/>
+      <ellipse cx="115" cy="65" rx="22" ry="5" fill="url(#coin381)" stroke="#5a3210" stroke-width="1"/>
+      <ellipse cx="115" cy="58" rx="22" ry="5" fill="url(#coin381)" stroke="#5a3210" stroke-width="1"/>
+      <ellipse cx="115" cy="51" rx="22" ry="5" fill="url(#coin381)" stroke="#5a3210" stroke-width="1"/>
+    </g>
+    <!-- pig body -->
+    <ellipse cx="0" cy="20" rx="75" ry="50" fill="url(#pig381)" stroke="#7a1418" stroke-width="2"/>
+    <!-- legs -->
+    <rect x="-45" y="60" width="14" height="14" rx="2" fill="#c0392b" stroke="#7a1418" stroke-width="1.5"/>
+    <rect x="-15" y="65" width="14" height="14" rx="2" fill="#c0392b" stroke="#7a1418" stroke-width="1.5"/>
+    <rect x="15" y="65" width="14" height="14" rx="2" fill="#c0392b" stroke="#7a1418" stroke-width="1.5"/>
+    <rect x="45" y="60" width="14" height="14" rx="2" fill="#c0392b" stroke="#7a1418" stroke-width="1.5"/>
+    <!-- snout -->
+    <ellipse cx="60" cy="10" rx="22" ry="18" fill="#ff9aa2" stroke="#7a1418" stroke-width="1.5"/>
+    <circle cx="58" cy="6" r="2.5" fill="#7a1418"/>
+    <circle cx="66" cy="10" r="2.5" fill="#7a1418"/>
+    <!-- eye -->
+    <circle cx="35" cy="-8" r="3.5" fill="#fff"/>
+    <circle cx="36" cy="-7" r="2" fill="#1a2744"/>
+    <!-- ear -->
+    <path d="M 25 -28 L 18 -42 L 38 -36 Z" fill="#c0392b" stroke="#7a1418" stroke-width="1.5"/>
+    <!-- tail -->
+    <path d="M -70 0 q -10 -5 -8 -15 q 8 -2 6 8" fill="none" stroke="#7a1418" stroke-width="2"/>
+    <!-- coin slot -->
+    <rect x="-12" y="-40" width="24" height="5" rx="2" fill="#7a1418"/>
+    <!-- falling coin -->
+    <circle cx="0" cy="-55" r="8" fill="url(#coin381)" stroke="#5a3210" stroke-width="1.2"/>
+    <text x="0" y="-51" text-anchor="middle" fill="#5a3210" font-size="8" font-family="Georgia, serif" font-weight="bold">$</text>
+  </g>
+
+  <!-- COMPLIANCE shield (top-left) -->
+  <g transform="translate(60,75)">
+    <path d="M 0 0 L 20 -4 L 20 12 Q 20 22 0 28 Q -20 22 -20 12 L -20 -4 Z"
+          fill="#52b788" fill-opacity="0.2" stroke="#52b788" stroke-width="1.4"/>
+    <path d="M -6 10 L -1 16 L 8 4" fill="none" stroke="#52b788" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+
+  <!-- MEXICO pin (top-right) -->
+  <g transform="translate(335,80)">
+    <rect x="-12" y="-9" width="8" height="18" fill="#1b5e20" opacity="0.9"/>
+    <rect x="-4" y="-9" width="8" height="18" fill="#ffffff" opacity="0.9"/>
+    <rect x="4" y="-9" width="8" height="18" fill="#c0392b" opacity="0.9"/>
+  </g>
+
+  <text x="200" y="380" text-anchor="middle" fill="#c0cfff" font-size="10" font-family="monospace" opacity="0.42" letter-spacing="1.2">AFORE · Asset Allocation · México</text>
+</svg>
