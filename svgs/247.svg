@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg247" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c2333"/>
+      <stop offset="100%" stop-color="#2c3e50"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg247)"/>
+
+  <!-- Winding road path -->
+  <path d="M 55,310 Q 100,310 120,260 Q 140,210 180,200 Q 220,190 240,150 Q 260,110 300,95 Q 330,85 355,80"
+        fill="none" stroke="#e67e22" stroke-width="8" stroke-linecap="round" opacity="0.85"/>
+  <!-- Road center dashes -->
+  <path d="M 55,310 Q 100,310 120,260 Q 140,210 180,200 Q 220,190 240,150 Q 260,110 300,95 Q 330,85 355,80"
+        fill="none" stroke="#1c2333" stroke-width="2" stroke-dasharray="12,10" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Clause milestones along the path -->
+  <!-- Clause 4 -->
+  <circle cx="82" cy="305" r="16" fill="#1c2333" stroke="#e67e22" stroke-width="2.5"/>
+  <text x="82" cy="309" font-family="monospace" font-size="10" fill="#e67e22" text-anchor="middle" dominant-baseline="middle">4</text>
+  <text x="82" y="335" font-family="monospace" font-size="7" fill="#a0aec0" text-anchor="middle" opacity="0.65">Context</text>
+
+  <!-- Clause 5 -->
+  <circle cx="136" cy="245" r="16" fill="#1c2333" stroke="#e67e22" stroke-width="2.5"/>
+  <text x="136" cy="249" font-family="monospace" font-size="10" fill="#e67e22" text-anchor="middle" dominant-baseline="middle">5</text>
+  <text x="118" y="232" font-family="monospace" font-size="7" fill="#a0aec0" text-anchor="middle" opacity="0.65">Leadership</text>
+
+  <!-- Clause 6 — GAP marker (red) -->
+  <circle cx="182" cy="198" r="16" fill="#1c2333" stroke="#ff4444" stroke-width="2.5"/>
+  <text x="182" cy="202" font-family="monospace" font-size="10" fill="#ff4444" text-anchor="middle" dominant-baseline="middle">6</text>
+  <text x="182" y="183" font-family="monospace" font-size="7" fill="#ff4444" text-anchor="middle" opacity="0.8">GAP</text>
+
+  <!-- Clause 7 -->
+  <circle cx="232" cy="162" r="16" fill="#1c2333" stroke="#e67e22" stroke-width="2.5"/>
+  <text x="232" cy="166" font-family="monospace" font-size="10" fill="#e67e22" text-anchor="middle" dominant-baseline="middle">7</text>
+  <text x="250" y="155" font-family="monospace" font-size="7" fill="#a0aec0" text-anchor="middle" opacity="0.65">Support</text>
+
+  <!-- Clause 8 — GAP marker (yellow) -->
+  <circle cx="272" cy="120" r="16" fill="#1c2333" stroke="#f5c842" stroke-width="2.5"/>
+  <text x="272" cy="124" font-family="monospace" font-size="10" fill="#f5c842" text-anchor="middle" dominant-baseline="middle">8</text>
+  <text x="290" y="112" font-family="monospace" font-size="7" fill="#f5c842" text-anchor="middle" opacity="0.8">WEAK</text>
+
+  <!-- Clause 9 -->
+  <circle cx="315" cy="95" r="16" fill="#1c2333" stroke="#e67e22" stroke-width="2.5"/>
+  <text x="315" cy="99" font-family="monospace" font-size="10" fill="#e67e22" text-anchor="middle" dominant-baseline="middle">9</text>
+
+  <!-- Clause 10 — END: ISO certificate -->
+  <circle cx="352" cy="80" r="20" fill="#00ff88" opacity="0.2"/>
+  <circle cx="352" cy="80" r="20" fill="none" stroke="#00ff88" stroke-width="3"/>
+  <text x="352" cy="84" font-family="monospace" font-size="10" fill="#00ff88" text-anchor="middle" dominant-baseline="middle">10</text>
+
+  <!-- Certificate badge at the end -->
+  <rect x="310" y="35" width="82" height="32" rx="6" fill="#00ff88" opacity="0.15"/>
+  <rect x="310" y="35" width="82" height="32" rx="6" fill="none" stroke="#00ff88" stroke-width="1.8"/>
+  <text x="351" y="50" font-family="monospace" font-size="8"   fill="#00ff88" text-anchor="middle">ISO 9001</text>
+  <text x="351" y="62" font-family="monospace" font-size="7.5" fill="#00ff88" text-anchor="middle" opacity="0.75">Certified ✓</text>
+
+  <!-- Car icon (automotive) at start -->
+  <path d="M 42,318 L 42,308 L 50,298 L 70,298 L 78,308 L 78,318 Z" fill="none" stroke="#e67e22" stroke-width="1.8" opacity="0.7"/>
+  <circle cx="50" cy="318" r="5" fill="none" stroke="#e67e22" stroke-width="1.5" opacity="0.7"/>
+  <circle cx="70" cy="318" r="5" fill="none" stroke="#e67e22" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- Label -->
+  <text x="200" y="370" font-family="monospace" font-size="9" fill="#a0aec0" text-anchor="middle" opacity="0.42">ISO 9001:2015 · Gap Analysis · Clauses 4–10</text>
+</svg>

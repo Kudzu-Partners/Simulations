@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg257" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg257)"/>
+
+  <!-- Producer (left) -->
+  <rect x="42" y="150" width="72" height="100" rx="7" fill="#0d1b2a" stroke="#f5c842" stroke-width="2.2"/>
+  <text x="78" y="174" font-family="monospace" font-size="8"   fill="#f5c842" text-anchor="middle" font-weight="bold">Producer</text>
+  <text x="78" y="188" font-family="monospace" font-size="7"   fill="#a0aec0" text-anchor="middle" opacity="0.6">PagaRápido</text>
+  <!-- Event dots emitting right -->
+  <circle cx="82" cy="210" r="4" fill="#f5c842" opacity="0.8"/>
+  <circle cx="82" cy="222" r="4" fill="#f5c842" opacity="0.65"/>
+  <circle cx="82" cy="234" r="4" fill="#f5c842" opacity="0.5"/>
+
+  <!-- Event stream pipe (Kafka-style topics) -->
+  <!-- Topic 1: transactions -->
+  <rect x="128" y="88"  width="144" height="36" rx="5" fill="#0a1218" stroke="#00ff88" stroke-width="2"/>
+  <text x="200" y="102" font-family="monospace" font-size="7.5" fill="#00ff88" text-anchor="middle" opacity="0.9">tx.events</text>
+  <text x="200" y="116" font-family="monospace" font-size="7"   fill="#a0aec0" text-anchor="middle" opacity="0.6">CQRS · Write</text>
+  <!-- Event blobs flowing in topic 1 -->
+  <circle cx="140" cy="106" r="5" fill="#00ff88" opacity="0.7"/>
+  <circle cx="158" cy="106" r="5" fill="#00ff88" opacity="0.6"/>
+  <circle cx="176" cy="106" r="5" fill="#00ff88" opacity="0.5"/>
+
+  <!-- Topic 2: risk stream -->
+  <rect x="128" y="182" width="144" height="36" rx="5" fill="#0a1218" stroke="#00bfff" stroke-width="2"/>
+  <text x="200" y="196" font-family="monospace" font-size="7.5" fill="#00bfff" text-anchor="middle" opacity="0.9">risk.stream</text>
+  <text x="200" y="210" font-family="monospace" font-size="7"   fill="#a0aec0" text-anchor="middle" opacity="0.6">SARLAFT · AML</text>
+  <circle cx="140" cy="200" r="5" fill="#00bfff" opacity="0.7"/>
+  <circle cx="158" cy="200" r="5" fill="#00bfff" opacity="0.55"/>
+  <circle cx="176" cy="200" r="5" fill="#ff4444" opacity="0.8"/>
+
+  <!-- Topic 3: audit log -->
+  <rect x="128" y="276" width="144" height="36" rx="5" fill="#0a1218" stroke="#7b2fff" stroke-width="2"/>
+  <text x="200" y="290" font-family="monospace" font-size="7.5" fill="#c0aaff" text-anchor="middle" opacity="0.9">audit.log</text>
+  <text x="200" y="304" font-family="monospace" font-size="7"   fill="#a0aec0" text-anchor="middle" opacity="0.6">Governance · RTO/RPO</text>
+  <circle cx="140" cy="294" r="5" fill="#7b2fff" opacity="0.7"/>
+  <circle cx="158" cy="294" r="5" fill="#7b2fff" opacity="0.6"/>
+  <circle cx="176" cy="294" r="5" fill="#7b2fff" opacity="0.5"/>
+
+  <!-- Kafka broker box (center, behind topics) -->
+  <rect x="118" y="72" width="164" height="256" rx="8" fill="none" stroke="#a0aec0" stroke-width="1" stroke-dasharray="4,3" opacity="0.2"/>
+  <text x="200" y="67" font-family="monospace" font-size="8" fill="#a0aec0" text-anchor="middle" opacity="0.4">Event Broker</text>
+
+  <!-- Arrows: producer → topics -->
+  <line x1="114" y1="195" x2="128" y2="106" stroke="#f5c842" stroke-width="1.5" opacity="0.5"/>
+  <line x1="114" y1="200" x2="128" y2="200" stroke="#f5c842" stroke-width="1.5" opacity="0.5"/>
+  <line x1="114" y1="205" x2="128" y2="294" stroke="#f5c842" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Consumers (right) -->
+  <rect x="286" y="80"  width="72" height="40" rx="6" fill="#0d1b2a" stroke="#00ff88" stroke-width="1.8"/>
+  <text x="322" y="96"  font-family="monospace" font-size="7"   fill="#00ff88" text-anchor="middle">Read API</text>
+  <text x="322" y="110" font-family="monospace" font-size="6.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">CQRS Read</text>
+
+  <rect x="286" y="180" width="72" height="40" rx="6" fill="#0d1b2a" stroke="#00bfff" stroke-width="1.8"/>
+  <text x="322" y="196" font-family="monospace" font-size="7"   fill="#00bfff" text-anchor="middle">Risk Engine</text>
+  <text x="322" y="210" font-family="monospace" font-size="6.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Fraud · AML</text>
+
+  <rect x="286" y="276" width="72" height="40" rx="6" fill="#0d1b2a" stroke="#7b2fff" stroke-width="1.8"/>
+  <text x="322" y="292" font-family="monospace" font-size="7"   fill="#c0aaff" text-anchor="middle">Lakehouse</text>
+  <text x="322" y="306" font-family="monospace" font-size="6.5" fill="#a0aec0" text-anchor="middle" opacity="0.6">Analytics</text>
+
+  <!-- Arrows: topics → consumers -->
+  <line x1="272" y1="106" x2="286" y2="100" stroke="#00ff88" stroke-width="1.5" opacity="0.6"/>
+  <polygon points="282,96 288,100 282,104" fill="#00ff88" opacity="0.6"/>
+  <line x1="272" y1="200" x2="286" y2="200" stroke="#00bfff" stroke-width="1.5" opacity="0.6"/>
+  <polygon points="282,196 288,200 282,204" fill="#00bfff" opacity="0.6"/>
+  <line x1="272" y1="294" x2="286" y2="294" stroke="#7b2fff" stroke-width="1.5" opacity="0.6"/>
+  <polygon points="282,290 288,294 282,298" fill="#7b2fff" opacity="0.6"/>
+
+  <!-- SFC pressure label -->
+  <rect x="42" y="58" width="72" height="28" rx="5" fill="#ff4444" opacity="0.15"/>
+  <rect x="42" y="58" width="72" height="28" rx="5" fill="none" stroke="#ff4444" stroke-width="1.5"/>
+  <text x="78" y="77" font-family="monospace" font-size="8" fill="#ff4444" text-anchor="middle">SFC ⚡</text>
+
+  <text x="200" y="356" font-family="monospace" font-size="9" fill="#a0aec0" text-anchor="middle" opacity="0.42">CQRS · Event Streaming · Lakehouse · 4 Rounds</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg619" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2d0a4e"/>
+      <stop offset="100%" stop-color="#6a0572"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg619)"/>
+
+  <text x="200" y="56" text-anchor="middle" fill="#ff6b9d" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">SEO/SEM · SEARCH BAR</text>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- Search box (protagonist) -->
+    <g transform="translate(200,176)">
+      <rect x="-128" y="-24" width="256" height="48" rx="24" fill="#2d0a4e" stroke="#ffd166" stroke-width="3.5"/>
+      <!-- Magnifying glass icon -->
+      <circle cx="-104" cy="0" r="12" fill="none" stroke="#ffd166" stroke-width="3"/>
+      <line x1="-94" y1="10" x2="-84" y2="20" stroke="#ffd166" stroke-width="3.5"/>
+      <!-- Cursor line -->
+      <line x1="-60" y1="-12" x2="-60" y2="12" stroke="#ffd166" stroke-width="2"/>
+      <!-- Search text dots -->
+      <circle cx="-44" cy="0" r="3" fill="#ff6b9d"/>
+      <circle cx="-30" cy="0" r="3" fill="#ff6b9d"/>
+      <circle cx="-16" cy="0" r="3" fill="#ff6b9d"/>
+    </g>
+
+    <!-- Ranked results below (top 3 results) -->
+    <g transform="translate(72,224)">
+      <!-- Result 1 (top, gold = SEM/paid) -->
+      <rect width="256" height="32" rx="4" fill="#2d0a4e" stroke="#f5c842" stroke-width="2.5"/>
+      <circle cx="16" cy="16" r="6" fill="#f5c842"/>
+      <text x="16" y="20" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#2d0a4e">$</text>
+      <rect x="32" y="9" width="120" height="6" rx="2" fill="#ff6b9d"/>
+      <rect x="32" y="19" width="180" height="4" rx="1.5" fill="#ff6b9d" opacity="0.55"/>
+
+      <!-- Result 2 (organic) -->
+      <rect y="40" width="256" height="32" rx="4" fill="#2d0a4e" stroke="#ff6b9d" stroke-width="2"/>
+      <rect x="32" y="49" width="100" height="6" rx="2" fill="#ff6b9d"/>
+      <rect x="32" y="59" width="160" height="4" rx="1.5" fill="#ff6b9d" opacity="0.5"/>
+
+      <!-- Result 3 (organic) -->
+      <rect y="80" width="256" height="32" rx="4" fill="#2d0a4e" stroke="#ff6b9d" stroke-width="2"/>
+      <rect x="32" y="89" width="80" height="6" rx="2" fill="#ff6b9d"/>
+      <rect x="32" y="99" width="140" height="4" rx="1.5" fill="#ff6b9d" opacity="0.5"/>
+    </g>
+
+    <!-- SEO badge top-left -->
+    <g transform="translate(48,84)">
+      <rect width="64" height="26" rx="4" fill="#ff6b9d" fill-opacity="0.18" stroke="#ff6b9d" stroke-width="1.5"/>
+      <text x="32" y="18" text-anchor="middle" fill="#ff6b9d" font-size="11" font-family="monospace" font-weight="bold">SEO</text>
+    </g>
+
+    <!-- SEM badge top-right -->
+    <g transform="translate(288,84)">
+      <rect width="64" height="26" rx="4" fill="#f5c842" fill-opacity="0.18" stroke="#f5c842" stroke-width="1.5"/>
+      <text x="32" y="18" text-anchor="middle" fill="#f5c842" font-size="11" font-family="monospace" font-weight="bold">SEM</text>
+    </g>
+  </g>
+
+  <text x="200" y="372" text-anchor="middle" fill="#ffd166" font-size="9" font-family="monospace" opacity="0.5" letter-spacing="1.2">Flores Online · CO</text>
+</svg>

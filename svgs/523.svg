@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg523" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a0505"/>
+      <stop offset="100%" stop-color="#2a0a1a"/>
+    </linearGradient>
+    <linearGradient id="paper523" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5f5f0"/>
+      <stop offset="100%" stop-color="#d8d8d0"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg523)"/>
+
+  <text x="200" y="56" text-anchor="middle" fill="#e74c3c" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">CONTRACT BREACH · DAMAGES</text>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- Torn contract — left half -->
+    <g transform="translate(132,210)">
+      <path d="M -64 -96 L 64 -96 L 64 -88 L 56 -80 L 64 -72 L 56 -64 L 64 -56 L 56 -48 L 64 -40 L 56 -32 L 64 -24 L 56 -16 L 64 -8 L 56 0 L 64 8 L 56 16 L 64 24 L 56 32 L 64 40 L 56 48 L 64 56 L 56 64 L 64 72 L 56 80 L 64 88 L 56 96 L -64 96 Z"
+            fill="url(#paper523)" stroke="#1a2744" stroke-width="2.5"/>
+      <!-- Content lines -->
+      <line x1="-52" y1="-72" x2="44"  y2="-72" stroke="#1a2744" stroke-width="1.5" opacity="0.45"/>
+      <line x1="-52" y1="-56" x2="32"  y2="-56" stroke="#1a2744" stroke-width="1.5" opacity="0.45"/>
+      <line x1="-52" y1="-40" x2="44"  y2="-40" stroke="#1a2744" stroke-width="1.5" opacity="0.45"/>
+      <line x1="-52" y1="-24" x2="40"  y2="-24" stroke="#1a2744" stroke-width="1.5" opacity="0.45"/>
+      <line x1="-52" y1="-8"  x2="36"  y2="-8"  stroke="#1a2744" stroke-width="1.5" opacity="0.45"/>
+      <line x1="-52" y1="8"   x2="44"  y2="8"   stroke="#1a2744" stroke-width="1.5" opacity="0.45"/>
+      <line x1="-52" y1="24"  x2="32"  y2="24"  stroke="#1a2744" stroke-width="1.5" opacity="0.45"/>
+      <line x1="-52" y1="40"  x2="40"  y2="40"  stroke="#1a2744" stroke-width="1.5" opacity="0.45"/>
+    </g>
+
+    <!-- Torn contract — right half (offset, lower) -->
+    <g transform="translate(276,232)">
+      <path d="M -64 -88 L -56 -80 L -64 -72 L -56 -64 L -64 -56 L -56 -48 L -64 -40 L -56 -32 L -64 -24 L -56 -16 L -64 -8 L -56 0 L -64 8 L -56 16 L -64 24 L -56 32 L -64 40 L -56 48 L -64 56 L -56 64 L -64 72 L -56 80 L -64 88 L -56 96 L 64 96 L 64 -96 L -56 -96 L -64 -88 Z"
+            fill="url(#paper523)" stroke="#1a2744" stroke-width="2.5" opacity="0.7"/>
+      <line x1="-44" y1="-72" x2="52"  y2="-72" stroke="#1a2744" stroke-width="1.5" opacity="0.35"/>
+      <line x1="-44" y1="-56" x2="40"  y2="-56" stroke="#1a2744" stroke-width="1.5" opacity="0.35"/>
+      <line x1="-44" y1="-40" x2="52"  y2="-40" stroke="#1a2744" stroke-width="1.5" opacity="0.35"/>
+      <line x1="-44" y1="-24" x2="44"  y2="-24" stroke="#1a2744" stroke-width="1.5" opacity="0.35"/>
+    </g>
+
+    <!-- Damages calculator badge -->
+    <g transform="translate(48,84)">
+      <rect width="68" height="26" rx="4" fill="#e74c3c" fill-opacity="0.18" stroke="#e74c3c" stroke-width="1.5"/>
+      <text x="34" y="18" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="monospace" font-weight="bold">DAMAGES</text>
+    </g>
+
+    <!-- Court badge -->
+    <g transform="translate(288,84)">
+      <rect width="64" height="26" rx="4" fill="#f5c842" fill-opacity="0.15" stroke="#f5c842" stroke-width="1.5"/>
+      <text x="32" y="18" text-anchor="middle" fill="#f5c842" font-size="11" font-family="monospace" font-weight="bold">COURT</text>
+    </g>
+  </g>
+
+  <text x="200" y="372" text-anchor="middle" fill="#c0cfff" font-size="9" font-family="monospace" opacity="0.4" letter-spacing="1.2">Construction · Litigation · CO</text>
+</svg>

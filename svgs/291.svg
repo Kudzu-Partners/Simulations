@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg291" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+    <linearGradient id="curve291" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e74c3c"/>
+      <stop offset="50%" stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#00ff88"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg291)"/>
+
+  <!-- Price axis (vertical) -->
+  <line x1="60" y1="40" x2="60" y2="330" stroke="#8899aa" stroke-width="1.5" opacity="0.4"/>
+  <!-- Qty axis (horizontal) -->
+  <line x1="60" y1="330" x2="360" y2="330" stroke="#8899aa" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Demand curve (downward, colorful) -->
+  <path d="M 70 70 Q 140 140 200 200 Q 260 260 350 318"
+        stroke="url(#curve291)" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- Supply curve (upward, blue) -->
+  <path d="M 70 320 Q 160 240 240 180 Q 300 130 350 90"
+        stroke="#74b9ff" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.75"/>
+
+  <!-- Equilibrium point -->
+  <circle cx="210" cy="200" r="18" fill="#0d1b2a" stroke="#f5c842" stroke-width="4"/>
+  <circle cx="210" cy="200" r="8" fill="#f5c842"/>
+  <!-- Dashed lines to axes -->
+  <line x1="60" y1="200" x2="210" y2="200" stroke="#f5c842" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.5"/>
+  <line x1="210" y1="330" x2="210" y2="200" stroke="#f5c842" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.5"/>
+
+  <!-- Price tag icon (top right) -->
+  <g transform="translate(286, 60)">
+    <rect x="-36" y="-36" width="72" height="72" rx="12" fill="#1a1200" stroke="#f5c842" stroke-width="2.5"/>
+    <path d="M -16 16 L -16 -4 L 2 -20 L 20 -4 L 20 16 Z" fill="#f5c842" opacity="0.85"/>
+    <circle cx="8" cy="-10" r="5" fill="#1a1200"/>
+    <line x1="-12" y1="8" x2="16" y2="8" stroke="#1a1200" stroke-width="2.5"/>
+  </g>
+
+  <!-- Elasticity arrows (bottom) -->
+  <g transform="translate(36, 354)">
+    <rect x="0" y="0" width="148" height="28" rx="6" fill="#7d0000" opacity="0.4" stroke="#e74c3c" stroke-width="1.5"/>
+    <!-- Inelastic: small price up, tiny qty down -->
+    <line x1="14" y1="22" x2="14" y2="6" stroke="#e74c3c" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="10,10 14,2 18,10" fill="#e74c3c"/>
+    <line x1="46" y1="14" x2="60" y2="14" stroke="#e74c3c" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+    <polygon points="56,10 64,14 56,18" fill="#e74c3c" opacity="0.5"/>
+
+    <rect x="160" y="0" width="164" height="28" rx="6" fill="#0a1f10" stroke="#00ff88" stroke-width="1.5"/>
+    <!-- Elastic: small price up, big qty down -->
+    <line x1="174" y1="22" x2="174" y2="6" stroke="#00ff88" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="170,10 174,2 178,10" fill="#00ff88"/>
+    <line x1="196" y1="14" x2="308" y2="14" stroke="#00ff88" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+    <polygon points="300,10 312,14 300,18" fill="#00ff88" opacity="0.7"/>
+  </g>
+</svg>

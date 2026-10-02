@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg195" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg195)"/>
+
+  <!-- Bank building (left, on-prem) -->
+  <!-- Columns -->
+  <rect x="52" y="165" width="10" height="90" rx="1" fill="#c0cfff" opacity="0.4"/>
+  <rect x="68" y="165" width="10" height="90" rx="1" fill="#c0cfff" opacity="0.4"/>
+  <rect x="84" y="165" width="10" height="90" rx="1" fill="#c0cfff" opacity="0.4"/>
+  <rect x="100" y="165" width="10" height="90" rx="1" fill="#c0cfff" opacity="0.4"/>
+  <!-- Base -->
+  <rect x="46" y="252" width="80" height="10" rx="2" fill="#c0cfff" opacity="0.5"/>
+  <!-- Pediment (triangle) -->
+  <polygon points="46,165 126,165 86,128" fill="#c0cfff" opacity="0.2"/>
+  <polygon points="46,165 126,165 86,128" fill="none" stroke="#c0cfff" stroke-width="1.5" opacity="0.5"/>
+  <!-- Vault door circle on building -->
+  <circle cx="86" cy="218" r="20" fill="none" stroke="#c0cfff" stroke-width="2" opacity="0.5"/>
+  <circle cx="86" cy="218" r="12" fill="none" stroke="#c0cfff" stroke-width="1.5" opacity="0.4"/>
+  <!-- Vault handle -->
+  <line x1="86" y1="206" x2="86" y2="198" stroke="#c0cfff" stroke-width="2" opacity="0.4"/>
+  <text x="86" y="275" font-family="Arial,sans-serif" font-size="7" fill="#c0cfff" text-anchor="middle" opacity="0.5">On-Prem</text>
+
+  <!-- Migration arrow (curved) -->
+  <path d="M 140 215 Q 185 195 225 215" fill="none" stroke="#00bfff" stroke-width="2.5" opacity="0.7"/>
+  <polygon points="225,210 240,215 225,220" fill="#00bfff" opacity="0.8"/>
+  <!-- Phase label -->
+  <text x="185" y="192" font-family="Arial,sans-serif" font-size="7" fill="#00bfff" text-anchor="middle" opacity="0.6">7.5-year</text>
+  <text x="185" y="202" font-family="Arial,sans-serif" font-size="7" fill="#00bfff" text-anchor="middle" opacity="0.6">transformation</text>
+
+  <!-- Cloud layers (right side, stacked) -->
+  <!-- Cloud shape background -->
+  <path d="M 255 148 Q 255 128 275 128 Q 278 110 298 110 Q 318 110 321 128 Q 348 128 348 148 Q 355 148 355 160 Q 355 172 342 172 L 262 172 Q 248 172 248 160 Q 248 148 255 148 Z" fill="#00bfff" opacity="0.08"/>
+  <path d="M 255 148 Q 255 128 275 128 Q 278 110 298 110 Q 318 110 321 128 Q 348 128 348 148 Q 355 148 355 160 Q 355 172 342 172 L 262 172 Q 248 172 248 160 Q 248 148 255 148 Z" fill="none" stroke="#00bfff" stroke-width="2" opacity="0.6"/>
+  <text x="300" y="145" font-family="Arial,sans-serif" font-size="8" fill="#00bfff" text-anchor="middle" opacity="0.75">Cloud</text>
+
+  <!-- IaaS layer -->
+  <rect x="248" y="188" width="110" height="22" rx="4" fill="#7b2fff" opacity="0.2"/>
+  <rect x="248" y="188" width="110" height="22" rx="4" fill="none" stroke="#7b2fff" stroke-width="1.5" opacity="0.65"/>
+  <text x="303" y="203" font-family="Arial,sans-serif" font-size="8" fill="#c0cfff" text-anchor="middle" opacity="0.8">IaaS</text>
+
+  <!-- PaaS layer -->
+  <rect x="248" y="214" width="110" height="22" rx="4" fill="#00bfff" opacity="0.15"/>
+  <rect x="248" y="214" width="110" height="22" rx="4" fill="none" stroke="#00bfff" stroke-width="1.5" opacity="0.65"/>
+  <text x="303" y="229" font-family="Arial,sans-serif" font-size="8" fill="#00bfff" text-anchor="middle" opacity="0.85">PaaS</text>
+
+  <!-- SaaS layer -->
+  <rect x="248" y="240" width="110" height="22" rx="4" fill="#00bfff" opacity="0.12"/>
+  <rect x="248" y="240" width="110" height="22" rx="4" fill="none" stroke="#00bfff" stroke-width="1.5" opacity="0.6"/>
+  <text x="303" y="255" font-family="Arial,sans-serif" font-size="8" fill="#00bfff" text-anchor="middle" opacity="0.8">SaaS</text>
+
+  <!-- Cloud-native layer (top tier) -->
+  <rect x="248" y="266" width="110" height="22" rx="4" fill="#52b788" opacity="0.15"/>
+  <rect x="248" y="266" width="110" height="22" rx="4" fill="none" stroke="#52b788" stroke-width="1.5" opacity="0.65"/>
+  <text x="303" y="281" font-family="Arial,sans-serif" font-size="8" fill="#52b788" text-anchor="middle" opacity="0.85">Cloud-Native</text>
+
+  <!-- Vendor badges -->
+  <rect x="248" y="298" width="50" height="18" rx="4" fill="#f5c842" opacity="0.1"/>
+  <rect x="248" y="298" width="50" height="18" rx="4" fill="none" stroke="#f5c842" stroke-width="1" opacity="0.45"/>
+  <text x="273" y="311" font-family="Arial,sans-serif" font-size="7" fill="#f5c842" text-anchor="middle" opacity="0.7">AWS</text>
+
+  <rect x="304" y="298" width="54" height="18" rx="4" fill="#f5c842" opacity="0.1"/>
+  <rect x="304" y="298" width="54" height="18" rx="4" fill="none" stroke="#f5c842" stroke-width="1" opacity="0.45"/>
+  <text x="331" y="311" font-family="Arial,sans-serif" font-size="7" fill="#f5c842" text-anchor="middle" opacity="0.7">Azure</text>
+
+  <!-- Data sovereignty warning -->
+  <circle cx="160" cy="290" r="28" fill="#e74c3c" opacity="0.08"/>
+  <circle cx="160" cy="290" r="28" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.55"/>
+  <text x="160" y="286" font-family="Arial,sans-serif" font-size="9" fill="#e74c3c" text-anchor="middle" opacity="0.8">⚠</text>
+  <text x="160" y="298" font-family="Arial,sans-serif" font-size="6" fill="#e74c3c" text-anchor="middle" opacity="0.7">Data</text>
+  <text x="160" y="308" font-family="Arial,sans-serif" font-size="6" fill="#e74c3c" text-anchor="middle" opacity="0.7">Sovereignty</text>
+
+  <!-- FinOps label -->
+  <rect x="52" y="296" width="68" height="20" rx="5" fill="#00bfff" opacity="0.1"/>
+  <rect x="52" y="296" width="68" height="20" rx="5" fill="none" stroke="#00bfff" stroke-width="1.5" opacity="0.5"/>
+  <text x="86" y="310" font-family="Arial,sans-serif" font-size="8" fill="#00bfff" text-anchor="middle" opacity="0.7">FinOps</text>
+
+  <!-- BancoAndino $3.2B badge -->
+  <text x="200" y="358" font-family="Arial,sans-serif" font-size="8" fill="#c0cfff" text-anchor="middle" opacity="0.35">CloudArch · BancoAndino $3.2B</text>
+  <text x="200" y="374" font-family="Arial,sans-serif" font-size="9" fill="#00bfff" text-anchor="middle" opacity="0.4" letter-spacing="1">CLOUD STRATEGY · CTO</text>
+</svg>

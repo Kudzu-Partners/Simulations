@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg599" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2d4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg599)"/>
+
+  <text x="200" y="56" text-anchor="middle" fill="#f5c842" font-size="9" font-family="monospace" opacity="0.75" letter-spacing="2">ISO 9001 · CERTIFICATION</text>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- Certificate medal (protagonist) -->
+    <g transform="translate(200,200)">
+      <!-- Ribbon left -->
+      <path d="M -32 24 L -56 80 L -32 72 L -16 96 L -8 64 Z" fill="#74b9ff" stroke="#0d1b2a" stroke-width="2.5"/>
+      <!-- Ribbon right -->
+      <path d="M 32 24 L 56 80 L 32 72 L 16 96 L 8 64 Z" fill="#74b9ff" stroke="#0d1b2a" stroke-width="2.5"/>
+
+      <!-- Outer star burst -->
+      <path d="M 0 -88 L 16 -56 L 48 -64 L 32 -32 L 64 -16 L 32 0 L 48 32 L 16 24 L 0 56 L -16 24 L -48 32 L -32 0 L -64 -16 L -32 -32 L -48 -64 L -16 -56 Z"
+            fill="#1b2d4f" stroke="#f5c842" stroke-width="3.5"/>
+
+      <!-- Inner circle -->
+      <circle r="40" fill="#0d1b2a" stroke="#f5c842" stroke-width="2.5"/>
+
+      <!-- 9001 number -->
+      <text x="0" y="6" text-anchor="middle"
+            font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif"
+            font-size="20" font-weight="700" fill="#f5c842">9001</text>
+
+      <!-- ISO label arc above -->
+      <text x="0" y="-20" text-anchor="middle"
+            font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif"
+            font-size="11" font-weight="700" fill="#f5c842" letter-spacing="2">ISO</text>
+    </g>
+
+    <!-- Deadline badge top-left -->
+    <g transform="translate(48,84)">
+      <rect width="64" height="26" rx="4" fill="#e74c3c" fill-opacity="0.18" stroke="#e74c3c" stroke-width="1.5"/>
+      <text x="32" y="18" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="monospace" font-weight="bold">6M</text>
+    </g>
+
+    <!-- Contract value badge top-right -->
+    <g transform="translate(280,84)">
+      <rect width="80" height="26" rx="4" fill="#f5c842" fill-opacity="0.18" stroke="#f5c842" stroke-width="1.5"/>
+      <text x="40" y="18" text-anchor="middle" fill="#f5c842" font-size="11" font-family="monospace" font-weight="bold">900M</text>
+    </g>
+  </g>
+
+  <text x="200" y="372" text-anchor="middle" fill="#c0cfff" font-size="9" font-family="monospace" opacity="0.4" letter-spacing="1.2">Confecciones La Roca · CO</text>
+</svg>

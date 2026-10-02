@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" fill="none">
+  <defs>
+    <linearGradient id="g770" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7B678"/>
+      <stop offset="1" stop-color="#F2994A"/>
+    </linearGradient>
+  </defs>
+  <!-- reborde blanco: pirámide de motivación -->
+  <polygon points="200,52 348,336 52,336" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="18" stroke-linejoin="round"/>
+  <!-- nivel base: lo higiénico -->
+  <polygon points="118,254 282,254 322,330 78,330" fill="#D97A28"/>
+  <!-- nivel medio -->
+  <polygon points="160,164 240,164 276,242 124,242" fill="url(#g770)"/>
+  <!-- la cima: la motivación real -->
+  <polygon points="200,64 234,152 166,152" fill="#F7B678"/>
+  <!-- la chispa del equipo -->
+  <path d="M200 96 l6 13 14 2 -10 10 2 14 -12 -6 -12 6 2 -14 -10 -10 14 -2 Z" fill="#D97A28"/>
+</svg>

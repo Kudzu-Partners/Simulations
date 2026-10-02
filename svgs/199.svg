@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg199" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c2333"/>
+      <stop offset="100%" stop-color="#2c3e50"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg199)"/>
+
+  <!-- Warehouse floor plan outline -->
+  <rect x="48" y="62" width="304" height="240" rx="6" fill="#040d18" opacity="0.6"/>
+  <rect x="48" y="62" width="304" height="240" rx="6" fill="none" stroke="#95a5a6" stroke-width="2" opacity="0.55"/>
+
+  <!-- Floor label -->
+  <text x="200" y="78" font-family="monospace" font-size="7" fill="#95a5a6" text-anchor="middle" opacity="0.5">FULFILLMENT CENTER · FLOOR PLAN</text>
+
+  <!-- Storage racks (left zone — grid of shelves) -->
+  <!-- Rack row 1 -->
+  <rect x="58" y="88" width="80" height="12" rx="1" fill="#95a5a6" opacity="0.25"/>
+  <rect x="58" y="88" width="80" height="12" rx="1" fill="none" stroke="#95a5a6" stroke-width="1" opacity="0.5"/>
+  <rect x="58" y="104" width="80" height="12" rx="1" fill="#95a5a6" opacity="0.22"/>
+  <rect x="58" y="104" width="80" height="12" rx="1" fill="none" stroke="#95a5a6" stroke-width="1" opacity="0.45"/>
+  <rect x="58" y="120" width="80" height="12" rx="1" fill="#95a5a6" opacity="0.22"/>
+  <rect x="58" y="120" width="80" height="12" rx="1" fill="none" stroke="#95a5a6" stroke-width="1" opacity="0.45"/>
+  <rect x="58" y="136" width="80" height="12" rx="1" fill="#95a5a6" opacity="0.2"/>
+  <rect x="58" y="136" width="80" height="12" rx="1" fill="none" stroke="#95a5a6" stroke-width="1" opacity="0.4"/>
+  <text x="98" y="167" font-family="Arial,sans-serif" font-size="6" fill="#95a5a6" text-anchor="middle" opacity="0.5">Storage Racks</text>
+
+  <!-- Rack row 2 (right of left zone) -->
+  <rect x="148" y="88" width="80" height="12" rx="1" fill="#95a5a6" opacity="0.2"/>
+  <rect x="148" y="88" width="80" height="12" rx="1" fill="none" stroke="#95a5a6" stroke-width="1" opacity="0.4"/>
+  <rect x="148" y="104" width="80" height="12" rx="1" fill="#95a5a6" opacity="0.18"/>
+  <rect x="148" y="104" width="80" height="12" rx="1" fill="none" stroke="#95a5a6" stroke-width="1" opacity="0.38"/>
+  <rect x="148" y="120" width="80" height="12" rx="1" fill="#95a5a6" opacity="0.18"/>
+  <rect x="148" y="120" width="80" height="12" rx="1" fill="none" stroke="#95a5a6" stroke-width="1" opacity="0.38"/>
+  <rect x="148" y="136" width="80" height="12" rx="1" fill="#95a5a6" opacity="0.16"/>
+  <rect x="148" y="136" width="80" height="12" rx="1" fill="none" stroke="#95a5a6" stroke-width="1" opacity="0.35"/>
+
+  <!-- Robotic picker zone (center-right) -->
+  <rect x="244" y="86" width="98" height="76" rx="4" fill="#e67e22" opacity="0.08"/>
+  <rect x="244" y="86" width="98" height="76" rx="4" fill="none" stroke="#e67e22" stroke-width="1.5" opacity="0.55"/>
+  <text x="293" y="100" font-family="Arial,sans-serif" font-size="7" fill="#e67e22" text-anchor="middle" opacity="0.7">Robotic Zone</text>
+  <!-- Robot icons (2 picker robots) -->
+  <circle cx="272" cy="128" r="12" fill="#e67e22" opacity="0.15"/>
+  <circle cx="272" cy="128" r="12" fill="none" stroke="#e67e22" stroke-width="1.5" opacity="0.6"/>
+  <text x="272" y="132" font-family="Arial,sans-serif" font-size="9" fill="#e67e22" text-anchor="middle" opacity="0.8">🤖</text>
+  <circle cx="316" cy="128" r="12" fill="#e67e22" opacity="0.15"/>
+  <circle cx="316" cy="128" r="12" fill="none" stroke="#e67e22" stroke-width="1.5" opacity="0.6"/>
+  <text x="316" y="132" font-family="Arial,sans-serif" font-size="9" fill="#e67e22" text-anchor="middle" opacity="0.8">🤖</text>
+
+  <!-- Conveyor belt (snaking path through floor) -->
+  <path d="M 98 172 L 98 190 L 340 190 L 340 220 L 58 220 L 58 248 L 340 248" fill="none" stroke="#e67e22" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+  <path d="M 98 172 L 98 190 L 340 190 L 340 220 L 58 220 L 58 248 L 340 248" fill="none" stroke="#f5c842" stroke-width="2" stroke-dasharray="8 6" stroke-linecap="round" opacity="0.5"/>
+  <text x="200" y="186" font-family="Arial,sans-serif" font-size="6" fill="#f5c842" text-anchor="middle" opacity="0.55">conveyor</text>
+
+  <!-- Delivery dock (right wall) -->
+  <rect x="330" y="165" width="22" height="50" rx="2" fill="#52b788" opacity="0.2"/>
+  <rect x="330" y="165" width="22" height="50" rx="2" fill="none" stroke="#52b788" stroke-width="2" opacity="0.65"/>
+  <text x="341" y="196" font-family="Arial,sans-serif" font-size="6" fill="#52b788" text-anchor="middle" opacity="0.75" transform="rotate(90,341,196)">DOCK</text>
+
+  <!-- Returns area (bottom left) -->
+  <rect x="58" y="258" width="70" height="32" rx="4" fill="#7b2fff" opacity="0.12"/>
+  <rect x="58" y="258" width="70" height="32" rx="4" fill="none" stroke="#7b2fff" stroke-width="1.5" opacity="0.55"/>
+  <text x="93" y="272" font-family="Arial,sans-serif" font-size="7" fill="#c0cfff" text-anchor="middle" opacity="0.7">Returns</text>
+  <text x="93" y="284" font-family="Arial,sans-serif" font-size="6" fill="#7b2fff" text-anchor="middle" opacity="0.6">Logistics</text>
+
+  <!-- Peak season badge -->
+  <rect x="150" y="258" width="90" height="32" rx="6" fill="#e74c3c" opacity="0.12"/>
+  <rect x="150" y="258" width="90" height="32" rx="6" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.6"/>
+  <text x="195" y="272" font-family="Arial,sans-serif" font-size="7" fill="#e74c3c" text-anchor="middle" opacity="0.8">Peak Season</text>
+  <text x="195" y="284" font-family="Arial,sans-serif" font-size="7" fill="#e74c3c" text-anchor="middle" opacity="0.65">↑ 340% volume</text>
+
+  <!-- Last-mile optimization (bottom right) -->
+  <rect x="258" y="258" width="90" height="32" rx="4" fill="#e67e22" opacity="0.12"/>
+  <rect x="258" y="258" width="90" height="32" rx="4" fill="none" stroke="#e67e22" stroke-width="1.5" opacity="0.55"/>
+  <text x="303" y="272" font-family="Arial,sans-serif" font-size="7" fill="#e67e22" text-anchor="middle" opacity="0.8">Last Mile</text>
+  <text x="303" y="284" font-family="Arial,sans-serif" font-size="6" fill="#e67e22" text-anchor="middle" opacity="0.65">route optimize</text>
+
+  <!-- Label -->
+  <text x="200" y="328" font-family="Arial,sans-serif" font-size="8" fill="#c0cfff" text-anchor="middle" opacity="0.35">WarehouseOps · LATAM 3PL</text>
+  <text x="200" y="344" font-family="Arial,sans-serif" font-size="9" fill="#e67e22" text-anchor="middle" opacity="0.4" letter-spacing="1">FULFILLMENT · AUTOMATION</text>
+</svg>

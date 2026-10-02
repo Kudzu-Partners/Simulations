@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg543" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c2333"/>
+      <stop offset="100%" stop-color="#2c3e50"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg543)"/>
+
+  <text x="200" y="56" text-anchor="middle" fill="#e67e22" font-size="9" font-family="monospace" opacity="0.85" letter-spacing="2">RESPONSIBLE MINING · ESG</text>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- Mountain with mine + tree growing (protagonist) -->
+    <g transform="translate(200,232)">
+      <!-- Mountain silhouette -->
+      <path d="M -120 80 L -56 -16 L -16 32 L 32 -56 L 96 -8 L 120 80 Z"
+            fill="#1c2333" stroke="#e67e22" stroke-width="3.5"/>
+
+      <!-- Mine entrance (arch) -->
+      <path d="M -40 80 Q -40 56 -24 56 L -8 56 Q 8 56 8 80 Z"
+            fill="#0d1421" stroke="#e67e22" stroke-width="3"/>
+      <!-- Mine cart tracks -->
+      <line x1="-32" y1="80" x2="-40" y2="96" stroke="#e67e22" stroke-width="2" opacity="0.7"/>
+      <line x1="0"   y1="80" x2="-8"  y2="96" stroke="#e67e22" stroke-width="2" opacity="0.7"/>
+      <line x1="-40" y1="96" x2="-8"  y2="96" stroke="#e67e22" stroke-width="1.5" opacity="0.5"/>
+
+      <!-- Tree growing on top of mountain (responsible aspect) -->
+      <line x1="32" y1="-56" x2="32" y2="-80" stroke="#52b788" stroke-width="3.5"/>
+      <circle cx="32" cy="-92" r="14" fill="#52b788" stroke="#95d5b2" stroke-width="2"/>
+      <circle cx="44" cy="-100" r="10" fill="#52b788" stroke="#95d5b2" stroke-width="2"/>
+      <circle cx="20" cy="-100" r="10" fill="#52b788" stroke="#95d5b2" stroke-width="2"/>
+
+      <!-- Sun/community symbol -->
+      <circle cx="-72" cy="-48" r="14" fill="none" stroke="#f5c842" stroke-width="3"/>
+      <line x1="-72" y1="-72" x2="-72" y2="-68" stroke="#f5c842" stroke-width="2.5"/>
+      <line x1="-72" y1="-32" x2="-72" y2="-28" stroke="#f5c842" stroke-width="2.5"/>
+      <line x1="-96" y1="-48" x2="-92" y2="-48" stroke="#f5c842" stroke-width="2.5"/>
+      <line x1="-52" y1="-48" x2="-48" y2="-48" stroke="#f5c842" stroke-width="2.5"/>
+    </g>
+
+    <!-- ESG badge top-left -->
+    <g transform="translate(48,84)">
+      <rect width="56" height="26" rx="4" fill="#52b788" fill-opacity="0.18" stroke="#52b788" stroke-width="1.5"/>
+      <text x="28" y="18" text-anchor="middle" fill="#52b788" font-size="11" font-family="monospace" font-weight="bold">ESG</text>
+    </g>
+
+    <!-- Community badge top-right -->
+    <g transform="translate(288,84)">
+      <rect width="64" height="26" rx="4" fill="#f5c842" fill-opacity="0.18" stroke="#f5c842" stroke-width="1.5"/>
+      <circle cx="20" cy="13" r="4" fill="#f5c842"/>
+      <circle cx="32" cy="13" r="4" fill="#f5c842"/>
+      <circle cx="44" cy="13" r="4" fill="#f5c842"/>
+    </g>
+  </g>
+
+  <text x="200" y="372" text-anchor="middle" fill="#95a5a6" font-size="9" font-family="monospace" opacity="0.5" letter-spacing="1.2">Extractive · Indigenous · CO</text>
+</svg>

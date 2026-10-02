@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg187" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a2342"/>
+      <stop offset="100%" stop-color="#1a3a5c"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bg187)"/>
+
+  <!-- Demographic wave (silver/population bulge) -->
+  <path d="M 40 290 Q 100 230 160 200 Q 200 180 240 160 Q 290 130 360 120" fill="none" stroke="#c0cfff" stroke-width="3" opacity="0.7"/>
+  <!-- Wave fill under curve -->
+  <path d="M 40 290 Q 100 230 160 200 Q 200 180 240 160 Q 290 130 360 120 L 360 290 Z" fill="#c0cfff" opacity="0.06"/>
+
+  <!-- Bulge highlight — the 60+ cohort -->
+  <ellipse cx="230" cy="168" rx="55" ry="22" fill="#74b9ff" opacity="0.18"/>
+  <ellipse cx="230" cy="168" rx="55" ry="22" fill="none" stroke="#74b9ff" stroke-width="1.5" opacity="0.5"/>
+  <text x="230" y="164" font-family="Arial,sans-serif" font-size="8" fill="#74b9ff" text-anchor="middle" opacity="0.75">60+ cohort</text>
+  <text x="230" y="176" font-family="Arial,sans-serif" font-size="7" fill="#74b9ff" text-anchor="middle" opacity="0.6">LATAM boom</text>
+
+  <!-- Senior silhouette group (3 figures) -->
+  <!-- Figure 1 (with cane) -->
+  <circle cx="130" cy="232" r="9" fill="#c0cfff" opacity="0.55"/>
+  <line x1="130" y1="241" x2="130" y2="268" stroke="#c0cfff" stroke-width="2.5" opacity="0.5"/>
+  <line x1="130" y1="250" x2="120" y2="260" stroke="#c0cfff" stroke-width="2" opacity="0.45"/>
+  <line x1="130" y1="250" x2="140" y2="258" stroke="#c0cfff" stroke-width="2" opacity="0.45"/>
+  <!-- Cane -->
+  <line x1="138" y1="255" x2="145" y2="272" stroke="#c0cfff" stroke-width="2" opacity="0.4"/>
+
+  <!-- Figure 2 (active, arms up) -->
+  <circle cx="175" cy="218" r="9" fill="#74b9ff" opacity="0.65"/>
+  <line x1="175" y1="227" x2="175" y2="255" stroke="#74b9ff" stroke-width="2.5" opacity="0.55"/>
+  <line x1="175" y1="238" x2="162" y2="230" stroke="#74b9ff" stroke-width="2" opacity="0.5"/>
+  <line x1="175" y1="238" x2="188" y2="230" stroke="#74b9ff" stroke-width="2" opacity="0.5"/>
+
+  <!-- Figure 3 (seated) -->
+  <circle cx="220" cy="242" r="9" fill="#c0cfff" opacity="0.5"/>
+  <line x1="220" y1="251" x2="220" y2="265" stroke="#c0cfff" stroke-width="2.5" opacity="0.45"/>
+  <line x1="210" y1="265" x2="230" y2="265" stroke="#c0cfff" stroke-width="2" opacity="0.45"/>
+
+  <!-- Heart / wellness icon -->
+  <path d="M 290 200 C 290 192 282 188 278 195 C 274 188 266 192 266 200 C 266 210 278 220 278 220 C 278 220 290 210 290 200 Z" fill="#e74c3c" opacity="0.7"/>
+
+  <!-- Activity monitor line (EKG-style) -->
+  <polyline points="50,310 90,310 105,285 120,330 140,280 160,310 360,310" fill="none" stroke="#e74c3c" stroke-width="2" opacity="0.5"/>
+
+  <!-- Wellness pillars (3 columns) -->
+  <rect x="298" y="240" width="16" height="50" rx="3" fill="#52b788" opacity="0.3"/>
+  <rect x="298" y="240" width="16" height="50" rx="3" fill="none" stroke="#52b788" stroke-width="1.5" opacity="0.6"/>
+  <text x="306" y="304" font-family="Arial,sans-serif" font-size="6" fill="#52b788" text-anchor="middle" opacity="0.7">Care</text>
+
+  <rect x="320" y="255" width="16" height="35" rx="3" fill="#74b9ff" opacity="0.3"/>
+  <rect x="320" y="255" width="16" height="35" rx="3" fill="none" stroke="#74b9ff" stroke-width="1.5" opacity="0.6"/>
+  <text x="328" y="304" font-family="Arial,sans-serif" font-size="6" fill="#74b9ff" text-anchor="middle" opacity="0.7">Tech</text>
+
+  <rect x="342" y="262" width="16" height="28" rx="3" fill="#ffd166" opacity="0.3"/>
+  <rect x="342" y="262" width="16" height="28" rx="3" fill="none" stroke="#ffd166" stroke-width="1.5" opacity="0.55"/>
+  <text x="350" y="304" font-family="Arial,sans-serif" font-size="6" fill="#ffd166" text-anchor="middle" opacity="0.7">Profit</text>
+
+  <!-- $380M badge -->
+  <rect x="42" y="70" width="70" height="26" rx="6" fill="#74b9ff" opacity="0.12"/>
+  <rect x="42" y="70" width="70" height="26" rx="6" fill="none" stroke="#74b9ff" stroke-width="1.5" opacity="0.5"/>
+  <text x="77" y="87" font-family="Arial,sans-serif" font-size="9" fill="#74b9ff" text-anchor="middle" opacity="0.75">VidaPlena $380M</text>
+
+  <!-- Label -->
+  <text x="200" y="358" font-family="Arial,sans-serif" font-size="8" fill="#c0cfff" text-anchor="middle" opacity="0.35">SilverWave · Longevity Economy</text>
+  <text x="200" y="374" font-family="Arial,sans-serif" font-size="9" fill="#74b9ff" text-anchor="middle" opacity="0.4" letter-spacing="1">SENIOR LIVING · LATAM</text>
+</svg>
