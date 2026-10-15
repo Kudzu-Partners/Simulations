@@ -17,6 +17,11 @@
  *   node headless_replay.js --jsons ../../jsons  # custom sims folder
  *   node headless_replay.js --lang es 015        # replay in Spanish
  *   node headless_replay.js --lang all 015       # once per language it ships
+ *   node headless_replay.js --force --all        # accept any inputs, so every sim can reach its summary
+ *   node headless_replay.js --require-score ...  # fail a finished sim that reports no benchmark score
+ *
+ * --force overrides validateDecisions() so a round always advances. It tests
+ * the end of the game (summary, score), not whether default inputs are valid.
  *
  * Requires: npm install jsdom
  */
@@ -35,8 +40,14 @@ function opt(name, dflt) {
 const JSONS = opt('jsons', path.join(__dirname, '..', '..', 'jsons'));
 const SAMPLE = parseInt(opt('sample', '0'), 10);
 const LANG = opt('lang', 'en');   // 'en' | 'es' | any code | 'all'
-const ALL = args.includes('--all');
-if (ALL) args.splice(args.indexOf('--all'), 1);
+function flag(name) {
+  const i = args.indexOf('--' + name);
+  if (i >= 0) args.splice(i, 1);
+  return i >= 0;
+}
+const ALL = flag('all');
+const FORCE = flag('force');
+const REQUIRE_SCORE = flag('require-score');
 
 // The runtime shim is a standalone file that player.js fetches as text and
 // injects into each sim's iframe srcdoc. Read the same file here so the test
@@ -125,6 +136,10 @@ async function runSim(file, lang) {
     });
   }
 
+  if (FORCE) {
+    nudgeInputs();
+    window.mySimulation.adapter.validateDecisions = () => true;
+  }
   const btn = () => doc.getElementById('nextPeriodBtn');
   let stuck = 0;
   for (let guard = 0; guard < maxP * 3 + 6; guard++) {
@@ -145,7 +160,14 @@ async function runSim(file, lang) {
   const st = window.mySimulation.state;
   const periods = window.mySimulation.history.length;
   const finished = msgs.some((m) => m.type === 'finished');
-  const summary = finished ? msgs.find((m) => m.type === 'finished').summary : null;
+  const fin = finished ? msgs.find((m) => m.type === 'finished') : null;
+  const summary = fin ? fin.summary : null;
+  // the number the player's opt-in benchmark compares (null = this sim gets no comparison)
+  const score = fin && typeof fin.score === 'number' && isFinite(fin.score) ? fin.score : null;
+  // where the shim looks for it (see _score() in usf-shim.js): is there a score field at all?
+  const lastRes = (window.mySimulation.history.slice(-1)[0] || {}).results;
+  const scoreField = [summary, (st.domainState || {}).performance, lastRes]
+    .some((o) => o && typeof o === 'object' && ('overallScore' in o || 'score' in o));
 
   // exercise undo once if we played anything (regression guard for re-entrancy bugs)
   if (periods > 0 && st.currentPeriod <= maxP + 1) {
@@ -157,11 +179,15 @@ async function runSim(file, lang) {
   const hardErrors = errors.filter((e) => !/jsdom: (Could not parse CSS|Not implemented)/.test(e));
   // Pass = bootstrapped with zero runtime errors. Sims that refuse to advance
   // without meaningful human input (validateDecisions() = false) are healthy.
+  // --force feeds a model inputs it may not accept, so a NaN score there is noise; a missing field never is
+  if (REQUIRE_SCORE && finished && score == null && (!scoreField || !FORCE)) {
+    hardErrors.push(scoreField ? 'benchmark score is not a finite number' : 'finished without a benchmark score field (overallScore / score)');
+  }
   const ok = hardErrors.length === 0;
   return {
     file, lang: ready.lang || lang, langs: ready.langs || [], ok, maxP, periods, finished,
-    hasSummary: summary != null,
-    stage: hardErrors.length ? 'js-error' : (finished ? 'complete' : (periods > 0 ? 'partial(needs choices)' : 'blocked(needs choices)')),
+    hasSummary: summary != null, score, scoreField,
+    stage: hardErrors.length ? (hardErrors.every((e) => /benchmark score/.test(e)) ? 'no-score' : 'js-error') : (finished ? 'complete' : (periods > 0 ? 'partial(needs choices)' : 'blocked(needs choices)')),
     errors: hardErrors.slice(0, 2)
   };
 }
@@ -175,20 +201,20 @@ async function runSim(file, lang) {
     const step = Math.max(1, Math.floor(files.length / n));
     files = files.filter((_, i) => i % step === 0).slice(0, n);
   }
-  console.log(`Replaying ${files.length} simulation(s) from ${JSONS}` +
+  console.log(`Replaying ${files.length} simulation(s) from ${JSONS}` + (FORCE ? ' [--force]' : '') +
               (LANG === 'all' ? ' — once per language each one ships\n' : ` in "${LANG}"\n`));
-  let pass = 0, complete = 0, partial = 0, fail = 0, runs = 0;
+  let pass = 0, complete = 0, partial = 0, fail = 0, runs = 0, scored = 0, nan = 0;
 
   const attempt = async (f, l) => {
     let r;
     try { r = await runSim(f, l); }
     catch (e) { r = { file: f, lang: l, ok: false, stage: 'harness:' + e.message.split('\n')[0], periods: 0, errors: [] }; }
     runs++;
-    if (r.ok) { pass++; if (r.finished) complete++; else partial++; }
+    if (r.ok) { pass++; if (r.finished) { complete++; if (r.score != null) scored++; else if (r.scoreField) nan++; } else partial++; }
     else fail++;
     const icon = r.ok ? (r.finished ? '✔' : '◐') : '✘';
-    if (!r.ok || files.length <= 60 || process.env.VERBOSE)
-      console.log(`${icon} ${r.file.padEnd(14)} [${r.lang || '??'}] ${String(r.periods).padStart(2)}/${r.maxP || '?'} rounds  ${r.stage}${r.hasSummary ? ' +summary' : ''}${r.errors && r.errors.length ? '  | ' + r.errors[0] : ''}`);
+    if (!r.ok || files.length <= 60 || process.env.VERBOSE || (r.finished && r.score == null))
+      console.log(`${icon} ${r.file.padEnd(14)} [${r.lang || '??'}] ${String(r.periods).padStart(2)}/${r.maxP || '?'} rounds  ${r.stage}${r.hasSummary ? ' +summary' : ''}${r.finished ? (r.score != null ? ' score=' + Math.round(r.score * 10) / 10 : (r.scoreField ? ' score=NaN' + (FORCE ? '(forced inputs)' : '') : ' NO-SCORE')) : ''}${r.errors && r.errors.length ? '  | ' + r.errors[0] : ''}`);
     return r;
   };
 
@@ -199,6 +225,6 @@ async function runSim(file, lang) {
     if (LANG !== 'all') continue;
     for (const l of (first.langs || []).filter((l) => l !== first.lang)) await attempt(f, l);
   }
-  console.log(`\n${pass}/${runs} ok (${complete} played to completion, ${partial} advanced but blocked on human choices), ${fail} failed`);
+  console.log(`\n${pass}/${runs} ok (${complete} played to completion, ${scored} of them with a benchmark score${nan ? ', ' + nan + ' with a NaN score' : ''}, ${partial} advanced but blocked on human choices), ${fail} failed`);
   process.exit(fail ? 1 : 0);
 })();

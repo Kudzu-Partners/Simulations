@@ -74,7 +74,7 @@
       noMatches: 'No matches — try a different search or filter.',
       noCatalog: 'Catalog unavailable — drag & drop a JSON to play.',
       welcomeH: 'Play an Express simulation',
-      welcomeP1: 'Every Express simulation is a single self-contained JSON file (<code>view</code> + <code>css</code> + <code>js</code>). This player embeds an open-source implementation of the USF runtime, so the sims run entirely in your browser — no backend, no account, no network calls.',
+      welcomeP1: 'Every Express simulation is a single self-contained JSON file (<code>view</code> + <code>css</code> + <code>js</code>). This player embeds an open-source implementation of the USF runtime, so the sims run entirely in your browser — no account, no cookies. We count anonymous visits, and comparing your score with other players is opt-in (<a href="../privacy.html?lang=en">privacy</a>).',
       welcomeP2: '<b>Pick one from the catalog</b> above, <b>drag &amp; drop</b> a <code>.json</code> anywhere on this page, or use <b>Open JSON</b>.',
       serveHint: 'The catalog couldn\'t be loaded (<code>manifest.json</code>). If you opened this file directly from disk, drag &amp; drop still works. For the full catalog + charts, use the hosted player at <a href="https://open.eurekasimulations.com/player/">open.eurekasimulations.com/player</a> &mdash; or serve this folder over HTTP (<code>python -m http.server</code> from the repo root, then open <code>http://localhost:8000/player/</code>).',
       surprise: 'Surprise me',
@@ -126,7 +126,7 @@
       noMatches: 'Sin resultados — prueba otra búsqueda o filtro.',
       noCatalog: 'Catálogo no disponible — arrastra un JSON para jugar.',
       welcomeH: 'Juega una simulación Express',
-      welcomeP1: 'Cada simulación Express es un único archivo JSON autocontenido (<code>view</code> + <code>css</code> + <code>js</code>). Este reproductor incorpora una implementación abierta del runtime USF, así que las simulaciones se ejecutan enteramente en tu navegador: sin servidor, sin cuenta, sin llamadas de red.',
+      welcomeP1: 'Cada simulación Express es un único archivo JSON autocontenido (<code>view</code> + <code>css</code> + <code>js</code>). Este reproductor incorpora una implementación abierta del runtime USF, así que las simulaciones se ejecutan enteramente en tu navegador: sin cuenta y sin cookies. Contamos visitas anónimas, y comparar tu puntuación con la de otros jugadores es opcional (<a href="../privacy.html?lang=es">privacidad</a>).',
       welcomeP2: '<b>Elige una del catálogo</b> arriba, <b>arrastra y suelta</b> un <code>.json</code> en cualquier punto de esta página, o usa <b>Abrir JSON</b>.',
       serveHint: 'No se pudo cargar el catálogo (<code>manifest.json</code>). Si abriste este archivo directamente desde el disco, arrastrar y soltar sigue funcionando. Para el catálogo completo y los gráficos, usa el reproductor alojado en <a href="https://open.eurekasimulations.com/player/">open.eurekasimulations.com/player</a> &mdash; o sirve esta carpeta por HTTP (<code>python -m http.server</code> desde la raíz del repositorio, y abre <code>http://localhost:8000/player/</code>).',
       surprise: 'Sorpréndeme',
@@ -257,6 +257,13 @@
   function notice(msg, kind) { var n = $('notice'); $('noticeTx').textContent = msg; n.className = kind || 'info'; }
   $('noticeX').onclick = function () { $('notice').className = ''; };
 
+  /* ───────── anonymous analytics (js/analytics.js) ─────────
+     Catalog facts only: a sim from a dropped file or a ?src= URL is 'custom',
+     never its name or address. `via` says how the current sim was opened. */
+  var via = 'catalog';
+  function track(name, data) { if (window.eurekaTrack) window.eurekaTrack(name, data); }
+  function simId() { return (current && current.manifestSim) ? current.manifestSim.id : 'custom'; }
+
   /* ───────── view routing ───────── */
   function setView(v) {
     view = v;
@@ -292,9 +299,9 @@
       if (simId) {
         // Load the sim directly — skip rendering the catalog to avoid the flash
         var hit = m.sims.find(function (s) { return s.id === simId || s.file.indexOf(simId) === 0; });
-        if (hit) { loadFromManifest(hit); return; }
+        if (hit) { via = 'link'; loadFromManifest(hit); return; }
       } else if (srcUrl) {
-        loadFromUrl(srcUrl); return;
+        via = 'url'; loadFromUrl(srcUrl); return;
       }
       // No deep-link: render catalog normally
       applyFilter();
@@ -564,7 +571,7 @@
       (s.periods ? '<div class="cardrounds">' + s.periods + ' ' + T(s.periods === 1 ? 'round' : 'rounds') + '</div>' : '') +
       (snippet ? '<div class="cardsnip">' + snippet + '</div>' : '') +
       '</div>';
-    d.onclick = function () { loadFromManifest(s); };
+    d.onclick = function () { via = 'catalog'; loadFromManifest(s); };
     return d;
   }
 
@@ -580,6 +587,7 @@
       .catch(function (e) { notice(T('errFetch', { url: url, msg: e.message }), 'err'); });
   }
   function loadFromFile(file) {
+    via = 'file';
     var rd = new FileReader();
     rd.onload = function () {
       try { showPreview(JSON.parse(rd.result), file.name, null); }
@@ -610,6 +618,8 @@
     renderCaseButtons();
     setView('preview');
     syncUrl();
+    track('sim_preview', { sim: simId(), via: via });
+    via = 'catalog';
   }
 
   function renderPreview() {
@@ -708,6 +718,7 @@
   function openCase() {
     var s = caseSim();
     if (!s) return;
+    track('case_open', { sim: s.id, from: view });
     caseReturnFocus = document.activeElement;
     $('caseModal').hidden = false;
     $('caseClose').focus();
@@ -772,6 +783,8 @@
     lastProgress = null;
     setView('play');
     buildFrame();
+    var s = current.manifestSim;
+    track('sim_play', { sim: simId(), lang: lang, level: ((s && s.level) || d.level || '').toLowerCase() });
   }
 
   function buildFrame() {
@@ -792,6 +805,7 @@
       '<script>' + escScript(d.js || '') + '<\/script>' +
       '</body></html>';
     $('frame').srcdoc = doc;
+    if (window.EurekaBenchmark) window.EurekaBenchmark.reset();
   }
 
   /* messages from the sim iframe */
@@ -800,6 +814,7 @@
     /* only the sandboxed sim frame may drive the chrome */
     if (!m.usfPlayer || ev.source !== $('frame').contentWindow) return;
     if (m.type === 'ready') {
+      current.simLang = m.lang;
       current.langs = (m.langs && m.langs.length) ? m.langs : ['en'];
       renderSimLangs(m.langs || [], m.lang);
       /* a ?src= sim may simply not have the preferred language */
@@ -808,17 +823,35 @@
       }
     }
     if (m.type === 'lang') {
+      if (current.simLang && m.lang !== current.simLang) track('sim_lang', { sim: simId(), to: m.lang });
+      current.simLang = m.lang;
       renderSimLangs(current && current.langs ? current.langs : [m.lang], m.lang);
       /* switching the sim switches the chrome too — one language, one page */
       if (m.lang !== lang) setLang(m.lang, { fromSim: true });
     }
-    if (m.type === 'progress') { lastProgress = m; showProgress(m); }
+    if (m.type === 'progress') {
+      /* a round played (not the opening state, not an undo) */
+      if (lastProgress && !m.finished && m.period > lastProgress.period) track('sim_round', { sim: simId(), round: m.period - 1, of: m.maxPeriods });
+      lastProgress = m; showProgress(m);
+    }
     if (m.type === 'hint' && m.text) toast('💡 ' + m.text);
     if (m.type === 'hint' && m.empty) toast(T('noHint'));
-    if (m.type === 'finished') toast(T('done'));
-    if (m.type === 'restart') buildFrame();
+    if (m.type === 'finished') {
+      toast(T('done'));
+      var score = (typeof m.score === 'number' && isFinite(m.score)) ? Math.round(m.score * 10) / 10 : null;
+      track('sim_finish', { sim: simId(), lang: current.simLang || lang, rounds: m.periods, score: score });
+      /* opt-in comparison: catalog sims only — a custom sim has no peers to compare with */
+      if (window.EurekaBenchmark && current.manifestSim && score !== null) {
+        window.EurekaBenchmark.offer({
+          sim: current.manifestSim.id, lang: current.simLang || lang, level: current.manifestSim.level || '',
+          periods: m.periods, score: score, summary: m.summary
+        });
+      }
+    }
+    if (m.type === 'restart') { track('sim_restart', { sim: simId(), from: 'summary' }); buildFrame(); }
     if (m.type === 'error') notice(T('errSim', { msg: m.message }), 'err');
     if (m.type === 'session') {
+      track('session_export', { sim: simId() });
       var d = current ? current.data : {};
       var payload = Object.assign({ simulation: { externalid: d.externalid, name: d.name, category: d.category, level: d.level } }, m.session);
       var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
@@ -853,8 +886,12 @@
   }
 
   /* ───────── chrome buttons ───────── */
-  $('btnRestart').onclick = function () { if (current) buildFrame(); };
-  $('btnHint').onclick = function () { $('frame').contentWindow.postMessage({ usfHost: true, type: 'requestHint' }, '*'); };
+  $('btnRestart').onclick = function () {
+    if (!current) return;
+    track('sim_restart', { sim: simId(), from: 'bar', round: lastProgress ? lastProgress.period : 0 });
+    buildFrame();
+  };
+  $('btnHint').onclick = function () { track('hint', { sim: simId() }); $('frame').contentWindow.postMessage({ usfHost: true, type: 'requestHint' }, '*'); };
   $('btnExport').onclick = function () { $('frame').contentWindow.postMessage({ usfHost: true, type: 'requestSession' }, '*'); };
   $('btnFull').onclick = function () {
     var f = $('frame');
@@ -864,7 +901,7 @@
     try { Promise.resolve((f.requestFullscreen || f.webkitRequestFullscreen || function () { }).call(f)).catch(function () { }); }
     catch (e) { }
   };
-  function randomSim() { if (manifest && manifest.sims.length) loadFromManifest(manifest.sims[Math.floor(Math.random() * manifest.sims.length)]); }
+  function randomSim() { via = 'random'; if (manifest && manifest.sims.length) loadFromManifest(manifest.sims[Math.floor(Math.random() * manifest.sims.length)]); }
   $('btnRandom').onclick = randomSim;
   $('btnWelcomeRandom').onclick = randomSim;
 

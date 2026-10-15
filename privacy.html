@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <script>
+    /* Same language rule as the rest of the site: ?lang=, then the shared
+       "eureka-lang" preference, then the browser. */
+    (function () {
+      var lang = 'en';
+      try {
+        var q = (new URLSearchParams(location.search).get('lang') || '').toLowerCase().slice(0, 2);
+        var saved = localStorage.getItem('eureka-lang');
+        var nav = (navigator.language || 'en').toLowerCase();
+        lang = (q === 'en' || q === 'es') ? q : (saved === 'en' || saved === 'es') ? saved : (nav.indexOf('es') === 0 ? 'es' : 'en');
+      } catch (e) {}
+      document.documentElement.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy — Open Simulations | Eureka Express</title>
+  <meta name="description" content="What the Open Simulations site and player collect: anonymous visit counts, and, only if you opt in, your simulation score for comparison.">
+  <link rel="canonical" href="https://open.eurekasimulations.com/privacy.html">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Cpath d='M24 18l22 14-22 14z' fill='%23f2c94c'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/site.css">
+  <style>
+    .policy { max-width: 760px; padding-top: 56px; padding-bottom: 64px; }
+    .policy h1 { font-size: 2rem; margin: .3em 0 .2em; }
+    .policy h2 { font-size: 1.2rem; margin: 2em 0 .4em; }
+    .policy table { width: 100%; border-collapse: collapse; margin: .6em 0 1em; font-size: .95rem; }
+    .policy th, .policy td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--mist); }
+    .policy th { color: var(--ink); }
+    .policy .updated { color: var(--slate); }
+    @media (max-width: 600px) { .policy table, .policy tbody, .policy tr, .policy td, .policy th { display: block; } .policy thead { display: none; } .policy td { border: 0; padding: 2px 0; } .policy tr { border-bottom: 1px solid var(--mist); padding: 8px 0; } }
+  </style>
+</head>
+
+<body>
+  <div class="lang-switch" role="group" aria-label="Language / Idioma">
+    <button type="button" data-set-lang="en">EN</button>
+    <button type="button" data-set-lang="es">ES</button>
+  </div>
+
+  <main class="wrap policy">
+    <div class="eyebrow"><a href="index.html">Eureka Express · Open Simulations</a></div>
+
+    <!-- ───────────── English ───────────── -->
+    <div class="lang-en">
+      <h1>Privacy</h1>
+      <p class="updated">Last updated 15 October 2026</p>
+      <p>The simulations run entirely in your browser. There are no accounts and no cookies. We collect two things,
+        and the second only if you ask for it.</p>
+
+      <h2>1. Anonymous visit counts (everyone)</h2>
+      <p>We use <a href="https://umami.is/">Umami Cloud</a>, a cookieless analytics service, to count page views and
+        a few play events: which simulation was opened, played, finished, or restarted, in which language, how many
+        rounds, and the final score. It doesn't set cookies, fingerprint your device, or store your IP address. Page
+        addresses are recorded without their query string, so a link you opened with <code>?src=</code> is never
+        sent. We never send anything you type.</p>
+      <p>If your browser sends <b>Do Not Track</b> or <b>Global Privacy Control</b>, none of this loads.</p>
+
+      <h2>2. "Compare your run" (only if you opt in)</h2>
+      <p>When you finish a simulation from the catalog, the player offers to compare your score with other players.
+        Nothing is sent unless you press <b>Compare my run</b>. Then we store:</p>
+      <table>
+        <thead><tr><th>What</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Simulation id, language, rounds played, final score</td><td>To place your run among others</td></tr>
+          <tr><td>Your level (undergraduate, master's, …)</td><td>To compare you with players at your level</td></tr>
+          <tr><td>The nickname you type, if any</td><td>So a lecturer can recognise their class's runs. Pick anything; it doesn't need to be your name</td></tr>
+          <tr><td>The class code you type, if any</td><td>To compare you with your class</td></tr>
+          <tr><td>The simulation's end-of-game summary (numbers only)</td><td>To improve the simulations and the comparisons</td></tr>
+        </tbody>
+      </table>
+      <p>We don't store your name, email, IP address, or browser details. To limit abuse, the service keeps a salted,
+        one-way hash of your network address for two hours; it can't be turned back into the address.</p>
+      <p>Only aggregate comparisons (how many runs, what share scored lower, the median) are ever shown to you.
+        Lecturers who issued a class code can see that class's nicknames and scores. The data is stored with
+        <a href="https://supabase.com/">Supabase</a>. After 12 months, nicknames and summaries are deleted and only
+        the anonymous score remains in the comparison pool.</p>
+      <p>The player remembers the level, nickname, and class code you entered in your own browser (local storage), so
+        you don't retype them. Clear your site data to remove them.</p>
+
+      <h2>Contact</h2>
+      <p>The site is run by Kudzu Partners S.L. (Eureka Simulations). For questions, or to ask us to remove a class's
+        data, <a href="https://www.eurekasimulations.com/">contact us</a>. Because runs aren't linked to people, we
+        can only find a run if you tell us its class code and nickname.</p>
+    </div>
+
+    <!-- ───────────── Español ───────────── -->
+    <div class="lang-es">
+      <h1>Privacidad</h1>
+      <p class="updated">Última actualización: 15 de octubre de 2026</p>
+      <p>Las simulaciones se ejecutan enteramente en tu navegador. No hay cuentas ni cookies. Recogemos dos cosas, y
+        la segunda solo si tú lo pides.</p>
+
+      <h2>1. Recuento anónimo de visitas (todo el mundo)</h2>
+      <p>Usamos <a href="https://umami.is/">Umami Cloud</a>, un servicio de analítica sin cookies, para contar páginas
+        vistas y algunos eventos de juego: qué simulación se abrió, se jugó, se terminó o se reinició, en qué idioma,
+        cuántas rondas y la puntuación final. No pone cookies, no identifica tu dispositivo ni guarda tu dirección IP.
+        Las direcciones de página se registran sin su parte de consulta, así que un enlace abierto con
+        <code>?src=</code> nunca se envía. Nunca enviamos nada de lo que escribes.</p>
+      <p>Si tu navegador envía <b>Do Not Track</b> o <b>Global Privacy Control</b>, nada de esto se carga.</p>
+
+      <h2>2. «Compara tu partida» (solo si lo eliges)</h2>
+      <p>Al terminar una simulación del catálogo, el reproductor te ofrece comparar tu puntuación con la de otros
+        jugadores. No se envía nada salvo que pulses <b>Comparar mi partida</b>. Entonces guardamos:</p>
+      <table>
+        <thead><tr><th>Qué</th><th>Para qué</th></tr></thead>
+        <tbody>
+          <tr><td>Id de la simulación, idioma, rondas jugadas, puntuación final</td><td>Para situar tu partida entre las demás</td></tr>
+          <tr><td>Tu nivel (grado, máster, …)</td><td>Para compararte con jugadores de tu nivel</td></tr>
+          <tr><td>El apodo que escribas, si escribes uno</td><td>Para que un profesor reconozca las partidas de su clase. Elige el que quieras; no hace falta que sea tu nombre</td></tr>
+          <tr><td>El código de clase que escribas, si escribes uno</td><td>Para compararte con tu clase</td></tr>
+          <tr><td>El resumen final de la simulación (solo cifras)</td><td>Para mejorar las simulaciones y las comparaciones</td></tr>
+        </tbody>
+      </table>
+      <p>No guardamos tu nombre, correo, dirección IP ni datos del navegador. Para limitar abusos, el servicio conserva
+        durante dos horas un hash irreversible y con sal de tu dirección de red; no se puede convertir de nuevo en la
+        dirección.</p>
+      <p>Solo se te muestran comparaciones agregadas (cuántas partidas, qué parte puntuó menos, la mediana). Los
+        profesores que emitieron un código de clase pueden ver los apodos y puntuaciones de esa clase. Los datos se
+        guardan en <a href="https://supabase.com/">Supabase</a>. A los 12 meses se borran los apodos y los resúmenes,
+        y solo queda la puntuación anónima en el conjunto de comparación.</p>
+      <p>El reproductor recuerda en tu propio navegador (almacenamiento local) el nivel, el apodo y el código de clase
+        que escribiste, para que no tengas que repetirlos. Borra los datos del sitio para eliminarlos.</p>
+
+      <h2>Contacto</h2>
+      <p>El sitio lo gestiona Kudzu Partners S.L. (Eureka Simulations). Para cualquier pregunta, o para pedirnos que
+        borremos los datos de una clase, <a href="https://www.eurekasimulations.com/">contacta con nosotros</a>. Como
+        las partidas no están vinculadas a personas, solo podemos encontrar una si nos das su código de clase y su
+        apodo.</p>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      function apply(lang) {
+        document.documentElement.setAttribute('data-lang', lang);
+        document.documentElement.setAttribute('lang', lang);
+        document.title = lang === 'es' ? 'Privacidad — Simulaciones Abiertas | Eureka Express' : 'Privacy — Open Simulations | Eureka Express';
+        try { localStorage.setItem('eureka-lang', lang); } catch (e) { }
+        document.querySelectorAll('.lang-switch [data-set-lang]').forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
+        });
+      }
+      document.querySelectorAll('.lang-switch [data-set-lang]').forEach(function (b) {
+        b.addEventListener('click', function () { apply(b.getAttribute('data-set-lang')); });
+      });
+      apply(document.documentElement.getAttribute('data-lang') === 'es' ? 'es' : 'en');
+    })();
+  </script>
+  <script src="player/js/config.js"></script>
+  <script src="player/js/analytics.js"></script>
+</body>
+
+</html>

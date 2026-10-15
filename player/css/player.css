@@ -1552,3 +1552,199 @@ body.dragging #dropOverlay {
     font-size: 22px
   }
 }
+
+/* ───────── "Compare your run" card (js/benchmark.js) ─────────
+   Floats over the play stage after a catalog sim finishes; opt-in only. */
+#bench {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 60;
+  width: min(360px, calc(100vw - 32px));
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+  background: var(--bg-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .45);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+#bench[hidden] {
+  display: none;
+}
+
+#bench header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px 0 16px;
+}
+
+#bench h2 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--gold);
+}
+
+#bench .bench-x {
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+}
+
+#bench .bench-x:hover {
+  color: var(--text);
+}
+
+#bench .bench-body {
+  padding: 6px 16px 14px;
+}
+
+#bench p {
+  margin: 6px 0 10px;
+}
+
+#bench label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+#bench input,
+#bench select {
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 10px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font: inherit;
+}
+
+#bench #benchCode {
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
+#bench input:focus-visible,
+#bench select:focus-visible,
+#bench button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+#bench small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+#bench .bench-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+#bench .bench-actions button {
+  padding: 9px 14px;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: var(--bg-3);
+  color: var(--text);
+}
+
+#bench .bench-actions .bench-go {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #1a1400;
+}
+
+#bench .bench-actions .bench-go:hover {
+  background: var(--gold-deep);
+}
+
+#bench .bench-actions .bench-go:disabled {
+  opacity: .7;
+  cursor: progress;
+}
+
+#bench .bench-err {
+  color: var(--err);
+  margin: 10px 0 0;
+}
+
+#bench .bench-fine {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+#bench .bench-fine a {
+  color: var(--accent);
+}
+
+#bench .bench-score {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 6px 0 12px;
+}
+
+#bench .bench-score span {
+  color: var(--muted);
+}
+
+#bench .bench-score b {
+  font-size: 26px;
+  color: var(--gold);
+}
+
+#bench .bench-row {
+  margin: 10px 0;
+}
+
+#bench .bench-lbl {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+}
+
+#bench .bench-lbl span {
+  color: var(--muted);
+  text-align: right;
+}
+
+#bench .bench-bar {
+  height: 8px;
+  margin: 5px 0 3px;
+  background: var(--bg);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+#bench .bench-bar i {
+  display: block;
+  height: 100%;
+  background: var(--ok);
+  border-radius: 99px;
+}
+
+#bench .bench-pct {
+  font-size: 13px;
+  font-weight: 600;
+}

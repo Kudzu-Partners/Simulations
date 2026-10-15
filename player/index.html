@@ -134,7 +134,8 @@
               <code>css</code> +
               <code>js</code>).
               This player embeds an open-source implementation of the USF runtime, so the sims run entirely
-              in your browser — no backend, no account, no network calls.</p>
+              in your browser — no account, no cookies. We count anonymous visits, and comparing your score
+              with other players is opt-in (<a href="../privacy.html">privacy</a>).</p>
             <p data-i18n="welcomeP2"><b>Pick one from the catalog</b> above, <b>drag &amp; drop</b> a <code>.json</code>
               anywhere on
               this page, or use <b>Open JSON</b>.</p>
@@ -233,6 +234,9 @@
     </div>
   </div>
 
+  <script src="js/config.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/benchmark.js"></script>
   <script src="vendor/marked.min.js"></script>
   <script src="js/player.js"></script>
 </body>

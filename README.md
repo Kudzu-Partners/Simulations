@@ -1,6 +1,6 @@
 # Eureka Express — Open Simulations
 
-Playable business simulations by [Eureka Simulations](https://www.eurekasimulations.com/) (Kudzu Partners S.L.), shared openly with a standalone player. Each simulation is a single self-contained JSON file — model, UI, styles, and translations included. The player runs them entirely in your browser: no backend, no account, no tracking.
+Playable business simulations by [Eureka Simulations](https://www.eurekasimulations.com/) (Kudzu Partners S.L.), shared openly with a standalone player. Each simulation is a single self-contained JSON file — model, UI, styles, and translations included. The player runs them entirely in your browser: no account, no cookies. We count anonymous visits, and comparing your score with other players is opt-in — see [Privacy](#privacy).
 
 **License: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)** — free to use, share, and adapt for **personal, non-commercial purposes** with attribution. Classroom and institutional teaching deployment is commercial use under the NC clause ([details](LICENSE.md)). For licensing — class runs, corporate training, LMS integration — [contact Eureka Simulations](https://www.eurekasimulations.com/).
 
@@ -40,6 +40,7 @@ player/    the standalone player: catalog browser + open USF runtime + headless 
 jsons/     the simulations — one JSON per simulation
 svgs/      cover illustrations
 cases/     case studies, {externalid}.md — all rights reserved, see LICENSE.md
+supabase/  backend for the opt-in score comparison: one migration, one seed
 ```
 
 This catalog is seeded progressively as simulations pass our quality-review lifecycle; the full Express library holds 1,600+ simulations across business, finance, education, sustainability, hospitality, and tourism. Watch or star the repo to follow new drops.
@@ -55,7 +56,18 @@ cd player/test
 npm install jsdom
 node headless_replay.js 015
 node headless_replay.js --lang all 015
+node telemetry_test.js                               # analytics + opt-in comparison card
+node headless_replay.js --force --require-score --all  # every sim reports a comparable score
 ```
+
+## Privacy
+
+The hosted site at open.eurekasimulations.com collects two things ([full notice](https://open.eurekasimulations.com/privacy.html)):
+
+- **Anonymous visit counts** with [Umami](https://umami.is/), which is cookieless: page views, plus which simulation was opened, played, finished, or restarted, in which language, with the round count and final score. It never sends free text, file names, or `?src=` URLs, and nothing loads if the browser sends Do Not Track or Global Privacy Control.
+- **Compare your run**, only if you opt in at the end of a catalog simulation: the score, rounds, language, the level you pick, and an optional nickname and class code go to a locked-down [Supabase](https://supabase.com/) function, which answers with how you compare. Setup and security model: [`supabase/README.md`](supabase/README.md).
+
+Both are configured in [`player/js/config.js`](player/js/config.js) and switch themselves off on any other host, so forks, mirrors, and local runs send nothing. The simulations themselves still make no network calls; they run in a sandboxed frame and can't reach either service.
 
 ## Contribute
 

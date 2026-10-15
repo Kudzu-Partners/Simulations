@@ -1,6 +1,6 @@
 # Eureka Express — Open Simulation Player
 
-A standalone, zero-backend player for **Eureka Express business simulations**. Each simulation is a single self-contained JSON file; this player provides an open implementation of the runtime they need, entirely in the browser. No server, no account, no tracking, no network calls at play time.
+A standalone, zero-backend player for **Eureka Express business simulations**. Each simulation is a single self-contained JSON file; this player provides an open implementation of the runtime they need, entirely in the browser. No account and no cookies; the sims themselves make no network calls. On the hosted site the player counts anonymous visits and offers an opt-in score comparison (see [Analytics and benchmarking](#analytics-and-benchmarking)).
 
 **License: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)** — simulations and player code © Eureka Simulations / Kudzu Partners, shared for non-commercial use with attribution, share-alike. The case studies in `../cases/` are the exception: all rights reserved (see [`LICENSE.md`](../LICENSE.md)).
 
@@ -30,11 +30,15 @@ player/
   css/player.css        chrome styles (catalog grid, preview screen, top bar, welcome screen)
   js/player.js           host logic: catalog browsing/filtering, preview routing, driving sims
   js/usf-shim.js         the USF runtime, fetched as text and injected into each sim's iframe
+  js/config.js           Umami + Supabase settings, and the hosts they're allowed on
+  js/analytics.js        anonymous Umami events (eurekaTrack)
+  js/benchmark.js        the opt-in "Compare your run" card
   manifest.json        generated catalog index (id, name, category, level, rounds, langs, case…)
   build_manifest.py    regenerates manifest.json from a folder of sim JSONs
   vendor/chart.umd.min.js   Chart.js 4.4.0 (MIT), inlined into each sim for charts
   vendor/marked.min.js      marked 9.1.6 (MIT), renders the case studies in the host page
   test/headless_replay.js   jsdom smoke test that auto-plays sims round by round
+  test/telemetry_test.js    jsdom test of the analytics events and the opt-in comparison card
 jsons/                 the simulation catalog — one JSON per simulation
 svgs/                  optional cover illustrations, matched by external id
 cases/                 optional case studies, {externalid}.md — all rights reserved
@@ -110,11 +114,57 @@ A catalog sim can have a companion case, `cases/{externalid}.md`: the teaching c
 
 Cases are copied verbatim from the Express source library; they are not edited here.
 
+## Analytics and benchmarking
+
+Both live in the host page and only listen to messages the sim frame already sends, so no simulation JSON changes.
+They're configured in `js/config.js` and are off on any host not listed in `hosts` (forks, mirrors, `localhost`). To
+try them locally, run `localStorage.setItem('eureka-telemetry-dev', '1')` in the console and reload.
+
+**Umami events** (`js/analytics.js`, cookieless, skipped under Do Not Track / Global Privacy Control). Page views
+drop the query string. A sim loaded from a file or `?src=` is reported as `custom`.
+
+| Event | Data |
+| --- | --- |
+| `sim_preview` | `sim`, `via` (`catalog`, `link`, `random`, `file`, `url`) |
+| `sim_play` | `sim`, `lang`, `level` |
+| `sim_round` | `sim`, `round`, `of` |
+| `sim_finish` | `sim`, `lang`, `rounds`, `score` |
+| `sim_restart` | `sim`, `from` (`bar` or `summary`), `round` |
+| `sim_lang`, `hint`, `case_open`, `session_export` | `sim`, plus `to` / `from` |
+| `bench_shown`, `bench_submit`, `bench_decline` | `sim`, plus `level` and `cohort` on submit |
+
+**Compare your run** (`js/benchmark.js`). When a catalog sim finishes, a card offers to compare the score. Only if
+the player presses *Compare my run* does it call the Supabase function `submit_run()`, which stores the run and returns
+percentiles for everyone, the player's level, and their class (with a lecturer's class code). Backend, security model,
+and class codes: [`../supabase/README.md`](../supabase/README.md).
+
+**The score.** The shim's `finished` message carries `score`: the first finite `overallScore`, then `score`, found in
+the summary, `domainState.performance`, or the last round's results. A sim with none gets no comparison card.
+`headless_replay.js` prints `score=` for each completed run and `NO-SCORE` when a finished sim has none.
+
+**Tests.** From `player/test` (after `npm install jsdom`):
+
+```bash
+node telemetry_test.js
+node headless_replay.js --force --require-score --all
+```
+
+- `telemetry_test.js` loads the real player in jsdom with Umami and Supabase stubbed, so nothing is sent. It checks:
+  - which events fire, with what data, and that a custom sim's name or URL never appears in them;
+  - that nothing is sent until the player presses Compare, and exactly what is sent then;
+  - every error answer from Supabase (unknown or wrong class code, rate limited, offline, server error);
+  - that forks and `localhost` load and send nothing;
+  - Do Not Track, a blocked Umami script, and the Spanish card.
+- `--force` accepts any inputs, so every sim reaches its summary. `--require-score` fails a sim that finishes with no
+  score field. A NaN score under `--force` is reported but not failed, because forced inputs can be ones the model
+  rejects.
+
 ## Adding or updating simulations
 
 1. Drop the new `{externalid}.json` into `jsons/` (and its case, if it has one, as `cases/{externalid}.md`).
 2. Regenerate the catalog: `cd player && python build_manifest.py` — it reports any sim that ships fewer than two languages.
-3. Smoke-test: `cd player/test && npm install jsdom && node headless_replay.js <id>` — it plays every round headlessly and reports runtime errors. Add `--lang es` for one language, or `--lang all` to replay each sim once per language it ships.
+3. Refresh the benchmark allowlist: `python supabase/gen_seed.py`, then apply `supabase/seed.sql` (see [`../supabase/README.md`](../supabase/README.md)).
+4. Smoke-test: `cd player/test && npm install jsdom && node headless_replay.js <id>` — it plays every round headlessly and reports runtime errors. Add `--lang es` for one language, or `--lang all` to replay each sim once per language it ships.
 
 ## Hosting (GitHub Pages)
 

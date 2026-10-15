@@ -456,10 +456,29 @@
       post({
         type: 'finished',
         summary: deep(summary),
+        score: this._score(summary),
         periods: this.history.length
       });
       this.showSummary(summary);
       this.refresh();
+    }
+
+    /* One comparable number for the host's benchmark: the sim's own composite.
+       Sims keep it in different places (summary, domainState.performance, the
+       last round's results), so take the first finite overallScore, then score. */
+    _score(summary) {
+      var last = this.history.length ? this.history[this.history.length - 1].results : null;
+      var perf = (this.state.domainState && this.state.domainState.performance) || null;
+      var spots = [summary, perf, last];
+      var keys = ['overallScore', 'score'];
+      for (var k = 0; k < keys.length; k++) {
+        for (var i = 0; i < spots.length; i++) {
+          var v = spots[i] && typeof spots[i] === 'object' ? spots[i][keys[k]] : undefined;
+          if (typeof v === 'string' && v.trim() !== '') v = Number(v);
+          if (typeof v === 'number' && isFinite(v)) return v;
+        }
+      }
+      return null;
     }
 
     showSummary(summary) {

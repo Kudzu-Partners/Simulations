@@ -1,8 +1,11 @@
 # Security Policy
 
-This repository has no backend, no accounts, and no database. It is a catalog of
+This repository has no accounts and no server of its own. It is a catalog of
 self-contained simulation JSON files plus a static player, served from GitHub Pages
-at [open.eurekasimulations.com](https://open.eurekasimulations.com/player/).
+at [open.eurekasimulations.com](https://open.eurekasimulations.com/player/). The
+hosted player also talks to two outside services from the host page, never from a
+sim: Umami (anonymous analytics) and one Supabase function for the opt-in score
+comparison (security model in [`supabase/README.md`](supabase/README.md)).
 
 So the security surface here isn't a server — it's **arbitrary JavaScript from a
 simulation JSON running in your browser**, and the player chrome that hosts it. A
@@ -92,9 +95,16 @@ separate codebase — report anything there through
   Interesting only if it takes down the host page or survives a reload.
 - **Response headers we cannot set.** GitHub Pages serves static files, so there is no
   custom CSP, HSTS, COOP, or COEP to configure.
-- **`eureka-lang` in `localStorage`.** It's a two-letter language code and it's the only
-  thing stored. No sessions, cookies, accounts, analytics, or personal data exist in this
-  repo — there are no authentication bugs to find because there is no authentication.
+- **What's in `localStorage`.** `eureka-lang` (a two-letter language code) and
+  `eureka-bench-prefs` (the level, nickname, and class code the player typed into the
+  comparison card, kept for their own convenience). No sessions, cookies, or accounts exist
+  — there are no authentication bugs to find because there is no authentication.
+- **The publishable Supabase key in `player/js/config.js`.** It's public by design. In
+  scope: anything that lets it read stored runs, call a function other than `submit_run()`,
+  or get past that function's validation or rate limit. Out of scope: submitting a made-up
+  score for a real sim within the rate limit (a documented, accepted risk).
+- **A sim forging its own `finished` score.** Only catalog sims (reviewed) get the
+  comparison card; a `?src=` or dropped sim never does.
 - **Choosing to `?src=` a JSON you already know is hostile**, or anything you can only do
   to your own browser through devtools. Loading untrusted simulations is a documented
   feature and the sandbox is the boundary. Break the sandbox itself and you're squarely
