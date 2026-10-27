@@ -426,7 +426,8 @@
 
   .card img {
     width: 100%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 4/3;
+    object-fit: cover;
     display: block;
     background: #0f172a
   }

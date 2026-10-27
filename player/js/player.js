@@ -554,8 +554,9 @@
     var d = document.createElement('div');
     d.className = 'simcard'; d.dataset.id = s.id;
     var color = CATCOLORS[s.cat] || '#64748b';
-    var cover = s.svg
-      ? '<img loading="lazy" src="' + esc(s.svg) + '" alt="">'
+    var img = s.cover || s.svg;
+    var cover = img
+      ? '<img loading="lazy" src="' + esc(img) + '" alt="">'
       : '<div class="tileinit" style="background:' + color + '">' + esc((s.name || '?').charAt(0).toUpperCase()) + '</div>';
     var lvlHtml = s.level ? '<span class="lvlbadge lvl-' + esc(s.level) + '">' + esc(lvlLabel(s.level)) + '</span>' : '';
     var ls = simLangs(s);
@@ -624,7 +625,7 @@
 
   function renderPreview() {
     var d = current.data, s = current.manifestSim;
-    var svg = s && s.svg;
+    var svg = s && (s.cover || s.svg);
     var color = CATCOLORS[(s && s.cat) || ''] || '#64748b';
     var name = deent(d.name || current.srcName || 'Simulation');
 

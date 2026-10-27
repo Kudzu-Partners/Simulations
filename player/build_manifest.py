@@ -135,6 +135,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--jsons", default="../jsons", help="folder with {externalid}.json files")
     ap.add_argument("--svgs", default="../svgs", help="folder with SVG thumbnails (optional)")
+    ap.add_argument("--covers", default="../covers", help="folder with {externalid}.webp cover images (optional, preferred over SVGs)")
     ap.add_argument("--cases", default="../cases", help="folder with {externalid}.md case studies (optional)")
     ap.add_argument("--out", default="manifest.json")
     a = ap.parse_args()
@@ -142,6 +143,7 @@ def main():
     outdir = os.path.dirname(os.path.abspath(a.out)) or "."
     svgs = set(os.listdir(a.svgs)) if os.path.isdir(a.svgs) else set()
     cases = set(os.listdir(a.cases)) if os.path.isdir(a.cases) else set()
+    covers = set(os.listdir(a.covers)) if os.path.isdir(a.covers) else set()
 
     sims, skipped = [], []
     cats = collections.Counter()
@@ -185,6 +187,9 @@ def main():
             "svg": find_svg(svgs, a.svgs, outdir, stem, eid),
             "usf": "USF.SimulationAdapter" in (d.get("js") or ""),
         }
+        # optional raster cover, covers/{externalid}.webp — shown instead of the SVG
+        if eid + ".webp" in covers:
+            entry["cover"] = relhref(os.path.join(a.covers, eid + ".webp"), outdir)
         # optional case study, cases/{externalid}.md — all rights reserved, see LICENSE.md
         if eid + ".md" in cases:
             case_path = os.path.join(a.cases, eid + ".md")
@@ -214,6 +219,7 @@ def main():
     monolingual = [s["id"] for s in sims if len(s["langs"]) < 2]
     print(f"Wrote {a.out}: {len(sims)} sims, {len(skipped)} skipped, "
           f"{sum(1 for s in sims if s['svg'])} with thumbnails, "
+          f"{sum(1 for s in sims if s.get('cover'))} with covers, "
           f"{manifest['cases']} with a case study, "
           f"languages {dict(langcount)}, "
           f"size {os.path.getsize(a.out) // 1024} KB")
