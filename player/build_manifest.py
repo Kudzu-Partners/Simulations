@@ -160,6 +160,39 @@ def case_lang(text):
     return max(counts, key=counts.get)
 
 
+CASE_AREAS = ("STR", "FIN", "MKT", "OPS", "ORG", "ENT", "SUS", "RSK")
+
+
+def case_teaching(text):
+    """Catalog facts from a case's header, for the player's filters:
+    area     the discipline, from the case code prefix (STR-2026-83 → "STR")
+    minutes  class time ("Time required" / "Tiempo de clase")
+    programs who it is for, from the free-text "Level" line, grouped into
+             "ug" (undergraduate), "master" (MBA, EMBA, MSc) and "exec"
+             (executive education, corporate and specialist programs)
+    Missing facts are left out: most cases have an area, fewer a level."""
+    out = {}
+    code = re.search(r"(?:Case [Cc]ode|C[oó]digo d[eo]l? caso)\W*\s*([A-Z]{2,5})-\d{4}-\d+", text)
+    if code and code.group(1) in CASE_AREAS:
+        out["area"] = code.group(1)
+    mins = re.search(r"(?:Time required|Tiempo de clase):\**\s*(\d+)", text)
+    if mins:
+        out["minutes"] = int(mins.group(1))
+    level = re.search(r"^Level:\s*(.+)$", text, re.M)
+    if level:
+        progs = []
+        for part in re.split(r"\s*;\s*", level.group(1).strip()):
+            if not part or re.search(r"\bsim\b|primer", part, re.I):
+                continue  # "Short-format primer sim" describes the format, not an audience
+            p = "ug" if re.search(r"undergrad", part, re.I) else \
+                "master" if re.search(r"\b(E?MBA|MSc|Master)", part) else "exec"
+            if p not in progs:
+                progs.append(p)
+        if progs:
+            out["programs"] = [p for p in ("ug", "master", "exec") if p in progs]
+    return out
+
+
 def find_svg(svgs, svg_dir, outdir, stem, eid):
     cands = []
     if eid:
@@ -243,8 +276,10 @@ def main():
         if eid + ".md" in cases:
             case_path = os.path.join(a.cases, eid + ".md")
             with open(case_path, encoding="utf-8") as f:
-                entry["case"] = relhref(case_path, outdir)
-                entry["caseLang"] = case_lang(f.read())
+                case_text = f.read().replace("\r\n", "\n")
+            entry["case"] = relhref(case_path, outdir)
+            entry["caseLang"] = case_lang(case_text)
+            entry.update(case_teaching(case_text))
         sims.append(entry)
 
     def sortkey(s):
@@ -271,6 +306,9 @@ def main():
           f"{sum(1 for s in sims if s.get('cover'))} with covers, "
           f"{manifest['cases']} with a case study, "
           f"{sum(1 for s in sims if s.get('names'))} with translated titles, "
+          f"teaching facts: area {sum(1 for s in sims if s.get('area'))}, "
+          f"class time {sum(1 for s in sims if s.get('minutes'))}, "
+          f"programs {sum(1 for s in sims if s.get('programs'))}, "
           f"languages {dict(langcount)}, "
           f"size {os.path.getsize(a.out) // 1024} KB")
     if monolingual:

@@ -16,7 +16,10 @@
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
   var manifest = null, filtered = [];
-  var activeCat = '', activeLvl = '', activeDur = '', activeTopic = '', activeSimLang = '', query = '', activeSort = '';
+  /* Active catalog filters, '' for any. Category and topic share one dropdown,
+     so picking one clears the other. */
+  var F = { cat: '', topic: '', area: '', prog: '', time: '', lvl: '', dur: '', lang: '' };
+  var query = '', activeSort = '';
   var current = null;      // {data, srcName, manifestSim, langs}
   var lastProgress = null; // last progress message, so the bar can be re-rendered on a language switch
   var view = 'catalog';    // 'catalog' | 'preview' | 'play'
@@ -29,6 +32,24 @@
     { id: '1-2', icon: '⚡', color: '#38bdf8', min: 1, max: 2 },
     { id: '3-4', icon: '📋', color: '#a78bfa', min: 3, max: 4 },
     { id: '5+', icon: '🏆', color: '#fb923c', min: 5, max: 999 }
+  ];
+  /* Teaching facts build_manifest.py reads from each sim's case: `area` from the
+     case code prefix, `programs` from its Level line, `minutes` of class time. */
+  var AREAS = [
+    { id: 'STR', icon: '♟️', color: '#7c3aed' },
+    { id: 'FIN', icon: '📈', color: '#10b981' },
+    { id: 'MKT', icon: '📢', color: '#ec4899' },
+    { id: 'OPS', icon: '⚙️', color: '#64748b' },
+    { id: 'ORG', icon: '🧭', color: '#06b6d4' },
+    { id: 'ENT', icon: '🚀', color: '#f59e0b' },
+    { id: 'SUS', icon: '🌿', color: '#14b8a6' },
+    { id: 'RSK', icon: '🚨', color: '#ef4444' }
+  ];
+  var PROGRAMS = ['ug', 'master', 'exec'];
+  var TIMEGROUPS = [
+    { id: '60', min: 1, max: 60 },
+    { id: '80', min: 61, max: 80 },
+    { id: '90', min: 81, max: 9999 }
   ];
   var TOPIC_KEYS = [
     { id: 'marketing', icon: '📢', color: '#ec4899' },
@@ -65,7 +86,9 @@
       tagline: 'Standalone runtime for Express simulation JSONs',
       openJson: 'Open JSON', openJsonTitle: 'Open a simulation JSON from disk',
       search: 'Search simulations…  ( / )', searchAria: 'Search simulations',
-      catFilterLabel: 'Category', levelFilterLabel: 'Level', durFilterLabel: 'Duration', langFilterLabel: 'Language',
+      catFilterLabel: 'Category', levelFilterLabel: 'Difficulty', durFilterLabel: 'Rounds', langFilterLabel: 'Language',
+      areaFilterLabel: 'Discipline', progFilterLabel: 'Program', timeFilterLabel: 'Class time',
+      factNote: 'From the case study — {n} of {m} simulations state it.',
       all: 'All', any: 'Any',
       sortTitle: 'Sort results', sortDefault: 'Default order', sortName: 'Name A–Z', sortRounds: 'Rounds: fewest first',
       random: 'Random', randomTitle: 'Load a random simulation',
@@ -103,6 +126,7 @@
       caseTitle: 'Read the case study this simulation is built on', caseHeading: 'Case study', caseCloseAria: 'Close the case study',
       caseRights: '© 2026 Kudzu Partners / Eureka Express — all rights reserved. The case is shared to be read alongside the simulation; unlike the simulations, it is not covered by the CC BY-NC-SA licence.',
       caseLoading: 'Loading the case…', caseErr: 'Could not load the case study — {msg}',
+      caseTeacher: 'For the teacher: learning objectives and simulation guide',
       access: 'Request access for my class', accessTitle: 'Classroom use takes a class license — ask Eureka for one',
       teachLevel: 'Recommended level', teachTime: 'Class time', teachDisc: 'Disciplines', teachObjH: 'Learning objectives',
       teachSrc: 'From the case study.', teachSrcIn: 'From the case study, written in {lang}.', minutes: '{n} min',
@@ -112,6 +136,9 @@
       lvls: { basic: 'basic', intermediate: 'intermediate', advanced: 'advanced' },
       langNames: { en: 'English', es: 'Spanish', pt: 'Portuguese' },
       topics: { marketing: 'Marketing', strategy: 'Strategy', innovation: 'Innovation', digital: 'Digital & AI', leadership: 'Leadership', negotiation: 'Negotiation', governance: 'Governance', operations: 'Operations', crisis: 'Crisis Mgmt', ethics: 'Ethics' },
+      areas: { STR: 'Strategy', FIN: 'Finance', MKT: 'Marketing', OPS: 'Operations', ORG: 'People & organization', ENT: 'Entrepreneurship', SUS: 'Sustainability', RSK: 'Risk' },
+      programs: { ug: 'Undergraduate', master: 'Master\'s & MBA', exec: 'Executive education' },
+      timeGroups: { '60': 'Up to 60 min', '80': '61–80 min', '90': 'Over 80 min' },
       durGroups: {
         '1-2': { label: 'Quick', hint: '1–2 rounds' },
         '3-4': { label: 'Standard', hint: '3–4 rounds' },
@@ -122,7 +149,9 @@
       tagline: 'Motor autónomo para los JSON de simulaciones Express',
       openJson: 'Abrir JSON', openJsonTitle: 'Abrir una simulación JSON desde el disco',
       search: 'Buscar simulaciones…  ( / )', searchAria: 'Buscar simulaciones',
-      catFilterLabel: 'Categoría', levelFilterLabel: 'Nivel', durFilterLabel: 'Duración', langFilterLabel: 'Idioma',
+      catFilterLabel: 'Categoría', levelFilterLabel: 'Dificultad', durFilterLabel: 'Rondas', langFilterLabel: 'Idioma',
+      areaFilterLabel: 'Disciplina', progFilterLabel: 'Programa', timeFilterLabel: 'Tiempo en clase',
+      factNote: 'Según el caso de estudio — lo indican {n} de {m} simulaciones.',
       all: 'Todas', any: 'Cualquiera',
       sortTitle: 'Ordenar resultados', sortDefault: 'Orden por defecto', sortName: 'Nombre A–Z', sortRounds: 'Rondas: menos primero',
       random: 'Aleatoria', randomTitle: 'Cargar una simulación al azar',
@@ -160,6 +189,7 @@
       caseTitle: 'Lee el caso de estudio en el que se basa esta simulación', caseHeading: 'Caso de estudio', caseCloseAria: 'Cerrar el caso de estudio',
       caseRights: '© 2026 Kudzu Partners / Eureka Express — todos los derechos reservados. El caso se comparte para leerlo junto a la simulación; a diferencia de las simulaciones, no está bajo la licencia CC BY-NC-SA.',
       caseLoading: 'Cargando el caso…', caseErr: 'No se pudo cargar el caso de estudio — {msg}',
+      caseTeacher: 'Para el profesor: objetivos de aprendizaje y guía de la simulación',
       access: 'Solicitar acceso para mi clase', accessTitle: 'El uso en clase requiere una licencia — pídela a Eureka',
       teachLevel: 'Nivel recomendado', teachTime: 'Tiempo en clase', teachDisc: 'Disciplinas', teachObjH: 'Objetivos de aprendizaje',
       teachSrc: 'Según el caso de estudio.', teachSrcIn: 'Según el caso de estudio, redactado en {lang}.', minutes: '{n} min',
@@ -169,6 +199,9 @@
       lvls: { basic: 'básico', intermediate: 'intermedio', advanced: 'avanzado' },
       langNames: { en: 'inglés', es: 'español', pt: 'portugués' },
       topics: { marketing: 'Marketing', strategy: 'Estrategia', innovation: 'Innovación', digital: 'Digital e IA', leadership: 'Liderazgo', negotiation: 'Negociación', governance: 'Gobernanza', operations: 'Operaciones', crisis: 'Gestión de crisis', ethics: 'Ética' },
+      areas: { STR: 'Estrategia', FIN: 'Finanzas', MKT: 'Marketing', OPS: 'Operaciones', ORG: 'Personas y organización', ENT: 'Emprendimiento', SUS: 'Sostenibilidad', RSK: 'Riesgo' },
+      programs: { ug: 'Grado', master: 'Máster y MBA', exec: 'Executive Education' },
+      timeGroups: { '60': 'Hasta 60 min', '80': '61–80 min', '90': 'Más de 80 min' },
       durGroups: {
         '1-2': { label: 'Rápida', hint: '1–2 rondas' },
         '3-4': { label: 'Estándar', hint: '3–4 rondas' },
@@ -192,6 +225,9 @@
   function topicLabel(id) { return (UI[lang].topics[id] || id); }
   function durLabel(id) { return ((UI[lang].durGroups[id] || {}).label || id); }
   function durHint(id) { return ((UI[lang].durGroups[id] || {}).hint || ''); }
+  function areaLabel(id) { return (UI[lang].areas[id] || id); }
+  function progLabel(id) { return (UI[lang].programs[id] || id); }
+  function timeLabel(id) { return (UI[lang].timeGroups[id] || id); }
 
   /* Re-render every translated string in the chrome. Cheap enough to just run
      the whole thing on each switch — the page is small and it keeps the
@@ -209,6 +245,7 @@
     if (manifest) { buildFilters(); applyFilter(); }
     if (current && view === 'preview') { renderPreviewName(); renderPreviewMeta(); renderTeach(); }
     if (current) renderCaseButtons();
+    document.querySelectorAll('#caseBody details.caseTeacher > summary').forEach(function (s) { s.textContent = T('caseTeacher'); });
     if (view === 'play' && current) {
       $('simTitle').textContent = currentName();
       $('simMeta').textContent = playMetaLine(current.data, current.manifestSim);
@@ -339,16 +376,40 @@
     });
   }
 
-  function buildFilters() {
-    var cats = {}, lvlCounts = {}, durCounts = {}, langCounts = {};
-    manifest.sims.forEach(function (s) {
-      cats[s.cat] = (cats[s.cat] || 0) + 1;
-      if (s.level) lvlCounts[s.level] = (lvlCounts[s.level] || 0) + 1;
-      var p = s.periods || 0;
-      DURGROUPS.forEach(function (g) { if (p >= g.min && p <= g.max) durCounts[g.id] = (durCounts[g.id] || 0) + 1; });
-      simLangs(s).forEach(function (l) { langCounts[l] = (langCounts[l] || 0) + 1; });
-    });
+  function topicHit(s, id) {
+    var terms = TOPIC_TERMS[id] || [id];
+    var hay = (s.name + ' ' + (s.desc || '')).toLowerCase();
+    return terms.some(function (k) { return hay.indexOf(k) >= 0; });
+  }
+  function inRange(n, groups, id) {
+    var g = groups.find(function (x) { return x.id === id; });
+    return !g || (n >= g.min && n <= g.max);
+  }
+  /* One test for the grid and for every chip count. f is a filter state like F
+     plus q, the lower-cased search text; missing keys mean any. A sim whose case
+     doesn't state its programs or class time never matches those filters. */
+  function matches(s, f) {
+    if (f.cat && s.cat !== f.cat) return false;
+    if (f.topic && !topicHit(s, f.topic)) return false;
+    if (f.area && s.area !== f.area) return false;
+    if (f.prog && (s.programs || []).indexOf(f.prog) < 0) return false;
+    if (f.time && !(s.minutes && inRange(s.minutes, TIMEGROUPS, f.time))) return false;
+    if (f.lvl && s.level !== f.lvl) return false;
+    if (f.dur && !inRange(s.periods || 0, DURGROUPS, f.dur)) return false;
+    if (f.lang && simLangs(s).indexOf(f.lang) < 0) return false;
+    if (f.q && searchText(s).indexOf(f.q) < 0) return false;
+    return true;
+  }
+  /* the active filters, with some keys overridden (to count what a chip would give) */
+  function filterState(over) {
+    return Object.assign({}, F, { q: query.trim().toLowerCase() }, over || {});
+  }
+  function countMatches(f) { return manifest.sims.filter(function (s) { return matches(s, f); }).length; }
 
+  /* Which filter keys each chip row sets; the category row carries the topics too. */
+  var CHIP_ROWS = { chips: ['cat', 'topic'], areaChips: ['area'], progChips: ['prog'], timeChips: ['time'], lvlChips: ['lvl'], durChips: ['dur'], langChips: ['lang'] };
+
+  function buildFilters() {
     function mkBtn(container, label, count, color, emoji, onclick, titleTxt) {
       var btn = document.createElement('button');
       btn.type = 'button'; btn.className = 'catbtn';
@@ -362,89 +423,65 @@
       container.appendChild(btn);
       return btn;
     }
+    function tag(btn, key, val) { btn.dataset.fkey = key; btn.dataset.fval = val; return btn; }
+    /* "Any" first, then one chip per option that some sim has; counts are kept
+       current by refreshCounts(). */
+    function row(id, key, opts) {
+      var c = $(id); c.innerHTML = '';
+      var any = tag(mkBtn(c, T('any'), null, '#64748b', '', function () { F[key] = ''; selChip(any); applyFilter(); }), key, '');
+      any.classList.add('on'); any.dataset.filterAll = '1';
+      opts.forEach(function (o) {
+        var probe = {}; probe[key] = o.val;
+        var n = countMatches(probe);
+        if (!n) return;
+        var btn = tag(mkBtn(c, o.label, n, o.color || '#64748b', o.icon || '', function () { F[key] = o.val; selChip(btn); applyFilter(); }, o.title), key, o.val);
+        if (F[key] === o.val) selChip(btn, true);
+      });
+    }
 
     // ── Category + Topic (merged into one chip row) ──
+    var cats = {};
+    manifest.sims.forEach(function (s) { cats[s.cat] = (cats[s.cat] || 0) + 1; });
     var chips = $('chips'); chips.innerHTML = '';
-    var allCat = mkBtn(chips, T('all'), manifest.sims.length, '#64748b', '', function () { activeCat = ''; activeTopic = ''; selChip(allCat); applyFilter(); });
+    var allCat = tag(mkBtn(chips, T('all'), manifest.sims.length, '#64748b', '', function () { F.cat = ''; F.topic = ''; selChip(allCat); applyFilter(); }), 'cat', '');
     allCat.classList.add('on'); allCat.dataset.filterAll = '1';
     // Data-driven categories
     Object.keys(cats).sort().forEach(function (c) {
-      var btn = mkBtn(chips, catLabel(c), cats[c], CATCOLORS[c] || '#64748b', CATEMOJI[c] || '', function () { activeCat = c; activeTopic = ''; selChip(btn); applyFilter(); });
-      btn.dataset.filterCat = c;
-      if (c === activeCat) { allCat.classList.remove('on'); selChip(btn, true); }
+      var btn = tag(mkBtn(chips, catLabel(c), cats[c], CATCOLORS[c] || '#64748b', CATEMOJI[c] || '', function () { F.cat = c; F.topic = ''; selChip(btn); applyFilter(); }), 'cat', c);
+      if (c === F.cat) selChip(btn, true);
     });
     // Thin visual divider
     var sep = document.createElement('span'); sep.className = 'chip-sep'; chips.appendChild(sep);
     // Keyword-based topic chips
     TOPIC_KEYS.forEach(function (t) {
-      var terms = TOPIC_TERMS[t.id] || [t.id];
-      var cnt = manifest.sims.filter(function (s) {
-        var hay = (s.name + ' ' + (s.desc || '')).toLowerCase();
-        return terms.some(function (k) { return hay.indexOf(k) >= 0; });
-      }).length;
+      var cnt = countMatches({ topic: t.id });
       if (!cnt) return;
       var lbl = topicLabel(t.id);
-      var btn = mkBtn(chips, lbl, cnt, t.color, t.icon, function () { activeTopic = t.id; activeCat = ''; selChip(btn); applyFilter(); }, lbl);
-      btn.dataset.filterTopic = t.id;
-      if (t.id === activeTopic) selChip(btn, true);
+      var btn = tag(mkBtn(chips, lbl, cnt, t.color, t.icon, function () { F.topic = t.id; F.cat = ''; selChip(btn); applyFilter(); }, lbl), 'topic', t.id);
+      if (t.id === F.topic) selChip(btn, true);
     });
 
-    // ── Level ──
-    var lvlC = $('lvlChips'); lvlC.innerHTML = '';
-    var allLvl = mkBtn(lvlC, T('any'), null, '#64748b', '', function () { activeLvl = ''; selChip(allLvl); applyFilter(); });
-    allLvl.classList.add('on'); allLvl.dataset.filterAll = '1';
-    ['basic', 'intermediate', 'advanced'].forEach(function (l) {
-      if (!lvlCounts[l]) return;
-      var btn = mkBtn(lvlC, lvlLabel(l), lvlCounts[l], LVLCOLORS[l] || '#64748b', '', function () { activeLvl = l; selChip(btn); applyFilter(); });
-      btn.dataset.filterLvl = l;
-      if (l === activeLvl) { allLvl.classList.remove('on'); selChip(btn, true); }
-    });
+    // ── Teaching facts from the cases ──
+    row('areaChips', 'area', AREAS.map(function (a) { return { val: a.id, label: areaLabel(a.id), color: a.color, icon: a.icon }; }));
+    row('progChips', 'prog', PROGRAMS.map(function (p) { return { val: p, label: progLabel(p) }; }));
+    row('timeChips', 'time', TIMEGROUPS.map(function (g) { return { val: g.id, label: timeLabel(g.id) }; }));
+    /* programs and class time are only known where the case states them — say how often */
+    var m = manifest.sims.length;
+    $('progNote').textContent = T('factNote', { n: manifest.sims.filter(function (s) { return s.programs; }).length, m: m });
+    $('timeNote').textContent = T('factNote', { n: manifest.sims.filter(function (s) { return s.minutes; }).length, m: m });
 
-    // ── Duration ──
-    var durC = $('durChips'); durC.innerHTML = '';
-    var allDurBtn = mkBtn(durC, T('any'), null, '#64748b', '', function () { activeDur = ''; selChip(allDurBtn); applyFilter(); });
-    allDurBtn.classList.add('on'); allDurBtn.dataset.filterAll = '1';
-    DURGROUPS.forEach(function (g) {
-      if (!durCounts[g.id]) return;
-      var btn = mkBtn(durC, durLabel(g.id), durCounts[g.id], g.color, g.icon, function () { activeDur = g.id; selChip(btn); applyFilter(); }, durHint(g.id));
-      btn.dataset.filterDur = g.id;
-      if (g.id === activeDur) { allDurBtn.classList.remove('on'); selChip(btn, true); }
-    });
-
-    // ── Language (which languages a simulation actually ships in) ──
-    var langC = $('langChips'); langC.innerHTML = '';
-    var allLang = mkBtn(langC, T('any'), null, '#64748b', '', function () { activeSimLang = ''; selChip(allLang); applyFilter(); });
-    allLang.classList.add('on'); allLang.dataset.filterAll = '1';
-    Object.keys(langCounts).sort().forEach(function (l) {
-      var btn = mkBtn(langC, langName(l), langCounts[l], '#64748b', '', function () { activeSimLang = l; selChip(btn); applyFilter(); });
-      btn.dataset.filterLang = l;
-      if (l === activeSimLang) { allLang.classList.remove('on'); selChip(btn, true); }
-    });
+    // ── Difficulty, rounds, language ──
+    row('lvlChips', 'lvl', ['basic', 'intermediate', 'advanced'].map(function (l) { return { val: l, label: lvlLabel(l), color: LVLCOLORS[l] }; }));
+    row('durChips', 'dur', DURGROUPS.map(function (g) { return { val: g.id, label: durLabel(g.id), color: g.color, icon: g.icon, title: durHint(g.id) }; }));
+    // which languages a simulation actually ships in
+    var langs = {};
+    manifest.sims.forEach(function (s) { simLangs(s).forEach(function (l) { langs[l] = 1; }); });
+    row('langChips', 'lang', Object.keys(langs).sort().map(function (l) { return { val: l, label: langName(l) }; }));
   }
   /* Recalculate chip counts after every filter change — each count shows how many
      results you'd get if you selected that option with all other active filters kept. */
   function refreshCounts() {
     if (!manifest) return;
-    var q = query.trim().toLowerCase();
-    function countWith(oCat, oLvl, oDur, oTopic, oLang) {
-      return manifest.sims.filter(function (s) {
-        if (oCat && s.cat !== oCat) return false;
-        if (oLvl && s.level !== oLvl) return false;
-        if (oDur) {
-          var p = s.periods || 0;
-          var dg = DURGROUPS.find(function (g) { return g.id === oDur; });
-          if (dg && (p < dg.min || p > dg.max)) return false;
-        }
-        if (oTopic) {
-          var terms = TOPIC_TERMS[oTopic] || [oTopic];
-          var hay = (s.name + ' ' + (s.desc || '')).toLowerCase();
-          if (!terms.some(function (k) { return hay.indexOf(k) >= 0; })) return false;
-        }
-        if (oLang && simLangs(s).indexOf(oLang) < 0) return false;
-        if (q && searchText(s).indexOf(q) < 0) return false;
-        return true;
-      }).length;
-    }
     function applyToChip(btn, n) {
       var cntEl = btn.querySelector('.catbtn-cnt');
       if (!cntEl) return;
@@ -453,30 +490,15 @@
       btn.style.opacity = dim ? '0.3' : '';
       btn.style.pointerEvents = dim ? 'none' : '';
     }
-    // Category + Topic chips
-    $('chips').querySelectorAll('.catbtn').forEach(function (btn) {
-      var d = btn.dataset;
-      if (d.filterAll) applyToChip(btn, countWith('', activeLvl, activeDur, '', activeSimLang));
-      else if (d.filterCat) applyToChip(btn, countWith(d.filterCat, activeLvl, activeDur, '', activeSimLang));
-      else if (d.filterTopic) applyToChip(btn, countWith('', activeLvl, activeDur, d.filterTopic, activeSimLang));
-    });
-    // Level chips
-    $('lvlChips').querySelectorAll('.catbtn').forEach(function (btn) {
-      var d = btn.dataset;
-      if (d.filterAll) applyToChip(btn, countWith(activeCat, '', activeDur, activeTopic, activeSimLang));
-      else if (d.filterLvl) applyToChip(btn, countWith(activeCat, d.filterLvl, activeDur, activeTopic, activeSimLang));
-    });
-    // Duration chips
-    $('durChips').querySelectorAll('.catbtn').forEach(function (btn) {
-      var d = btn.dataset;
-      if (d.filterAll) applyToChip(btn, countWith(activeCat, activeLvl, '', activeTopic, activeSimLang));
-      else if (d.filterDur) applyToChip(btn, countWith(activeCat, activeLvl, d.filterDur, activeTopic, activeSimLang));
-    });
-    // Language chips
-    $('langChips').querySelectorAll('.catbtn').forEach(function (btn) {
-      var d = btn.dataset;
-      if (d.filterAll) applyToChip(btn, countWith(activeCat, activeLvl, activeDur, activeTopic, ''));
-      else if (d.filterLang) applyToChip(btn, countWith(activeCat, activeLvl, activeDur, activeTopic, d.filterLang));
+    Object.keys(CHIP_ROWS).forEach(function (id) {
+      var clear = {};
+      CHIP_ROWS[id].forEach(function (k) { clear[k] = ''; });
+      $(id).querySelectorAll('.catbtn').forEach(function (btn) {
+        if (!btn.querySelector('.catbtn-cnt')) return;
+        var over = Object.assign({}, clear);
+        if (btn.dataset.fval) over[btn.dataset.fkey] = btn.dataset.fval;
+        applyToChip(btn, countMatches(filterState(over)));
+      });
     });
   }
   function selChip(el, keepOpen) {
@@ -509,12 +531,12 @@
     return copy;
   }
 
-  function filtersActive() { return !!(activeCat || activeLvl || activeDur || activeTopic || activeSimLang || query.trim()); }
+  function filtersActive() { return Object.keys(F).some(function (k) { return F[k]; }) || !!query.trim(); }
   function updateClearBtn() { $('btnClear').style.display = filtersActive() ? 'inline-block' : 'none'; }
   function resetFilters() {
     query = ''; $('search').value = '';
-    activeLvl = ''; activeDur = ''; activeCat = ''; activeTopic = ''; activeSimLang = '';
-    ['chips', 'lvlChips', 'durChips', 'langChips'].forEach(function (id) {
+    Object.keys(F).forEach(function (k) { F[k] = ''; });
+    Object.keys(CHIP_ROWS).forEach(function (id) {
       var c = $(id); if (!c) return;
       var first = c.querySelector('.catbtn'); if (first) selChip(first, true); // keepOpen=true so panels stay closed
     });
@@ -538,25 +560,8 @@
 
   function applyFilter() {
     if (!manifest) return;
-    var q = query.trim().toLowerCase();
-    filtered = manifest.sims.filter(function (s) {
-      if (activeCat && s.cat !== activeCat) return false;
-      if (activeLvl && s.level !== activeLvl) return false;
-      if (activeDur) {
-        var p = s.periods || 0;
-        var dg = DURGROUPS.find(function (g) { return g.id === activeDur; });
-        if (dg && (p < dg.min || p > dg.max)) return false;
-      }
-      if (activeTopic) {
-        var terms = TOPIC_TERMS[activeTopic] || [activeTopic];
-        var hay = (s.name + ' ' + (s.desc || '')).toLowerCase();
-        if (!terms.some(function (k) { return hay.indexOf(k) >= 0; })) return false;
-      }
-      if (activeSimLang && simLangs(s).indexOf(activeSimLang) < 0) return false;
-      if (q && searchText(s).indexOf(q) < 0) return false;
-      return true;
-    });
-    filtered = sortSims(filtered);
+    var f = filterState();
+    filtered = sortSims(manifest.sims.filter(function (s) { return matches(s, f); }));
     kbdIndex = -1;
     $('count').textContent = T(filtered.length === 1 ? 'count' : 'countN', { n: filtered.length });
     updateClearBtn();
@@ -595,7 +600,8 @@
       '<div class="cardbody">' +
       '<div class="cardname">' + nameHtml + '</div>' +
       '<div class="cardtags"><span class="catpill" style="background:' + color + '">' + esc(catLabel(s.cat)) + '</span>' + lvlHtml + langHtml + caseHtml + '</div>' +
-      (s.periods ? '<div class="cardrounds">' + s.periods + ' ' + T(s.periods === 1 ? 'round' : 'rounds') + '</div>' : '') +
+      (s.periods ? '<div class="cardrounds">' + s.periods + ' ' + T(s.periods === 1 ? 'round' : 'rounds') +
+        (s.minutes ? ' · ' + esc(T('minutes', { n: s.minutes })) : '') + '</div>' : '') +
       (snippet ? '<div class="cardsnip">' + snippet + '</div>' : '') +
       '</div>';
     d.onclick = function () { via = 'catalog'; loadFromManifest(s); };
@@ -791,6 +797,18 @@
     md = md.replace(CASE_FENCE, function (all, title) { return title + (sub ? '*' + sub + '*\n\n' : ''); });
     return md.replace(CASE_BOLD, '$1').replace(/^---\n+/, ''); // header-first cases leave a rule on top
   }
+  /* Two sections are written for the teacher, not for the reader of the story:
+     the learning objectives, and the appendix that maps the case to the sim's
+     rounds and carries the debrief prompts. The reader moves them into one
+     closed block at the end. A section runs to the next "## " heading or "---"
+     rule; removing one leaves two rules in a row, which collapse to one. */
+  var TEACHER_SECTIONS = /^##\s+(?:Learning Objectives|Appendix: Simulation Linkage)\b[^\n]*\n[\s\S]*?(?=^##\s|^---[ \t]*$|(?![\s\S]))/gm;
+  function splitTeacher(md) {
+    var teacher = [];
+    var story = md.replace(TEACHER_SECTIONS, function (sec) { teacher.push(sec.trim()); return ''; })
+      .replace(/^---[ \t]*\n\s*(?=^---[ \t]*$)/gm, '');
+    return { story: story, teacher: teacher.join('\n\n') };
+  }
   function caseObjectives(md) {
     var sec = md.match(/^##\s+Learning Objectives[^\n]*\n([\s\S]*?)(?=\n---|\n##\s)/m);
     if (!sec) return [];
@@ -881,7 +899,10 @@
     caseText(s.case)
       .then(function (md) {
         if (caseSim() !== s) return; // moved on to another sim while it loaded
-        body.innerHTML = caseMd.parse(stripCaseHeader(md));
+        var parts = splitTeacher(stripCaseHeader(md));
+        body.innerHTML = caseMd.parse(parts.story) + (parts.teacher
+          ? '<details class="caseTeacher"><summary>' + esc(T('caseTeacher')) + '</summary>' + caseMd.parse(parts.teacher) + '</details>'
+          : '');
         body.querySelectorAll('a[href]').forEach(function (a) {
           var href = a.getAttribute('href');
           if (!/^(https?:|mailto:|#)/i.test(href)) { a.removeAttribute('href'); return; }

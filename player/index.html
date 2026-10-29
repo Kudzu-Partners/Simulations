@@ -83,6 +83,30 @@
         <div id="toolrow">
           <input id="search" type="search" data-i18n-ph="search" data-i18n-aria="searchAria"
             placeholder="Search simulations…  ( / )" aria-label="Search simulations" autocomplete="off">
+          <!-- teaching facts from the cases: discipline (case code), program (Level), class time -->
+          <div class="filterdrop">
+            <button class="filterdrop-btn"><span data-i18n="areaFilterLabel">Discipline</span>&thinsp;<span
+                class="filterdrop-lbl" data-i18n="any">Any</span>&thinsp;<span class="filterdrop-arr">▾</span></button>
+            <div class="filterdrop-panel">
+              <div id="areaChips"></div>
+            </div>
+          </div>
+          <div class="filterdrop">
+            <button class="filterdrop-btn"><span data-i18n="progFilterLabel">Program</span>&thinsp;<span
+                class="filterdrop-lbl" data-i18n="any">Any</span>&thinsp;<span class="filterdrop-arr">▾</span></button>
+            <div class="filterdrop-panel">
+              <div id="progChips"></div>
+              <p class="filterdrop-note" id="progNote"></p>
+            </div>
+          </div>
+          <div class="filterdrop">
+            <button class="filterdrop-btn"><span data-i18n="timeFilterLabel">Class time</span>&thinsp;<span
+                class="filterdrop-lbl" data-i18n="any">Any</span>&thinsp;<span class="filterdrop-arr">▾</span></button>
+            <div class="filterdrop-panel">
+              <div id="timeChips"></div>
+              <p class="filterdrop-note" id="timeNote"></p>
+            </div>
+          </div>
           <div class="filterdrop">
             <button class="filterdrop-btn"><span data-i18n="catFilterLabel">Category</span>&thinsp;<span
                 class="filterdrop-lbl" data-i18n="all">All</span>&thinsp;<span class="filterdrop-arr">▾</span></button>
@@ -91,14 +115,14 @@
             </div>
           </div>
           <div class="filterdrop">
-            <button class="filterdrop-btn"><span data-i18n="levelFilterLabel">Level</span>&thinsp;<span
+            <button class="filterdrop-btn"><span data-i18n="levelFilterLabel">Difficulty</span>&thinsp;<span
                 class="filterdrop-lbl" data-i18n="any">Any</span>&thinsp;<span class="filterdrop-arr">▾</span></button>
             <div class="filterdrop-panel">
               <div id="lvlChips"></div>
             </div>
           </div>
           <div class="filterdrop">
-            <button class="filterdrop-btn"><span data-i18n="durFilterLabel">Duration</span>&thinsp;<span
+            <button class="filterdrop-btn"><span data-i18n="durFilterLabel">Rounds</span>&thinsp;<span
                 class="filterdrop-lbl" data-i18n="any">Any</span>&thinsp;<span class="filterdrop-arr">▾</span></button>
             <div class="filterdrop-panel">
               <div id="durChips"></div>

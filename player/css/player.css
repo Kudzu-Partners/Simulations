@@ -319,10 +319,22 @@ body {
 
 #chips,
 #lvlChips,
-#durChips {
+#durChips,
+#langChips,
+#areaChips,
+#progChips,
+#timeChips {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
+}
+
+/* how many sims a case-based filter can see */
+.filterdrop-note {
+  margin: 10px 0 0;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--muted);
 }
 
 .chip-sep {
@@ -409,6 +421,13 @@ body {
 .catbtn-lbl {
   text-transform: capitalize;
   letter-spacing: .1px;
+}
+
+/* these labels are written as they should read ("Máster y MBA", "61–80 min") */
+#areaChips .catbtn-lbl,
+#progChips .catbtn-lbl,
+#timeChips .catbtn-lbl {
+  text-transform: none;
 }
 
 .catbtn-cnt {
@@ -1371,28 +1390,45 @@ body.dragging #dropOverlay {
     gap: 10px
   }
 
+  /* two controls per row so seven filters don't push the cards off screen;
+     panels open full width under the toolbar */
   #toolrow {
     width: 100%;
-    flex-direction: column;
+    position: relative;
     align-items: stretch
   }
 
-  #search,
+  #search {
+    width: 100%;
+    flex: 1 1 100%
+  }
+
   #sort,
   #btnRandom,
   .filterdrop {
-    width: 100%;
-    flex: 0 0 auto
+    flex: 1 1 calc(50% - 4px);
+    min-width: 0;
+    position: static
   }
 
   .filterdrop-btn {
     width: 100%;
     justify-content: space-between;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .filterdrop-btn .filterdrop-lbl {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
   }
 
   .filterdrop-panel {
     min-width: 0;
-    width: 100%;
+    max-width: none;
+    width: auto;
     left: 0;
     right: 0;
     position: absolute;
@@ -1594,6 +1630,32 @@ body.dragging #dropOverlay {
   border: 0;
   border-top: 1px solid #e2dccb;
   margin: 1.6em 0
+}
+
+/* teacher-only sections, folded at the end of the case */
+#caseBody details.caseTeacher {
+  margin: 2em 0 0;
+  border: 1px solid #e2dccb;
+  border-radius: var(--radius-sm);
+  background: #faf7ee;
+  padding: 0 20px
+}
+
+#caseBody details.caseTeacher > summary {
+  cursor: pointer;
+  padding: 14px 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #6b5d3a
+}
+
+#caseBody details.caseTeacher[open] > summary {
+  border-bottom: 1px solid #e2dccb
+}
+
+#caseBody details.caseTeacher h2:first-of-type {
+  margin-top: 1em
 }
 
 #caseBody blockquote {

@@ -87,7 +87,7 @@ The **USF runtime shim** (`js/usf-shim.js`) implements this contract: i18n with 
 
 ## Player features
 
-Catalog search and category/level/**language** filters, cover thumbnails, random pick, round progress, on-demand hints from the sim's own coach logic, restart, fullscreen, and **session export** (downloads your decisions, per-round results, and final summary as JSON — handy for classroom debriefs).
+Catalog search and filters — **discipline**, **program**, **class time**, category, difficulty, rounds and **language** — cover thumbnails, random pick, round progress, on-demand hints from the sim's own coach logic, restart, fullscreen, and **session export** (downloads your decisions, per-round results, and final summary as JSON — handy for classroom debriefs).
 
 The read-only **preview** runs the sim in its own sandboxed frame, so it opens in the page language with the opening briefing and KPIs filled in. A guard script swallows every click, key and focus before the sim sees it (the mouse wheel still scrolls), so nothing can be played there, and it pins the view to the top. Until the runtime shim has loaded, a static render of the `view` stands in, with designer defaults stripped (lists render blank; boxes and radios unticked; disabled mandatory items keep their state) so it never shows an option as if it had already been chosen.
 
@@ -117,6 +117,9 @@ A catalog sim can have a companion case, `cases/{externalid}.md`: the teaching c
 - The reader states above every case that it is all rights reserved and not covered by the CC license.
 - The catalogue header a case opens with — the fenced `Case Code: … Keywords: …` block, or the bold `**Case Code:** …` / `**Time required: …**` lines — is library bookkeeping, so the reader leaves it out and shows only the subtitle.
 - The preview reads the teacher-facing fields from that header — `Level`, `Time required` (or `Tiempo de clase`), `Discipline(s)` — plus the numbered `## Learning Objectives`, and shows them under the hero, noting the case's language when it differs from the page's. Cases that have none of them show nothing. **Copy objectives** puts them on the clipboard as a numbered list under the sim's name, ready for a syllabus.
+- `## Learning Objectives` and `## Appendix: Simulation Linkage` (round mapping, pre-read timing, debrief prompts) are written for the teacher, so the reader moves them out of the story into a closed **For the teacher** block at the end.
+
+`build_manifest.py` also reads three catalog facts from each case for the filters: `area`, the discipline from the case code prefix (`STR`, `FIN`, `MKT`, `OPS`, `ORG`, `ENT`, `SUS`, `RSK`; every case has one); `minutes`, the class time; and `programs`, the `Level` line grouped into `ug` (undergraduate), `master` (MBA, EMBA, MSc) and `exec` (executive and corporate programs). Program and class time are only known where the case states them, and their dropdowns say how many sims that is. Cards show the class time next to the rounds.
 
 Cases are copied verbatim from the Express source library; they are not edited here.
 
