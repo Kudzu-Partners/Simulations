@@ -106,6 +106,8 @@
       access: 'Request access for my class', accessTitle: 'Classroom use takes a class license — ask Eureka for one',
       teachLevel: 'Recommended level', teachTime: 'Class time', teachDisc: 'Disciplines', teachObjH: 'Learning objectives',
       teachSrc: 'From the case study.', teachSrcIn: 'From the case study, written in {lang}.', minutes: '{n} min',
+      copyObj: 'Copy objectives', copyObjTitle: 'Copy the objectives as a numbered list, for a syllabus or a course proposal',
+      copiedObj: 'Objectives copied', copySelect: 'Objectives selected — press Ctrl+C to copy',
       cats: { business: 'business', education: 'education', finance: 'finance', sustainability: 'sustainability', hospitality: 'hospitality', tourism: 'tourism', other: 'other' },
       lvls: { basic: 'basic', intermediate: 'intermediate', advanced: 'advanced' },
       langNames: { en: 'English', es: 'Spanish', pt: 'Portuguese' },
@@ -161,6 +163,8 @@
       access: 'Solicitar acceso para mi clase', accessTitle: 'El uso en clase requiere una licencia — pídela a Eureka',
       teachLevel: 'Nivel recomendado', teachTime: 'Tiempo en clase', teachDisc: 'Disciplinas', teachObjH: 'Objetivos de aprendizaje',
       teachSrc: 'Según el caso de estudio.', teachSrcIn: 'Según el caso de estudio, redactado en {lang}.', minutes: '{n} min',
+      copyObj: 'Copiar objetivos', copyObjTitle: 'Copia los objetivos como lista numerada, para la guía docente o una propuesta de asignatura',
+      copiedObj: 'Objetivos copiados', copySelect: 'Objetivos seleccionados — pulsa Ctrl+C para copiar',
       cats: { business: 'negocios', education: 'educación', finance: 'finanzas', sustainability: 'sostenibilidad', hospitality: 'hostelería', tourism: 'turismo', other: 'otros' },
       lvls: { basic: 'básico', intermediate: 'intermedio', advanced: 'avanzado' },
       langNames: { en: 'inglés', es: 'español', pt: 'portugués' },
@@ -203,9 +207,10 @@
       b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
     });
     if (manifest) { buildFilters(); applyFilter(); }
-    if (current && view === 'preview') { renderPreviewMeta(); renderTeach(); }
+    if (current && view === 'preview') { renderPreviewName(); renderPreviewMeta(); renderTeach(); }
     if (current) renderCaseButtons();
     if (view === 'play' && current) {
+      $('simTitle').textContent = currentName();
       $('simMeta').textContent = playMetaLine(current.data, current.manifestSim);
       if (lastProgress) showProgress(lastProgress);
     }
@@ -250,6 +255,18 @@
     return out + esc(raw.slice(last));
   }
   function highlightName(rawName) { return highlightText(deent(rawName), query.trim()); }
+  /* A sim's name in the page language: its own translated title from the
+     manifest (`names`), else the catalog name, which ships in one language. */
+  function simName(s) { return (s.names && s.names[lang]) || s.name || ''; }
+  function currentName() {
+    var s = current.manifestSim;
+    return deent((s && simName(s)) || current.data.name || current.srcName || 'Simulation');
+  }
+  /* what search matches: every name a sim goes by, its id and description */
+  function searchText(s) {
+    var names = s.names ? Object.keys(s.names).map(function (k) { return s.names[k]; }).join(' ') : '';
+    return (s.name + ' ' + names + ' ' + s.id + ' ' + (s.desc || '')).toLowerCase();
+  }
   function descSnippet(rawDesc, q) {
     // Only called when the query matched a sim via its (hidden) description rather than
     // its name — surfaces *why* it matched instead of showing an unexplained result.
@@ -424,7 +441,7 @@
           if (!terms.some(function (k) { return hay.indexOf(k) >= 0; })) return false;
         }
         if (oLang && simLangs(s).indexOf(oLang) < 0) return false;
-        if (q && (s.name + ' ' + s.id + ' ' + (s.desc || '')).toLowerCase().indexOf(q) < 0) return false;
+        if (q && searchText(s).indexOf(q) < 0) return false;
         return true;
       }).length;
     }
@@ -484,7 +501,7 @@
     // Never mutate the manifest's sims array (or the array passed in) — always sort a copy.
     var copy = arr.slice();
     if (activeSort === 'name') {
-      copy.sort(function (a, b) { return deent(a.name || '').localeCompare(deent(b.name || ''), undefined, { sensitivity: 'base' }); });
+      copy.sort(function (a, b) { return deent(simName(a)).localeCompare(deent(simName(b)), undefined, { sensitivity: 'base' }); });
     } else if (activeSort === 'rounds') {
       copy.sort(function (a, b) { return (a.periods || 0) - (b.periods || 0); });
     }
@@ -536,7 +553,7 @@
         if (!terms.some(function (k) { return hay.indexOf(k) >= 0; })) return false;
       }
       if (activeSimLang && simLangs(s).indexOf(activeSimLang) < 0) return false;
-      if (q && (s.name + ' ' + s.id + ' ' + (s.desc || '')).toLowerCase().indexOf(q) < 0) return false;
+      if (q && searchText(s).indexOf(q) < 0) return false;
       return true;
     });
     filtered = sortSims(filtered);
@@ -572,7 +589,7 @@
     var langHtml = '<span class="lg" title="' + esc(ls.map(langName).join(' · ')) + '">' + esc(ls.join('·')) + '</span>';
     var caseHtml = s.case ? '<span class="casemark" title="' + esc(T('caseBtn')) + '" aria-label="' + esc(T('caseBtn')) + '">📄</span>' : '';
     var q = query.trim();
-    var nameHtml = highlightName(s.name);
+    var nameHtml = highlightName(simName(s));
     var snippet = (q && nameHtml.indexOf('<mark>') < 0) ? descSnippet(s.desc, q) : ''; // surface why a desc-only match hit
     d.innerHTML = '<div class="cardcover">' + cover + '</div>' +
       '<div class="cardbody">' +
@@ -637,15 +654,14 @@
     var d = current.data, s = current.manifestSim;
     var svg = s && (s.cover || s.svg);
     var color = CATCOLORS[(s && s.cat) || ''] || '#64748b';
-    var name = deent(d.name || current.srcName || 'Simulation');
+    var name = currentName();
 
     $('previewCover').innerHTML = svg
       ? '<img src="' + esc(svg) + '" alt="">'
       : '<div class="tileinit" style="background:' + color + '">' + esc(name.charAt(0).toUpperCase()) + '</div>';
-    $('previewName').textContent = name;
+    renderPreviewName();
     renderPreviewMeta();
     $('previewDesc').textContent = deent(d.description || '');
-    $('previewBarTitle').textContent = name;
     $('btnPlayBar').style.display = 'inline-block';
     $('btnAccess').href = 'https://www.eurekasimulations.com/basics/?utm_source=open_site&utm_medium=player&utm_campaign=class_access' +
       (s ? '&utm_content=sim-' + encodeURIComponent(s.id) : '');
@@ -691,6 +707,12 @@
       .replace(/<select\b[^>]*>/gi, function (tag) { return tag + '<option value="" selected hidden></option>'; });
   }
 
+  function renderPreviewName() {
+    var name = currentName();
+    $('previewName').textContent = name;
+    $('previewBarTitle').textContent = name;
+  }
+
   /* Just the translatable pills — re-run on a language switch without
      rebuilding the cover/name/description or reloading the preview iframe. */
   function renderPreviewMeta() {
@@ -720,6 +742,7 @@
   }
   $('btnPlay').onclick = function () { playCurrent(); };
   $('btnPlayBar').onclick = function () { playCurrent(); };
+  $('btnAccess').addEventListener('click', function () { track('access_click', { sim: simId(), lang: lang }); });
 
   /* ───────── case study reader ─────────
      cases/{id}.md is the teaching case a sim is built on. Unlike the sims it is
@@ -811,6 +834,23 @@
     $('teachObj').innerHTML = t.obj.map(function (o) { return '<li>' + esc(o) + '</li>'; }).join('');
     $('teachSrc').textContent = t.lang !== lang ? T('teachSrcIn', { lang: langName(t.lang) }) : T('teachSrc');
   }
+  /* A numbered list with the sim's name on top, ready to paste into a syllabus.
+     Where the clipboard is refused, the list is selected instead. */
+  $('btnCopyObj').onclick = function () {
+    var t = current && current.teach;
+    if (!t || !t.obj.length) return;
+    var text = T('teachObjH') + ' — ' + currentName() + ' (Eureka Express #' + simId() + ')\n' +
+      t.obj.map(function (o, i) { return (i + 1) + '. ' + o; }).join('\n');
+    track('objectives_copy', { sim: simId() });
+    function selectList() {
+      var r = document.createRange(), sel = window.getSelection();
+      r.selectNodeContents($('teachObj'));
+      sel.removeAllRanges(); sel.addRange(r);
+      toast(T('copySelect'));
+    }
+    try { navigator.clipboard.writeText(text).then(function () { toast(T('copiedObj')); }, selectList); }
+    catch (e) { selectList(); }
+  };
 
   function caseSim() { return (caseMd && current && current.manifestSim && current.manifestSim.case) ? current.manifestSim : null; }
   /* the case ships in one language — say so on the button when it isn't the page's */
@@ -883,7 +923,7 @@
     if (!current) return;
     var d = current.data;
     $('simTitle').removeAttribute('data-i18n');   // holds the sim's own name from here on
-    $('simTitle').textContent = deent(d.name || current.srcName || 'Simulation');
+    $('simTitle').textContent = currentName();
     $('simTitle').title = d.description || '';
     $('simMeta').textContent = playMetaLine(d, current.manifestSim);
     ['btnHint', 'btnRestart', 'btnExport', 'btnFull'].forEach(function (b) { $(b).style.display = 'inline-block'; });

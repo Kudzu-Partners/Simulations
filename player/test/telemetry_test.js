@@ -160,6 +160,18 @@ test('our host: Umami loads cookieless, queued events flush once it is ready', a
   t.close();
 });
 
+test('class access: the button links to licensing and is counted', async () => {
+  const t = await boot();
+  t.umamiLoads();
+  await until(() => t.$('viewPreview').classList.contains('active'), 'the preview');
+  const a = t.$('btnAccess');
+  assert.match(a.href, new RegExp('^https://www\\.eurekasimulations\\.com/basics/\\?.*utm_content=sim-' + SIM + '$'));
+  a.addEventListener('click', (e) => e.preventDefault()); // jsdom can't open the new tab
+  a.click();
+  assert.deepStrictEqual(t.events('access_click'), [{ sim: SIM, lang: 'en' }]);
+  t.close();
+});
+
 test('play events: start, rounds (not undo), language, finish', async () => {
   const t = await boot();
   t.umamiLoads();

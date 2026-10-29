@@ -994,8 +994,16 @@ body {
   border: 1px solid rgba(148, 163, 184, .25);
 }
 
-#teachObjWrap h3 {
-  margin: 0 0 10px;
+#teachObjHead {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-bottom: 10px;
+}
+
+#teachObjHead h3 {
+  margin: 0;
   font-size: 15px;
   font-weight: 800;
   color: #fff;

@@ -105,6 +105,8 @@ Next to Play, **Request access for my class** links to Eureka's licensing page (
 
 A sim that doesn't ship the preferred language (only reachable via `?src=`) falls back to English and says so in a notice.
 
+The JSON's `name` ships in one language, so `build_manifest.py` also records the sim's own title in each other language as `names` (e.g. `{"es": "Disrupción Fintech: BancaVerde"}`): the translation of the i18n key on the view's first `<h1>`, the title the sim shows once it runs. Catalog cards, the preview and the play bar use it in that language, sorting by name follows it, and search matches every name. English keeps the catalog `name`.
+
 ### Case studies
 
 A catalog sim can have a companion case, `cases/{externalid}.md`: the teaching case it is built on (protagonist, company, baseline numbers, what the player controls). `build_manifest.py` records it as `case` (relative path) and `caseLang` (the case's language, detected from its text: cases ship in one language) in `manifest.json`, and counts them in the top-level `cases` field.
@@ -114,7 +116,7 @@ A catalog sim can have a companion case, `cases/{externalid}.md`: the teaching c
 - The case opens in a reader dialog in the host page, rendered with `vendor/marked.min.js`. Raw HTML in the Markdown is shown as text, never rendered; links open in a new tab. Esc, the ✕ button or a click on the backdrop closes it.
 - The reader states above every case that it is all rights reserved and not covered by the CC license.
 - The catalogue header a case opens with — the fenced `Case Code: … Keywords: …` block, or the bold `**Case Code:** …` / `**Time required: …**` lines — is library bookkeeping, so the reader leaves it out and shows only the subtitle.
-- The preview reads the teacher-facing fields from that header — `Level`, `Time required` (or `Tiempo de clase`), `Discipline(s)` — plus the numbered `## Learning Objectives`, and shows them under the hero, noting the case's language when it differs from the page's. Cases that have none of them show nothing.
+- The preview reads the teacher-facing fields from that header — `Level`, `Time required` (or `Tiempo de clase`), `Discipline(s)` — plus the numbered `## Learning Objectives`, and shows them under the hero, noting the case's language when it differs from the page's. Cases that have none of them show nothing. **Copy objectives** puts them on the clipboard as a numbered list under the sim's name, ready for a syllabus.
 
 Cases are copied verbatim from the Express source library; they are not edited here.
 
@@ -135,6 +137,8 @@ drop the query string. A sim loaded from a file or `?src=` is reported as `custo
 | `sim_finish` | `sim`, `lang`, `rounds`, `score` |
 | `sim_restart` | `sim`, `from` (`bar` or `summary`), `round` |
 | `sim_lang`, `hint`, `case_open`, `session_export` | `sim`, plus `to` / `from` |
+| `access_click` | `sim`, `lang` — the **Request access for my class** button |
+| `objectives_copy` | `sim` |
 | `bench_shown`, `bench_submit`, `bench_decline` | `sim`, plus `level` and `cohort` on submit |
 
 **Compare your run** (`js/benchmark.js`). When a catalog sim finishes, a card offers to compare the score. Only if

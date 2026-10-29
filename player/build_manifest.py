@@ -43,8 +43,8 @@ def _skip_string(src, i):
     return n
 
 
-def sim_langs(js):
-    """Language codes a sim's getTranslations() returns, e.g. ['en', 'es'].
+def translation_tables(js):
+    """{lang: source text of its table} from a sim's getTranslations().
 
     Sims declare their i18n tables as `getTranslations() { return { en: {…},
     es: {…} } }` (sometimes via a local const). Parsed with a small brace
@@ -53,20 +53,20 @@ def sim_langs(js):
     """
     m = re.search(r"getTranslations\s*\([^)]*\)\s*\{", js or "")
     if not m:
-        return []
+        return {}
     body = js[m.end():]
     r = re.search(r"return\s*(\{|[A-Za-z_$][\w$]*)", body)
     if not r:
-        return []
+        return {}
     if r.group(1) == "{":
         start = r.start(1)
     else:
         var = re.search(r"(?:const|let|var)\s+%s\s*=\s*\{" % re.escape(r.group(1)), body)
         if not var:
-            return []
+            return {}
         start = var.end() - 1
 
-    langs, depth, i, n = [], 1, start + 1, len(body)
+    tables, open_lang, depth, i, n = {}, None, 1, start + 1, len(body)
     while i < n and depth >= 1:
         ch = body[i]
         if ch in "\"'`":
@@ -89,18 +89,61 @@ def sim_langs(js):
             depth -= 1
             if depth == 0:
                 break
+            if depth == 1 and open_lang:
+                tables[open_lang[0]] = body[open_lang[1]:i + 1]
+                open_lang = None
             i += 1
             continue
         if depth == 1 and (body[i - 1] in "{," or body[i - 1].isspace()):
             k = re.match(r"\s*(?:([A-Za-z_$][\w$-]*)|['\"]([\w$-]+)['\"])\s*:\s*\{", body[i:])
             if k:
                 name = k.group(1) or k.group(2)
-                if LANG_RE.match(name) and name not in langs:
-                    langs.append(name)
                 i += k.end() - 1
+                if LANG_RE.match(name) and name not in tables:
+                    open_lang = (name, i)
                 continue
         i += 1
-    return langs
+    return tables
+
+
+def sim_langs(js):
+    """Language codes a sim's getTranslations() returns, e.g. ['en', 'es']."""
+    return list(translation_tables(js))
+
+
+def _js_unescape(s):
+    simple = {"n": "\n", "t": "\t", "r": "", "b": "", "f": "", "v": "", "0": ""}
+
+    def rep(m):
+        e = m.group(1)
+        if e[0] == "u":
+            return chr(int(e[1:].strip("{}"), 16))
+        if e[0] == "x":
+            return chr(int(e[1:], 16))
+        return simple.get(e, e)
+    out = re.sub(r"\\(u\{[0-9a-fA-F]+\}|u[0-9a-fA-F]{4}|x[0-9a-fA-F]{2}|.)", rep, s)
+    # emoji written as \uD83C\uDFxx pairs come out as lone surrogates — join them
+    return out.encode("utf-16", "surrogatepass").decode("utf-16", "replace")
+
+
+def sim_names(d, tables):
+    """{lang: the sim's own title in that language}, read from the i18n key on
+    the view's first <h1> — the title the sim itself shows once it runs. Lets
+    the catalog and the preview name a sim in the page language; the JSON's
+    `name` field ships in one language only."""
+    h1 = re.search(r"<h1\b[^>]*\bdata-i18n=\"([^\"]+)\"", d.get("view") or "")
+    if not h1:
+        return {}
+    key, names = re.escape(h1.group(1)), {}
+    for lg, src in tables.items():
+        v = re.search(r"(?:^|[{,\s])(?:%s|['\"]%s['\"])\s*:\s*(['\"`])((?:\\.|(?!\1).)*)\1" % (key, key), src, re.S)
+        if not v or (v.group(1) == "`" and "${" in v.group(2)):
+            continue
+        text = re.sub(r"<[^>]+>", "", _js_unescape(v.group(2)))
+        text = re.sub(r"\s+", " ", text).strip()
+        if text:
+            names[lg] = text
+    return names
 
 
 CASE_STOPWORDS = {
@@ -171,14 +214,16 @@ def main():
         cats[cat] += 1
         # declaration order in getTranslations() carries no meaning — normalise
         # it (English first, then alphabetical) so badges render consistently
-        langs = sorted(sim_langs(d.get("js") or "") or ["en"], key=lambda l: (l != "en", l))
+        tables = translation_tables(d.get("js") or "")
+        langs = sorted(list(tables) or ["en"], key=lambda l: (l != "en", l))
         for lg in langs:
             langcount[lg] += 1
+        name = (d.get("name") or "").strip() or stem
         entry = {
             "id": eid,
             "file": fn,
             "path": relhref(path, outdir),
-            "name": (d.get("name") or "").strip() or stem,
+            "name": name,
             "desc": desc,
             "cat": cat,
             "level": (d.get("level") or "").strip().lower(),
@@ -187,6 +232,10 @@ def main():
             "svg": find_svg(svgs, a.svgs, outdir, stem, eid),
             "usf": "USF.SimulationAdapter" in (d.get("js") or ""),
         }
+        # the sim's own title in other languages; English keeps the catalog `name`
+        names = {lg: v for lg, v in sim_names(d, tables).items() if lg != "en" and v != name}
+        if names:
+            entry["names"] = names
         # optional raster cover, covers/{externalid}.webp — shown instead of the SVG
         if eid + ".webp" in covers:
             entry["cover"] = relhref(os.path.join(a.covers, eid + ".webp"), outdir)
@@ -221,6 +270,7 @@ def main():
           f"{sum(1 for s in sims if s['svg'])} with thumbnails, "
           f"{sum(1 for s in sims if s.get('cover'))} with covers, "
           f"{manifest['cases']} with a case study, "
+          f"{sum(1 for s in sims if s.get('names'))} with translated titles, "
           f"languages {dict(langcount)}, "
           f"size {os.path.getsize(a.out) // 1024} KB")
     if monolingual:
