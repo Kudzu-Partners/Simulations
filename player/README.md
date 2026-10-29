@@ -89,7 +89,9 @@ The **USF runtime shim** (`js/usf-shim.js`) implements this contract: i18n with 
 
 Catalog search and category/level/**language** filters, cover thumbnails, random pick, round progress, on-demand hints from the sim's own coach logic, restart, fullscreen, and **session export** (downloads your decisions, per-round results, and final summary as JSON — handy for classroom debriefs).
 
-The read-only **preview** renders the sim's `view` without running it. Designer defaults are stripped there (lists render blank; boxes and radios unticked; disabled mandatory items keep their state), the way the sims start at play time, so the preview never shows an option as if it had already been chosen.
+The read-only **preview** runs the sim in its own sandboxed frame, so it opens in the page language with the opening briefing and KPIs filled in. A guard script swallows every click, key and focus before the sim sees it (the mouse wheel still scrolls), so nothing can be played there, and it pins the view to the top. Until the runtime shim has loaded, a static render of the `view` stands in, with designer defaults stripped (lists render blank; boxes and radios unticked; disabled mandatory items keep their state) so it never shows an option as if it had already been chosen.
+
+Next to Play, **Request access for my class** links to Eureka's licensing page (`utm_medium=player`, `utm_content=sim-{id}`): classroom use is the licensed part.
 
 ### Languages
 
@@ -111,6 +113,8 @@ A catalog sim can have a companion case, `cases/{externalid}.md`: the teaching c
 - When `caseLang` differs from the page language the button says so, e.g. *Caso (en inglés)*.
 - The case opens in a reader dialog in the host page, rendered with `vendor/marked.min.js`. Raw HTML in the Markdown is shown as text, never rendered; links open in a new tab. Esc, the ✕ button or a click on the backdrop closes it.
 - The reader states above every case that it is all rights reserved and not covered by the CC license.
+- The catalogue header a case opens with — the fenced `Case Code: … Keywords: …` block, or the bold `**Case Code:** …` / `**Time required: …**` lines — is library bookkeeping, so the reader leaves it out and shows only the subtitle.
+- The preview reads the teacher-facing fields from that header — `Level`, `Time required` (or `Tiempo de clase`), `Discipline(s)` — plus the numbered `## Learning Objectives`, and shows them under the hero, noting the case's language when it differs from the page's. Cases that have none of them show nothing.
 
 Cases are copied verbatim from the Express source library; they are not edited here.
 

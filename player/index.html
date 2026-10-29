@@ -179,13 +179,26 @@
               <button id="btnPlay" class="bigbtn"><span data-i18n="playSim">▶ Play simulation</span></button>
               <button id="btnCase" class="bigbtn ghostbtn" style="display:none" data-i18n-title="caseTitle"
                 title="Read the case study this simulation is built on">📄 <span class="caseLabel">Case study</span></button>
+              <a id="btnAccess" class="bigbtn accessbtn" target="_blank" rel="noopener" data-i18n-title="accessTitle"
+                title="Classroom use takes a class license — ask Eureka for one"><span data-i18n="access">Request access for
+                  my class</span></a>
             </div>
           </div>
         </div>
+        <!-- Teaching facts taken from the case header (level, class time, disciplines,
+             learning objectives); stays hidden for sims without a case or without them. -->
+        <section id="previewTeach" hidden>
+          <dl id="teachFacts"></dl>
+          <div id="teachObjWrap" hidden>
+            <h3 data-i18n="teachObjH">Learning objectives</h3>
+            <ol id="teachObj"></ol>
+          </div>
+          <p id="teachSrc"></p>
+        </section>
         <div id="previewLiveSect">
           <div id="previewLiveLabel" data-i18n="previewLiveLabel">Simulation preview &middot; read-only</div>
           <div id="previewLiveClip">
-            <iframe id="previewLive" sandbox="" data-i18n-title="previewLiveTitle" title="Simulation preview"></iframe>
+            <iframe id="previewLive" sandbox="allow-scripts" data-i18n-title="previewLiveTitle" title="Simulation preview"></iframe>
           </div>
         </div>
       </div>

@@ -103,6 +103,9 @@
       caseTitle: 'Read the case study this simulation is built on', caseHeading: 'Case study', caseCloseAria: 'Close the case study',
       caseRights: '© 2026 Kudzu Partners / Eureka Express — all rights reserved. The case is shared to be read alongside the simulation; unlike the simulations, it is not covered by the CC BY-NC-SA licence.',
       caseLoading: 'Loading the case…', caseErr: 'Could not load the case study — {msg}',
+      access: 'Request access for my class', accessTitle: 'Classroom use takes a class license — ask Eureka for one',
+      teachLevel: 'Recommended level', teachTime: 'Class time', teachDisc: 'Disciplines', teachObjH: 'Learning objectives',
+      teachSrc: 'From the case study.', teachSrcIn: 'From the case study, written in {lang}.', minutes: '{n} min',
       cats: { business: 'business', education: 'education', finance: 'finance', sustainability: 'sustainability', hospitality: 'hospitality', tourism: 'tourism', other: 'other' },
       lvls: { basic: 'basic', intermediate: 'intermediate', advanced: 'advanced' },
       langNames: { en: 'English', es: 'Spanish', pt: 'Portuguese' },
@@ -155,6 +158,9 @@
       caseTitle: 'Lee el caso de estudio en el que se basa esta simulación', caseHeading: 'Caso de estudio', caseCloseAria: 'Cerrar el caso de estudio',
       caseRights: '© 2026 Kudzu Partners / Eureka Express — todos los derechos reservados. El caso se comparte para leerlo junto a la simulación; a diferencia de las simulaciones, no está bajo la licencia CC BY-NC-SA.',
       caseLoading: 'Cargando el caso…', caseErr: 'No se pudo cargar el caso de estudio — {msg}',
+      access: 'Solicitar acceso para mi clase', accessTitle: 'El uso en clase requiere una licencia — pídela a Eureka',
+      teachLevel: 'Nivel recomendado', teachTime: 'Tiempo en clase', teachDisc: 'Disciplinas', teachObjH: 'Objetivos de aprendizaje',
+      teachSrc: 'Según el caso de estudio.', teachSrcIn: 'Según el caso de estudio, redactado en {lang}.', minutes: '{n} min',
       cats: { business: 'negocios', education: 'educación', finance: 'finanzas', sustainability: 'sostenibilidad', hospitality: 'hostelería', tourism: 'turismo', other: 'otros' },
       lvls: { basic: 'básico', intermediate: 'intermedio', advanced: 'avanzado' },
       langNames: { en: 'inglés', es: 'español', pt: 'portugués' },
@@ -197,7 +203,7 @@
       b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
     });
     if (manifest) { buildFilters(); applyFilter(); }
-    if (current && view === 'preview') renderPreviewMeta();
+    if (current && view === 'preview') { renderPreviewMeta(); renderTeach(); }
     if (current) renderCaseButtons();
     if (view === 'play' && current) {
       $('simMeta').textContent = playMetaLine(current.data, current.manifestSim);
@@ -216,8 +222,11 @@
     if (!(opts && opts.fromSim)) tellSim(lang);
   }
   function tellSim(l) {
-    var f = $('frame');
-    if (current && f.contentWindow) f.contentWindow.postMessage({ usfHost: true, type: 'setLang', lang: l }, '*');
+    if (!current) return;
+    ['frame', 'previewLive'].forEach(function (id) {
+      var f = $(id);
+      if (f.contentWindow) f.contentWindow.postMessage({ usfHost: true, type: 'setLang', lang: l }, '*');
+    });
   }
   function simLangs(s) { return (s && s.langs && s.langs.length) ? s.langs : ['en']; }
 
@@ -617,6 +626,7 @@
     $('notice').className = '';
     renderPreview();
     renderCaseButtons();
+    loadTeach();
     setView('preview');
     syncUrl();
     track('sim_preview', { sim: simId(), via: via });
@@ -637,19 +647,38 @@
     $('previewDesc').textContent = deent(d.description || '');
     $('previewBarTitle').textContent = name;
     $('btnPlayBar').style.display = 'inline-block';
+    $('btnAccess').href = 'https://www.eurekasimulations.com/basics/?utm_source=open_site&utm_medium=player&utm_campaign=class_access' +
+      (s ? '&utm_content=sim-' + encodeURIComponent(s.id) : '');
+    renderPreviewFrame();
+  }
 
-    // Build a static HTML+CSS preview (no JS — renders the initial UI layout)
-    // Scrollbar is hidden via CSS but scroll still works via mouse wheel
-    var prevDoc = '<!DOCTYPE html><html><head><meta charset="UTF-8">' +
-      '<meta name="viewport" content="width=device-width,initial-scale=1">' +
-      '<style>*{box-sizing:border-box}html{margin:0;overflow-x:hidden}body{margin:0;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}body::-webkit-scrollbar{display:none}<\/style>' +
-      '<style>' + escScript(d.css || '') + '<\/style><\/head>' +
-      '<body>' + previewView(d.view || '') + '<\/body><\/html>';
-    $('previewLive').srcdoc = prevDoc;
+  /* The preview runs the sim itself, so it opens in the page language with its
+     opening numbers filled in, but read-only: PREVIEW_GUARD swallows every click,
+     key and focus before the sim sees it (the wheel still scrolls) and pins the
+     view to the top. Its messages never reach the chrome — the listener below
+     only trusts the Play frame. Until the runtime shim has loaded, a static
+     HTML+CSS render stands in; the shim's loader swaps the live one in.
+     Scrollbar is hidden via CSS but scroll still works via mouse wheel. */
+  var PREVIEW_STYLE = '<style>*{box-sizing:border-box}html{margin:0;overflow-x:hidden}body{margin:0;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}body::-webkit-scrollbar{display:none}<\/style>';
+  var PREVIEW_GUARD = '<script>(function(){' +
+    'function stop(e){e.preventDefault();e.stopImmediatePropagation();}' +
+    "['pointerdown','mousedown','mouseup','click','dblclick','keydown','keypress','touchend','submit'].forEach(function(t){window.addEventListener(t,stop,true);});" +
+    "window.addEventListener('focusin',function(e){if(e.target&&e.target.blur)e.target.blur();},true);" +
+    "if('scrollRestoration' in history)history.scrollRestoration='manual';" +
+    "window.addEventListener('load',function(){window.scrollTo(0,0);});" +
+    '})();<\/script>';
+  function renderPreviewFrame() {
+    var d = current.data;
+    $('previewLive').srcdoc = shimSrc
+      ? simDoc(d, simStartLang(), PREVIEW_STYLE, PREVIEW_GUARD)
+      : '<!DOCTYPE html><html><head><meta charset="UTF-8">' +
+        '<meta name="viewport" content="width=device-width,initial-scale=1">' + PREVIEW_STYLE +
+        '<style>' + escScript(d.css || '') + '<\/style><\/head>' +
+        '<body>' + previewView(d.view || '') + '<\/body><\/html>';
     requestAnimationFrame(updatePreviewScale);
   }
 
-  /* The static preview has no runtime, so a designer default would show as if it had
+  /* The static fallback preview has no runtime, so a designer default would show as if it had
      been chosen, including answers the EQIL guard clears at play time. Strip the
      defaults here: lists render blank, boxes and radios unticked. Disabled inputs
      (mandatory items) keep their state. */
@@ -701,7 +730,88 @@
     gfm: true,
     renderer: { html: function (html) { return esc(html); } }
   }) : null;
-  var caseLoaded = null, caseReturnFocus = null;
+  var caseLoaded = null, caseReturnFocus = null, caseTexts = {};
+  /* one fetch per case: the preview's teaching facts and the reader share it */
+  function caseText(path) {
+    if (!caseTexts[path]) {
+      caseTexts[path] = fetch(path).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+        .then(function (md) { return md.replace(/\r\n?/g, '\n'); }); // some cases ship CRLF
+      caseTexts[path].catch(function () { delete caseTexts[path]; });
+    }
+    return caseTexts[path];
+  }
+
+  /* Cases open with a catalogue header for the source library, in one of two
+     shapes: a fenced block of "Key:   value" lines under the title (Case Code,
+     Length, Companion materials, Keywords…), or bold lines around the title —
+     "**Case Code:** … · **Companion simulation:** …" (or its Spanish and
+     Portuguese "**Código del/de/do caso:**"), sometimes "**Track:** …", and
+     "**Time required: 80 minutes**" / "**Tiempo de clase: 80 minutos**". It is
+     internal bookkeeping, not part of the story, so the reader drops it,
+     keeping only the subtitle; the preview reads the fields a teacher needs. */
+  var CASE_FENCE = /^(#[^\n]*\n+)```[^\n]*\n([\s\S]*?)\n```[ \t]*\n/;
+  var CASE_BOLD = /^((?:#[^\n]*\n+)?)((?:\*\*(?:Case [Cc]ode|Código d[eo]l? caso|Track|Time required|Tiempo de clase)[^\n]*\n+)+)/;
+  function caseHeader(md) {
+    var m = md.match(CASE_FENCE), f = {};
+    if (m) {
+      m[2].split('\n').forEach(function (ln) {
+        var kv = ln.match(/^([A-Za-z][A-Za-z ()\/]*?):\s+(.+)$/);
+        if (kv) f[kv[1].trim()] = kv[2].trim();
+      });
+    }
+    var t = md.match(/\*\*Time required:\s*([^*\n]+?)\s*\*\*/) || md.match(/\*\*Tiempo de clase:\s*([^*\n]+?)\s*\*\*/);
+    if (t && !f['Time required']) f['Time required'] = t[1];
+    return f;
+  }
+  function stripCaseHeader(md) {
+    var sub = caseHeader(md).Subtitle;
+    md = md.replace(CASE_FENCE, function (all, title) { return title + (sub ? '*' + sub + '*\n\n' : ''); });
+    return md.replace(CASE_BOLD, '$1').replace(/^---\n+/, ''); // header-first cases leave a rule on top
+  }
+  function caseObjectives(md) {
+    var sec = md.match(/^##\s+Learning Objectives[^\n]*\n([\s\S]*?)(?=\n---|\n##\s)/m);
+    if (!sec) return [];
+    var out = [], re = /^\s*\d+\.\s+(.+)$/gm, m;
+    while ((m = re.exec(sec[1]))) out.push(m[1].replace(/\*+/g, '').trim());
+    return out;
+  }
+  function splitList(s) { return s ? s.split(/\s*;\s*/).filter(Boolean) : []; }
+
+  /* ───────── teaching facts on the preview ───────── */
+  function loadTeach() {
+    var s = current.manifestSim;
+    current.teach = null;
+    renderTeach();
+    if (!s || !s.case) return;
+    caseText(s.case).then(function (md) {
+      if (!current || current.manifestSim !== s) return; // moved on while it loaded
+      var h = caseHeader(md);
+      current.teach = { level: splitList(h.Level), time: h['Time required'] || '', disc: splitList(h['Discipline(s)']), obj: caseObjectives(md), lang: s.caseLang || 'en' };
+      renderTeach();
+    }).catch(function () { });
+  }
+  function renderTeach() {
+    var t = current && current.teach;
+    var has = t && (t.level.length || t.time || t.disc.length || t.obj.length);
+    $('previewTeach').hidden = !has;
+    if (!has) return;
+    var caseLangAttr = ' lang="' + esc(t.lang) + '"';
+    function chips(arr) { return arr.map(function (x) { return '<span class="teachchip"' + caseLangAttr + '>' + esc(x) + '</span>'; }).join(''); }
+    var facts = [];
+    if (t.level.length) facts.push('<div><dt>' + esc(T('teachLevel')) + '</dt><dd>' + chips(t.level) + '</dd></div>');
+    if (t.time) {
+      var mins = t.time.match(/^(\d+(?:\s*[–-]\s*\d+)?)\s*minut[eo]s?\s*(.*)$/i);
+      var timeHtml = mins ? esc(T('minutes', { n: mins[1].replace(/\s+/g, '') })) + (mins[2] ? ' <span' + caseLangAttr + '>' + esc(mins[2]) + '</span>' : '') : '<span' + caseLangAttr + '>' + esc(t.time) + '</span>';
+      facts.push('<div><dt>' + esc(T('teachTime')) + '</dt><dd class="teachtime">' + timeHtml + '</dd></div>');
+    }
+    if (t.disc.length) facts.push('<div><dt>' + esc(T('teachDisc')) + '</dt><dd>' + chips(t.disc) + '</dd></div>');
+    $('teachFacts').innerHTML = facts.join('');
+    $('teachObjWrap').hidden = !t.obj.length;
+    $('teachObj').setAttribute('lang', t.lang);
+    $('teachObj').innerHTML = t.obj.map(function (o) { return '<li>' + esc(o) + '</li>'; }).join('');
+    $('teachSrc').textContent = t.lang !== lang ? T('teachSrcIn', { lang: langName(t.lang) }) : T('teachSrc');
+  }
+
   function caseSim() { return (caseMd && current && current.manifestSim && current.manifestSim.case) ? current.manifestSim : null; }
   /* the case ships in one language — say so on the button when it isn't the page's */
   function caseLabel(key) {
@@ -728,10 +838,10 @@
     body.setAttribute('lang', s.caseLang || 'en');
     body.textContent = T('caseLoading');
     body.scrollTop = 0;
-    fetch(s.case).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+    caseText(s.case)
       .then(function (md) {
         if (caseSim() !== s) return; // moved on to another sim while it loaded
-        body.innerHTML = caseMd.parse(md);
+        body.innerHTML = caseMd.parse(stripCaseHeader(md));
         body.querySelectorAll('a[href]').forEach(function (a) {
           var href = a.getAttribute('href');
           if (!/^(https?:|mailto:|#)/i.test(href)) { a.removeAttribute('href'); return; }
@@ -788,24 +898,28 @@
     track('sim_play', { sim: simId(), lang: lang, level: ((s && s.level) || d.level || '').toLowerCase() });
   }
 
-  function buildFrame() {
-    if (!shimSrc) return; // shim still loading; playCurrent()/restart will retry once it's ready
-    var d = current.data;
-    /* The USF shim picks its starting language from <html lang>, so a sim that
-       ships the preferred language opens in it — no click needed. Sims whose
-       language support we don't know (dropped file, ?src=) fall back to the shim's own default. */
-    var startLang = (!current.langs || current.langs.indexOf(lang) >= 0) ? lang : 'en';
-    var doc = '<!DOCTYPE html><html lang="' + esc(startLang) + '"><head><meta charset="UTF-8">' +
+  /* The USF shim picks its starting language from <html lang>, so a sim that
+     ships the preferred language opens in it — no click needed. Sims whose
+     language support we don't know (dropped file, ?src=) fall back to the shim's own default. */
+  function simStartLang() { return (!current.langs || current.langs.indexOf(lang) >= 0) ? lang : 'en'; }
+  /* One runnable document for both the Play frame and the live preview;
+     the preview adds its own style and the read-only guard script. */
+  function simDoc(d, startLang, extraHead, extraBody) {
+    return '<!DOCTYPE html><html lang="' + esc(startLang) + '"><head><meta charset="UTF-8">' +
       '<meta name="viewport" content="width=device-width, initial-scale=1">' +
-      '<style>html{-webkit-text-size-adjust:100%}body{margin:0}</style>' +
+      '<style>html{-webkit-text-size-adjust:100%}body{margin:0}</style>' + (extraHead || '') +
       '<style>' + escScript(d.css || '') + '</style></head><body>' +
+      (extraBody || '') +
       (d.view || '') +
       (chartSrc ? '<script>' + escScript(chartSrc) + '<\/script>' : '') +
       '<script>window.__USF_MAX_PERIODS__=' + (parseInt(d.max_periods, 10) || 5) + ';<\/script>' +
       '<script>' + escScript(shimSrc) + '<\/script>' +
       '<script>' + escScript(d.js || '') + '<\/script>' +
       '</body></html>';
-    $('frame').srcdoc = doc;
+  }
+  function buildFrame() {
+    if (!shimSrc) return; // shim still loading; playCurrent()/restart will retry once it's ready
+    $('frame').srcdoc = simDoc(current.data, simStartLang());
     if (window.EurekaBenchmark) window.EurekaBenchmark.reset();
   }
 
@@ -976,7 +1090,11 @@
 
   /* USF shim: required — sims can't run without it */
   fetch('js/usf-shim.js').then(function (r) { if (!r.ok) throw 0; return r.text(); })
-    .then(function (t) { shimSrc = t; if (current && view === 'play') buildFrame(); })
+    .then(function (t) {
+      shimSrc = t;
+      if (current && view === 'play') buildFrame();
+      if (current && view === 'preview') renderPreviewFrame();
+    })
     .catch(function () { notice(T('errShim'), 'err'); });
 
   /* Chart.js: vendor copy first, CDN fallback; sims degrade gracefully without it */
