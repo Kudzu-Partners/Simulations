@@ -33,19 +33,24 @@
     { id: '3-4', icon: '📋', color: '#a78bfa', min: 3, max: 4 },
     { id: '5+', icon: '🏆', color: '#fb923c', min: 5, max: 999 }
   ];
-  /* Teaching facts build_manifest.py reads from each sim's case: `area` from the
-     case code prefix, `programs` from its Level line, `minutes` of class time. */
+  /* Teaching facts build_manifest.py records per sim, from its `teaching` block or else
+     its case: `area`, an Axis A discipline of the MECE case-method taxonomy (A1–A12);
+     `programs`, audience groups; `minutes` of class time. */
   var AREAS = [
-    { id: 'STR', icon: '♟️', color: '#7c3aed' },
-    { id: 'FIN', icon: '📈', color: '#10b981' },
-    { id: 'MKT', icon: '📢', color: '#ec4899' },
-    { id: 'OPS', icon: '⚙️', color: '#64748b' },
-    { id: 'ORG', icon: '🧭', color: '#06b6d4' },
-    { id: 'ENT', icon: '🚀', color: '#f59e0b' },
-    { id: 'SUS', icon: '🌿', color: '#14b8a6' },
-    { id: 'RSK', icon: '🚨', color: '#ef4444' }
+    { id: 'A7', icon: '♟️', color: '#7c3aed' },
+    { id: 'A2', icon: '📈', color: '#10b981' },
+    { id: 'A1', icon: '🧾', color: '#0ea5e9' },
+    { id: 'A4', icon: '📢', color: '#ec4899' },
+    { id: 'A5', icon: '⚙️', color: '#64748b' },
+    { id: 'A6', icon: '🤖', color: '#3b82f6' },
+    { id: 'A8', icon: '🧭', color: '#06b6d4' },
+    { id: 'A9', icon: '👥', color: '#8b5cf6' },
+    { id: 'A10', icon: '🚀', color: '#f59e0b' },
+    { id: 'A11', icon: '🌿', color: '#14b8a6' },
+    { id: 'A3', icon: '🌐', color: '#a3a3a3' },
+    { id: 'A12', icon: '🎯', color: '#ef4444' }
   ];
-  var PROGRAMS = ['ug', 'master', 'exec'];
+  var PROGRAMS = ['secondary', 'ug', 'master', 'exec'];
   var TIMEGROUPS = [
     { id: '60', min: 1, max: 60 },
     { id: '80', min: 61, max: 80 },
@@ -129,15 +134,17 @@
       caseTeacher: 'For the teacher: learning objectives and simulation guide',
       access: 'Request access for my class', accessTitle: 'Classroom use takes a class license — ask Eureka for one',
       teachLevel: 'Recommended level', teachTime: 'Class time', teachDisc: 'Disciplines', teachObjH: 'Learning objectives',
-      teachSrc: 'From the case study.', teachSrcIn: 'From the case study, written in {lang}.', minutes: '{n} min',
+      teachSrc: 'From the case study.', teachSrcIn: 'From the case study, written in {lang}.',
+      teachSrcSim: 'From the simulation\'s teaching sheet.', teachSrcSimIn: 'From the simulation\'s teaching sheet; some objectives only in {lang}.', minutes: '{n} min',
       copyObj: 'Copy objectives', copyObjTitle: 'Copy the objectives as a numbered list, for a syllabus or a course proposal',
       copiedObj: 'Objectives copied', copySelect: 'Objectives selected — press Ctrl+C to copy',
       cats: { business: 'business', education: 'education', finance: 'finance', sustainability: 'sustainability', hospitality: 'hospitality', tourism: 'tourism', other: 'other' },
       lvls: { basic: 'basic', intermediate: 'intermediate', advanced: 'advanced' },
       langNames: { en: 'English', es: 'Spanish', pt: 'Portuguese' },
       topics: { marketing: 'Marketing', strategy: 'Strategy', innovation: 'Innovation', digital: 'Digital & AI', leadership: 'Leadership', negotiation: 'Negotiation', governance: 'Governance', operations: 'Operations', crisis: 'Crisis Mgmt', ethics: 'Ethics' },
-      areas: { STR: 'Strategy', FIN: 'Finance', MKT: 'Marketing', OPS: 'Operations', ORG: 'People & organization', ENT: 'Entrepreneurship', SUS: 'Sustainability', RSK: 'Risk' },
-      programs: { ug: 'Undergraduate', master: 'Master\'s & MBA', exec: 'Executive education' },
+      areas: { A1: 'Accounting & control', A2: 'Finance', A3: 'Economics & business environment', A4: 'Marketing', A5: 'Operations & supply chain', A6: 'Information systems & digital', A7: 'Strategy', A8: 'Organizational behavior & leadership', A9: 'Human resources', A10: 'Entrepreneurship', A11: 'Ethics, governance & society', A12: 'General management' },
+      programs: { secondary: 'Secondary school', ug: 'Undergraduate', master: 'Master\'s & MBA', exec: 'Executive education' },
+      audiences: { secondary: 'Secondary school', 'ug-intro': 'Undergraduate, first years', 'ug-advanced': 'Undergraduate, final years', 'masters-core': 'Master\'s & MBA core', 'masters-elective': 'Master\'s & MBA elective', 'exec-ed': 'Executive education' },
       timeGroups: { '60': 'Up to 60 min', '80': '61–80 min', '90': 'Over 80 min' },
       durGroups: {
         '1-2': { label: 'Quick', hint: '1–2 rounds' },
@@ -192,15 +199,17 @@
       caseTeacher: 'Para el profesor: objetivos de aprendizaje y guía de la simulación',
       access: 'Solicitar acceso para mi clase', accessTitle: 'El uso en clase requiere una licencia — pídela a Eureka',
       teachLevel: 'Nivel recomendado', teachTime: 'Tiempo en clase', teachDisc: 'Disciplinas', teachObjH: 'Objetivos de aprendizaje',
-      teachSrc: 'Según el caso de estudio.', teachSrcIn: 'Según el caso de estudio, redactado en {lang}.', minutes: '{n} min',
+      teachSrc: 'Según el caso de estudio.', teachSrcIn: 'Según el caso de estudio, redactado en {lang}.',
+      teachSrcSim: 'Según la ficha docente de la simulación.', teachSrcSimIn: 'Según la ficha docente de la simulación; algunos objetivos solo están en {lang}.', minutes: '{n} min',
       copyObj: 'Copiar objetivos', copyObjTitle: 'Copia los objetivos como lista numerada, para la guía docente o una propuesta de asignatura',
       copiedObj: 'Objetivos copiados', copySelect: 'Objetivos seleccionados — pulsa Ctrl+C para copiar',
       cats: { business: 'negocios', education: 'educación', finance: 'finanzas', sustainability: 'sostenibilidad', hospitality: 'hostelería', tourism: 'turismo', other: 'otros' },
       lvls: { basic: 'básico', intermediate: 'intermedio', advanced: 'avanzado' },
       langNames: { en: 'inglés', es: 'español', pt: 'portugués' },
       topics: { marketing: 'Marketing', strategy: 'Estrategia', innovation: 'Innovación', digital: 'Digital e IA', leadership: 'Liderazgo', negotiation: 'Negociación', governance: 'Gobernanza', operations: 'Operaciones', crisis: 'Gestión de crisis', ethics: 'Ética' },
-      areas: { STR: 'Estrategia', FIN: 'Finanzas', MKT: 'Marketing', OPS: 'Operaciones', ORG: 'Personas y organización', ENT: 'Emprendimiento', SUS: 'Sostenibilidad', RSK: 'Riesgo' },
-      programs: { ug: 'Grado', master: 'Máster y MBA', exec: 'Executive Education' },
+      areas: { A1: 'Contabilidad y control', A2: 'Finanzas', A3: 'Economía y entorno', A4: 'Marketing', A5: 'Operaciones y cadena de suministro', A6: 'Sistemas de información y digital', A7: 'Estrategia', A8: 'Comportamiento organizativo y liderazgo', A9: 'Recursos humanos', A10: 'Emprendimiento', A11: 'Ética, gobierno y sociedad', A12: 'Dirección general' },
+      programs: { secondary: 'Secundaria y bachillerato', ug: 'Grado', master: 'Máster y MBA', exec: 'Executive Education' },
+      audiences: { secondary: 'Secundaria y bachillerato', 'ug-intro': 'Grado, primeros cursos', 'ug-advanced': 'Grado, últimos cursos', 'masters-core': 'Máster y MBA, troncal', 'masters-elective': 'Máster y MBA, optativa', 'exec-ed': 'Executive Education' },
       timeGroups: { '60': 'Hasta 60 min', '80': '61–80 min', '90': 'Más de 80 min' },
       durGroups: {
         '1-2': { label: 'Rápida', hint: '1–2 rondas' },
@@ -819,9 +828,17 @@
   function splitList(s) { return s ? s.split(/\s*;\s*/).filter(Boolean) : []; }
 
   /* ───────── teaching facts on the preview ───────── */
+  /* Two sources. The sim's own `teaching` block (kudzu Express_Teaching_Block_Spec)
+     carries codes and text in each language, so it is read again on every render;
+     without one, the case header gives free text in the case's language. */
   function loadTeach() {
-    var s = current.manifestSim;
+    var s = current.manifestSim, block = current.data.teaching;
     current.teach = null;
+    if (block && typeof block === 'object' && Array.isArray(block.objectives)) {
+      current.teach = { block: block };
+      renderTeach();
+      return;
+    }
     renderTeach();
     if (!s || !s.case) return;
     caseText(s.case).then(function (md) {
@@ -831,34 +848,60 @@
       renderTeach();
     }).catch(function () { });
   }
+  /* What the preview shows, in one shape: labels, minutes or the case's time text,
+     and objectives as {text, lang}. Text the block lacks in the page language falls
+     back to English. */
+  function teachView(t) {
+    if (!t) return null;
+    if (!t.block) {
+      return { level: t.level, time: t.time, disc: t.disc, factsLang: t.lang, srcLang: t.lang, fromSim: false,
+        obj: t.obj.map(function (o) { return { text: o, lang: t.lang }; }) };
+    }
+    var b = t.block, d = b.discipline || {};
+    var tops = [d.primary].concat(d.secondary || []).map(function (c) { return String(c || '').split('.')[0]; })
+      .filter(function (a, i, all) { return UI[lang].areas[a] && all.indexOf(a) === i; });
+    var obj = b.objectives.map(function (o) {
+      var tx = (o && o.text) || {};
+      return tx[lang] ? { text: tx[lang], lang: lang } : { text: tx.en || '', lang: 'en' };
+    }).filter(function (o) { return o.text; });
+    return {
+      level: (b.audience || []).filter(function (a) { return UI[lang].audiences[a]; }).map(function (a) { return UI[lang].audiences[a]; }),
+      minutes: (b.duration && b.duration.class_minutes) || 0,
+      disc: tops.map(areaLabel), factsLang: lang, fromSim: true, obj: obj,
+      srcLang: obj.some(function (o) { return o.lang !== lang; }) ? 'en' : lang
+    };
+  }
   function renderTeach() {
-    var t = current && current.teach;
-    var has = t && (t.level.length || t.time || t.disc.length || t.obj.length);
+    var t = teachView(current && current.teach);
+    var has = t && (t.level.length || t.time || t.minutes || t.disc.length || t.obj.length);
     $('previewTeach').hidden = !has;
     if (!has) return;
-    var caseLangAttr = ' lang="' + esc(t.lang) + '"';
-    function chips(arr) { return arr.map(function (x) { return '<span class="teachchip"' + caseLangAttr + '>' + esc(x) + '</span>'; }).join(''); }
+    var factsLangAttr = ' lang="' + esc(t.factsLang) + '"';
+    function chips(arr) { return arr.map(function (x) { return '<span class="teachchip"' + factsLangAttr + '>' + esc(x) + '</span>'; }).join(''); }
     var facts = [];
     if (t.level.length) facts.push('<div><dt>' + esc(T('teachLevel')) + '</dt><dd>' + chips(t.level) + '</dd></div>');
-    if (t.time) {
+    var timeHtml = '';
+    if (t.minutes) timeHtml = esc(T('minutes', { n: t.minutes }));
+    else if (t.time) {
       var mins = t.time.match(/^(\d+(?:\s*[–-]\s*\d+)?)\s*minut[eo]s?\s*(.*)$/i);
-      var timeHtml = mins ? esc(T('minutes', { n: mins[1].replace(/\s+/g, '') })) + (mins[2] ? ' <span' + caseLangAttr + '>' + esc(mins[2]) + '</span>' : '') : '<span' + caseLangAttr + '>' + esc(t.time) + '</span>';
-      facts.push('<div><dt>' + esc(T('teachTime')) + '</dt><dd class="teachtime">' + timeHtml + '</dd></div>');
+      timeHtml = mins ? esc(T('minutes', { n: mins[1].replace(/\s+/g, '') })) + (mins[2] ? ' <span' + factsLangAttr + '>' + esc(mins[2]) + '</span>' : '') : '<span' + factsLangAttr + '>' + esc(t.time) + '</span>';
     }
+    if (timeHtml) facts.push('<div><dt>' + esc(T('teachTime')) + '</dt><dd class="teachtime">' + timeHtml + '</dd></div>');
     if (t.disc.length) facts.push('<div><dt>' + esc(T('teachDisc')) + '</dt><dd>' + chips(t.disc) + '</dd></div>');
     $('teachFacts').innerHTML = facts.join('');
     $('teachObjWrap').hidden = !t.obj.length;
-    $('teachObj').setAttribute('lang', t.lang);
-    $('teachObj').innerHTML = t.obj.map(function (o) { return '<li>' + esc(o) + '</li>'; }).join('');
-    $('teachSrc').textContent = t.lang !== lang ? T('teachSrcIn', { lang: langName(t.lang) }) : T('teachSrc');
+    $('teachObj').removeAttribute('lang');
+    $('teachObj').innerHTML = t.obj.map(function (o) { return '<li lang="' + esc(o.lang) + '">' + esc(o.text) + '</li>'; }).join('');
+    var src = t.fromSim ? 'teachSrcSim' : 'teachSrc';
+    $('teachSrc').textContent = t.srcLang !== lang ? T(src + 'In', { lang: langName(t.srcLang) }) : T(src);
   }
   /* A numbered list with the sim's name on top, ready to paste into a syllabus.
      Where the clipboard is refused, the list is selected instead. */
   $('btnCopyObj').onclick = function () {
-    var t = current && current.teach;
+    var t = teachView(current && current.teach);
     if (!t || !t.obj.length) return;
     var text = T('teachObjH') + ' — ' + currentName() + ' (Eureka Express #' + simId() + ')\n' +
-      t.obj.map(function (o, i) { return (i + 1) + '. ' + o; }).join('\n');
+      t.obj.map(function (o, i) { return (i + 1) + '. ' + o.text; }).join('\n');
     track('objectives_copy', { sim: simId() });
     function selectList() {
       var r = document.createRange(), sel = window.getSelection();

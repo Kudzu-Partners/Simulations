@@ -119,7 +119,20 @@ A catalog sim can have a companion case, `cases/{externalid}.md`: the teaching c
 - The preview reads the teacher-facing fields from that header — `Level`, `Time required` (or `Tiempo de clase`), `Discipline(s)` — plus the numbered `## Learning Objectives`, and shows them under the hero, noting the case's language when it differs from the page's. Cases that have none of them show nothing. **Copy objectives** puts them on the clipboard as a numbered list under the sim's name, ready for a syllabus.
 - `## Learning Objectives` and `## Appendix: Simulation Linkage` (round mapping, pre-read timing, debrief prompts) are written for the teacher, so the reader moves them out of the story into a closed **For the teacher** block at the end.
 
-`build_manifest.py` also reads three catalog facts from each case for the filters: `area`, the discipline from the case code prefix (`STR`, `FIN`, `MKT`, `OPS`, `ORG`, `ENT`, `SUS`, `RSK`; every case has one); `minutes`, the class time; and `programs`, the `Level` line grouped into `ug` (undergraduate), `master` (MBA, EMBA, MSc) and `exec` (executive and corporate programs). Program and class time are only known where the case states them, and their dropdowns say how many sims that is. Cards show the class time next to the rounds.
+### Teaching facts
+
+The filters and the preview's teaching facts come from two sources, the first that has a fact winning:
+
+1. **The sim's `teaching` block** — an optional top-level key of the simulation JSON, written in the Express library (spec and JSON Schema in kudzu: `Express/Express_Teaching_Block_Spec_Oct2026.md`, `Express_Teaching_Block.schema.json`). It classifies the sim in the MECE case-method taxonomy (one primary Axis A sub-discipline such as `A12.3`, Axis B capabilities, audience, class minutes) and carries the learning objectives in every language the sim ships. The preview shows them in the page language, falling back to English per objective and saying so.
+2. **The case header** (above), until a sim has a block.
+
+`build_manifest.py` records three facts per sim for the catalog filters:
+
+- `area` — the Axis A discipline (`A1`–`A12`): the top level of the block's `discipline.primary`, else the case code prefix mapped onto it (`STR`→`A7`, `FIN`→`A2`, `MKT`→`A4`, `OPS`→`A5`, `ORG`→`A8`, `ENT`→`A10`, `SUS`→`A11`, `RSK`→`A12`; approximate, RSK most of all). Every sim has one.
+- `minutes` — the block's `duration.class_minutes`, else the case's class time.
+- `programs` — `secondary`, `ug`, `master`, `exec`: the block's `audience` grouped, else the case's `Level` line.
+
+Program and class time are only known where a block or the case states them, and their dropdowns say how many sims that is. Cards show the class time next to the rounds. The build reports how many sims carry a block.
 
 Cases are copied verbatim from the Express source library; they are not edited here.
 

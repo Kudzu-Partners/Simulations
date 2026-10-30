@@ -160,12 +160,40 @@ def case_lang(text):
     return max(counts, key=counts.get)
 
 
-CASE_AREAS = ("STR", "FIN", "MKT", "OPS", "ORG", "ENT", "SUS", "RSK")
+# Teaching facts for the player's filters, in the codes of the MECE case-method taxonomy
+# (Axis A disciplines, A1–A12) and grouped programs. A sim's own `teaching` block — spec:
+# kudzu Express/Express_Teaching_Block_Spec_Oct2026.md — is the source; while a sim has none,
+# its case header stands in, its case code prefix mapped onto Axis A (approximate, RSK most of all).
+CASE_PREFIX_DISCIPLINE = {"STR": "A7", "FIN": "A2", "MKT": "A4", "OPS": "A5",
+                          "ORG": "A8", "ENT": "A10", "SUS": "A11", "RSK": "A12"}
+PROGRAM_GROUPS = ("secondary", "ug", "master", "exec")
+AUDIENCE_GROUP = {"secondary": "secondary", "ug-intro": "ug", "ug-advanced": "ug",
+                  "masters-core": "master", "masters-elective": "master", "exec-ed": "exec"}
+
+
+def sim_teaching(t):
+    """area / minutes / programs from a sim's `teaching` block. Lenient: a field that is
+    missing or malformed is left out, so a draft block still contributes what it has."""
+    if not isinstance(t, dict):
+        return {}
+    out = {}
+    primary = (t.get("discipline") or {}).get("primary") if isinstance(t.get("discipline"), dict) else None
+    m = re.match(r"^(A(?:[1-9]|1[0-2]))\.", primary or "")
+    if m:
+        out["area"] = m.group(1)
+    mins = (t.get("duration") or {}).get("class_minutes") if isinstance(t.get("duration"), dict) else None
+    if isinstance(mins, int) and mins > 0:
+        out["minutes"] = mins
+    aud = t.get("audience") if isinstance(t.get("audience"), list) else []
+    groups = {AUDIENCE_GROUP[a] for a in aud if a in AUDIENCE_GROUP}
+    if groups:
+        out["programs"] = [g for g in PROGRAM_GROUPS if g in groups]
+    return out
 
 
 def case_teaching(text):
-    """Catalog facts from a case's header, for the player's filters:
-    area     the discipline, from the case code prefix (STR-2026-83 → "STR")
+    """The same facts from a case's header, for sims without a `teaching` block:
+    area     the case code prefix mapped onto Axis A (STR-2026-83 → "A7")
     minutes  class time ("Time required" / "Tiempo de clase")
     programs who it is for, from the free-text "Level" line, grouped into
              "ug" (undergraduate), "master" (MBA, EMBA, MSc) and "exec"
@@ -173,8 +201,8 @@ def case_teaching(text):
     Missing facts are left out: most cases have an area, fewer a level."""
     out = {}
     code = re.search(r"(?:Case [Cc]ode|C[oó]digo d[eo]l? caso)\W*\s*([A-Z]{2,5})-\d{4}-\d+", text)
-    if code and code.group(1) in CASE_AREAS:
-        out["area"] = code.group(1)
+    if code and code.group(1) in CASE_PREFIX_DISCIPLINE:
+        out["area"] = CASE_PREFIX_DISCIPLINE[code.group(1)]
     mins = re.search(r"(?:Time required|Tiempo de clase):\**\s*(\d+)", text)
     if mins:
         out["minutes"] = int(mins.group(1))
@@ -189,7 +217,7 @@ def case_teaching(text):
             if p not in progs:
                 progs.append(p)
         if progs:
-            out["programs"] = [p for p in ("ug", "master", "exec") if p in progs]
+            out["programs"] = [p for p in PROGRAM_GROUPS if p in progs]
     return out
 
 
@@ -222,6 +250,7 @@ def main():
     covers = set(os.listdir(a.covers)) if os.path.isdir(a.covers) else set()
 
     sims, skipped = [], []
+    with_block = 0
     cats = collections.Counter()
     langcount = collections.Counter()
 
@@ -280,6 +309,10 @@ def main():
             entry["case"] = relhref(case_path, outdir)
             entry["caseLang"] = case_lang(case_text)
             entry.update(case_teaching(case_text))
+        # the sim's own teaching block wins, fact by fact, over its case header
+        own = sim_teaching(d.get("teaching"))
+        entry.update(own)
+        with_block += bool(own)
         sims.append(entry)
 
     def sortkey(s):
@@ -306,6 +339,7 @@ def main():
           f"{sum(1 for s in sims if s.get('cover'))} with covers, "
           f"{manifest['cases']} with a case study, "
           f"{sum(1 for s in sims if s.get('names'))} with translated titles, "
+          f"{with_block} with a teaching block, "
           f"teaching facts: area {sum(1 for s in sims if s.get('area'))}, "
           f"class time {sum(1 for s in sims if s.get('minutes'))}, "
           f"programs {sum(1 for s in sims if s.get('programs'))}, "
