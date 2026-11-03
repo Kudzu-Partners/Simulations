@@ -254,6 +254,7 @@
     if (manifest) { buildFilters(); applyFilter(); }
     if (current && view === 'preview') { renderPreviewName(); renderPreviewMeta(); renderTeach(); }
     if (current) renderCaseButtons();
+    if (caseSim() && !$('caseModal').hidden) loadCase(caseSim()); // the case in the new language, if the repo has it
     document.querySelectorAll('#caseBody details.caseTeacher > summary').forEach(function (s) { s.textContent = T('caseTeacher'); });
     if (view === 'play' && current) {
       $('simTitle').textContent = currentName();
@@ -810,8 +811,12 @@
      the learning objectives, and the appendix that maps the case to the sim's
      rounds and carries the debrief prompts. The reader moves them into one
      closed block at the end. A section runs to the next "## " heading or "---"
-     rule; removing one leaves two rules in a row, which collapse to one. */
-  var TEACHER_SECTIONS = /^##\s+(?:Learning Objectives|Appendix: Simulation Linkage)\b[^\n]*\n[\s\S]*?(?=^##\s|^---[ \t]*$|(?![\s\S]))/gm;
+     rule; removing one leaves two rules in a row, which collapse to one.
+     A translated case (cases/{id}.{lang}.md) names the two sections
+     "Objetivos de aprendizaje" / "Apéndice: Vínculo con la simulación" in Spanish
+     and "Objetivos de aprendizagem" / "Apêndice: Vínculo com a simulação" in
+     Portuguese; a translation that renames them shows them inside the story. */
+  var TEACHER_SECTIONS = /^##\s+(?:Learning Objectives|Appendix: Simulation Linkage|Objetivos de aprendizaje|Objetivos de aprendizagem|Apéndice: Vínculo con la simulación|Apêndice: Vínculo com a simulação)\b[^\n]*\n[\s\S]*?(?=^##\s|^---[ \t]*$|(?![\s\S]))/gm;
   function splitTeacher(md) {
     var teacher = [];
     var story = md.replace(TEACHER_SECTIONS, function (sec) { teacher.push(sec.trim()); return ''; })
@@ -914,10 +919,16 @@
   };
 
   function caseSim() { return (caseMd && current && current.manifestSim && current.manifestSim.case) ? current.manifestSim : null; }
-  /* the case ships in one language — say so on the button when it isn't the page's */
+  /* The case in the page's language when the repo has it (cases/{id}.{lang}.md,
+     listed in caseVersions), else the original in whatever language it was written. */
+  function caseFor(s) {
+    var path = s.caseVersions && s.caseVersions[lang];
+    return path ? { path: path, lang: lang } : { path: s.case, lang: s.caseLang || 'en' };
+  }
+  /* say so on the button when the case is not in the page's language */
   function caseLabel(key) {
-    var s = caseSim();
-    return (s.caseLang && s.caseLang !== lang) ? T(key + 'In', { lang: langName(s.caseLang) }) : T(key);
+    var c = caseFor(caseSim());
+    return c.lang !== lang ? T(key + 'In', { lang: langName(c.lang) }) : T(key);
   }
   function renderCaseButtons() {
     var s = caseSim();
@@ -934,14 +945,18 @@
     caseReturnFocus = document.activeElement;
     $('caseModal').hidden = false;
     $('caseClose').focus();
-    if (caseLoaded === s.case) return;
+    loadCase(s);
+  }
+  function loadCase(s) {
+    var c = caseFor(s);
+    if (caseLoaded === c.path) return;
     var body = $('caseBody');
-    body.setAttribute('lang', s.caseLang || 'en');
+    body.setAttribute('lang', c.lang);
     body.textContent = T('caseLoading');
     body.scrollTop = 0;
-    caseText(s.case)
+    caseText(c.path)
       .then(function (md) {
-        if (caseSim() !== s) return; // moved on to another sim while it loaded
+        if (caseSim() !== s || caseFor(s).path !== c.path) return; // moved on to another sim or language while it loaded
         var parts = splitTeacher(stripCaseHeader(md));
         body.innerHTML = caseMd.parse(parts.story) + (parts.teacher
           ? '<details class="caseTeacher"><summary>' + esc(T('caseTeacher')) + '</summary>' + caseMd.parse(parts.teacher) + '</details>'
@@ -951,7 +966,7 @@
           if (!/^(https?:|mailto:|#)/i.test(href)) { a.removeAttribute('href'); return; }
           if (href.charAt(0) !== '#') { a.target = '_blank'; a.rel = 'noopener'; }
         });
-        caseLoaded = s.case;
+        caseLoaded = c.path;
       })
       .catch(function (e) { body.textContent = T('caseErr', { msg: e.message }); });
   }

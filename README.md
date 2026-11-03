@@ -14,7 +14,7 @@ Deep links work too: [`player/?sim=015`](https://open.eurekasimulations.com/play
 
 Every simulation ships in **English and Spanish**. The player records which languages each one supports, lets you filter the catalog by language, and starts a simulation in your language rather than defaulting to English; the choice follows you across the site and into shared links.
 
-Most simulations come with the **case study** they are built on: a short teaching case that sets the scene: who you are, what you run, where things stand and what you control. Open it with **📄 Case study** on the simulation's page or from the top bar while you play. Each case is written in one language, and the button says which when it differs from yours.
+Most simulations come with the **case study** they are built on: a short teaching case that sets the scene: who you are, what you run, where things stand and what you control. Open it with **📄 Case study** on the simulation's page or from the top bar while you play. A case opens in your language when it has been translated (`cases/{externalid}.{lang}.md`); otherwise you get the original, and the button says which language it is in.
 
 Prefer to run it locally (development, offline evaluation)?
 
@@ -39,7 +39,7 @@ The player above is single-learner, in your browser. To teach any of these simul
 player/    the standalone player: catalog browser + open USF runtime + headless test
 jsons/     the simulations — one JSON per simulation
 svgs/      cover illustrations
-cases/     case studies, {externalid}.md — all rights reserved, see LICENSE.md
+cases/     case studies, {externalid}.md (original) + {externalid}.{lang}.md (translations) — all rights reserved, see LICENSE.md
 supabase/  backend for the opt-in score comparison: one migration, one seed
 ```
 

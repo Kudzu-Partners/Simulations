@@ -153,6 +153,10 @@ CASE_STOPWORDS = {
 }
 
 
+# cases/{externalid}.{lang}.md: a translation of cases/{externalid}.md
+CASE_VERSION = re.compile(r"^[^.]+\.[a-z]{2}\.md$")
+
+
 def case_lang(text):
     """Language of a case study, by stopword count (cases ship in one language)."""
     words = re.findall(r"[a-záéíóúãõçñ]+", text.lower())
@@ -309,6 +313,13 @@ def main():
             entry["case"] = relhref(case_path, outdir)
             entry["caseLang"] = case_lang(case_text)
             entry.update(case_teaching(case_text))
+            # the same case in other languages, cases/{externalid}.{lang}.md — the player opens
+            # the one in the reader's language, else the original above
+            versions = {fn[len(eid) + 1:-3]: relhref(os.path.join(a.cases, fn), outdir)
+                        for fn in sorted(cases) if CASE_VERSION.match(fn) and fn.startswith(eid + ".")}
+            versions.pop(entry["caseLang"], None)
+            if versions:
+                entry["caseVersions"] = versions
         # the sim's own teaching block wins, fact by fact, over its case header
         own = sim_teaching(d.get("teaching"))
         entry.update(own)
@@ -327,6 +338,7 @@ def main():
         "categories": dict(cats),
         "languages": dict(langcount),
         "cases": sum(1 for s in sims if s.get("case")),
+        "caseVersions": sum(len(s.get("caseVersions", {})) for s in sims),
         "sims": sims,
     }
     with open(a.out, "w", encoding="utf-8") as f:
