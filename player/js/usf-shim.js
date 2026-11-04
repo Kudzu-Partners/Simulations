@@ -77,6 +77,14 @@
     }
   }
 
+  // completion title for sims that do not translate completion_title
+  var COMPLETE = {
+    en: 'Simulation complete',
+    es: 'Simulación completada',
+    fr: 'Simulation terminée',
+    ca: 'Simulació completada'
+  };
+
   var Utils = {
     formatCurrency: function (v, cur) {
       return (cur || '$') + Math.round(+v || 0).toLocaleString();
@@ -168,12 +176,16 @@
         }
       };
 
+      // history is the same array as this.history: the Express engine keeps the round
+      // records in state.history and sims read them there (577 re-scores past rounds from it,
+      // 248 builds its running KPIs from it). Sharing the array keeps undo in step for free.
       this.state = {
         currentPeriod: 1,
         maxPeriods: this.opts.maxPeriods || window.__USF_MAX_PERIODS__ || 5,
         decisions: {},
         domainState: {},
-        results: null
+        results: null,
+        history: this.history
       };
 
       try {
@@ -302,12 +314,39 @@
       for (var id in cfg) {
         var cv = document.getElementById(id);
         if (!cv || !cv.getContext) continue;
+        this._boxCanvas(cv, cfg[id]);
         try {
           this.charts[id] = new Chart(cv.getContext('2d'), cfg[id]);
         } catch (e) {
           this._err('chart:' + id, e);
         }
       }
+    }
+    /* A responsive chart with maintainAspectRatio:false takes its height from its parent.
+       When the parent is sized by its own content (the canvas plus a heading, as in 1798),
+       each resize makes the chart taller and the parent with it, without end. Such a canvas
+       gets a box of its own at the height it was laid out with; a parent of fixed height, a
+       canvas whose max-height stops the growth (001, 011), or one not laid out yet (hidden
+       panel, headless test) is left as authored. */
+    _boxCanvas(cv, cfg) {
+      var o = (cfg && cfg.options) || {};
+      if (o.responsive === false || o.maintainAspectRatio !== false) return;
+      var p = cv.parentNode;
+      if (!p || !p.getBoundingClientRect || p.hasAttribute('data-usfp-chartbox')) return;
+      if (window.getComputedStyle(cv).maxHeight !== 'none') return;
+      var h = cv.getBoundingClientRect().height;
+      if (!h) return;
+      var before = p.getBoundingClientRect().height,
+        css = cv.style.height;
+      cv.style.height = (h + 40) + 'px';
+      var grows = p.getBoundingClientRect().height > before + 20;
+      cv.style.height = css;
+      if (!grows) return;
+      var box = document.createElement('div');
+      box.setAttribute('data-usfp-chartbox', '');
+      box.style.cssText = 'position:relative;width:100%;height:' + Math.round(h) + 'px';
+      p.insertBefore(box, cv);
+      box.appendChild(cv);
     }
     updateCharts() {
       if (!Object.keys(this.charts).length) return;
@@ -486,9 +525,13 @@
       if (old) old.remove();
       var ov = document.createElement('div');
       ov.id = 'usfp-overlay';
-      var inner = '<div class="usfp-card"><div class="usfp-h">🏁 ' + this._esc(this.t('completion_title') !== 'completion_title' ? this.t('completion_title') : 'Simulation complete') + '</div>';
+      // The sim's own closing (verdict, insights, class questions), as the Express engine
+      // shows it; the key/value dump below is only for sims that do not write one.
+      var message = this._completionMessage(summary);
+      var title = this.t('completion_title') !== 'completion_title' ? this.t('completion_title') : (COMPLETE[this.lang] || COMPLETE.en);
+      var inner = '<div class="usfp-card' + (message ? ' usfp-wide' : '') + '"><div class="usfp-h">🏁 ' + this._esc(title) + '</div>';
       inner += '<div class="usfp-sub">' + this.history.length + ' / ' + this.state.maxPeriods + '</div>';
-      inner += this._renderSummary(summary);
+      inner += message || this._renderSummary(summary);
       inner += '<div class="usfp-btns"><button id="usfp-close">✕</button><button id="usfp-again">↺</button></div></div>';
       ov.innerHTML = inner;
       document.body.appendChild(ov);
@@ -500,6 +543,19 @@
           type: 'restart'
         });
       };
+    }
+    _completionMessage(summary) {
+      if (typeof this.adapter.formatCompletionMessage !== 'function') return '';
+      var s = (summary && typeof summary === 'object') ? summary : {};
+      // the engine guarantees totalPeriods before it asks for the message
+      if (!(parseInt(s.totalPeriods, 10) > 0)) s.totalPeriods = this.history.length;
+      try {
+        var html = this.adapter.formatCompletionMessage(s);
+        return (typeof html === 'string' && html.trim()) ? html : '';
+      } catch (e) {
+        this._err('formatCompletionMessage', e);
+        return '';
+      }
     }
     _renderSummary(v, depth) {
       depth = depth || 0;
@@ -612,6 +668,7 @@
   var st = document.createElement('style');
   st.textContent = '#usfp-overlay{position:fixed;inset:0;z-index:99990;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(2px)}' +
     '.usfp-card{background:#fff;color:#0f172a;border-radius:16px;max-width:560px;width:92%;max-height:82vh;overflow-y:auto;padding:26px 30px;box-shadow:0 20px 60px rgba(0,0,0,.35);font-family:system-ui,sans-serif;position:relative}' +
+    '.usfp-card.usfp-wide{max-width:780px}' +
     '.usfp-h{font-size:20px;font-weight:800;margin-bottom:2px}' +
     '.usfp-sub{font-size:12px;color:#64748b;margin-bottom:14px}' +
     '.usfp-row{display:flex;gap:10px;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid #f1f5f9;font-size:14px}' +
