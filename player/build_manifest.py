@@ -61,14 +61,25 @@ def translation_tables(js):
     if r.group(1) == "{":
         start = r.start(1)
     else:
-        var = re.search(r"(?:const|let|var)\s+%s\s*=\s*\{" % re.escape(r.group(1)), body)
+        # the table may be declared before or after getTranslations()
+        var = re.search(r"(?:const|let|var)\s+%s\s*=\s*\{" % re.escape(r.group(1)), js)
         if not var:
             return {}
+        body = js
         start = var.end() - 1
 
     tables, open_lang, depth, i, n = {}, None, 1, start + 1, len(body)
     while i < n and depth >= 1:
         ch = body[i]
+        if depth == 1 and ch in "\"'" and (body[i - 1] in "{," or body[i - 1].isspace()):
+            # a quoted language key, e.g. "en": { … }
+            k = re.match(r"(['\"])([\w$-]+)\1\s*:\s*\{", body[i:])
+            if k:
+                name = k.group(2)
+                i += k.end() - 1
+                if LANG_RE.match(name) and name not in tables:
+                    open_lang = (name, i)
+                continue
         if ch in "\"'`":
             i = _skip_string(body, i)
             continue
