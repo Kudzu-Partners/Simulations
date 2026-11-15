@@ -16,8 +16,9 @@
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
   var manifest = null, filtered = [];
-  /* Active catalog filters, '' for any. */
-  var F = { cat: '', area: '', theme: '', prog: '', time: '', lvl: '', dur: '', lang: '' };
+  /* Active catalog filters, '' for any. `col` is a curated collection, picked from
+     the strip above the grid rather than from a dropdown. */
+  var F = { col: '', cat: '', area: '', theme: '', prog: '', time: '', lvl: '', dur: '', lang: '' };
   var query = '', activeSort = '';
   var current = null;      // {data, srcName, manifestSim, langs}
   var lastProgress = null; // last progress message, so the bar can be re-rendered on a language switch
@@ -70,7 +71,7 @@
   ];
   /* Filter state ↔ URL, so a filtered catalog can be bookmarked or shared. `lang` is
      already the page language, hence `simlang` for the languages a sim ships in. */
-  var FILTER_PARAMS = { cat: 'cat', area: 'area', theme: 'theme', prog: 'prog', time: 'time', lvl: 'level', dur: 'rounds', lang: 'simlang' };
+  var FILTER_PARAMS = { col: 'col', cat: 'cat', area: 'area', theme: 'theme', prog: 'prog', time: 'time', lvl: 'level', dur: 'rounds', lang: 'simlang' };
   var SORTS = ['', 'name', 'rounds'];
 
   /* ───────── i18n: player chrome ─────────
@@ -91,6 +92,7 @@
       random: 'Random', randomTitle: 'Load a random simulation',
       count: '{n} simulation', countN: '{n} simulations',
       clearFilters: 'Clear filters',
+      colMany: 'Collections', colOne: 'Collection', colLeave: 'Leave the collection',
       noMatches: 'No matches — try a different search or filter.',
       noCatalog: 'Catalog unavailable — drag & drop a JSON to play.',
       welcomeH: 'Play an Express simulation',
@@ -156,6 +158,7 @@
       random: 'Aleatoria', randomTitle: 'Cargar una simulación al azar',
       count: '{n} simulación', countN: '{n} simulaciones',
       clearFilters: 'Quitar filtros',
+      colMany: 'Colecciones', colOne: 'Colección', colLeave: 'Salir de la colección',
       noMatches: 'Sin resultados — prueba otra búsqueda o filtro.',
       noCatalog: 'Catálogo no disponible — arrastra un JSON para jugar.',
       welcomeH: 'Juega una simulación Express',
@@ -401,6 +404,21 @@
     });
   }
 
+  /* Curated collections — collections.json, checked against the catalog and carried
+     in the manifest by build_manifest.py: a title and a blurb per language, and the
+     sims in the order to show them. */
+  function collections() { return (manifest && manifest.collections) || []; }
+  function collection(id) { return collections().find(function (c) { return c.id === id; }); }
+  function colText(map) { return (map && (map[lang] || map.en)) || ''; }
+  var colIndex = {}; // collection id → { sim id: its place in the collection, from 1 }
+  function colPlaces(id) {
+    if (!colIndex[id]) {
+      var places = colIndex[id] = {};
+      ((collection(id) || {}).sims || []).forEach(function (sid, i) { places[sid] = i + 1; });
+    }
+    return colIndex[id];
+  }
+
   /* A shared or bookmarked catalog URL restores its filters, search and sort. */
   function readUrlFilters() {
     var p = new URLSearchParams(location.search);
@@ -417,7 +435,8 @@
     document.querySelectorAll('#catalogTools .catbtn').forEach(function (b) {
       if (b.dataset.fval) known[b.dataset.fkey + '=' + b.dataset.fval] = 1;
     });
-    Object.keys(F).forEach(function (k) { if (F[k] && !known[k + '=' + F[k]]) F[k] = ''; });
+    Object.keys(F).forEach(function (k) { if (k !== 'col' && F[k] && !known[k + '=' + F[k]]) F[k] = ''; });
+    if (F.col && !collection(F.col)) F.col = '';
   }
   function inRange(n, groups, id) {
     var g = groups.find(function (x) { return x.id === id; });
@@ -427,6 +446,7 @@
      plus q, the folded search text; missing keys mean any. A sim that doesn't
      state its themes, programs or class time never matches those filters. */
   function matches(s, f) {
+    if (f.col && !colPlaces(f.col)[s.id]) return false;
     if (f.cat && s.cat !== f.cat) return false;
     if (f.area && s.area !== f.area) return false;
     if (f.theme && (s.themes || []).indexOf(f.theme) < 0) return false;
@@ -557,7 +577,11 @@
     } else if (activeSort === 'rounds') {
       copy.sort(function (a, b) { return (a.periods || 0) - (b.periods || 0); });
     }
-    // '' (relevance/default) — keep the manifest's own order, already preserved by filter().
+    else if (F.col) {
+      var places = colPlaces(F.col); // a collection is curated in an order — keep it
+      copy.sort(function (a, b) { return places[a.id] - places[b.id]; });
+    }
+    // '' (relevance/default) — else keep the manifest's own order, already preserved by filter().
     return copy;
   }
 
@@ -573,6 +597,35 @@
     applyFilter();
   }
   $('btnClear').onclick = resetFilters;
+
+  /* Above the grid: the collections to pick from while nothing is filtered, or the
+     one being browsed. The other filters keep working inside a collection. */
+  function renderCollections() {
+    var strip = $('colStrip'), head = $('colHead'), c = F.col && collection(F.col);
+    head.hidden = !c;
+    strip.hidden = !!c || filtersActive() || !collections().length;
+    head.innerHTML = ''; strip.innerHTML = '';
+    if (c) {
+      head.innerHTML = '<div><span class="colkicker">' + esc(T('colOne')) + '</span><h2>' + esc(colText(c.title)) + '</h2>' +
+        '<p>' + esc(colText(c.blurb)) + '</p></div>';
+      var leave = document.createElement('button');
+      leave.type = 'button'; leave.className = 'clearbtn'; leave.textContent = '✕ ' + T('colLeave');
+      leave.onclick = function () { F.col = ''; applyFilter(); };
+      head.appendChild(leave);
+    }
+    if (strip.hidden) return;
+    strip.innerHTML = '<span class="colkicker">' + esc(T('colMany')) + '</span>';
+    var rowEl = document.createElement('div'); rowEl.className = 'colrow';
+    collections().forEach(function (c) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'colcard';
+      b.innerHTML = '<b>' + esc(colText(c.title)) + '</b><span>' + esc(colText(c.blurb)) + '</span>' +
+        '<em>' + esc(T(c.sims.length === 1 ? 'count' : 'countN', { n: c.sims.length })) + '</em>';
+      b.onclick = function () { F.col = c.id; applyFilter(); $('catalogBody').scrollTop = 0; };
+      rowEl.appendChild(b);
+    });
+    strip.appendChild(rowEl);
+  }
 
   function renderEmptyState() {
     var d = document.createElement('div');
@@ -597,6 +650,7 @@
     updateClearBtn();
     refreshCounts();
     if (view === 'catalog') syncUrl();
+    renderCollections();
     $('grid').innerHTML = '';
     if (!filtered.length) { renderEmptyState(); return; }
     renderGrid();

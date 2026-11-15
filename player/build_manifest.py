@@ -5,7 +5,8 @@ Build manifest.json for the Eureka Express Open Player.
 Scans a folder of Express simulation JSONs and emits a lightweight catalog
 (id, name, truncated description, category, level, rounds, languages, relative
 path, optional SVG thumbnail). The player fetches each full JSON lazily on
-demand.
+demand. Curated collections (collections.json) are checked against the catalog
+and carried in the manifest.
 
 Usage (from the player/ folder):
     python build_manifest.py                          # uses ../jsons and ../svgs
@@ -241,6 +242,51 @@ def case_teaching(text):
     return out
 
 
+COLLECTION_ID = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+
+
+def load_collections(path, known):
+    """(collections, errors) from collections.json: a list of {id, title, blurb, sims},
+    title and blurb as language maps with at least `en`, sims as external ids in the
+    order to show them. A collection is a promise to the reader, so whatever would show
+    a broken one is an error and stops the build: above all an id the catalog no longer
+    has, which is how a collection rots when a sim is withdrawn."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            raw = json.load(f)
+    except Exception as e:
+        return [], [f"{path}: {e}"]
+    if not isinstance(raw, list):
+        return [], [f"{path}: expected a list of collections"]
+    out, errors, seen = [], [], set()
+    for n, c in enumerate(raw):
+        cid = c.get("id") if isinstance(c, dict) else None
+        where = f"collection {cid!r}" if cid else f"collection #{n + 1}"
+        if not isinstance(cid, str) or not COLLECTION_ID.match(cid):
+            errors.append(f"{where}: `id` must be a slug like \"start\" or \"mba-core\"")
+            continue
+        if cid in seen:
+            errors.append(f"{where}: duplicate id")
+        seen.add(cid)
+        for field in ("title", "blurb"):
+            text = c.get(field)
+            if not isinstance(text, dict) or not str(text.get("en") or "").strip() \
+                    or not all(LANG_RE.match(k) and isinstance(v, str) and v.strip() for k, v in text.items()):
+                errors.append(f"{where}: `{field}` must map language codes to text, `en` included")
+        ids = c.get("sims")
+        if not isinstance(ids, list) or not ids or not all(isinstance(i, str) for i in ids):
+            errors.append(f"{where}: `sims` must be a non-empty list of external ids, as strings")
+            continue
+        unknown = [i for i in ids if i not in known]
+        if unknown:
+            errors.append(f"{where}: not in the catalog: {', '.join(unknown)}")
+        dupes = sorted({i for i in ids if ids.count(i) > 1})
+        if dupes:
+            errors.append(f"{where}: listed twice: {', '.join(dupes)}")
+        out.append({"id": cid, "title": c.get("title"), "blurb": c.get("blurb"), "sims": ids})
+    return out, errors
+
+
 def find_svg(svgs, svg_dir, outdir, stem, eid):
     cands = []
     if eid:
@@ -261,6 +307,7 @@ def main():
     ap.add_argument("--svgs", default="../svgs", help="folder with SVG thumbnails (optional)")
     ap.add_argument("--covers", default="../covers", help="folder with {externalid}.webp cover images (optional, preferred over SVGs)")
     ap.add_argument("--cases", default="../cases", help="folder with {externalid}.md case studies (optional)")
+    ap.add_argument("--collections", default="collections.json", help="curated collections of sims (optional)")
     ap.add_argument("--out", default="manifest.json")
     a = ap.parse_args()
 
@@ -348,6 +395,14 @@ def main():
 
     sims.sort(key=sortkey)
 
+    curated = []
+    if os.path.isfile(a.collections):
+        curated, errors = load_collections(a.collections, {s["id"] for s in sims})
+        if errors:
+            for e in errors:
+                print(f"  error: {e}", file=sys.stderr)
+            sys.exit(f"{a.collections}: {len(errors)} problem(s); {a.out} not written")
+
     manifest = {
         "generated": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "count": len(sims),
@@ -357,6 +412,8 @@ def main():
         "caseVersions": sum(len(s.get("caseVersions", {})) for s in sims),
         "sims": sims,
     }
+    if curated:
+        manifest["collections"] = curated
     with open(a.out, "w", encoding="utf-8") as f:
         json.dump(manifest, f, ensure_ascii=False, separators=(",", ":"))
 
@@ -373,6 +430,7 @@ def main():
           f"class time {sum(1 for s in sims if s.get('minutes'))}, "
           f"programs {sum(1 for s in sims if s.get('programs'))}, "
           f"languages {dict(langcount)}, "
+          f"collections {[(c['id'], len(c['sims'])) for c in curated]}, "
           f"size {os.path.getsize(a.out) // 1024} KB")
     if monolingual:
         print(f"  note — {len(monolingual)} sims ship a single language: {monolingual[:20]}")

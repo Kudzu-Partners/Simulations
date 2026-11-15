@@ -10,7 +10,7 @@ A standalone, zero-backend player for **Eureka Express business simulations**. E
 
 Deep links: [`?sim=015`](https://open.eurekasimulations.com/player/?sim=015) loads a catalog sim by external id; `?src=https://…/sim.json` loads one from any CORS-enabled URL; `?lang=es` opens the player *and* the simulation in Spanish ([`?sim=015&lang=es`](https://open.eurekasimulations.com/player/?sim=015&lang=es)).
 
-The catalog's filters, search and sort live in the URL too, so a filtered view can be bookmarked or shared: [`?area=A4&theme=C2&lang=es`](https://open.eurekasimulations.com/player/?area=A4&theme=C2&lang=es) is marketing simulations with a digital theme, in Spanish. Parameters: `area` (`A1`–`A12`), `theme` (`C1`–`C10`), `prog` (`secondary`, `ug`, `master`, `exec`), `time` (`60`, `80`, `90`), `cat`, `level`, `rounds` (`1-2`, `3-4`, `5+`), `simlang`, `q` (search text) and `sort` (`name`, `rounds`). A value the catalog doesn't offer is ignored.
+The catalog's filters, search and sort live in the URL too, so a filtered view can be bookmarked or shared: [`?area=A4&theme=C2&lang=es`](https://open.eurekasimulations.com/player/?area=A4&theme=C2&lang=es) is marketing simulations with a digital theme, in Spanish. Parameters: `area` (`A1`–`A12`), `theme` (`C1`–`C10`), `prog` (`secondary`, `ug`, `master`, `exec`), `time` (`60`, `80`, `90`), `cat`, `level`, `rounds` (`1-2`, `3-4`, `5+`), `simlang`, `q` (search text), `sort` (`name`, `rounds`) and `col` (a [collection](#collections), e.g. `?col=start`). A value the catalog doesn't offer is ignored.
 
 The language choice is remembered (`eureka-lang` in `localStorage`, shared with the landing page), so it carries from link to link. Without it the player follows the browser language, falling back to English.
 
@@ -36,6 +36,7 @@ player/
   js/analytics.js        anonymous Umami events (eurekaTrack)
   js/benchmark.js        the opt-in "Compare your run" card
   manifest.json        generated catalog index (id, name, category, level, rounds, langs, case…)
+  collections.json     curated collections of sims, written by hand; the build checks them and copies them into the manifest
   build_manifest.py    regenerates manifest.json from a folder of sim JSONs
   vendor/chart.umd.min.js   Chart.js 4.4.0 (MIT), inlined into each sim for charts
   vendor/marked.min.js      marked 9.1.6 (MIT), renders the case studies in the host page
@@ -192,6 +193,29 @@ node headless_replay.js --force --require-score --all
 2. Regenerate the catalog: `cd player && python build_manifest.py` — it reports any sim that ships fewer than two languages.
 3. Refresh the benchmark allowlist: `python supabase/gen_seed.py`, then apply `supabase/seed.sql` (see [`../supabase/README.md`](../supabase/README.md)).
 4. Smoke-test: `cd player/test && npm install jsdom && node headless_replay.js <id>` — it plays every round headlessly and reports runtime errors. Add `--lang es` for one language, or `--lang all` to replay each sim once per language it ships.
+
+## Collections
+
+A collection is a short, ordered list of simulations chosen by a person: somewhere to start in a catalog of hundreds. The catalog shows them as a strip above the grid while nothing is filtered; opening one lists its sims in the collection's own order, with every other filter still working inside it, and `?col=<id>` links to it.
+
+They live in `player/collections.json`, the one catalog file here that is written by hand:
+
+```json
+[
+  {
+    "id": "start",
+    "title": { "en": "Ten to start with", "es": "Diez para empezar" },
+    "blurb": { "en": "…", "es": "…" },
+    "sims": ["210", "182", "616"]
+  }
+]
+```
+
+- `id` — a lower-case slug; it is the `?col=` value, so changing it breaks links people have shared.
+- `title`, `blurb` — language maps. `en` is required; a language that is missing falls back to English.
+- `sims` — external ids as strings, in the order to show them.
+
+`python build_manifest.py` checks the file and copies it into `manifest.json` as `collections`. It refuses to write the manifest when a collection names a sim the catalog doesn't have, lists one twice, or lacks an English title or blurb. That is deliberate: withdrawing a sim from `jsons/` fails the build until the collections that named it are edited.
 
 ## Hosting (GitHub Pages)
 

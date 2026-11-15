@@ -1,0 +1,26 @@
+[
+  {
+    "id": "start",
+    "title": {
+      "en": "Ten to start with",
+      "es": "Diez para empezar"
+    },
+    "blurb": {
+      "en": "Ten simulations across nine disciplines, from accounting to general management: a first look at what the catalog can do.",
+      "es": "Diez simulaciones de nueve disciplinas, de contabilidad a dirección general: una primera muestra de lo que ofrece el catálogo."
+    },
+    "sims": ["210", "182", "616", "2063", "315", "345", "300", "025", "758", "083"]
+  },
+  {
+    "id": "mba",
+    "title": {
+      "en": "For an MBA",
+      "es": "Para un MBA"
+    },
+    "blurb": {
+      "en": "A selection that covers an MBA curriculum, with simulations in every one of the twelve disciplines.",
+      "es": "Una selección que cubre el plan de estudios de un MBA, con simulaciones en cada una de las doce disciplinas."
+    },
+    "sims": ["212", "240", "187", "209", "313", "030", "316", "297", "2016", "1465", "2191", "1965", "499", "1906", "1305", "777", "1987", "053", "016", "134", "137", "037", "1865", "023", "1947", "1984", "775", "186", "298", "164", "011", "099", "104", "160", "309", "1991", "013", "599", "404", "068", "269", "195", "1323", "1461", "111", "058", "503", "002", "044", "1780", "2014", "206", "283", "326", "074", "445", "116", "097", "1786", "012", "1783", "1999", "1785", "998", "022", "1767", "1790", "031", "1531", "1925", "1532", "081", "008", "421", "021", "117", "972", "001", "069", "299", "041", "032", "1140", "138", "1721"]
+  }
+]

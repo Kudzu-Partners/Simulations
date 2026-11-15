@@ -509,6 +509,97 @@ body {
 }
 
 /* ───── card grid ───── */
+/* curated collections, above the grid */
+#colStrip,
+#colHead {
+  padding: 18px 20px 0
+}
+
+#colStrip[hidden],
+#colHead[hidden] {
+  display: none
+}
+
+.colkicker {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: var(--slate)
+}
+
+.colrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px
+}
+
+.colcard {
+  flex: 1 1 260px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 13px 15px;
+  font: inherit;
+  text-align: left;
+  color: var(--text);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease
+}
+
+.colcard:hover,
+.colcard:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--gold-deep);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, .18)
+}
+
+.colcard b {
+  font-size: 14px;
+  color: var(--gold)
+}
+
+.colcard span {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--muted)
+}
+
+.colcard em {
+  margin-top: auto;
+  font-size: 10.5px;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--text)
+}
+
+#colHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px
+}
+
+#colHead h2 {
+  margin: 3px 0 4px;
+  font-size: 18px;
+  color: #0f172a
+}
+
+#colHead p {
+  margin: 0;
+  max-width: 70ch;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--slate)
+}
+
 #grid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
