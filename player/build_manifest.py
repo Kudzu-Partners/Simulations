@@ -182,13 +182,14 @@ def case_lang(text):
 CASE_PREFIX_DISCIPLINE = {"STR": "A7", "FIN": "A2", "MKT": "A4", "OPS": "A5",
                           "ORG": "A8", "ENT": "A10", "SUS": "A11", "RSK": "A12"}
 PROGRAM_GROUPS = ("secondary", "ug", "master", "exec")
+THEME_RE = re.compile(r"^C(?:[1-9]|10)$")
 AUDIENCE_GROUP = {"secondary": "secondary", "ug-intro": "ug", "ug-advanced": "ug",
                   "masters-core": "master", "masters-elective": "master", "exec-ed": "exec"}
 
 
 def sim_teaching(t):
-    """area / minutes / programs from a sim's `teaching` block. Lenient: a field that is
-    missing or malformed is left out, so a draft block still contributes what it has."""
+    """area / themes / minutes / programs from a sim's `teaching` block. Lenient: a field that
+    is missing or malformed is left out, so a draft block still contributes what it has."""
     if not isinstance(t, dict):
         return {}
     out = {}
@@ -196,6 +197,10 @@ def sim_teaching(t):
     m = re.match(r"^(A(?:[1-9]|1[0-2]))\.", primary or "")
     if m:
         out["area"] = m.group(1)
+    # Axis C cross-cutting themes (C1–C10), optional in the block: 0–3 per sim
+    themes = [c for c in t.get("themes") or [] if isinstance(c, str) and THEME_RE.match(c)]         if isinstance(t.get("themes"), list) else []
+    if themes:
+        out["themes"] = sorted(set(themes), key=lambda c: int(c[1:]))
     mins = (t.get("duration") or {}).get("class_minutes") if isinstance(t.get("duration"), dict) else None
     if isinstance(mins, int) and mins > 0:
         out["minutes"] = mins
@@ -364,6 +369,7 @@ def main():
           f"{sum(1 for s in sims if s.get('names'))} with translated titles, "
           f"{with_block} with a teaching block, "
           f"teaching facts: area {sum(1 for s in sims if s.get('area'))}, "
+          f"themes {sum(1 for s in sims if s.get('themes'))}, "
           f"class time {sum(1 for s in sims if s.get('minutes'))}, "
           f"programs {sum(1 for s in sims if s.get('programs'))}, "
           f"languages {dict(langcount)}, "

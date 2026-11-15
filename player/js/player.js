@@ -16,9 +16,8 @@
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
   var manifest = null, filtered = [];
-  /* Active catalog filters, '' for any. Category and topic share one dropdown,
-     so picking one clears the other. */
-  var F = { cat: '', topic: '', area: '', prog: '', time: '', lvl: '', dur: '', lang: '' };
+  /* Active catalog filters, '' for any. */
+  var F = { cat: '', area: '', theme: '', prog: '', time: '', lvl: '', dur: '', lang: '' };
   var query = '', activeSort = '';
   var current = null;      // {data, srcName, manifestSim, langs}
   var lastProgress = null; // last progress message, so the bar can be re-rendered on a language switch
@@ -35,6 +34,7 @@
   ];
   /* Teaching facts build_manifest.py records per sim, from its `teaching` block or else
      its case: `area`, an Axis A discipline of the MECE case-method taxonomy (A1–A12);
+     `themes`, its Axis C cross-cutting themes (C1–C10; block only, and optional there);
      `programs`, audience groups; `minutes` of class time. */
   var AREAS = [
     { id: 'A7', icon: '♟️', color: '#7c3aed' },
@@ -56,30 +56,22 @@
     { id: '80', min: 61, max: 80 },
     { id: '90', min: 81, max: 9999 }
   ];
-  var TOPIC_KEYS = [
-    { id: 'marketing', icon: '📢', color: '#ec4899' },
-    { id: 'strategy', icon: '♟️', color: '#7c3aed' },
-    { id: 'innovation', icon: '💡', color: '#f59e0b' },
-    { id: 'digital', icon: '🤖', color: '#3b82f6' },
-    { id: 'leadership', icon: '🧭', color: '#06b6d4' },
-    { id: 'negotiation', icon: '🤝', color: '#10b981' },
-    { id: 'governance', icon: '⚖️', color: '#6366f1' },
-    { id: 'operations', icon: '⚙️', color: '#64748b' },
-    { id: 'crisis', icon: '🚨', color: '#ef4444' },
-    { id: 'ethics', icon: '🌍', color: '#14b8a6' }
+  var THEMES = [
+    { id: 'C1', icon: '🌱', color: '#14b8a6' },
+    { id: 'C2', icon: '🤖', color: '#3b82f6' },
+    { id: 'C3', icon: '🫱', color: '#8b5cf6' },
+    { id: 'C4', icon: '🌍', color: '#0ea5e9' },
+    { id: 'C5', icon: '💡', color: '#f59e0b' },
+    { id: 'C6', icon: '🚨', color: '#ef4444' },
+    { id: 'C7', icon: '🏥', color: '#f43f5e' },
+    { id: 'C8', icon: '🏡', color: '#a16207' },
+    { id: 'C9', icon: '🏛️', color: '#6366f1' },
+    { id: 'C10', icon: '🤲', color: '#ec4899' }
   ];
-  var TOPIC_TERMS = {
-    marketing: ['marketing', 'brand', 'branding', 'market', 'advertis', 'campaign', 'consumer', 'retail', 'pricing', 'crm', 'b2b', 'b2c', 'fmcg'],
-    strategy: ['strategy', 'strategic', 'positioning', 'competitive', 'portfolio', 'roadmap', 'expansion', 'merger', 'acquisition', 'capstone', 'corporat'],
-    innovation: ['innovation', 'innovat', 'disrupt', 'transform', 'startup', 'venture', 'prototype', 'r&d', 'new product', 'agile'],
-    digital: ['digital', 'ai ', 'artificial intelligence', 'fintech', 'neobank', 'platform', 'software', 'cloud', 'data', 'cyber', 'blockchain', 'tech', 'saas', 'erp'],
-    leadership: ['leadership', 'hr ', 'human resource', 'talent', 'culture', 'team', 'people', 'workforce', 'diversity', 'inclusion', 'coaching', 'org'],
-    negotiation: ['negotiation', 'negotiate', 'deal', 'contract', 'mediation', 'procurement', 'supplier', 'labour', 'salary'],
-    governance: ['governance', 'esg', 'compliance', 'board', 'regulation', 'policy', 'audit', 'risk', 'ethics', 'accountability'],
-    operations: ['operations', 'supply chain', 'logistics', 'process', 'manufacturing', 'production', 'inventory', 'lean', 'six sigma', 'warehouse'],
-    crisis: ['crisis', 'emergency', 'disaster', 'incident', 'recovery', 'turnaround', 'bankruptcy', 'restructur', 'pandemic'],
-    ethics: ['ethics', 'ethical', 'csr', 'triple bottom', 'sdg', 'climate', 'carbon', 'green', 'circular', 'social impact']
-  };
+  /* Filter state ↔ URL, so a filtered catalog can be bookmarked or shared. `lang` is
+     already the page language, hence `simlang` for the languages a sim ships in. */
+  var FILTER_PARAMS = { cat: 'cat', area: 'area', theme: 'theme', prog: 'prog', time: 'time', lvl: 'level', dur: 'rounds', lang: 'simlang' };
+  var SORTS = ['', 'name', 'rounds'];
 
   /* ───────── i18n: player chrome ─────────
      One preference ("eureka-lang") drives three things: this chrome, which
@@ -92,7 +84,7 @@
       openJson: 'Open JSON', openJsonTitle: 'Open a simulation JSON from disk',
       search: 'Search simulations…  ( / )', searchAria: 'Search simulations',
       catFilterLabel: 'Category', levelFilterLabel: 'Difficulty', durFilterLabel: 'Rounds', langFilterLabel: 'Language',
-      areaFilterLabel: 'Discipline', progFilterLabel: 'Program', timeFilterLabel: 'Class time',
+      areaFilterLabel: 'Discipline', themeFilterLabel: 'Theme', progFilterLabel: 'Program', timeFilterLabel: 'Class time',
       factNote: '{n} of {m} simulations state it.',
       all: 'All', any: 'Any',
       sortTitle: 'Sort results', sortDefault: 'Default order', sortName: 'Name A–Z', sortRounds: 'Rounds: fewest first',
@@ -141,8 +133,8 @@
       cats: { business: 'business', education: 'education', finance: 'finance', sustainability: 'sustainability', hospitality: 'hospitality', tourism: 'tourism', other: 'other' },
       lvls: { basic: 'basic', intermediate: 'intermediate', advanced: 'advanced' },
       langNames: { en: 'English', es: 'Spanish', pt: 'Portuguese' },
-      topics: { marketing: 'Marketing', strategy: 'Strategy', innovation: 'Innovation', digital: 'Digital & AI', leadership: 'Leadership', negotiation: 'Negotiation', governance: 'Governance', operations: 'Operations', crisis: 'Crisis Mgmt', ethics: 'Ethics' },
       areas: { A1: 'Accounting & control', A2: 'Finance', A3: 'Economics & business environment', A4: 'Marketing', A5: 'Operations & supply chain', A6: 'Information systems & digital', A7: 'Strategy', A8: 'Organizational behavior & leadership', A9: 'Human resources', A10: 'Entrepreneurship', A11: 'Ethics, governance & society', A12: 'General management' },
+      themes: { C1: 'Sustainability, ESG & climate', C2: 'Digital, AI & data', C3: 'Diversity, equity & inclusion', C4: 'Globalization & emerging markets', C5: 'Innovation & disruption', C6: 'Crisis, resilience & geopolitics', C7: 'Healthcare', C8: 'Family business', C9: 'Public sector & non-profit', C10: 'Social impact' },
       programs: { secondary: 'Secondary school', ug: 'Undergraduate', master: 'Master\'s & MBA', exec: 'Executive education' },
       audiences: { secondary: 'Secondary school', 'ug-intro': 'Undergraduate, first years', 'ug-advanced': 'Undergraduate, final years', 'masters-core': 'Master\'s & MBA core', 'masters-elective': 'Master\'s & MBA elective', 'exec-ed': 'Executive education' },
       timeGroups: { '60': 'Up to 60 min', '80': '61–80 min', '90': 'Over 80 min' },
@@ -157,7 +149,7 @@
       openJson: 'Abrir JSON', openJsonTitle: 'Abrir una simulación JSON desde el disco',
       search: 'Buscar simulaciones…  ( / )', searchAria: 'Buscar simulaciones',
       catFilterLabel: 'Categoría', levelFilterLabel: 'Dificultad', durFilterLabel: 'Rondas', langFilterLabel: 'Idioma',
-      areaFilterLabel: 'Disciplina', progFilterLabel: 'Programa', timeFilterLabel: 'Tiempo en clase',
+      areaFilterLabel: 'Disciplina', themeFilterLabel: 'Tema transversal', progFilterLabel: 'Programa', timeFilterLabel: 'Tiempo en clase',
       factNote: 'Lo indican {n} de {m} simulaciones.',
       all: 'Todas', any: 'Cualquiera',
       sortTitle: 'Ordenar resultados', sortDefault: 'Orden por defecto', sortName: 'Nombre A–Z', sortRounds: 'Rondas: menos primero',
@@ -206,8 +198,8 @@
       cats: { business: 'negocios', education: 'educación', finance: 'finanzas', sustainability: 'sostenibilidad', hospitality: 'hostelería', tourism: 'turismo', other: 'otros' },
       lvls: { basic: 'básico', intermediate: 'intermedio', advanced: 'avanzado' },
       langNames: { en: 'inglés', es: 'español', pt: 'portugués' },
-      topics: { marketing: 'Marketing', strategy: 'Estrategia', innovation: 'Innovación', digital: 'Digital e IA', leadership: 'Liderazgo', negotiation: 'Negociación', governance: 'Gobernanza', operations: 'Operaciones', crisis: 'Gestión de crisis', ethics: 'Ética' },
       areas: { A1: 'Contabilidad y control', A2: 'Finanzas', A3: 'Economía y entorno', A4: 'Marketing', A5: 'Operaciones y cadena de suministro', A6: 'Sistemas de información y digital', A7: 'Estrategia', A8: 'Comportamiento organizativo y liderazgo', A9: 'Recursos humanos', A10: 'Emprendimiento', A11: 'Ética, gobierno y sociedad', A12: 'Dirección general' },
+      themes: { C1: 'Sostenibilidad, ESG y clima', C2: 'Digital, IA y datos', C3: 'Diversidad, equidad e inclusión', C4: 'Globalización y mercados emergentes', C5: 'Innovación y disrupción', C6: 'Crisis, resiliencia y geopolítica', C7: 'Salud', C8: 'Empresa familiar', C9: 'Sector público y sin ánimo de lucro', C10: 'Impacto social' },
       programs: { secondary: 'Secundaria y bachillerato', ug: 'Grado', master: 'Máster y MBA', exec: 'Executive Education' },
       audiences: { secondary: 'Secundaria y bachillerato', 'ug-intro': 'Grado, primeros cursos', 'ug-advanced': 'Grado, últimos cursos', 'masters-core': 'Máster y MBA, troncal', 'masters-elective': 'Máster y MBA, optativa', 'exec-ed': 'Executive Education' },
       timeGroups: { '60': 'Hasta 60 min', '80': '61–80 min', '90': 'Más de 80 min' },
@@ -231,10 +223,10 @@
   function catLabel(c) { return (UI[lang].cats[c] || c); }
   function lvlLabel(l) { return (UI[lang].lvls[l] || l); }
   function langName(l) { return (UI[lang].langNames[l] || l.toUpperCase()); }
-  function topicLabel(id) { return (UI[lang].topics[id] || id); }
   function durLabel(id) { return ((UI[lang].durGroups[id] || {}).label || id); }
   function durHint(id) { return ((UI[lang].durGroups[id] || {}).hint || ''); }
   function areaLabel(id) { return (UI[lang].areas[id] || id); }
+  function themeLabel(id) { return (UI[lang].themes[id] || id); }
   function progLabel(id) { return (UI[lang].programs[id] || id); }
   function timeLabel(id) { return (UI[lang].timeGroups[id] || id); }
 
@@ -284,21 +276,38 @@
 
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
   function deent(s) { return String(s).replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#0?39;/g, "'"); } // some sim names ship pre-encoded entities
-  function reEsc(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); } // escape regex metacharacters (for building a literal-match RegExp out of user text)
+  /* Search ignores case and accents ("negociacion" finds "Negociación"). */
+  function fold(s) { return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+  /* Where the folded query occurs in raw text, as [start, end) ranges of the RAW string.
+     Folded one character at a time, so each folded position maps back to a raw one. */
+  function foldedRanges(raw, q) {
+    var fq = fold(q), out = [];
+    if (!fq) return out;
+    var folded = '', at = [], i, j;
+    for (i = 0; i < raw.length; i++) {
+      var f = fold(raw.charAt(i));
+      for (j = 0; j < f.length; j++) at.push(i);
+      folded += f;
+    }
+    var from = 0, idx;
+    while ((idx = folded.indexOf(fq, from)) >= 0) {
+      var end = at[idx + fq.length - 1] + 1;
+      while (end < raw.length && !fold(raw.charAt(end))) end++; // a combining mark stays with its letter
+      out.push([at[idx], end]);
+      from = idx + fq.length;
+    }
+    return out;
+  }
   function highlightText(raw, q) {
     // Find match boundaries in the RAW (unescaped) text first, then esc() each segment
     // independently — never esc() the whole string and then splice <mark> into it, since
     // that can split a multi-character entity (e.g. "&amp;") across the tag boundary and
     // leave the literal encoded text visible instead of the real character.
-    if (!q) return esc(raw);
-    var re;
-    try { re = new RegExp(reEsc(q), 'ig'); } catch (e) { return esc(raw); }
-    var out = '', last = 0, m;
-    while ((m = re.exec(raw))) {
-      out += esc(raw.slice(last, m.index)) + '<mark>' + esc(m[0]) + '</mark>';
-      last = m.index + m[0].length;
-      if (m.index === re.lastIndex) re.lastIndex++; // guard zero-length matches
-    }
+    var out = '', last = 0;
+    foldedRanges(raw, q).forEach(function (r) {
+      out += esc(raw.slice(last, r[0])) + '<mark>' + esc(raw.slice(r[0], r[1])) + '</mark>';
+      last = r[1];
+    });
     return out + esc(raw.slice(last));
   }
   function highlightName(rawName) { return highlightText(deent(rawName), query.trim()); }
@@ -309,19 +318,23 @@
     var s = current.manifestSim;
     return deent((s && simName(s)) || current.data.name || current.srcName || 'Simulation');
   }
-  /* what search matches: every name a sim goes by, its id and description */
+  /* what search matches: every name a sim goes by, its id and description; folded once per sim */
+  var searchCache = {};
   function searchText(s) {
-    var names = s.names ? Object.keys(s.names).map(function (k) { return s.names[k]; }).join(' ') : '';
-    return (s.name + ' ' + names + ' ' + s.id + ' ' + (s.desc || '')).toLowerCase();
+    if (searchCache[s.id] == null) {
+      var names = s.names ? Object.keys(s.names).map(function (k) { return s.names[k]; }).join(' ') : '';
+      searchCache[s.id] = fold(deent(s.name + ' ' + names + ' ' + s.id + ' ' + (s.desc || '')));
+    }
+    return searchCache[s.id];
   }
   function descSnippet(rawDesc, q) {
     // Only called when the query matched a sim via its (hidden) description rather than
     // its name — surfaces *why* it matched instead of showing an unexplained result.
     if (!q || !rawDesc) return '';
     var desc = deent(rawDesc);
-    var idx = desc.toLowerCase().indexOf(q.toLowerCase());
-    if (idx < 0) return '';
-    var start = Math.max(0, idx - 24), end = Math.min(desc.length, idx + q.length + 40);
+    var hit = foldedRanges(desc, q)[0];
+    if (!hit) return '';
+    var start = Math.max(0, hit[0] - 24), end = Math.min(desc.length, hit[1] + 40);
     var snippet = (start > 0 ? '…' : '') + desc.slice(start, end) + (end < desc.length ? '…' : '');
     return highlightText(snippet, q);
   }
@@ -350,8 +363,8 @@
     if (view === 'play') { try { $('frame').srcdoc = 'about:blank'; } catch (e) { } }
     if (view === 'preview') { try { $('previewLive').srcdoc = 'about:blank'; } catch (e) { } }
     $('btnPlayBar').style.display = 'none';
-    try { history.replaceState(null, '', location.pathname); } catch (e) { }
     setView('catalog');
+    syncUrl();
     // Lazy-render the grid the first time the user returns to catalog
     // (skipped on initial load when a ?sim= or ?src= param was present)
     if (manifest && !$('grid').firstChild) applyFilter();
@@ -363,7 +376,9 @@
   function loadManifest() {
     fetch('manifest.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (m) {
       manifest = m;
+      readUrlFilters();
       buildFilters();
+      dropUnknownFilters();
       $('welcome').style.display = 'none';
       $('grid').style.display = '';
       $('btnWelcomeRandom').style.display = 'inline-block';
@@ -386,22 +401,35 @@
     });
   }
 
-  function topicHit(s, id) {
-    var terms = TOPIC_TERMS[id] || [id];
-    var hay = (s.name + ' ' + (s.desc || '')).toLowerCase();
-    return terms.some(function (k) { return hay.indexOf(k) >= 0; });
+  /* A shared or bookmarked catalog URL restores its filters, search and sort. */
+  function readUrlFilters() {
+    var p = new URLSearchParams(location.search);
+    Object.keys(FILTER_PARAMS).forEach(function (k) { F[k] = p.get(FILTER_PARAMS[k]) || ''; });
+    query = p.get('q') || '';
+    activeSort = SORTS.indexOf(p.get('sort')) >= 0 ? p.get('sort') : '';
+    $('search').value = query;
+    $('sort').value = activeSort;
+  }
+  /* A value no chip offers (a typo, an option the catalog no longer has) would
+     filter everything out with nothing on screen to explain why — drop it. */
+  function dropUnknownFilters() {
+    var known = {};
+    document.querySelectorAll('#catalogTools .catbtn').forEach(function (b) {
+      if (b.dataset.fval) known[b.dataset.fkey + '=' + b.dataset.fval] = 1;
+    });
+    Object.keys(F).forEach(function (k) { if (F[k] && !known[k + '=' + F[k]]) F[k] = ''; });
   }
   function inRange(n, groups, id) {
     var g = groups.find(function (x) { return x.id === id; });
     return !g || (n >= g.min && n <= g.max);
   }
   /* One test for the grid and for every chip count. f is a filter state like F
-     plus q, the lower-cased search text; missing keys mean any. A sim whose case
-     doesn't state its programs or class time never matches those filters. */
+     plus q, the folded search text; missing keys mean any. A sim that doesn't
+     state its themes, programs or class time never matches those filters. */
   function matches(s, f) {
     if (f.cat && s.cat !== f.cat) return false;
-    if (f.topic && !topicHit(s, f.topic)) return false;
     if (f.area && s.area !== f.area) return false;
+    if (f.theme && (s.themes || []).indexOf(f.theme) < 0) return false;
     if (f.prog && (s.programs || []).indexOf(f.prog) < 0) return false;
     if (f.time && !(s.minutes && inRange(s.minutes, TIMEGROUPS, f.time))) return false;
     if (f.lvl && s.level !== f.lvl) return false;
@@ -412,12 +440,12 @@
   }
   /* the active filters, with some keys overridden (to count what a chip would give) */
   function filterState(over) {
-    return Object.assign({}, F, { q: query.trim().toLowerCase() }, over || {});
+    return Object.assign({}, F, { q: fold(query.trim()) }, over || {});
   }
   function countMatches(f) { return manifest.sims.filter(function (s) { return matches(s, f); }).length; }
 
-  /* Which filter keys each chip row sets; the category row carries the topics too. */
-  var CHIP_ROWS = { chips: ['cat', 'topic'], areaChips: ['area'], progChips: ['prog'], timeChips: ['time'], lvlChips: ['lvl'], durChips: ['dur'], langChips: ['lang'] };
+  /* Which filter key each chip row sets. */
+  var CHIP_ROWS = { chips: ['cat'], areaChips: ['area'], themeChips: ['theme'], progChips: ['prog'], timeChips: ['time'], lvlChips: ['lvl'], durChips: ['dur'], langChips: ['lang'] };
 
   function buildFilters() {
     function mkBtn(container, label, count, color, emoji, onclick, titleTxt) {
@@ -449,34 +477,26 @@
       });
     }
 
-    // ── Category + Topic (merged into one chip row) ──
+    // ── Category ──
     var cats = {};
     manifest.sims.forEach(function (s) { cats[s.cat] = (cats[s.cat] || 0) + 1; });
     var chips = $('chips'); chips.innerHTML = '';
-    var allCat = tag(mkBtn(chips, T('all'), manifest.sims.length, '#64748b', '', function () { F.cat = ''; F.topic = ''; selChip(allCat); applyFilter(); }), 'cat', '');
+    var allCat = tag(mkBtn(chips, T('all'), manifest.sims.length, '#64748b', '', function () { F.cat = ''; selChip(allCat); applyFilter(); }), 'cat', '');
     allCat.classList.add('on'); allCat.dataset.filterAll = '1';
     // Data-driven categories
     Object.keys(cats).sort().forEach(function (c) {
-      var btn = tag(mkBtn(chips, catLabel(c), cats[c], CATCOLORS[c] || '#64748b', CATEMOJI[c] || '', function () { F.cat = c; F.topic = ''; selChip(btn); applyFilter(); }), 'cat', c);
+      var btn = tag(mkBtn(chips, catLabel(c), cats[c], CATCOLORS[c] || '#64748b', CATEMOJI[c] || '', function () { F.cat = c; selChip(btn); applyFilter(); }), 'cat', c);
       if (c === F.cat) selChip(btn, true);
     });
-    // Thin visual divider
-    var sep = document.createElement('span'); sep.className = 'chip-sep'; chips.appendChild(sep);
-    // Keyword-based topic chips
-    TOPIC_KEYS.forEach(function (t) {
-      var cnt = countMatches({ topic: t.id });
-      if (!cnt) return;
-      var lbl = topicLabel(t.id);
-      var btn = tag(mkBtn(chips, lbl, cnt, t.color, t.icon, function () { F.topic = t.id; F.cat = ''; selChip(btn); applyFilter(); }, lbl), 'topic', t.id);
-      if (t.id === F.topic) selChip(btn, true);
-    });
 
-    // ── Teaching facts from the cases ──
+    // ── Teaching facts from the teaching blocks and the cases ──
     row('areaChips', 'area', AREAS.map(function (a) { return { val: a.id, label: areaLabel(a.id), color: a.color, icon: a.icon }; }));
+    row('themeChips', 'theme', THEMES.map(function (t) { return { val: t.id, label: themeLabel(t.id), color: t.color, icon: t.icon }; }));
     row('progChips', 'prog', PROGRAMS.map(function (p) { return { val: p, label: progLabel(p) }; }));
     row('timeChips', 'time', TIMEGROUPS.map(function (g) { return { val: g.id, label: timeLabel(g.id) }; }));
-    /* programs and class time are only known where the case states them — say how often */
+    /* themes, programs and class time are only known where a sim states them — say how often */
     var m = manifest.sims.length;
+    $('themeNote').textContent = T('factNote', { n: manifest.sims.filter(function (s) { return s.themes; }).length, m: m });
     $('progNote').textContent = T('factNote', { n: manifest.sims.filter(function (s) { return s.programs; }).length, m: m });
     $('timeNote').textContent = T('factNote', { n: manifest.sims.filter(function (s) { return s.minutes; }).length, m: m });
 
@@ -576,6 +596,7 @@
     $('count').textContent = T(filtered.length === 1 ? 'count' : 'countN', { n: filtered.length });
     updateClearBtn();
     refreshCounts();
+    if (view === 'catalog') syncUrl();
     $('grid').innerHTML = '';
     if (!filtered.length) { renderEmptyState(); return; }
     renderGrid();
@@ -639,13 +660,22 @@
     rd.readAsText(file);
   }
 
-  /* Keep ?sim= and ?lang= together so any URL a user copies replays exactly. */
+  /* The URL replays what is on screen, so any URL a user copies opens the same way:
+     the sim while one is open (?sim=, or the ?src= it came from), else the catalog's
+     filters, search and sort; ?lang= with either. A bare catalog URL stays bare. */
   function syncUrl() {
     try {
-      var p = new URLSearchParams(location.search);
-      if (current && current.manifestSim) p.set('sim', current.manifestSim.id); else p.delete('sim');
-      p.set('lang', lang);
-      history.replaceState(null, '', '?' + p.toString());
+      var p = new URLSearchParams(location.search), hadLang = p.has('lang');
+      var onSim = view !== 'catalog' && !!current;
+      if (onSim && current.manifestSim) p.set('sim', current.manifestSim.id); else p.delete('sim');
+      if (!onSim) p.delete('src');
+      var state = { q: onSim ? '' : query.trim(), sort: onSim ? '' : activeSort };
+      Object.keys(FILTER_PARAMS).forEach(function (k) { state[FILTER_PARAMS[k]] = onSim ? '' : F[k]; });
+      Object.keys(state).forEach(function (k) { if (state[k]) p.set(k, state[k]); else p.delete(k); });
+      p.delete('lang');
+      if (onSim || hadLang || p.toString()) p.set('lang', lang);
+      var qs = p.toString();
+      history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
     } catch (e) {}
   }
 

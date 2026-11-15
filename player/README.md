@@ -10,6 +10,8 @@ A standalone, zero-backend player for **Eureka Express business simulations**. E
 
 Deep links: [`?sim=015`](https://open.eurekasimulations.com/player/?sim=015) loads a catalog sim by external id; `?src=https://…/sim.json` loads one from any CORS-enabled URL; `?lang=es` opens the player *and* the simulation in Spanish ([`?sim=015&lang=es`](https://open.eurekasimulations.com/player/?sim=015&lang=es)).
 
+The catalog's filters, search and sort live in the URL too, so a filtered view can be bookmarked or shared: [`?area=A4&theme=C2&lang=es`](https://open.eurekasimulations.com/player/?area=A4&theme=C2&lang=es) is marketing simulations with a digital theme, in Spanish. Parameters: `area` (`A1`–`A12`), `theme` (`C1`–`C10`), `prog` (`secondary`, `ug`, `master`, `exec`), `time` (`60`, `80`, `90`), `cat`, `level`, `rounds` (`1-2`, `3-4`, `5+`), `simlang`, `q` (search text) and `sort` (`name`, `rounds`). A value the catalog doesn't offer is ignored.
+
 The language choice is remembered (`eureka-lang` in `localStorage`, shared with the landing page), so it carries from link to link. Without it the player follows the browser language, falling back to English.
 
 To run it locally instead (development, offline use):
@@ -87,7 +89,7 @@ The **USF runtime shim** (`js/usf-shim.js`) implements this contract: i18n with 
 
 ## Player features
 
-Catalog search and filters — **discipline**, **program**, **class time**, category, difficulty, rounds and **language** — cover thumbnails, random pick, round progress, on-demand hints from the sim's own coach logic, restart, fullscreen, and **session export** (downloads your decisions, per-round results, and final summary as JSON — handy for classroom debriefs).
+Catalog search (case- and accent-insensitive) and filters — **discipline**, **theme**, **program**, **class time**, category, difficulty, rounds and **language** — cover thumbnails, random pick, round progress, on-demand hints from the sim's own coach logic, restart, fullscreen, and **session export** (downloads your decisions, per-round results, and final summary as JSON — handy for classroom debriefs).
 
 The read-only **preview** runs the sim in its own sandboxed frame, so it opens in the page language with the opening briefing and KPIs filled in. A guard script swallows every click, key and focus before the sim sees it (the mouse wheel still scrolls), so nothing can be played there, and it pins the view to the top. Until the runtime shim has loaded, a static render of the `view` stands in, with designer defaults stripped (lists render blank; boxes and radios unticked; disabled mandatory items keep their state) so it never shows an option as if it had already been chosen.
 
@@ -126,13 +128,14 @@ The filters and the preview's teaching facts come from two sources, the first th
 1. **The sim's `teaching` block** — an optional top-level key of the simulation JSON, written in the Express library (spec and JSON Schema in kudzu: `Express/Express_Teaching_Block_Spec_Oct2026.md`, `Express_Teaching_Block.schema.json`). It classifies the sim in the MECE case-method taxonomy (one primary Axis A sub-discipline such as `A12.3`, Axis B capabilities, audience, class minutes) and carries the learning objectives in every language the sim ships. The preview shows them in the page language, falling back to English per objective and saying so.
 2. **The case header** (above), until a sim has a block.
 
-`build_manifest.py` records three facts per sim for the catalog filters:
+`build_manifest.py` records four facts per sim for the catalog filters:
 
 - `area` — the Axis A discipline (`A1`–`A12`): the top level of the block's `discipline.primary`, else the case code prefix mapped onto it (`STR`→`A7`, `FIN`→`A2`, `MKT`→`A4`, `OPS`→`A5`, `ORG`→`A8`, `ENT`→`A10`, `SUS`→`A11`, `RSK`→`A12`; approximate, RSK most of all). Every sim has one.
+- `themes` — the block's Axis C cross-cutting themes (`C1`–`C10`: sustainability, digital and AI, innovation, crisis…), zero to three per sim. Optional in the block and absent from case headers, so only part of the catalog has them. They replace the player's earlier keyword-matched topics, which counted a sim as "marketing" for mentioning a market.
 - `minutes` — the block's `duration.class_minutes`, else the case's class time.
 - `programs` — `secondary`, `ug`, `master`, `exec`: the block's `audience` grouped, else the case's `Level` line.
 
-Program and class time are only known where a block or the case states them, and their dropdowns say how many sims that is. Cards show the class time next to the rounds. The build reports how many sims carry a block.
+Theme, program and class time are only known where a block or the case states them, and their dropdowns say how many sims that is. Cards show the class time next to the rounds. The build reports how many sims carry a block.
 
 Cases are copied verbatim from the Express source library; they are not edited here.
 

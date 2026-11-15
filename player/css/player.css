@@ -322,6 +322,7 @@ body {
 #durChips,
 #langChips,
 #areaChips,
+#themeChips,
 #progChips,
 #timeChips {
   display: flex;
@@ -329,19 +330,12 @@ body {
   gap: 7px;
 }
 
-/* how many sims a case-based filter can see */
+/* how many sims a filter can see, when not every sim states the fact */
 .filterdrop-note {
   margin: 10px 0 0;
   font-size: 11px;
   line-height: 1.45;
   color: var(--muted);
-}
-
-.chip-sep {
-  width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, .1);
-  margin: 6px 0;
 }
 
 .countrow {
@@ -425,6 +419,7 @@ body {
 
 /* these labels are written as they should read ("Máster y MBA", "61–80 min") */
 #areaChips .catbtn-lbl,
+#themeChips .catbtn-lbl,
 #progChips .catbtn-lbl,
 #timeChips .catbtn-lbl {
   text-transform: none;

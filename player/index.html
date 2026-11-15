@@ -83,12 +83,20 @@
         <div id="toolrow">
           <input id="search" type="search" data-i18n-ph="search" data-i18n-aria="searchAria"
             placeholder="Search simulations…  ( / )" aria-label="Search simulations" autocomplete="off">
-          <!-- teaching facts from the cases: discipline (case code), program (Level), class time -->
+          <!-- teaching facts from the teaching blocks, else the cases: discipline, theme, program, class time -->
           <div class="filterdrop">
             <button class="filterdrop-btn"><span data-i18n="areaFilterLabel">Discipline</span>&thinsp;<span
                 class="filterdrop-lbl" data-i18n="any">Any</span>&thinsp;<span class="filterdrop-arr">▾</span></button>
             <div class="filterdrop-panel">
               <div id="areaChips"></div>
+            </div>
+          </div>
+          <div class="filterdrop">
+            <button class="filterdrop-btn"><span data-i18n="themeFilterLabel">Theme</span>&thinsp;<span
+                class="filterdrop-lbl" data-i18n="any">Any</span>&thinsp;<span class="filterdrop-arr">▾</span></button>
+            <div class="filterdrop-panel">
+              <div id="themeChips"></div>
+              <p class="filterdrop-note" id="themeNote"></p>
             </div>
           </div>
           <div class="filterdrop">
