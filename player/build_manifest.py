@@ -184,6 +184,10 @@ CASE_PREFIX_DISCIPLINE = {"STR": "A7", "FIN": "A2", "MKT": "A4", "OPS": "A5",
                           "ORG": "A8", "ENT": "A10", "SUS": "A11", "RSK": "A12"}
 PROGRAM_GROUPS = ("secondary", "ug", "master", "exec")
 THEME_RE = re.compile(r"^C(?:[1-9]|10)$")
+# The sim's top-level `sector`: the industry it is set in, or one of two findings that are not
+# an industry ("cross-sector", "skills-training"). Vocabulary: express_sector_slugs() in
+# archimedes; assigned by reading each sim (kudzu Express/testing/sector_readings.csv).
+SECTOR_RE = re.compile(r"^[a-z][a-z0-9-]{1,31}$")
 AUDIENCE_GROUP = {"secondary": "secondary", "ug-intro": "ug", "ug-advanced": "ug",
                   "masters-core": "master", "masters-elective": "master", "exec-ed": "exec"}
 
@@ -361,6 +365,9 @@ def main():
             "svg": find_svg(svgs, a.svgs, outdir, stem, eid),
             "usf": "USF.SimulationAdapter" in (d.get("js") or ""),
         }
+        sector = d.get("sector")
+        if isinstance(sector, str) and SECTOR_RE.match(sector.strip().lower()):
+            entry["sector"] = sector.strip().lower()
         # the sim's own title in other languages; English keeps the catalog `name`
         names = {lg: v for lg, v in sim_names(d, tables).items() if lg != "en" and v != name}
         if names:
@@ -425,6 +432,7 @@ def main():
           f"{manifest['cases']} with a case study, "
           f"{sum(1 for s in sims if s.get('names'))} with translated titles, "
           f"{with_block} with a teaching block, "
+          f"{sum(1 for s in sims if s.get('sector'))} with a sector, "
           f"teaching facts: area {sum(1 for s in sims if s.get('area'))}, "
           f"themes {sum(1 for s in sims if s.get('themes'))}, "
           f"class time {sum(1 for s in sims if s.get('minutes'))}, "

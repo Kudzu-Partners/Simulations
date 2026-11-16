@@ -317,7 +317,7 @@ body {
   }
 }
 
-#chips,
+#sectorChips,
 #lvlChips,
 #durChips,
 #langChips,
@@ -419,6 +419,7 @@ body {
 
 /* these labels are written as they should read ("Máster y MBA", "61–80 min") */
 #areaChips .catbtn-lbl,
+#sectorChips .catbtn-lbl,
 #themeChips .catbtn-lbl,
 #progChips .catbtn-lbl,
 #timeChips .catbtn-lbl {

@@ -10,7 +10,7 @@ A standalone, zero-backend player for **Eureka Express business simulations**. E
 
 Deep links: [`?sim=015`](https://open.eurekasimulations.com/player/?sim=015) loads a catalog sim by external id; `?src=https://…/sim.json` loads one from any CORS-enabled URL; `?lang=es` opens the player *and* the simulation in Spanish ([`?sim=015&lang=es`](https://open.eurekasimulations.com/player/?sim=015&lang=es)).
 
-The catalog's filters, search and sort live in the URL too, so a filtered view can be bookmarked or shared: [`?area=A4&theme=C2&lang=es`](https://open.eurekasimulations.com/player/?area=A4&theme=C2&lang=es) is marketing simulations with a digital theme, in Spanish. Parameters: `area` (`A1`–`A12`), `theme` (`C1`–`C10`), `prog` (`secondary`, `ug`, `master`, `exec`), `time` (`60`, `80`, `90`), `cat`, `level`, `rounds` (`1-2`, `3-4`, `5+`), `simlang`, `q` (search text), `sort` (`name`, `rounds`) and `col` (a [collection](#collections), e.g. `?col=start`). A value the catalog doesn't offer is ignored.
+The catalog's filters, search and sort live in the URL too, so a filtered view can be bookmarked or shared: [`?area=A4&theme=C2&lang=es`](https://open.eurekasimulations.com/player/?area=A4&theme=C2&lang=es) is marketing simulations with a digital theme, in Spanish. Parameters: `area` (`A1`–`A12`), `theme` (`C1`–`C10`), `prog` (`secondary`, `ug`, `master`, `exec`), `time` (`60`, `80`, `90`), `sector` (`healthcare`, `retail`, `professional-services`…), `level`, `rounds` (`1-2`, `3-4`, `5+`), `simlang`, `q` (search text), `sort` (`name`, `rounds`) and `col` (a [collection](#collections), e.g. `?col=start`). A value the catalog doesn't offer is ignored.
 
 The language choice is remembered (`eureka-lang` in `localStorage`, shared with the landing page), so it carries from link to link. Without it the player follows the browser language, falling back to English.
 
@@ -57,6 +57,7 @@ A simulation is one JSON object:
 | `name` | string | Display title |
 | `description` | string | What you'll play and learn |
 | `category` | string | `business`, `finance`, `education`, `sustainability`, … |
+| `sector` | string | Optional. The industry the sim is set in (`healthcare`, `financial-services`, `retail`…), or `skills-training` / `cross-sector` when it is set in none |
 | `level` | string | `basic` / `intermediate` / `advanced` |
 | `max_periods` | int | Number of rounds |
 | `view` | HTML | The simulation's UI (uses `data-i18n` keys for text) |
@@ -90,7 +91,7 @@ The **USF runtime shim** (`js/usf-shim.js`) implements this contract: i18n with 
 
 ## Player features
 
-Catalog search (case- and accent-insensitive) and filters — **discipline**, **theme**, **program**, **class time**, category, difficulty, rounds and **language** — cover thumbnails, random pick, round progress, on-demand hints from the sim's own coach logic, restart, fullscreen, and **session export** (downloads your decisions, per-round results, and final summary as JSON — handy for classroom debriefs).
+Catalog search (case- and accent-insensitive) and filters — **discipline**, **sector**, **theme**, **program**, **class time**, difficulty, rounds and **language** — cover thumbnails, random pick, round progress, on-demand hints from the sim's own coach logic, restart, fullscreen, and **session export** (downloads your decisions, per-round results, and final summary as JSON — handy for classroom debriefs).
 
 The read-only **preview** runs the sim in its own sandboxed frame, so it opens in the page language with the opening briefing and KPIs filled in. A guard script swallows every click, key and focus before the sim sees it (the mouse wheel still scrolls), so nothing can be played there, and it pins the view to the top. Until the runtime shim has loaded, a static render of the `view` stands in, with designer defaults stripped (lists render blank; boxes and radios unticked; disabled mandatory items keep their state) so it never shows an option as if it had already been chosen.
 
@@ -128,6 +129,16 @@ The filters and the preview's teaching facts come from two sources, the first th
 
 1. **The sim's `teaching` block** — an optional top-level key of the simulation JSON, written in the Express library (spec and JSON Schema in kudzu: `Express/Express_Teaching_Block_Spec_Oct2026.md`, `Express_Teaching_Block.schema.json`). It classifies the sim in the MECE case-method taxonomy (one primary Axis A sub-discipline such as `A12.3`, Axis B capabilities, audience, class minutes) and carries the learning objectives in every language the sim ships. The preview shows them in the page language, falling back to English per objective and saying so.
 2. **The case header** (above), until a sim has a block.
+
+### Sector
+
+Discipline says what a sim teaches; `sector` says where it is set, for people who search by industry: a hospital group's training team, or a teacher on a hospitality program who needs a finance sim set in a hotel. It is a top-level key of the simulation JSON, one slug from a fixed vocabulary of seventeen, assigned in the Express library by reading each sim's description and case against a written rubric (kudzu: `Express/testing/sector_readings.csv` and `sector_readings_rubric.md`). `build_manifest.py` copies it into the manifest, and the Sector filter and the pill on each card read it from there.
+
+Two values are not industries. `skills-training` is a sim that trains a skill or a method of the individual (business writing, a regression lab), where any company it names is only a backdrop. `cross-sector` is an organization of no particular industry, such as a diversified group. They are kept apart because nobody searching by sector is looking for the first.
+
+The filter replaced the earlier Category one, whose six values mixed disciplines with sectors and put 59% of the catalog under "business". `category` is still in the JSON, and the landing page's counts still use it.
+
+### Teaching facts in the manifest
 
 `build_manifest.py` records four facts per sim for the catalog filters:
 

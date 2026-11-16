@@ -18,15 +18,37 @@
   var manifest = null, filtered = [];
   /* Active catalog filters, '' for any. `col` is a curated collection, picked from
      the strip above the grid rather than from a dropdown. */
-  var F = { col: '', cat: '', area: '', theme: '', prog: '', time: '', lvl: '', dur: '', lang: '' };
+  var F = { col: '', sector: '', area: '', theme: '', prog: '', time: '', lvl: '', dur: '', lang: '' };
   var query = '', activeSort = '';
   var current = null;      // {data, srcName, manifestSim, langs}
   var lastProgress = null; // last progress message, so the bar can be re-rendered on a language switch
   var view = 'catalog';    // 'catalog' | 'preview' | 'play'
   var chartSrc = null;     // Chart.js source text (inlined into each iframe)
   var shimSrc = null;      // USF runtime shim source text (inlined into each iframe)
-  var CATCOLORS = { business: '#3b82f6', education: '#8b5cf6', finance: '#10b981', sustainability: '#14b8a6', hospitality: '#f59e0b', tourism: '#f43f5e' };
-  var CATEMOJI = { business: '💼', education: '🎓', finance: '📈', sustainability: '🌿', hospitality: '🏨', tourism: '✈️' };
+  /* The sector a sim is set in: its JSON's `sector`, recorded by build_manifest.py. The
+     last two are not industries: a skills or methods trainer where the organization is
+     only a backdrop, and an organization of no particular industry. */
+  var SECTORS = [
+    { id: 'industry', icon: '🏭', color: '#64748b' },
+    { id: 'financial-services', icon: '🏦', color: '#059669' },
+    { id: 'technology', icon: '💻', color: '#3b82f6' },
+    { id: 'retail', icon: '🛒', color: '#db2777' },
+    { id: 'education', icon: '🎓', color: '#8b5cf6' },
+    { id: 'agrifood', icon: '🌾', color: '#65a30d' },
+    { id: 'public-sector', icon: '🏛️', color: '#6366f1' },
+    { id: 'hospitality', icon: '🏨', color: '#ea580c' },
+    { id: 'healthcare', icon: '🏥', color: '#e11d48' },
+    { id: 'energy', icon: '⚡', color: '#d97706' },
+    { id: 'professional-services', icon: '💼', color: '#0f766e' },
+    { id: 'logistics', icon: '🚚', color: '#0284c7' },
+    { id: 'sports-media', icon: '🎬', color: '#c026d3' },
+    { id: 'construction', icon: '🏗️', color: '#b45309' },
+    { id: 'real-estate', icon: '🏢', color: '#7c3aed' },
+    { id: 'skills-training', icon: '🧠', color: '#475569' },
+    { id: 'cross-sector', icon: '🧩', color: '#78716c' }
+  ];
+  var SECTORCOLORS = {};
+  SECTORS.forEach(function (x) { SECTORCOLORS[x.id] = x.color; });
   var LVLCOLORS = { basic: '#34d399', intermediate: '#f59e0b', advanced: '#f87171' };
   var DURGROUPS = [
     { id: '1-2', icon: '⚡', color: '#38bdf8', min: 1, max: 2 },
@@ -71,7 +93,7 @@
   ];
   /* Filter state ↔ URL, so a filtered catalog can be bookmarked or shared. `lang` is
      already the page language, hence `simlang` for the languages a sim ships in. */
-  var FILTER_PARAMS = { col: 'col', cat: 'cat', area: 'area', theme: 'theme', prog: 'prog', time: 'time', lvl: 'level', dur: 'rounds', lang: 'simlang' };
+  var FILTER_PARAMS = { col: 'col', sector: 'sector', area: 'area', theme: 'theme', prog: 'prog', time: 'time', lvl: 'level', dur: 'rounds', lang: 'simlang' };
   var SORTS = ['', 'name', 'rounds'];
 
   /* ───────── i18n: player chrome ─────────
@@ -84,10 +106,10 @@
       tagline: 'Standalone runtime for Express simulation JSONs',
       openJson: 'Open JSON', openJsonTitle: 'Open a simulation JSON from disk',
       search: 'Search simulations…  ( / )', searchAria: 'Search simulations',
-      catFilterLabel: 'Category', levelFilterLabel: 'Difficulty', durFilterLabel: 'Rounds', langFilterLabel: 'Language',
+      sectorFilterLabel: 'Sector', levelFilterLabel: 'Difficulty', durFilterLabel: 'Rounds', langFilterLabel: 'Language',
       areaFilterLabel: 'Discipline', themeFilterLabel: 'Theme', progFilterLabel: 'Program', timeFilterLabel: 'Class time',
       factNote: '{n} of {m} simulations state it.',
-      all: 'All', any: 'Any',
+      any: 'Any',
       sortTitle: 'Sort results', sortDefault: 'Default order', sortName: 'Name A–Z', sortRounds: 'Rounds: fewest first',
       random: 'Random', randomTitle: 'Load a random simulation',
       count: '{n} simulation', countN: '{n} simulations',
@@ -132,7 +154,8 @@
       teachSrcSim: 'From the simulation\'s teaching sheet.', teachSrcSimIn: 'From the simulation\'s teaching sheet; some objectives only in {lang}.', minutes: '{n} min',
       copyObj: 'Copy objectives', copyObjTitle: 'Copy the objectives as a numbered list, for a syllabus or a course proposal',
       copiedObj: 'Objectives copied', copySelect: 'Objectives selected — press Ctrl+C to copy',
-      cats: { business: 'business', education: 'education', finance: 'finance', sustainability: 'sustainability', hospitality: 'hospitality', tourism: 'tourism', other: 'other' },
+      sectors: { industry: 'Industry & manufacturing', 'financial-services': 'Financial services', technology: 'Technology & telecom', retail: 'Retail, trade & consumer goods', education: 'Education', agrifood: 'Agrifood', 'public-sector': 'Public & social sector', hospitality: 'Hospitality & tourism', healthcare: 'Healthcare', energy: 'Energy, water & resources', 'professional-services': 'Professional services', logistics: 'Transport & logistics', 'sports-media': 'Sport, media & entertainment', construction: 'Construction & infrastructure', 'real-estate': 'Real estate', 'skills-training': 'Skills & methods (no sector)', 'cross-sector': 'Multi-sector groups' },
+      sectorsShort: { industry: 'Industry', 'financial-services': 'Finance', technology: 'Tech', retail: 'Retail', education: 'Education', agrifood: 'Agrifood', 'public-sector': 'Public', hospitality: 'Hospitality', healthcare: 'Health', energy: 'Energy', 'professional-services': 'Services', logistics: 'Logistics', 'sports-media': 'Media', construction: 'Construction', 'real-estate': 'Real estate', 'skills-training': 'Skills', 'cross-sector': 'Multi-sector' },
       lvls: { basic: 'basic', intermediate: 'intermediate', advanced: 'advanced' },
       langNames: { en: 'English', es: 'Spanish', pt: 'Portuguese' },
       areas: { A1: 'Accounting & control', A2: 'Finance', A3: 'Economics & business environment', A4: 'Marketing', A5: 'Operations & supply chain', A6: 'Information systems & digital', A7: 'Strategy', A8: 'Organizational behavior & leadership', A9: 'Human resources', A10: 'Entrepreneurship', A11: 'Ethics, governance & society', A12: 'General management' },
@@ -150,10 +173,10 @@
       tagline: 'Motor autónomo para los JSON de simulaciones Express',
       openJson: 'Abrir JSON', openJsonTitle: 'Abrir una simulación JSON desde el disco',
       search: 'Buscar simulaciones…  ( / )', searchAria: 'Buscar simulaciones',
-      catFilterLabel: 'Categoría', levelFilterLabel: 'Dificultad', durFilterLabel: 'Rondas', langFilterLabel: 'Idioma',
+      sectorFilterLabel: 'Sector', levelFilterLabel: 'Dificultad', durFilterLabel: 'Rondas', langFilterLabel: 'Idioma',
       areaFilterLabel: 'Disciplina', themeFilterLabel: 'Tema transversal', progFilterLabel: 'Programa', timeFilterLabel: 'Tiempo en clase',
       factNote: 'Lo indican {n} de {m} simulaciones.',
-      all: 'Todas', any: 'Cualquiera',
+      any: 'Cualquiera',
       sortTitle: 'Ordenar resultados', sortDefault: 'Orden por defecto', sortName: 'Nombre A–Z', sortRounds: 'Rondas: menos primero',
       random: 'Aleatoria', randomTitle: 'Cargar una simulación al azar',
       count: '{n} simulación', countN: '{n} simulaciones',
@@ -198,7 +221,8 @@
       teachSrcSim: 'Según la ficha docente de la simulación.', teachSrcSimIn: 'Según la ficha docente de la simulación; algunos objetivos solo están en {lang}.', minutes: '{n} min',
       copyObj: 'Copiar objetivos', copyObjTitle: 'Copia los objetivos como lista numerada, para la guía docente o una propuesta de asignatura',
       copiedObj: 'Objetivos copiados', copySelect: 'Objetivos seleccionados — pulsa Ctrl+C para copiar',
-      cats: { business: 'negocios', education: 'educación', finance: 'finanzas', sustainability: 'sostenibilidad', hospitality: 'hostelería', tourism: 'turismo', other: 'otros' },
+      sectors: { industry: 'Industria y fabricación', 'financial-services': 'Servicios financieros', technology: 'Tecnología y telecomunicaciones', retail: 'Comercio y gran consumo', education: 'Educación', agrifood: 'Agroalimentario', 'public-sector': 'Sector público y social', hospitality: 'Hostelería y turismo', healthcare: 'Salud', energy: 'Energía, agua y recursos', 'professional-services': 'Servicios profesionales', logistics: 'Transporte y logística', 'sports-media': 'Deporte, medios y ocio', construction: 'Construcción e infraestructuras', 'real-estate': 'Inmobiliario', 'skills-training': 'Habilidades y métodos (sin sector)', 'cross-sector': 'Grupos multisector' },
+      sectorsShort: { industry: 'Industria', 'financial-services': 'Finanzas', technology: 'Tecnología', retail: 'Comercio', education: 'Educación', agrifood: 'Agro', 'public-sector': 'Público', hospitality: 'Hostelería', healthcare: 'Salud', energy: 'Energía', 'professional-services': 'Servicios', logistics: 'Logística', 'sports-media': 'Medios', construction: 'Construcción', 'real-estate': 'Inmobiliario', 'skills-training': 'Habilidades', 'cross-sector': 'Multisector' },
       lvls: { basic: 'básico', intermediate: 'intermedio', advanced: 'avanzado' },
       langNames: { en: 'inglés', es: 'español', pt: 'portugués' },
       areas: { A1: 'Contabilidad y control', A2: 'Finanzas', A3: 'Economía y entorno', A4: 'Marketing', A5: 'Operaciones y cadena de suministro', A6: 'Sistemas de información y digital', A7: 'Estrategia', A8: 'Comportamiento organizativo y liderazgo', A9: 'Recursos humanos', A10: 'Emprendimiento', A11: 'Ética, gobierno y sociedad', A12: 'Dirección general' },
@@ -223,7 +247,13 @@
     if (params) for (var k in params) s = String(s).split('{' + k + '}').join(params[k]);
     return s;
   }
-  function catLabel(c) { return (UI[lang].cats[c] || c); }
+  function sectorLabel(id) { return (UI[lang].sectors[id] || id); }
+  /* the pill on a card or in the preview: the short name, the full one on hover */
+  function sectorPill(id) {
+    if (!id) return '';
+    return '<span class="catpill" style="background:' + (SECTORCOLORS[id] || '#64748b') + '" title="' + esc(sectorLabel(id)) + '">' +
+      esc(UI[lang].sectorsShort[id] || id) + '</span>';
+  }
   function lvlLabel(l) { return (UI[lang].lvls[l] || l); }
   function langName(l) { return (UI[lang].langNames[l] || l.toUpperCase()); }
   function durLabel(id) { return ((UI[lang].durGroups[id] || {}).label || id); }
@@ -447,7 +477,7 @@
      state its themes, programs or class time never matches those filters. */
   function matches(s, f) {
     if (f.col && !colPlaces(f.col)[s.id]) return false;
-    if (f.cat && s.cat !== f.cat) return false;
+    if (f.sector && s.sector !== f.sector) return false;
     if (f.area && s.area !== f.area) return false;
     if (f.theme && (s.themes || []).indexOf(f.theme) < 0) return false;
     if (f.prog && (s.programs || []).indexOf(f.prog) < 0) return false;
@@ -465,7 +495,7 @@
   function countMatches(f) { return manifest.sims.filter(function (s) { return matches(s, f); }).length; }
 
   /* Which filter key each chip row sets. */
-  var CHIP_ROWS = { chips: ['cat'], areaChips: ['area'], themeChips: ['theme'], progChips: ['prog'], timeChips: ['time'], lvlChips: ['lvl'], durChips: ['dur'], langChips: ['lang'] };
+  var CHIP_ROWS = { areaChips: ['area'], sectorChips: ['sector'], themeChips: ['theme'], progChips: ['prog'], timeChips: ['time'], lvlChips: ['lvl'], durChips: ['dur'], langChips: ['lang'] };
 
   function buildFilters() {
     function mkBtn(container, label, count, color, emoji, onclick, titleTxt) {
@@ -497,20 +527,9 @@
       });
     }
 
-    // ── Category ──
-    var cats = {};
-    manifest.sims.forEach(function (s) { cats[s.cat] = (cats[s.cat] || 0) + 1; });
-    var chips = $('chips'); chips.innerHTML = '';
-    var allCat = tag(mkBtn(chips, T('all'), manifest.sims.length, '#64748b', '', function () { F.cat = ''; selChip(allCat); applyFilter(); }), 'cat', '');
-    allCat.classList.add('on'); allCat.dataset.filterAll = '1';
-    // Data-driven categories
-    Object.keys(cats).sort().forEach(function (c) {
-      var btn = tag(mkBtn(chips, catLabel(c), cats[c], CATCOLORS[c] || '#64748b', CATEMOJI[c] || '', function () { F.cat = c; selChip(btn); applyFilter(); }), 'cat', c);
-      if (c === F.cat) selChip(btn, true);
-    });
-
     // ── Teaching facts from the teaching blocks and the cases ──
     row('areaChips', 'area', AREAS.map(function (a) { return { val: a.id, label: areaLabel(a.id), color: a.color, icon: a.icon }; }));
+    row('sectorChips', 'sector', SECTORS.map(function (x) { return { val: x.id, label: sectorLabel(x.id), color: x.color, icon: x.icon }; }));
     row('themeChips', 'theme', THEMES.map(function (t) { return { val: t.id, label: themeLabel(t.id), color: t.color, icon: t.icon }; }));
     row('progChips', 'prog', PROGRAMS.map(function (p) { return { val: p, label: progLabel(p) }; }));
     row('timeChips', 'time', TIMEGROUPS.map(function (g) { return { val: g.id, label: timeLabel(g.id) }; }));
@@ -669,7 +688,7 @@
   function cardEl(s) {
     var d = document.createElement('div');
     d.className = 'simcard'; d.dataset.id = s.id;
-    var color = CATCOLORS[s.cat] || '#64748b';
+    var color = SECTORCOLORS[s.sector] || '#64748b';
     var img = s.cover || s.svg;
     var cover = img
       ? '<img loading="lazy" src="' + esc(img) + '" alt="">'
@@ -684,7 +703,7 @@
     d.innerHTML = '<div class="cardcover">' + cover + '</div>' +
       '<div class="cardbody">' +
       '<div class="cardname">' + nameHtml + '</div>' +
-      '<div class="cardtags"><span class="catpill" style="background:' + color + '">' + esc(catLabel(s.cat)) + '</span>' + lvlHtml + langHtml + caseHtml + '</div>' +
+      '<div class="cardtags">' + sectorPill(s.sector) + lvlHtml + langHtml + caseHtml + '</div>' +
       (s.periods ? '<div class="cardrounds">' + s.periods + ' ' + T(s.periods === 1 ? 'round' : 'rounds') +
         (s.minutes ? ' · ' + esc(T('minutes', { n: s.minutes })) : '') + '</div>' : '') +
       (snippet ? '<div class="cardsnip">' + snippet + '</div>' : '') +
@@ -753,7 +772,7 @@
   function renderPreview() {
     var d = current.data, s = current.manifestSim;
     var svg = s && (s.cover || s.svg);
-    var color = CATCOLORS[(s && s.cat) || ''] || '#64748b';
+    var color = SECTORCOLORS[(s && s.sector) || ''] || '#64748b';
     var name = currentName();
 
     $('previewCover').innerHTML = svg
@@ -817,13 +836,12 @@
      rebuilding the cover/name/description or reloading the preview iframe. */
   function renderPreviewMeta() {
     var d = current.data, s = current.manifestSim;
-    var cat = ((s && s.cat) || d.category || '').toLowerCase();
+    var sector = String((s && s.sector) || d.sector || '').toLowerCase();
     var level = ((s && s.level) || d.level || '').toLowerCase();
     var rounds = (s && s.periods) || d.max_periods || 0;
     var id = (s && s.id) || d.externalid || '';
-    var color = CATCOLORS[cat] || '#64748b';
     var meta = [];
-    if (cat) meta.push('<span class="catpill" style="background:' + color + '">' + esc(catLabel(cat)) + '</span>');
+    if (UI[lang].sectors[sector]) meta.push(sectorPill(sector));
     if (level) meta.push('<span class="lvlbadge lvl-' + esc(level) + '">' + esc(lvlLabel(level)) + '</span>');
     if (rounds) meta.push('<span>' + rounds + ' ' + T(rounds === 1 ? 'round' : 'rounds') + '</span>');
     if (id) meta.push('<span>#' + esc(id) + '</span>');
@@ -1078,9 +1096,9 @@
 
   /* ───────── runtime (Play view) ───────── */
   function playMetaLine(d, s) {
-    var cat = ((s && s.cat) || d.category || '').toLowerCase();
+    var sector = String((s && s.sector) || d.sector || '').toLowerCase();
     var level = ((s && s.level) || d.level || '').toLowerCase();
-    return [d.externalid ? '#' + d.externalid : '', cat ? catLabel(cat) : '', level ? lvlLabel(level) : ''].filter(Boolean).join(' · ');
+    return [d.externalid ? '#' + d.externalid : '', UI[lang].sectors[sector] ? sectorLabel(sector) : '', level ? lvlLabel(level) : ''].filter(Boolean).join(' · ');
   }
   function playCurrent() {
     if (!current) return;
