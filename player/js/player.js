@@ -277,7 +277,7 @@
       b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
     });
     if (manifest) { buildFilters(); applyFilter(); }
-    if (current && view === 'preview') { renderPreviewName(); renderPreviewMeta(); renderTeach(); }
+    if (current && view === 'preview') { renderPreviewName(); renderPreviewDesc(); renderPreviewMeta(); renderTeach(); }
     if (current) renderCaseButtons();
     if (caseSim() && !$('caseModal').hidden) loadCase(caseSim()); // the case in the new language, if the repo has it
     document.querySelectorAll('#caseBody details.caseTeacher > summary').forEach(function (s) { s.textContent = T('caseTeacher'); });
@@ -346,19 +346,33 @@
   function highlightName(rawName) { return highlightText(deent(rawName), query.trim()); }
   /* A sim's name in the page language: its own translated title from the
      manifest (`names`), else the catalog name, which ships in one language. */
-  function simName(s) { return (s.names && s.names[lang]) || s.name || ''; }
+  /* A sim's name and description in the page language. The manifest carries them per
+     language (`names`, `descs`) from the sim's teaching block, written for the catalog;
+     a sim without them falls back to its one-language `name` and `desc`. */
+  function inLang(map) { return (map && (map[lang] || map.en)) || ''; }
+  function simName(s) { return inLang(s.names) || s.name || ''; }
+  function simDesc(s) { return inLang(s.descs) || s.desc || ''; }
+  /* the same for the sim that is open, which may not be in the catalog (a dropped file) */
+  function blockText(field) { var t = current.data.teaching; return inLang(t && typeof t === 'object' && t[field]); }
   function currentName() {
     var s = current.manifestSim;
-    return deent((s && simName(s)) || current.data.name || current.srcName || 'Simulation');
+    return deent((s && simName(s)) || blockText('title') || current.data.name || current.srcName || 'Simulation');
   }
-  /* what search matches: every name a sim goes by, its id and description; folded once per sim */
+  function allTexts(map) { return map ? Object.keys(map).map(function (k) { return map[k]; }) : []; }
+  /* what search matches: a sim's id, and its names and descriptions in every language,
+     so a query finds it whichever language the page is in; folded once per sim */
   var searchCache = {};
   function searchText(s) {
     if (searchCache[s.id] == null) {
-      var names = s.names ? Object.keys(s.names).map(function (k) { return s.names[k]; }).join(' ') : '';
-      searchCache[s.id] = fold(deent(s.name + ' ' + names + ' ' + s.id + ' ' + (s.desc || '')));
+      searchCache[s.id] = fold(deent([s.name, s.id, s.desc || ''].concat(allTexts(s.names), allTexts(s.descs)).join(' ')));
     }
     return searchCache[s.id];
+  }
+  /* the description a query matched in: the page language's first, then the others */
+  function matchedDesc(s, q) {
+    var texts = [simDesc(s)].concat(allTexts(s.descs));
+    for (var i = 0; i < texts.length; i++) { if (texts[i] && foldedRanges(deent(texts[i]), q).length) return texts[i]; }
+    return '';
   }
   function descSnippet(rawDesc, q) {
     // Only called when the query matched a sim via its (hidden) description rather than
@@ -699,7 +713,7 @@
     var caseHtml = s.case ? '<span class="casemark" title="' + esc(T('caseBtn')) + '" aria-label="' + esc(T('caseBtn')) + '">📄</span>' : '';
     var q = query.trim();
     var nameHtml = highlightName(simName(s));
-    var snippet = (q && nameHtml.indexOf('<mark>') < 0) ? descSnippet(s.desc, q) : ''; // surface why a desc-only match hit
+    var snippet = (q && nameHtml.indexOf('<mark>') < 0) ? descSnippet(matchedDesc(s, q), q) : ''; // surface why a desc-only match hit
     d.innerHTML = '<div class="cardcover">' + cover + '</div>' +
       '<div class="cardbody">' +
       '<div class="cardname">' + nameHtml + '</div>' +
@@ -780,7 +794,7 @@
       : '<div class="tileinit" style="background:' + color + '">' + esc(name.charAt(0).toUpperCase()) + '</div>';
     renderPreviewName();
     renderPreviewMeta();
-    $('previewDesc').textContent = deent(d.description || '');
+    renderPreviewDesc();
     $('btnPlayBar').style.display = 'inline-block';
     $('btnAccess').href = 'https://www.eurekasimulations.com/basics/?utm_source=open_site&utm_medium=player&utm_campaign=class_access' +
       (s ? '&utm_content=sim-' + encodeURIComponent(s.id) : '');
@@ -830,6 +844,13 @@
     var name = currentName();
     $('previewName').textContent = name;
     $('previewBarTitle').textContent = name;
+  }
+
+  /* The catalog summary in the page language when the sim has one; else its own
+     description, in whatever language that was written. */
+  function renderPreviewDesc() {
+    var s = current.manifestSim;
+    $('previewDesc').textContent = deent((s && inLang(s.descs)) || blockText('summary') || current.data.description || '');
   }
 
   /* Just the translatable pills — re-run on a language switch without

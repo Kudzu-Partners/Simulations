@@ -192,12 +192,27 @@ AUDIENCE_GROUP = {"secondary": "secondary", "ug-intro": "ug", "ug-advanced": "ug
                   "masters-core": "master", "masters-elective": "master", "exec-ed": "exec"}
 
 
+def lang_map(v):
+    """{lang: text} from a block's language map, dropping anything that is not one."""
+    if not isinstance(v, dict):
+        return {}
+    return {k: s.strip() for k, s in v.items() if LANG_RE.match(str(k)) and isinstance(s, str) and s.strip()}
+
+
 def sim_teaching(t):
-    """area / themes / minutes / programs from a sim's `teaching` block. Lenient: a field that
-    is missing or malformed is left out, so a draft block still contributes what it has."""
+    """area / themes / minutes / programs, and the catalogue title and summary in each language
+    (`names`, `descs`), from a sim's `teaching` block. Lenient: a field that is missing or
+    malformed is left out, so a draft block still contributes what it has."""
     if not isinstance(t, dict):
         return {}
     out = {}
+    # v1.2: the catalogue entry in every language the sim ships. `names` then replaces the
+    # titles read off the sim's first <h1>, and `descs` the truncated one-language description.
+    titles, summaries = lang_map(t.get("title")), lang_map(t.get("summary"))
+    if titles.get("en"):
+        out["names"] = titles
+    if summaries.get("en"):
+        out["descs"] = summaries
     primary = (t.get("discipline") or {}).get("primary") if isinstance(t.get("discipline"), dict) else None
     m = re.match(r"^(A(?:[1-9]|1[0-2]))\.", primary or "")
     if m:
@@ -394,6 +409,8 @@ def main():
         own = sim_teaching(d.get("teaching"))
         entry.update(own)
         with_block += bool(own)
+        if "descs" in entry:
+            entry.pop("desc", None)   # the block's summaries stand in for the truncated description
         sims.append(entry)
 
     def sortkey(s):
@@ -430,7 +447,9 @@ def main():
           f"{sum(1 for s in sims if s['svg'])} with thumbnails, "
           f"{sum(1 for s in sims if s.get('cover'))} with covers, "
           f"{manifest['cases']} with a case study, "
-          f"{sum(1 for s in sims if s.get('names'))} with translated titles, "
+          f"{sum(1 for s in sims if s.get('names'))} with translated titles "
+          f"({sum(1 for s in sims if (s.get('names') or {}).get('en'))} from the teaching block), "
+          f"{sum(1 for s in sims if s.get('descs'))} with a summary per language, "
           f"{with_block} with a teaching block, "
           f"{sum(1 for s in sims if s.get('sector'))} with a sector, "
           f"teaching facts: area {sum(1 for s in sims if s.get('area'))}, "

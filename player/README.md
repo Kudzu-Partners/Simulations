@@ -109,7 +109,9 @@ Next to Play, **Request access for my class** links to Eureka's licensing page (
 
 A sim that doesn't ship the preferred language (only reachable via `?src=`) falls back to English and says so in a notice.
 
-The JSON's `name` ships in one language, so `build_manifest.py` also records the sim's own title in each other language as `names` (e.g. `{"es": "Disrupción Fintech: BancaVerde"}`): the translation of the i18n key on the view's first `<h1>`, the title the sim shows once it runs. Catalog cards, the preview and the play bar use it in that language, sorting by name follows it, and search matches every name. English keeps the catalog `name`.
+The JSON's `name` and `description` ship in one language each, whichever the author wrote in. The catalog entry in every language lives in the sim's `teaching` block instead (version 1.2, `title` and `summary`, each a map of language to text): a title, and a summary of who the player is, in which organization and what they decide. `build_manifest.py` records them as `names` and `descs`, and cards, the preview, the play bar and sorting by name use the page language, falling back to English. Search matches every language, so a query finds a sim whichever language the page is in, and a match in the description shows a snippet from the summary that matched.
+
+A sim whose block has no `title` falls back to the older source for `names`: the translation of the i18n key on the view's first `<h1>`, the title the sim shows once it runs. A sim with no `summary` keeps `desc`, its own description cut to 200 characters.
 
 ### Case studies
 
