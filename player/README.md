@@ -38,6 +38,7 @@ player/
   manifest.json        generated catalog index (id, name, category, level, rounds, langs, case…)
   collections.json     curated collections of sims, written by hand; the build checks them and copies them into the manifest
   build_manifest.py    regenerates manifest.json from a folder of sim JSONs
+  build_sitemap.py     regenerates ../sitemap.xml from manifest.json (one URL per sim and language)
   vendor/chart.umd.min.js   Chart.js 4.4.0 (MIT), inlined into each sim for charts
   vendor/marked.min.js      marked 9.1.6 (MIT), renders the case studies in the host page
   test/headless_replay.js   jsdom smoke test that auto-plays sims round by round
@@ -204,8 +205,9 @@ node headless_replay.js --force --require-score --all
 
 1. Drop the new `{externalid}.json` into `jsons/` (and its case, if it has one, as `cases/{externalid}.md`).
 2. Regenerate the catalog: `cd player && python build_manifest.py` — it reports any sim that ships fewer than two languages.
-3. Refresh the benchmark allowlist: `python supabase/gen_seed.py`, then apply `supabase/seed.sql` (see [`../supabase/README.md`](../supabase/README.md)).
-4. Smoke-test: `cd player/test && npm install jsdom && node headless_replay.js <id>` — it plays every round headlessly and reports runtime errors. Add `--lang es` for one language, or `--lang all` to replay each sim once per language it ships.
+3. Regenerate the sitemap: `python build_sitemap.py` (still in `player/`, after the manifest) — see [Search engines](#search-engines).
+4. Refresh the benchmark allowlist: `python supabase/gen_seed.py`, then apply `supabase/seed.sql` (see [`../supabase/README.md`](../supabase/README.md)).
+5. Smoke-test: `cd player/test && npm install jsdom && node headless_replay.js <id>` — it plays every round headlessly and reports runtime errors. Add `--lang es` for one language, or `--lang all` to replay each sim once per language it ships.
 
 ## Collections
 
@@ -229,6 +231,16 @@ They live in `player/collections.json`, the one catalog file here that is writte
 - `sims` — external ids as strings, in the order to show them.
 
 `python build_manifest.py` checks the file and copies it into `manifest.json` as `collections`. It refuses to write the manifest when a collection names a sim the catalog doesn't have, lists one twice, or lacks an English title or blurb. That is deliberate: withdrawing a sim from `jsons/` fails the build until the collections that named it are edited.
+
+## Search engines
+
+Every simulation has its own address, `player/index.html?sim={externalid}&lang={en|es}`, and search engines see it as its own page:
+
+- `player/index.html` has no static canonical. Its first script, `eurekaHead()`, writes the `canonical` and the `hreflang` alternates (en, es, x-default) for what the URL shows. A sim's canonical is its own URL with its language. The catalog's is the bare player URL, or the one with `?lang=` when the URL has it. `player.js` calls it again whenever the URL changes, and also sets the tab title and the meta description to the sim's own title and summary in the page language.
+- `sitemap.xml` (repo root, named in `robots.txt`) lists the landing page, the catalog and every sim in both languages, each with the same alternates `eurekaHead()` writes. `lastmod` is the date of the last commit that touched the sim's JSON or its case, so rebuilding without content changes leaves the file unchanged.
+- A case study opens inside its sim's page and has no URL of its own; the sim's URL covers it.
+
+Rebuild it after `build_manifest.py` whenever sims are added, withdrawn or changed: `cd player && python build_sitemap.py`. If the URL scheme in `eurekaHead()` ever changes, change `build_sitemap.py` with it, or the two will disagree and search engines ignore the alternates.
 
 ## Hosting (GitHub Pages)
 

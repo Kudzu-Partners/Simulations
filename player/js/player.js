@@ -268,7 +268,7 @@
      dynamic bits (counts, chips, cards) honest. */
   function applyUI() {
     document.documentElement.lang = lang;
-    document.title = 'Eureka Express — ' + (lang === 'es' ? 'Reproductor abierto de simulaciones' : 'Open Simulation Player');
+    document.title = catalogTitle();
     document.querySelectorAll('[data-i18n]').forEach(function (el) { el.innerHTML = T(el.getAttribute('data-i18n')); });
     document.querySelectorAll('[data-i18n-ph]').forEach(function (el) { el.setAttribute('placeholder', T(el.getAttribute('data-i18n-ph'))); });
     document.querySelectorAll('[data-i18n-title]').forEach(function (el) { el.setAttribute('title', T(el.getAttribute('data-i18n-title'))); });
@@ -763,7 +763,20 @@
       if (onSim || hadLang || p.toString()) p.set('lang', lang);
       var qs = p.toString();
       history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
+      syncHead(onSim && current.manifestSim, p.get('lang'));
     } catch (e) {}
+  }
+  /* A simulation's deep link is its own page for search engines and browser tabs:
+     its canonical URL (eurekaHead, in index.html), title and description. */
+  var catalogDesc = ($('metaDesc') || {}).content || '';
+  function catalogTitle() {
+    return 'Eureka Express — ' + (lang === 'es' ? 'Reproductor abierto de simulaciones' : 'Open Simulation Player');
+  }
+  function syncHead(s, urlLang) {
+    if (window.eurekaHead) window.eurekaHead(s ? s.id : '', urlLang);
+    document.title = s ? currentName() + ' — Eureka Express' : catalogTitle();
+    var desc = s ? deent(simDesc(s)) : catalogDesc;
+    if ($('metaDesc') && desc) $('metaDesc').content = desc;
   }
 
   /* ───────── preview ───────── */

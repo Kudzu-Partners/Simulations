@@ -24,10 +24,38 @@
   <title>Eureka Express — Open Simulation Player</title>
   <meta name="description" id="metaDesc"
     content="Play 640 openly licensed business simulations in your browser — strategy, finance, operations, negotiation, hospitality, sustainability, AI. No account, no install, free for personal use.">
-  <link rel="canonical" href="https://open.eurekasimulations.com/player/index.html">
-  <link rel="alternate" hreflang="en" href="https://open.eurekasimulations.com/player/index.html?lang=en">
-  <link rel="alternate" hreflang="es" href="https://open.eurekasimulations.com/player/index.html?lang=es">
-  <link rel="alternate" hreflang="x-default" href="https://open.eurekasimulations.com/player/index.html">
+  <script>
+    /* canonical + hreflang for what this URL shows, so each simulation deep link
+       (?sim=NNN&lang=xx, listed in /sitemap.xml) is its own page to search engines
+       rather than a duplicate of the catalog. Written here, not as static tags: a
+       static canonical would point every ?sim= URL at the catalog. player.js calls
+       eurekaHead() again whenever the URL changes. Every sim ships en and es. */
+    window.eurekaHead = function (sim, lang) {
+      var base = 'https://open.eurekasimulations.com/player/index.html';
+      sim = String(sim || '').replace(/[^\w-]/g, '');
+      lang = lang === 'en' || lang === 'es' ? lang : '';
+      function url(l) {
+        var q = (sim ? 'sim=' + sim : '') + (l ? (sim ? '&' : '') + 'lang=' + l : '');
+        return base + (q ? '?' + q : '');
+      }
+      var links = { canonical: url(sim ? lang || 'en' : lang), en: url('en'), es: url('es'), 'x-default': url(sim ? 'en' : '') };
+      Object.keys(links).forEach(function (k) {
+        var sel = k === 'canonical' ? 'link[rel="canonical"]' : 'link[rel="alternate"][hreflang="' + k + '"]';
+        var el = document.head.querySelector(sel);
+        if (!el) {
+          el = document.createElement('link');
+          el.rel = k === 'canonical' ? 'canonical' : 'alternate';
+          if (k !== 'canonical') el.hreflang = k;
+          document.head.appendChild(el);
+        }
+        el.href = links[k];
+      });
+    };
+    (function () {
+      var p = new URLSearchParams(location.search);
+      window.eurekaHead(p.get('sim'), p.get('lang'));
+    })();
+  </script>
   <meta property="og:type" content="website">
   <meta property="og:title" content="Eureka Express — Open Simulation Player">
   <meta property="og:description"
