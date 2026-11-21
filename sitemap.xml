@@ -8982,4 +8982,16 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://open.eurekasimulations.com/player/index.html?sim=10008&amp;lang=es"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://open.eurekasimulations.com/player/index.html?sim=10008&amp;lang=en"/>
   </url>
+  <url>
+    <loc>https://open.eurekasimulations.com/player/index.html?sim=11007&amp;lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://open.eurekasimulations.com/player/index.html?sim=11007&amp;lang=en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://open.eurekasimulations.com/player/index.html?sim=11007&amp;lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://open.eurekasimulations.com/player/index.html?sim=11007&amp;lang=en"/>
+  </url>
+  <url>
+    <loc>https://open.eurekasimulations.com/player/index.html?sim=11007&amp;lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://open.eurekasimulations.com/player/index.html?sim=11007&amp;lang=en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://open.eurekasimulations.com/player/index.html?sim=11007&amp;lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://open.eurekasimulations.com/player/index.html?sim=11007&amp;lang=en"/>
+  </url>
 </urlset>
